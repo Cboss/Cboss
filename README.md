@@ -1,6 +1,6 @@
 # Hi, I'm Craig Blackmon
 
-I am a technology enthusiast and love to solve tech problems for people or help and educate people on the information technology industry.  I’ve done a lot in the industry from support, to coding, to management partnered with the Wine/Alcohol industry. Lots of experience here with POS systems and payment companies and devices within the SaaS software suite. 
+I'm a technology enthusiast who loves solving tech problems for people and teaching them about IT. I've worked in support, coding and management across the wine and alcohol industry, with lots of experience in POS systems, payment processors and devices, and SaaS software.
 
 ## What I do
 
