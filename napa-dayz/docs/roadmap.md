@@ -3,8 +3,8 @@
 ## Phase 1: Setup and test patch
 - [x] DayZ Tools installed, P: drive mounted
 - [x] QGIS, World Machine, Blender installed
-- [ ] Download the USGS 1 m height data and NAIP photos for the test patch
-- [ ] Run `gis/pilot_process.bat`
+- [x] Download the USGS 1 m height data and NAIP photos for the test patch
+- [x] Run `gis/pilot_process.bat`
 - [ ] Make the Terrain Builder project `P:\NapaPilot\source\NapaPilot.tv4p` and import the height map
 - [ ] Walk the test patch in Buldozer
 - [ ] List the vanilla surface textures (`dir /s /b P:\DZ\surfaces\*.rvmat`) so `layers.cfg` can be written

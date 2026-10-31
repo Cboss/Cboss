@@ -20,9 +20,9 @@ gdal_translate -of AAIGrid -a_ullr 200000 2560 202560 0 pilot_dem_s.tif pilot_de
 :: -srcnodata: ignore the black edges on NAIP tiles so they don't cover the neighbouring tile
 gdalbuildvrt -overwrite -srcnodata "0 0 0 0" naip_src.vrt raw\naip\*.tif
 gdalwarp -overwrite -te 555430 4232870 558310 4235750 -ts 2560 2560 -r cubic naip_src.vrt pilot_naip.tif
-gdal_translate -b 1 -b 2 -b 3 -of PNG pilot_naip.tif pilot_sat.png
+gdal_translate -a_nodata none -b 1 -b 2 -b 3 -of PNG pilot_naip.tif pilot_sat.png
 :: Near-infrared band: plants show up bright, useful for painting vineyards and oaks
-gdal_translate -b 4 -of PNG pilot_naip.tif pilot_nir.png
+gdal_translate -a_nodata none -b 4 -of PNG pilot_naip.tif pilot_nir.png
 
 echo.
 echo Done. Copy pilot_dem.asc and pilot_sat.png to P:\NapaPilot\source
