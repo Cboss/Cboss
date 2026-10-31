@@ -7,6 +7,15 @@
 | Roads, rivers, buildings | OpenStreetMap, Northern California extract from [Geofabrik](https://download.geofabrik.de/north-america/us/california/norcal.html) | ODbL: **must credit** | Roads, water, building outlines |
 | Reference only | Google Earth, Street View | Not allowed in the map | Looking at real places |
 
+## Files in use
+
+### Test patch
+
+| Data | Files |
+|---|---|
+| NAIP 2024 (60 cm, 4-band, EPSG:26910) | `m_3812254_nw_10_060_20240520` (lat 38.185–38.252), `m_3812246_sw_10_060_20240521` (lat 38.248–38.315) |
+| USGS 1 m DEM | _tile name to be added_ |
+
 ## Credit line for the Workshop page
 
 > Map data © OpenStreetMap contributors (ODbL). Elevation: USGS 3DEP. Imagery: USDA NAIP.
