@@ -1,0 +1,22 @@
+# Raw GIS downloads and anything generated from them
+gis/raw/
+*.tif
+*.tiff
+*.jp2
+*.vrt
+*.asc
+*.prj
+*.aux.xml
+*.pbf
+*.png
+!docs/**/*.png
+
+# Terrain Builder / DayZ build output
+*.pbo
+*.paa
+*.bisign
+*.bikey
+*.biprivatekey
+layers/
+*.tv4l.bak
+*.log
