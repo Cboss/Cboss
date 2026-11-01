@@ -1,0 +1,51 @@
+# Roadmap
+
+## Phase 1: Setup and test patch
+- [x] DayZ Tools installed, P: drive mounted
+- [x] QGIS, World Machine, Blender installed
+- [x] Download the USGS 1 m height data and NAIP photos for the test patch
+- [x] Run `gis/pilot_process.bat`
+- [ ] Make the Terrain Builder project `P:\NapaPilot\source\NapaPilot.tv4p` and import the height map
+- [ ] Walk the test patch in Buldozer
+- [ ] List the vanilla surface textures (`dir /s /b P:\DZ\surfaces\*.rvmat`) so `layers.cfg` can be written
+- [ ] Satellite image and surface mask, generate layers
+- [ ] World `config.cpp`, pack, and load the test patch in DayZ
+
+## Phase 2: Full terrain
+- [ ] Download height data and NAIP photos for the full area
+- [ ] Process to 4096 grid / 20,480 px
+- [ ] World Machine pass: blend the edges, erosion and flow maps
+- [ ] Import into Terrain Builder, check in Buldozer
+
+## Phase 3: Surfaces
+- [ ] Surface mask: vineyard, grass, dry hillside, oak woodland, asphalt, gravel, marsh
+- [ ] Use the near-infrared band to help separate vegetation
+
+## Phase 4: Roads and water
+- [ ] Roads from OpenStreetMap (Hwy 29, Hwy 121/12, Silverado Trail, city streets)
+- [ ] Napa River, creeks, marsh edges
+- [ ] Wine Train track
+
+## Phase 5: Places to loot
+- [ ] Downtown Napa / Oxbow, Napa State Hospital, Napa County Airport, Yountville, Carneros farms
+- [ ] Wineries along Hwy 29 and the Silverado Trail
+- [ ] Vanilla buildings as placeholders
+
+## Phase 6: Wine cave bunkers
+- [ ] Cave models (entrance front, tunnels, barrel room, tasting room)
+- [ ] Keycard item and locked-door script mod
+- [ ] Darkness triggers, loot points, infected
+
+## Phase 7: Custom American buildings
+- [ ] Victorian houses, ranch houses, strip mall, gas station, winery buildings, hangars
+- [ ] Replace placeholders
+
+## Phase 8: Making it playable
+- [ ] AI navigation for infected and animals
+- [ ] `mapgrouppos.xml`, `mapgroupproto.xml`, `cfgplayerspawnpoints.xml`, `cfgeventspawns.xml`, `types.xml`
+- [ ] Mission folder `dayzOffline.napa`
+
+## Phase 9: Ship it
+- [ ] Pack with Addon Builder, sign
+- [ ] Steam Workshop upload (credits OpenStreetMap)
+- [ ] Add to a Baysic Survival Gaming server through CFTools Architect
