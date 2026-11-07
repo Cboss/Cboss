@@ -4,7 +4,7 @@ A custom DayZ terrain of Napa, California, the valley I grew up in. It covers Ca
 
 ## Status
 
-**Phase 1: test patch.** Tools installed (DayZ Tools, P: drive, QGIS, World Machine, Blender). Next: build a 2.56 km test patch of Carneros all the way into the game.
+**Phase 1: test patch.** The 2.56 km Carneros test patch is textured with the 2024 aerial photo and shows in Buldozer. Next: world `config.cpp`, pack, and load it in DayZ.
 
 ## What's here
 
@@ -15,6 +15,7 @@ A custom DayZ terrain of Napa, California, the valley I grew up in. It covers Ca
 | [`docs/points-of-interest.md`](docs/points-of-interest.md) | Places to loot and what each one is for |
 | [`docs/wine-caves.md`](docs/wine-caves.md) | Design for the keycard-locked wine cave bunkers |
 | [`docs/data-sources.md`](docs/data-sources.md) | Where the map data comes from, licenses, credits |
+| [`docs/terrain-builder-notes.md`](docs/terrain-builder-notes.md) | Terrain Builder steps that work, and the problems to avoid |
 | [`gis/pilot_process.bat`](gis/pilot_process.bat) | GDAL commands that cut the test patch height map and satellite image |
 
 ## Tool chain

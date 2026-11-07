@@ -8,7 +8,7 @@
 - [x] Make the Terrain Builder project `P:\NapaPilot\source\NapaPilot.tv4p` and import the height map
 - [x] Connect Buldozer and see the test patch (untextured)
 - [x] List the vanilla surface materials (grass: `DZ\surfaces\data\terrain\cp_grass.rvmat`)
-- [ ] Satellite image and surface mask, generate layers
+- [x] Satellite image and surface mask, generate layers (textured test patch in Buldozer)
 - [ ] World `config.cpp`, pack, and load the test patch in DayZ
 
 ## Phase 2: Full terrain
