@@ -2,13 +2,13 @@
 
 Config files for a Baysic Survival Gaming PvE server on Chernarus, run with CFTools / Architect Manager.
 
-Everything here is taken from Bohemia Interactive's own public files, or marked **UNVERIFIED** where no public Bohemia source covers it. See [Sources](#sources).
+Everything here comes from one of three sources: Bohemia Interactive's public files, the game's own scripts, or a live Baysic server config. Anything none of them covers is marked **UNVERIFIED**. See [Sources](#sources).
 
 ## What's here
 
 ```
 dayz-server/
-├── serverDZ.cfg                         → server root
+├── serverDZ.cfg                         → server root (same layout as the live Napa server)
 ├── mpmissions/dayzOffline.chernarusplus/  → <server>/mpmissions/dayzOffline.chernarusplus/
 │   ├── cfgeconomycore.xml               vanilla + custom loot folder (UNVERIFIED syntax)
 │   ├── cfggameplay.json                 vanilla + PvE damage settings
@@ -28,25 +28,39 @@ The vanilla values come from Bohemia's DayZ-Central-Economy repo (commit `f220b2
 |---|---|---|---|---|
 | `cfggameplay.json` | `disableBaseDamage` | `false` | `true` | Base-building parts can't be damaged (`basebuildingbase.c` → `entityai.c` `ProcessInvulnerabilityCheck`) |
 | `cfggameplay.json` | `disableContainerDamage` | `false` | `true` | Containers, tents and barrels with holes can't be damaged (`container_base.c`, `tentbase.c`, `barrelholes_colorbase.c`) |
+| `cfggameplay.json` | `disablePersonalLight` | `false` | `true` | Matches the live Napa server's `disablePersonalLight=1` |
+| `cfggameplay.json` | `lightingConfig` | `0` | `1` | Matches the live Napa server's `lightingConfig=1` |
 | `db/globals.xml` | `CleanupLifetimeDeadPlayer` | `3600` | `7200` | Doubles how long dead player bodies stay. The time unit isn't stated in Bohemia's files. |
 | `cfgeconomycore.xml` | `<ce folder="custom">` | none | added | Loads `custom/types_custom.xml` for mod loot. **UNVERIFIED syntax.** |
 | `db/messages.xml` | messages | none | 3 | Welcome, rules and base reminders, using the tags documented in the comments of Bohemia's vanilla `messages.xml` |
 
-`cfggameplay.json` is only used when `enableCfgGameplayFile = 1` is set in `serverDZ.cfg` and the file exists in the mission. Otherwise the server reads those settings from `serverDZ.cfg` instead (`cfggameplayhandler.c`, `LoadData`).
+`cfggameplay.json` is only used when `enableCfgGameplayFile=1` is set in `serverDZ.cfg` and the file exists in the mission. Otherwise the server reads those settings from `serverDZ.cfg` instead (`cfggameplayhandler.c`, `LoadData`). The lighting values match in both files, so they stay the same whichever file is in use.
+
+**Live servers:** the Napa `serverDZ.cfg` has no `enableCfgGameplayFile` line. The script only loads `cfggameplay.json` when that setting is on, so unless the server treats a missing setting as on, Napa ignores its `cfggameplay.json`. What the server does with a missing setting isn't visible in the scripts. Check before relying on any edits to that file.
 
 Vanilla DayZ has no PvP switch in these files: the damage settings protect bases and storage, not players.
 
+## serverDZ.cfg
+
+The template copies the live Napa server's file exactly: same settings, same order, same `key=value;` style with no spaces or comments. Only the server-specific values change: `hostname`, `description` and `template`. Six settings the game scripts read are added at the end.
+
+| Setting | Source |
+|---|---|
+| Everything from `hostname` to `respawnTime` | Live Napa `serverDZ.cfg` (CFTools Architect) |
+| `enableCfgGameplayFile` | `cfggameplayhandler.c` |
+| `adminLogPlayerHitsOnly`, `adminLogPlacement`, `adminLogBuildActions`, `adminLogPlayerList` | `pluginadminlog.c`, whose comments say: hits only vs. all hits; trap and tent placement; build, dismantle and destroy actions; player list with positions every 5 minutes |
+| `enableDebugMonitor` | `missionserver.c` |
+
+Per server, change `hostname`, `description`, `instanceId`, `steamQueryPort` and `template`. The values `shardId="123abc"` and `steamQueryPort=27015` are copied from Napa, so set the right ones for each instance.
+
 ## Still to verify
 
-The server program reads these directly, so they aren't in any public Bohemia repo. Check each one against the stock `serverDZ.cfg` that came with your server install, or against [DayZ:Server_Configuration](https://community.bistudio.com/wiki/DayZ:Server_Configuration) in a browser:
-
-- every `serverDZ.cfg` line tagged `[UNVERIFIED]`
-- the `<ce folder>` block in `cfgeconomycore.xml` ([DayZ:Central_Economy_mission_files_modding](https://community.bistudio.com/wiki/DayZ:Central_Economy_mission_files_modding))
-- the ports for each instance: use the ones Architect assigns, and forward exactly those on pfSense
+- The `<ce folder>` block in `cfgeconomycore.xml` ([DayZ:Central_Economy_mission_files_modding](https://community.bistudio.com/wiki/DayZ:Central_Economy_mission_files_modding)). After the first boot, confirm in the server log that `types_custom.xml` loads.
+- Game ports for each instance: use the ones Architect assigns, and forward exactly those on pfSense.
 
 ## Before you deploy
 
-1. **Passwords.** `serverDZ.cfg` keeps `passwordAdmin = "CHANGE_ME"` because this repo is public. Set the real one on the server or in Architect, never in a commit. The validator fails if a real password shows up here.
+1. **Passwords.** `password` and `passwordAdmin` stay blank in this repo because it's public, the same as in the live Napa file. Set the real values on the server or in Architect, never in a commit. The validator fails if a real password shows up here.
 2. **Map.** Bohemia's mission folders for other maps are `dayzOffline.enoch` (Livonia), `dayzOffline.sakhal` and `dayzOffline.nasdara`. Change `template` in `serverDZ.cfg` to match, and rebuild from that map's vanilla files, because their `cfggameplay.json` temperatures differ.
 3. **Restarts.** Leave restarts and countdowns to Architect's scheduler. Per Bohemia's notes in the vanilla `messages.xml`, a `<shutdown>` message counts down from server start, so it would run alongside Architect's schedule.
 
@@ -77,6 +91,7 @@ Tested against Bohemia's full vanilla Chernarus mission (2,382 loot types): 0 er
 
 - [BohemiaInteractive/DayZ-Central-Economy](https://github.com/BohemiaInteractive/DayZ-Central-Economy): vanilla mission files these are built from
 - [BohemiaInteractive/DayZ-Script-Diff](https://github.com/BohemiaInteractive/DayZ-Script-Diff): game scripts, used to confirm what the `cfggameplay.json` and `serverDZ.cfg` settings do
+- The live Napa `serverDZ.cfg` (generated by CFTools Architect): setting names, file layout and house values
 - The Bohemia wiki pages above could not be read from the automated environment that built these files. Anything that only they cover is marked UNVERIFIED.
 
 ## License

@@ -28,8 +28,8 @@ from pathlib import Path
 
 PLACEHOLDER = "CHANGE_ME"
 # Password fields that must never hold a real value in a public repo.
-# `password` (the join password) may also be "" for a public server.
-SECRET_KEYS = {"passwordAdmin": {PLACEHOLDER}, "password": {PLACEHOLDER, ""}}
+# Blank ("") is allowed: the live configs keep them blank in the file.
+SECRET_KEYS = {"passwordAdmin": {PLACEHOLDER, ""}, "password": {PLACEHOLDER, ""}}
 REQUIRED_TYPE_FIELDS = ("nominal", "lifetime", "restock", "min",
                         "quantmin", "quantmax", "cost")
 
@@ -99,7 +99,7 @@ def check_server_cfg(path: Path) -> None:
             key, value = m.groups()
             if value not in SECRET_KEYS[key]:
                 err(path, f"line {n}: {key} holds a real value. Keep "
-                          f'"{PLACEHOLDER}" in the repo; set it on the server.')
+                          f'it blank in the repo; set it on the server.')
 
     m = re.search(r'template\s*=\s*"([^"]+)"', text)
     if not m:
