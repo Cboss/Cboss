@@ -1,16 +1,18 @@
 # DayZ server config: Baysic Survival Gaming
 
-Config files for a Baysic Survival Gaming PvE server on Chernarus, run with CFTools / Architect Manager. They start from Bohemia's current vanilla mission files, and every change from vanilla is listed below so it's easy to see what this server does differently.
+Config files for a Baysic Survival Gaming PvE server on Chernarus, run with CFTools / Architect Manager.
+
+Everything here is taken from Bohemia Interactive's own public files, or marked **UNVERIFIED** where no public Bohemia source covers it. See [Sources](#sources).
 
 ## What's here
 
 ```
 dayz-server/
-├── serverDZ.cfg                         → server root, next to DayZServer_x64.exe
+├── serverDZ.cfg                         → server root
 ├── mpmissions/dayzOffline.chernarusplus/  → <server>/mpmissions/dayzOffline.chernarusplus/
-│   ├── cfgeconomycore.xml               vanilla + registers the custom/ loot folder
+│   ├── cfgeconomycore.xml               vanilla + custom loot folder (UNVERIFIED syntax)
 │   ├── cfggameplay.json                 vanilla + PvE damage settings
-│   ├── db/globals.xml                   vanilla + longer body cleanup
+│   ├── db/globals.xml                   vanilla + longer dead-player cleanup
 │   ├── db/messages.xml                  welcome + rules messages
 │   └── custom/types_custom.xml          loot entries for mod items (empty to start)
 └── tools/validate.py                    checks everything before it goes on the server
@@ -20,22 +22,33 @@ Only the files that differ from vanilla live here. The rest of the mission folde
 
 ## Changes from vanilla
 
-| File | Setting | Vanilla | Here | Why |
-|---|---|---|---|---|
-| `cfggameplay.json` | `disableBaseDamage` | `false` | `true` | PvE: bases can't be raided |
-| `cfggameplay.json` | `disableContainerDamage` | `false` | `true` | PvE: tents, barrels and crates can't be destroyed |
-| `db/globals.xml` | `CleanupLifetimeDeadPlayer` | `3600` | `7200` | 2 hours to get back to your body instead of 1 |
-| `cfgeconomycore.xml` | `<ce folder="custom">` | none | added | Mod loot goes in its own file, not mixed into `db/types.xml` |
-| `db/messages.xml` | messages | none | 3 | Welcome message, rules reminder, base-building reminder |
+The vanilla values come from Bohemia's DayZ-Central-Economy repo (commit `f220b29`, October 16, 2026).
 
-Vanilla DayZ has no "PvP off" switch, so the damage toggles stop raiding but not player killing. A rules-and-admin approach covers the rest, or a mod with PvE zones if you want it enforced in-game.
+| File | Setting | Vanilla | Here | What it does (source) |
+|---|---|---|---|---|
+| `cfggameplay.json` | `disableBaseDamage` | `false` | `true` | Base-building parts can't be damaged (`basebuildingbase.c` → `entityai.c` `ProcessInvulnerabilityCheck`) |
+| `cfggameplay.json` | `disableContainerDamage` | `false` | `true` | Containers, tents and barrels with holes can't be damaged (`container_base.c`, `tentbase.c`, `barrelholes_colorbase.c`) |
+| `db/globals.xml` | `CleanupLifetimeDeadPlayer` | `3600` | `7200` | Doubles how long dead player bodies stay. The time unit isn't stated in Bohemia's files. |
+| `cfgeconomycore.xml` | `<ce folder="custom">` | none | added | Loads `custom/types_custom.xml` for mod loot. **UNVERIFIED syntax.** |
+| `db/messages.xml` | messages | none | 3 | Welcome, rules and base reminders, using the tags documented in the comments of Bohemia's vanilla `messages.xml` |
+
+`cfggameplay.json` is only used when `enableCfgGameplayFile = 1` is set in `serverDZ.cfg` and the file exists in the mission. Otherwise the server reads those settings from `serverDZ.cfg` instead (`cfggameplayhandler.c`, `LoadData`).
+
+Vanilla DayZ has no PvP switch in these files: the damage settings protect bases and storage, not players.
+
+## Still to verify
+
+The server program reads these directly, so they aren't in any public Bohemia repo. Check each one against the stock `serverDZ.cfg` that came with your server install, or against [DayZ:Server_Configuration](https://community.bistudio.com/wiki/DayZ:Server_Configuration) in a browser:
+
+- every `serverDZ.cfg` line tagged `[UNVERIFIED]`
+- the `<ce folder>` block in `cfgeconomycore.xml` ([DayZ:Central_Economy_mission_files_modding](https://community.bistudio.com/wiki/DayZ:Central_Economy_mission_files_modding))
+- the ports for each instance: use the ones Architect assigns, and forward exactly those on pfSense
 
 ## Before you deploy
 
-1. **Passwords.** `serverDZ.cfg` keeps `passwordAdmin = "CHANGE_ME"` because this repo is public. Set the real one on the server or in Architect, never in a commit. The validator fails the check if a real password shows up here.
-2. **One `instanceId` per server.** With 4+ servers on one host, each needs its own `instanceId`, game port and query port, or they'll fight over persistence and ports.
-3. **Map.** For Livonia, Sakhal and other maps, change `template` in `serverDZ.cfg` and rename the mission folder to match (`dayzOffline.enoch`, `dayzOffline.sakhal`, …). Rebuild the files from that map's vanilla set, because temperatures and spawns differ per map.
-4. **Restarts.** Let Architect's scheduler handle restarts and countdowns. `messages.xml` deliberately has no `<shutdown>` message, which would start a second timer of its own.
+1. **Passwords.** `serverDZ.cfg` keeps `passwordAdmin = "CHANGE_ME"` because this repo is public. Set the real one on the server or in Architect, never in a commit. The validator fails if a real password shows up here.
+2. **Map.** Bohemia's mission folders for other maps are `dayzOffline.enoch` (Livonia), `dayzOffline.sakhal` and `dayzOffline.nasdara`. Change `template` in `serverDZ.cfg` to match, and rebuild from that map's vanilla files, because their `cfggameplay.json` temperatures differ.
+3. **Restarts.** Leave restarts and countdowns to Architect's scheduler. Per Bohemia's notes in the vanilla `messages.xml`, a `<shutdown>` message counts down from server start, so it would run alongside Architect's schedule.
 
 ## Validate before every upload
 
@@ -51,30 +64,21 @@ python3 dayz-server/tools/validate.py "D:\DayZServer"
 
 It checks for:
 
-- XML that won't parse (one bad tag and the server ignores the whole file)
-- JSON with comments or trailing commas (DayZ wants strict JSON)
+- XML that won't parse
+- JSON that isn't strict JSON (comments, trailing commas)
 - `serverDZ.cfg` lines missing their `;`, and real passwords
-- loot entries with `min` above `nominal` or `quantmin` above `quantmax`
+- loot entries with `min` above `nominal` (when `nominal` is above 0) or `quantmin` above `quantmax`
 - the same item defined in two files
 - custom files listed in `cfgeconomycore.xml` that don't exist
 
-The same check runs on GitHub for every push that touches `dayz-server/`.
+Tested against Bohemia's full vanilla Chernarus mission (2,382 loot types): 0 errors, 0 warnings. The same check runs on GitHub for every push that touches `dayz-server/`.
 
-## Adding mod loot
+## Sources
 
-1. Copy the mod's `<type>` entries from its own `types.xml` into `custom/types_custom.xml`.
-2. If the mod adds its own categories or usage flags, add them to `cfglimitsdefinitionuser.xml`.
-3. Run the validator, upload, and restart.
-4. To change a **vanilla** item, edit `db/types.xml` on the server, not the custom file, so each item is only defined once.
+- [BohemiaInteractive/DayZ-Central-Economy](https://github.com/BohemiaInteractive/DayZ-Central-Economy): vanilla mission files these are built from
+- [BohemiaInteractive/DayZ-Script-Diff](https://github.com/BohemiaInteractive/DayZ-Script-Diff): game scripts, used to confirm what the `cfggameplay.json` and `serverDZ.cfg` settings do
+- The Bohemia wiki pages above could not be read from the automated environment that built these files. Anything that only they cover is marked UNVERIFIED.
 
-## Firewall (pfSense)
+## License
 
-On the Netgate, forward these to the DayZ host on the server VLAN, one set per instance:
-
-| Purpose | Default | Protocol |
-|---|---|---|
-| Game | 2302 (the server also uses the next few ports, so forward 2302–2305) | UDP |
-| Steam query (server browser) | 27016, from `steamQueryPort` | UDP |
-| BattlEye RCon (CFTools Cloud uses it) | `RConPort` in `battleye/BEServer_x64.cfg` | UDP |
-
-Give each extra server its own block with no overlap, for example 2402–2405 / 27017 for server 2. If CFTools publishes the addresses it connects from, limit the RCon rule's source to them, because RCon on the open internet is a common target.
+The mission files are adapted from Bohemia Interactive's DayZ-Central-Economy, which is licensed under the [Arma and DayZ Public License Share Alike (ADPL-SA)](https://www.bohemia.net/community/licenses/arma-and-dayz-public-license-share-alike-adpl-sa): attribution, **non-commercial**, Arma and DayZ only, share alike. These adapted files are shared under the same license. © Bohemia Interactive a.s.; DAYZ® is a registered trademark of Bohemia Interactive a.s.

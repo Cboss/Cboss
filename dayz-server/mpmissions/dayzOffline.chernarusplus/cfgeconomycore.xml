@@ -38,10 +38,13 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 		<default name="save_types_startup" value="true"/>
 	</defaults>
 	<!--
-	Baysic Survival Gaming: custom loot files.
-	Files listed here load after the vanilla db/ files. Put NEW or MODDED
-	items here; change vanilla items in db/types.xml itself so each class
-	is only defined once (tools/validate.py checks for duplicates).
+	Baysic Survival Gaming: custom loot file for NEW or MODDED items.
+	Change vanilla items in db/types.xml itself so each class is only
+	defined once (tools/validate.py checks for duplicates).
+
+	UNVERIFIED: this <ce folder> block isn't in any public Bohemia repo.
+	Check it against the wiki page DayZ:Central_Economy_mission_files_modding
+	and confirm in the server log that types_custom.xml loads.
 	-->
 	<ce folder="custom">
 		<file name="types_custom.xml" type="types" />
