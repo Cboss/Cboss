@@ -16,6 +16,8 @@ A custom DayZ terrain of Napa, California, the valley I grew up in. It covers Ca
 | [`docs/wine-caves.md`](docs/wine-caves.md) | Design for the keycard-locked wine cave bunkers |
 | [`docs/data-sources.md`](docs/data-sources.md) | Where the map data comes from, licenses, credits |
 | [`docs/terrain-builder-notes.md`](docs/terrain-builder-notes.md) | Terrain Builder steps that work, and the problems to avoid |
+| [`docs/testing-in-game.md`](docs/testing-in-game.md) | Export, pack and launch the test patch in DayZ |
+| [`terrain/pilot/`](terrain/pilot/) | Test patch files: `layers.cfg`, world `config.cpp`, CE files, test mission, launch script |
 | [`gis/pilot_process.bat`](gis/pilot_process.bat) | GDAL commands that cut the test patch height map and satellite image |
 
 ## Tool chain

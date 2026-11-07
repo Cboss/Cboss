@@ -20,6 +20,10 @@
 
 > Map data © OpenStreetMap contributors (ODbL). Elevation: USGS 3DEP. Imagery: USDA NAIP.
 
+## Templates used
+
+- World `config.cpp` layout follows Bohemia's [DayZ-Samples Test_Terrain](https://github.com/BohemiaInteractive/DayZ-Samples) (Arma and DayZ Public License Share Alike: attribution, non-commercial, share alike) and the vanilla Chernarus+ config
+
 ## Rules
 
 - No building models taken from other games or maps. Make them, or use community packs whose authors allow reuse.

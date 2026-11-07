@@ -9,7 +9,8 @@
 - [x] Connect Buldozer and see the test patch (untextured)
 - [x] List the vanilla surface materials (grass: `DZ\surfaces\data\terrain\cp_grass.rvmat`)
 - [x] Satellite image and surface mask, generate layers (textured test patch in Buldozer)
-- [ ] World `config.cpp`, pack, and load the test patch in DayZ
+- [ ] Export WRP, pack with Addon Builder, load the test patch in DayZ (see `docs/testing-in-game.md`)
+- [x] World `config.cpp`, CE files, test mission, launch script written
 
 ## Phase 2: Full terrain
 - [ ] Download height data and NAIP photos for the full area
