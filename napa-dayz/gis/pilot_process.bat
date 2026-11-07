@@ -12,8 +12,11 @@ gdalbuildvrt -overwrite dem_src.vrt raw\dem\*.tif
 gdalwarp -overwrite -te 555430 4232870 558310 4235750 -ts 512 512 -r cubic -ot Float32 dem_src.vrt pilot_dem.tif
 :: If gdal_calc is not found, use gdal_calc.py
 call gdal_calc -A pilot_dem.tif --outfile=pilot_dem_s.tif --calc="A*0.8889" --overwrite
-:: Put it at Terrain Builder's origin (Easting 200000, Northing 0) with 5 m cells
-gdal_translate -of AAIGrid -a_ullr 200000 2560 202560 0 pilot_dem_s.tif pilot_dem.asc
+:: Put it at Terrain Builder's origin (Easting 200000, Northing 0) with 5 m cells.
+:: -a_srs EPSG:32631 labels it UTM zone 31N to match the Terrain Builder project zone;
+:: without it the .prj says zone 10 and Terrain Builder refuses the import.
+:: Copy BOTH pilot_dem.asc and pilot_dem.prj to P:\NapaPilot\source
+gdal_translate -of AAIGrid -a_srs EPSG:32631 -a_ullr 200000 2560 202560 0 pilot_dem_s.tif pilot_dem.asc
 
 :: --- Satellite image: 2560 x 2560 px = 1 m per pixel ---
 :: If NAIP came as .jp2 files, change *.tif to *.jp2
@@ -25,4 +28,4 @@ gdal_translate -a_nodata none -b 1 -b 2 -b 3 -of PNG pilot_naip.tif pilot_sat.pn
 gdal_translate -a_nodata none -b 4 -of PNG pilot_naip.tif pilot_nir.png
 
 echo.
-echo Done. Copy pilot_dem.asc and pilot_sat.png to P:\NapaPilot\source
+echo Done. Copy pilot_dem.asc, pilot_dem.prj and pilot_sat.png to P:\NapaPilot\source
