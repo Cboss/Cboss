@@ -1,0 +1,25 @@
+name: DayZ config check
+
+on:
+  push:
+    paths:
+      - "dayz-server/**"
+      - ".github/workflows/dayz-config-check.yml"
+  pull_request:
+    paths:
+      - "dayz-server/**"
+      - ".github/workflows/dayz-config-check.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate XML, JSON and serverDZ.cfg
+        run: python3 dayz-server/tools/validate.py

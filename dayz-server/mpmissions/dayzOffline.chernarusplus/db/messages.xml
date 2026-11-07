@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<messages>
+<!--
+Baysic Survival Gaming: in-game server messages.
+
+Times are in minutes. #name is replaced with the server's hostname.
+Restart countdowns are NOT here: CFTools / Architect sends them as part of
+the scheduled restart, and a <shutdown> message here would run its own
+timer from server start and fight the scheduler.
+-->
+
+    <!-- Once, 1 minute after a player joins -->
+    <message>
+        <delay>1</delay>
+        <onconnect>1</onconnect>
+        <text>Welcome to #name. This is a PvE server: no killing players, no raiding, no griefing.</text>
+    </message>
+
+    <!-- Every 30 minutes to everyone -->
+    <message>
+        <repeat>30</repeat>
+        <text>Baysic Survival Gaming | PvE rules apply. Questions or reports: join our Discord (link in the server description).</text>
+    </message>
+
+    <!-- Every 45 minutes, first shown 15 minutes after a player joins -->
+    <message>
+        <delay>15</delay>
+        <repeat>45</repeat>
+        <onconnect>1</onconnect>
+        <text>Bases and storage can't be damaged on this server. Lock up anyway, and don't build on roads or loot spawns.</text>
+    </message>
+
+</messages>

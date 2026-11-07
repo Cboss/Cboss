@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<types>
+<!--
+Baysic Survival Gaming: loot entries for NEW or MODDED items.
+
+Each mod's classnames go here (copy them from the mod's own types.xml).
+Don't repeat vanilla classes that are already in db/types.xml; change those
+in db/types.xml instead. tools/validate.py flags duplicates.
+
+Field reference:
+  nominal   target count on the map
+  min       CE restocks when the count drops below this (must be <= nominal)
+  lifetime  seconds an untouched item stays on the ground before cleanup
+  restock   seconds to wait before restocking (0 = as soon as below min)
+  quantmin/quantmax  fill % for stackables/liquids (-1 = not used)
+  cost      spawn priority (100 is standard)
+  flags     what counts toward nominal: count_in_map="1" is the usual setup
+  category/usage/value/tag  must exist in cfglimitsdefinition.xml (or the
+            user file cfglimitsdefinitionuser.xml)
+
+Example (commented out). Replace ExampleModItem with a real classname:
+
+    <type name="ExampleModItem">
+        <nominal>10</nominal>
+        <lifetime>14400</lifetime>
+        <restock>0</restock>
+        <min>5</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+        <category name="tools"/>
+        <usage name="Industrial"/>
+        <value name="Tier2"/>
+    </type>
+-->
+</types>
