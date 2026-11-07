@@ -5,9 +5,9 @@
 - [x] QGIS, World Machine, Blender installed
 - [x] Download the USGS 1 m height data and NAIP photos for the test patch
 - [x] Run `gis/pilot_process.bat`
-- [ ] Make the Terrain Builder project `P:\NapaPilot\source\NapaPilot.tv4p` and import the height map
-- [ ] Walk the test patch in Buldozer
-- [ ] List the vanilla surface textures (`dir /s /b P:\DZ\surfaces\*.rvmat`) so `layers.cfg` can be written
+- [x] Make the Terrain Builder project `P:\NapaPilot\source\NapaPilot.tv4p` and import the height map
+- [x] Connect Buldozer and see the test patch (untextured)
+- [x] List the vanilla surface materials (grass: `DZ\surfaces\data\terrain\cp_grass.rvmat`)
 - [ ] Satellite image and surface mask, generate layers
 - [ ] World `config.cpp`, pack, and load the test patch in DayZ
 
