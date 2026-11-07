@@ -45,7 +45,16 @@ The `source` folder (Terrain Builder project and big PNGs) gets packed too. That
    - `mapgrouppos.xml`: empty (no buildings, so no loot positions)
 3. If the copy has a `storage_1` folder, delete it. It holds the old Chernarus save
 
-## 5. Launch
+## 5. Launch: live test server (preferred)
+
+Boss's usual flow: publish the mod to the Steam Workshop, then load it on the private, password-protected test server in CFTools Architect.
+
+1. **Sign the PBO** so the server can verify it: Addon Builder → Options → sign with your private key (`.biprivatekey`, made once with DayZ Tools' DS Utils). Put the matching `.bikey` in `@NapaPilot\keys\`
+2. **Publish** `@NapaPilot` with DayZ Tools **Publisher**. Use **Unlisted** visibility while testing: hidden from search, but the server can still download it. A Private item may fail to download on the server
+3. **Architect:** add the Workshop mod to the test server, make sure its `.bikey` lands in the server's `keys` folder, upload the `dayzOffline.NapaPilot` mission to `mpmissions`, and set the mission template to `dayzOffline.NapaPilot`
+4. Keep the test server **password-protected**, with `BattlEye = 1`, `verifySignatures = 2` and `allowFilePatching = 0`
+
+## 5b. Launch: local DayZDiag (fallback)
 
 Run `terrain/pilot/tools/launch_napapilot.bat` (edit the three paths at the top if yours differ). It starts `DayZDiag_x64.exe` offline with `-mod` and `-mission`.
 

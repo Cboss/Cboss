@@ -49,4 +49,4 @@
 ## Phase 9: Ship it
 - [ ] Pack with Addon Builder, sign
 - [ ] Steam Workshop upload (credits OpenStreetMap)
-- [ ] Add to a Baysic Survival Gaming server through CFTools Architect
+- [ ] Add to a Baysic Survival Gaming server through CFTools Architect (test server already running the test patch, private + password)
