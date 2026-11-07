@@ -13,8 +13,8 @@
 - [x] World `config.cpp`, CE files, test mission, launch script written
 
 ## Phase 2: Full terrain
-- [ ] Download height data and NAIP photos for the full area
-- [ ] Process to 4096 grid / 20,480 px
+- [ ] Download height data and NAIP photos for the full area (box and steps in `docs/phase2-full-terrain.md`)
+- [ ] Process to 4096 grid / 20,480 px (`gis/full_process.bat`)
 - [ ] World Machine pass: blend the edges, erosion and flow maps
 - [ ] Import into Terrain Builder, check in Buldozer
 
