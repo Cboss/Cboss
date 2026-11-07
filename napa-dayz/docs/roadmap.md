@@ -1,6 +1,6 @@
 # Roadmap
 
-## Phase 1: Setup and test patch
+## Phase 1: Setup and test patch ✅ done
 - [x] DayZ Tools installed, P: drive mounted
 - [x] QGIS, World Machine, Blender installed
 - [x] Download the USGS 1 m height data and NAIP photos for the test patch
@@ -9,7 +9,7 @@
 - [x] Connect Buldozer and see the test patch (untextured)
 - [x] List the vanilla surface materials (grass: `DZ\surfaces\data\terrain\cp_grass.rvmat`)
 - [x] Satellite image and surface mask, generate layers (textured test patch in Buldozer)
-- [ ] Export WRP, pack with Addon Builder, load the test patch in DayZ (see `docs/testing-in-game.md`)
+- [x] Export WRP, pack with Addon Builder, load the test patch in DayZ (local DayZDiag server + client, see `docs/testing-in-game.md`)
 - [x] World `config.cpp`, CE files, test mission, launch script written
 
 ## Phase 2: Full terrain

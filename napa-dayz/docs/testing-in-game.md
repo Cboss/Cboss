@@ -55,6 +55,15 @@ Run `terrain/pilot/tools/launch_napapilot.bat` (edit the three paths at the top 
 
 Run `terrain/pilot/tools/launch_local_server.bat`. It starts `DayZDiag_x64.exe -server` on the NapaPilot mission (config: `serverDZ_napapilot.cfg`, same folder), waits 30 seconds, then starts a second DayZDiag as a client that joins `127.0.0.1:2302`. Server logs go to `D:\NapaMap\server_profile`.
 
+### Server config lines that were needed
+
+| Error | Fix in `serverDZ_napapilot.cfg` |
+|---|---|
+| `[Server config] :: instanceId parameter is mandatory` | `instanceId = 1;` |
+| Client: "server does not accept the client's current filePatching setting" | `allowFilePatching = 1;` (local test server only, never on a public server) |
+
+The `!!! [Inputs] Attempt to insert input twice` lines in the server window are harmless.
+
 ## If it fails
 
 - DayZ logs are in `%LOCALAPPDATA%\DayZ`. Send the last 30 lines of the newest `.RPT` file
