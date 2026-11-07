@@ -49,6 +49,12 @@ The `source` folder (Terrain Builder project and big PNGs) gets packed too. That
 
 Run `terrain/pilot/tools/launch_napapilot.bat` (edit the three paths at the top if yours differ). It starts `DayZDiag_x64.exe` offline with `-mod` and `-mission`.
 
+### If it stops at the main menu
+
+`launch_napapilot.bat` reached the DayZ main menu with the mod loaded, but did not drop into the map. Use the local-server route instead:
+
+Run `terrain/pilot/tools/launch_local_server.bat`. It starts `DayZDiag_x64.exe -server` on the NapaPilot mission (config: `serverDZ_napapilot.cfg`, same folder), waits 30 seconds, then starts a second DayZDiag as a client that joins `127.0.0.1:2302`. Server logs go to `D:\NapaMap\server_profile`.
+
 ## If it fails
 
 - DayZ logs are in `%LOCALAPPDATA%\DayZ`. Send the last 30 lines of the newest `.RPT` file
