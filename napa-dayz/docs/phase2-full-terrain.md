@@ -50,7 +50,7 @@ Run `gis/full_process.bat` from the OSGeo4W Shell. It writes into `D:\NapaMap\gi
 | `napa_nir.png` | Near-infrared, for the surface mask |
 | `preview_sat_2048.png` | Quick look for gaps / black holes |
 
-Check the printed height min/max: expect about **−1.1 and 723** (matching the test build). A huge negative minimum (−999999 or −3.4e+38) means a missing height tile.
+Check the printed height min/max: expect about **−3.8 and 725.5** (after the −1.5 m water-level drop). A huge negative minimum (−999999 or −3.4e+38) means a missing height tile.
 
 ## 3. World Machine (next)
 
@@ -71,9 +71,20 @@ New project `P:\Napa\source\Napa.tv4p`, following [`terrain-builder-notes.md`](t
 
 The "not evenly divisible by tile size" warning will appear again. With 5 m cells there is no tile setting that divides 4096 cells evenly without huge overlap, so the last row and column of tiles stick out past the edge. Harmless; Chernarus-style even division would need 7.5 m cells, which is too coarse for Napa.
 
-## Water level (decide before Terrain Builder)
+## Water level: decided, lower 1.5 m
 
-DayZ's sea is at 0 m. From the test build (in-game heights): 1.3% of the map is already below 0 (river channels, sloughs, marsh ponds), 4.5% is below 1 m, 8.2% below 2 m, 12.5% below 5 m, nearly all of it the bay marsh in the south. Options:
+DayZ's sea is at 0 m. Lidar records the river's water surface, not its bed: the Napa River downtown and at the Oxbow is 0.74 m real, 0.66 m after scaling, so without an offset it would be a dry channel.
 
-- Leave as is (dry river bed, marsh just above the sea)
-- Lower everything by a metre or two so the river and sloughs fill with sea water (the low marsh floods too)
+**Decision (Boss): lower all heights by 1.5 m.** In-game height = real × 0.8889 − 1.5.
+
+| Spot | In-game after −1.5 m |
+|---|---|
+| Napa River, downtown / Oxbow | about −0.8 m: water, knee-to-waist deep |
+| River by the airport | about −0.5 m: water |
+| Napa-Sonoma marsh | about −1.3 to −0.7 m: tidal water, the south becomes coastline and sloughs |
+| Downtown streets by the river | about 3.5 m: dry |
+| Carneros vineyards | about 30 m |
+
+Phase 4 can carve the river channel deeper in Terrain Builder so it is swimmable.
+
+To apply: `full_process.bat dem` (height map only; the satellite image is unchanged).

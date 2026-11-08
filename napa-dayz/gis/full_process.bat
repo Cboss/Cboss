@@ -9,6 +9,11 @@
 :: Satellite: 20,480 x 20,480 px (1 m per in-game pixel)
 ::
 :: Takes a while (the satellite image is 20,480 px square). Needs ~40 GB free.
+::
+:: Heights: in-game = real x 0.8889 - 1.5 m. The 1.5 m drop puts the Napa River water surface
+:: (0.7 m after scaling) below DayZ sea level, so the river and sloughs fill with water.
+::
+:: Run "full_process.bat dem" to redo only the height map (skips the slow satellite image).
 
 setlocal
 cd /d D:\NapaMap\gis
@@ -19,12 +24,12 @@ set WARPOPTS=-overwrite -multi -wo NUM_THREADS=ALL_CPUS -wm 2048
 
 :: ================= Height map =================
 echo.
-echo === Height map: 4096 x 4096, heights x 8/9 ===
+echo === Height map: 4096 x 4096, heights x 8/9 - 1.5 m ===
 :: dem_list.txt (written by download_full_dem.bat) layers the lidar surveys oldest first, newest on top
 gdalbuildvrt -overwrite -input_file_list raw\full_dem\dem_list.txt full\dem_src.vrt
 :: -r average: each 5.6 m cell gets the mean of the ~30 lidar points inside it (smoother than cubic when shrinking 1 m data)
 gdalwarp %WARPOPTS% -te %EXTENT% -ts 4096 4096 -r average -ot Float32 full\dem_src.vrt full\full_dem.tif
-call gdal_calc -A full\full_dem.tif --outfile=full\full_dem_s.tif --calc="A*0.8889" --overwrite
+call gdal_calc -A full\full_dem.tif --outfile=full\full_dem_s.tif --calc="A*0.8889-1.5" --overwrite
 
 :: Check for gaps: STATISTICS_MINIMUM must not be -999999 (or another huge negative)
 gdalinfo -stats full\full_dem_s.tif | findstr /i "STATISTICS_MINIMUM STATISTICS_MAXIMUM"
@@ -35,6 +40,8 @@ gdal_translate -of AAIGrid -a_srs EPSG:32631 -a_ullr 200000 20480 220480 0 full\
 :: World Machine copy: 16-bit PNG, -10 m .. 1000 m mapped to 0 .. 65535
 :: (in-game height = pixel / 65535 * 1010 - 10)
 gdal_translate -ot UInt16 -scale -10 1000 0 65535 -of PNG full\full_dem_s.tif full\napa_dem_wm16.png
+
+if /i "%~1"=="dem" goto :done
 
 :: ================= Satellite image =================
 echo.
@@ -54,6 +61,7 @@ gdal_translate -a_nodata none -b 1 -b 2 -b 3 -of PNG -co ZLEVEL=3 full\full_naip
 :: Near-infrared band, for painting vegetation in the surface mask
 gdal_translate -a_nodata none -b 4 -of PNG -co ZLEVEL=3 full\full_naip.tif full\napa_nir.png
 
+:done
 echo.
 echo Done. Check full\preview_sat_2048.png for gaps, then copy to P:\Napa\source:
 echo   full\napa_dem.asc  full\napa_dem.prj  full\napa_sat.png  full\napa_nir.png

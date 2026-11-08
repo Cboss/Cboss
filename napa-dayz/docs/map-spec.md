@@ -9,7 +9,8 @@
 | Satellite and surface mask images | 20,480 × 20,480 px (1 m per pixel) |
 | Real-world area | 23,040 m × 23,040 m |
 | Scale | 8/9 (0.8889): 1 in-game meter = 1.125 real meters |
-| Height scaling | Heights × 0.8889 too, so slopes keep their real shape (can be revisited) |
+| Height scaling | in-game height = real × 0.8889 − 1.5 m. The 0.8889 keeps slopes their real shape; the −1.5 m puts the Napa River (water surface 0.7 m after scaling) and the bay marsh below DayZ sea level so they hold water |
+| Height range | in-game −3.8 to 725.5 m |
 | Projection | NAD83 / UTM Zone 10N, **EPSG:26910** (the system the USGS data already uses) |
 | Terrain Builder origin | Easting 200000, Northing 0 |
 
