@@ -6,7 +6,7 @@ Same steps as the test patch, at 20.48 km. Settings are in [`map-spec.md`](map-s
 
 Free space needed: about 40–60 GB (D: has 306 GB).
 
-Search box for both sites (the map area plus a ~500 m margin):
+Search box (the map area plus a ~500 m margin), used to pick the tiles:
 
 | Edge | Decimal degrees |
 |---|---|
@@ -23,12 +23,13 @@ Why 46 files for 16 tiles: the area is covered by five lidar surveys (2017 Sacra
 
 The list came from the USGS TNMAccess API (1-meter DEM, box above). The website's 1/3 arc-second results are 10 m data: don't use those.
 
-### NAIP 2024 photos → `D:\NapaMap\gis\raw\full_naip\`
+### NAIP 2022 photos → `D:\NapaMap\gis\raw\full_naip\`
 
-earthexplorer.usgs.gov → Polygon (Decimal) with the four corners → Data Sets: **Aerial Imagery → NAIP** → Results.
+Run **`gis/download_full_naip.bat`**. It downloads 24 GeoTIFFs (4-band, 60 cm), about 10 GB, with curl.
 
-- Download **every 2024** tile touching the box (roughly 20–30). All from 2024, so colours match
-- Full resolution; unzip if zipped. The `.xml` files are only metadata; the images are the `.tif` / `.jp2`
+- Source: Microsoft Planetary Computer's open-data copy of USDA NAIP (public domain). Its newest year for Napa is **2022** (flown 18–24 May 2022); 2024 is only on EarthExplorer. 2022 was chosen for the one-click download
+- Coverage checked: the 24 tiles cover the whole map area with no gaps
+- The test patch used 2024 imagery; the full map uses 2022 throughout, so colours match across the map
 
 ## 2. Process
 

@@ -9,6 +9,13 @@
 
 ## Files in use
 
+### Full map
+
+| Data | Files |
+|---|---|
+| USGS 1 m DEM | 46 GeoTIFFs over 16 tiles (x54–x57, y423–y426) from five surveys: 2017 Sacramento, 2018 NoCal Wildfires B5b, 2022 Northern CA B22, 2023 Solano County A23, 2023 North Coast Ranges B23. Layered oldest → newest (`dem_list.txt`) |
+| NAIP 2022 (60 cm, 4-band) | 24 tiles flown 18–24 May 2022, from the Microsoft Planetary Computer open-data mirror |
+
 ### Test patch
 
 | Data | Files |
