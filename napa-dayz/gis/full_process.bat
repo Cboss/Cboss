@@ -20,7 +20,8 @@ set WARPOPTS=-overwrite -multi -wo NUM_THREADS=ALL_CPUS -wm 2048
 :: ================= Height map =================
 echo.
 echo === Height map: 4096 x 4096, heights x 8/9 ===
-gdalbuildvrt -overwrite full\dem_src.vrt raw\full_dem\*.tif
+:: dem_list.txt (written by download_full_dem.bat) layers the lidar surveys oldest first, newest on top
+gdalbuildvrt -overwrite -input_file_list raw\full_dem\dem_list.txt full\dem_src.vrt
 gdalwarp %WARPOPTS% -te %EXTENT% -ts 4096 4096 -r cubic -ot Float32 full\dem_src.vrt full\full_dem.tif
 call gdal_calc -A full\full_dem.tif --outfile=full\full_dem_s.tif --calc="A*0.8889" --overwrite
 

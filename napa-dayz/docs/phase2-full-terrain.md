@@ -17,11 +17,11 @@ Search box for both sites (the map area plus a ~500 m margin):
 
 ### USGS height data → `D:\NapaMap\gis\raw\full_dem\`
 
-apps.nationalmap.gov/downloader → **Enter Coords** with the box above → **Elevation Products (3DEP) → 1-meter DEM** only → Search Products.
+Run **`gis/download_full_dem.bat`** (no need for the website). It downloads 46 GeoTIFFs, about 11 GB, with curl, and writes `dem_list.txt`.
 
-- Each tile is 10 × 10 km; expect roughly 9–16 tiles
-- Where the same tile is listed twice (different survey years), take the **newest**
-- Check the footprints cover the whole box. Any gap shows up as -999999 in the height check
+Why 46 files for 16 tiles: the area is covered by five lidar surveys (2017 Sacramento, 2018 NoCal Wildfires, 2022 Northern CA, 2023 Solano County, 2023 North Coast Ranges). The newer surveys only cover parts of each 10 km tile, so all of them are layered: `dem_list.txt` lists them oldest first, newest last, and `full_process.bat` builds the mosaic from it so the newest data sits on top and older surveys fill the gaps.
+
+The list came from the USGS TNMAccess API (1-meter DEM, box above). The website's 1/3 arc-second results are 10 m data: don't use those.
 
 ### NAIP 2024 photos → `D:\NapaMap\gis\raw\full_naip\`
 
