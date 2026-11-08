@@ -29,6 +29,8 @@ echo === Height map: 4096 x 4096, heights x 8/9 - 1.5 m ===
 gdalbuildvrt -overwrite -input_file_list raw\full_dem\dem_list.txt full\dem_src.vrt
 :: -r average: each 5.6 m cell gets the mean of the ~30 lidar points inside it (smoother than cubic when shrinking 1 m data)
 gdalwarp %WARPOPTS% -te %EXTENT% -ts 4096 4096 -r average -ot Float32 full\dem_src.vrt full\full_dem.tif
+:: Remove cached statistics first, or gdalinfo reports the old min/max after a re-run
+if exist full\full_dem_s.tif.aux.xml del full\full_dem_s.tif.aux.xml
 call gdal_calc -A full\full_dem.tif --outfile=full\full_dem_s.tif --calc="A*0.8889-1.5" --overwrite
 
 :: Check for gaps: STATISTICS_MINIMUM must not be -999999 (or another huge negative)
