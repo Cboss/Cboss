@@ -23,8 +23,9 @@
 - [x] Export WRP, pack `@Napa` (1.5 GB, signed BSG_Napa), Workshop (unlisted), running on the Architect test server
 
 ## Phase 3: Surfaces
-- [ ] Surface mask: vineyard, grass, dry hillside, oak woodland, asphalt, gravel, marsh
-- [ ] Use the near-infrared band to help separate vegetation
+- [x] Surface script: photo (NDVI) + OSM + height map → four surfaces (grass, forest, dirt, concrete), tested at 4.5 m
+- [ ] Run `gis/phase3_surfaces.bat` at full size, regenerate the mask layers, repack, test in game
+- [ ] Later: Napa-coloured ground textures (golden grass), a 5th/6th surface if Terrain Builder's tile check allows
 
 ## Phase 4: Roads and water
 - [ ] Roads from OpenStreetMap (Hwy 29, Hwy 121/12, Silverado Trail, city streets)

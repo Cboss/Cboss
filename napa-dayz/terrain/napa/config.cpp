@@ -85,7 +85,9 @@ class CfgWorlds
 		class UsedTerrainMaterials
 		{
 			material0 = "Napa\data\napa_grass.rvmat";
-			material1 = "DZ\surfaces\data\terrain\cp_grass.rvmat";
+			material1 = "Napa\data\napa_forest.rvmat";
+			material2 = "Napa\data\napa_dirt.rvmat";
+			material3 = "Napa\data\napa_concrete.rvmat";
 		};
 
 		// Borrowed from Chernarus for now.
