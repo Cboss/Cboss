@@ -12,7 +12,7 @@
 - [x] Export WRP, pack with Addon Builder, load the test patch in DayZ (local DayZDiag server + client, see `docs/testing-in-game.md`)
 - [x] World `config.cpp`, CE files, test mission, launch script written
 
-## Phase 2: Full terrain
+## Phase 2: Full terrain ✅ done
 - [x] Download USGS 1 m height data for the full area (46 files)
 - [x] Process to 4096 grid / 20,480 px (`gis/full_process.bat`), heights −3.76 to 725.47 m in-game
 - [x] Download NAIP 2022 photos for the full area (24 tiles)
@@ -20,7 +20,7 @@
 - [ ] (Optional, skipped for now) World Machine pass: edges, erosion and flow maps. DayZ's outside-terrain synth covers the edges; NIR covers surface painting
 - [x] Terrain Builder project `P:\Napa\source\Napa.tv4p`, layers generated (13,918 files), checked in Buldozer
 - [x] Full-map `config.cpp`, CE files and mission written (`terrain/napa/`)
-- [ ] Export WRP, pack `@Napa`, Workshop, Architect test server
+- [x] Export WRP, pack `@Napa` (1.5 GB, signed BSG_Napa), Workshop (unlisted), running on the Architect test server
 
 ## Phase 3: Surfaces
 - [ ] Surface mask: vineyard, grass, dry hillside, oak woodland, asphalt, gravel, marsh

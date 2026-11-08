@@ -4,7 +4,7 @@ A custom DayZ terrain of Napa, California, the valley I grew up in. It covers Ca
 
 ## Status
 
-**Phase 1 done.** The 2.56 km Carneros test patch (1 m USGS heights, 2024 NAIP photo) loads in DayZ on a local DayZDiag server. Next: Phase 2, the full 20.48 km terrain.
+**Phase 2 done.** The full 20.48 km map (1 m USGS lidar from five surveys, 2022 NAIP photo, river and bay marsh at sea level) runs on the Architect test server from an unlisted Workshop item. Next: Phase 3, surfaces (ground textures and grass).
 
 ## What's here
 
