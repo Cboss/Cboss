@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<types>
+<!--
+Baysic Survival Gaming: loot entries for NEW or MODDED items.
+
+Each mod's classnames go here (copy them from the mod's own types.xml).
+Don't repeat vanilla classes that are already in db/types.xml; change those
+in db/types.xml instead. tools/validate.py flags duplicates.
+
+What each field does: see Bohemia's Central Economy docs, linked from
+github.com/BohemiaInteractive/DayZ-Central-Economy
+(community.bistudio.com/wiki/DayZ:Central_Economy_Configuration).
+The example below uses the exact layout of Bohemia's vanilla db/types.xml.
+
+Example (commented out). Replace ExampleModItem with a real classname:
+
+    <type name="ExampleModItem">
+        <nominal>10</nominal>
+        <lifetime>14400</lifetime>
+        <restock>0</restock>
+        <min>5</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+        <category name="tools"/>
+        <usage name="Industrial"/>
+        <value name="Tier2"/>
+    </type>
+-->
+</types>
