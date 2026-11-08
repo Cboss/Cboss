@@ -113,4 +113,6 @@ The full-map `config.cpp` adds 2D-map labels (Napa, Oxbow, Yountville, Veterans 
 
 ### Keep the PBO small
 
-`P:\Napa\source` holds about 1.4 GB of source images and `P:\Napa\data\layers` keeps the PNG copies of every tile. Neither is needed in game. In Addon Builder → Options, add to the exclude list: `*.png;*.asc;*.prj;*.tv4p;*.v4d;*.tif` (the game uses the `.paa` tiles, `.rvmat` files and the `.wrp`).
+Addon Builder's "files to copy directly" list includes `*.png`, so every PNG in `P:\Napa` (a PNG copy of each texture tile in `data\layers`) would be packed. The default exclusion list already skips `*\Source\*`, so `P:\Napa\source` is safe.
+
+Use [`terrain/napa/napa_exclude.lst`](../terrain/napa/napa_exclude.lst): the DayZ Tools default `exclude.lst` plus `*.png`, `*.asc`, `*.prj`, `*.tif`, `*.vrt`, `*.aux.xml`, `*.tv4p`, `*.v4d`. Save it as `D:\NapaMap\napa_exclude.lst`, then Addon Builder → Options → **Exclusion pattern list filename**: untick **Use default** and pick it. Switch back to **Use default** before packing other mods.
