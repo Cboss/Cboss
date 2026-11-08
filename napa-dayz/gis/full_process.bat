@@ -22,7 +22,8 @@ echo.
 echo === Height map: 4096 x 4096, heights x 8/9 ===
 :: dem_list.txt (written by download_full_dem.bat) layers the lidar surveys oldest first, newest on top
 gdalbuildvrt -overwrite -input_file_list raw\full_dem\dem_list.txt full\dem_src.vrt
-gdalwarp %WARPOPTS% -te %EXTENT% -ts 4096 4096 -r cubic -ot Float32 full\dem_src.vrt full\full_dem.tif
+:: -r average: each 5.6 m cell gets the mean of the ~30 lidar points inside it (smoother than cubic when shrinking 1 m data)
+gdalwarp %WARPOPTS% -te %EXTENT% -ts 4096 4096 -r average -ot Float32 full\dem_src.vrt full\full_dem.tif
 call gdal_calc -A full\full_dem.tif --outfile=full\full_dem_s.tif --calc="A*0.8889" --overwrite
 
 :: Check for gaps: STATISTICS_MINIMUM must not be -999999 (or another huge negative)

@@ -31,6 +31,13 @@ Run **`gis/download_full_naip.bat`**. It downloads 24 GeoTIFFs (4-band, 60 cm), 
 - Coverage checked: the 24 tiles cover the whole map area with no gaps
 - The test patch used 2024 imagery; the full map uses 2022 throughout, so colours match across the map
 
+### Checked before processing
+
+Both mosaics were test-built at low resolution straight from the USGS and Planetary Computer servers:
+
+- **Heights:** all 46 files join (all five surveys are NAD83 / UTM 10N; each keeps its own no-data value, so the newer partial surveys sit on top and the older ones fill the gaps). 100% coverage, real heights −1.3 to 813 m, so **in-game −1.1 to 723 m** after the 8/9 scale
+- **Photos:** all 24 tiles join with no holes. The town on the far west edge, halfway up, is the east side of Sonoma
+
 ## 2. Process
 
 Run `gis/full_process.bat` from the OSGeo4W Shell. It writes into `D:\NapaMap\gis\full\`:
@@ -43,7 +50,7 @@ Run `gis/full_process.bat` from the OSGeo4W Shell. It writes into `D:\NapaMap\gi
 | `napa_nir.png` | Near-infrared, for the surface mask |
 | `preview_sat_2048.png` | Quick look for gaps / black holes |
 
-Check the printed height min/max: a minimum around 0–5 m (bay marsh) and a maximum of several hundred metres (Mt. Veeder slopes, eastern hills) is right. A minimum of −999999 means a missing height tile.
+Check the printed height min/max: expect about **−1.1 and 723** (matching the test build). A huge negative minimum (−999999 or −3.4e+38) means a missing height tile.
 
 ## 3. World Machine (next)
 
@@ -66,7 +73,7 @@ The "not evenly divisible by tile size" warning will appear again. With 5 m cell
 
 ## Water level (decide before Terrain Builder)
 
-DayZ's sea is at 0 m. The Napa River and the sloughs near the airport sit around 0–2 m in the USGS data, so at 0 they come out as dry channels, and the bay marsh is barely above water. Options, to settle after looking at the processed heights:
+DayZ's sea is at 0 m. From the test build (in-game heights): 1.3% of the map is already below 0 (river channels, sloughs, marsh ponds), 4.5% is below 1 m, 8.2% below 2 m, 12.5% below 5 m, nearly all of it the bay marsh in the south. Options:
 
 - Leave as is (dry river bed, marsh just above the sea)
 - Lower everything by a metre or two so the river and sloughs fill with sea water (the low marsh floods too)
