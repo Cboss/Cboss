@@ -88,3 +88,29 @@ DayZ's sea is at 0 m. Lidar records the river's water surface, not its bed: the 
 Phase 4 can carve the river channel deeper in Terrain Builder so it is swimmable.
 
 To apply: `full_process.bat dem` (height map only; the satellite image is unchanged).
+
+## 5. Buldozer check: passed
+
+Generate layers produced 13,918 files (2 GB) in `P:\Napa\data` with no errors. In Buldozer the bay marsh and sloughs south of the airport are flooded (the −1.5 m drop works) and the eastern hills near Skyline Park show full relief.
+
+The hard line where the photo switches to the close-up grass texture is a Buldozer thing; in game the two blend over distance (`noDetailDist` / `fullDetailDist` in `config.cpp`).
+
+## 6. Into the game (Workshop + Architect test server)
+
+Files: [`terrain/napa/`](../terrain/napa/). Same steps as the test patch ([`testing-in-game.md`](testing-in-game.md)), with these names:
+
+| Item | Test patch | Full map |
+|---|---|---|
+| World class / mission suffix | `NapaPilot` | `Napa` |
+| WRP export | `P:\NapaPilot\world\NapaPilot.wrp` | `P:\Napa\world\Napa.wrp` |
+| `config.cpp` | `P:\NapaPilot\config.cpp` | `P:\Napa\config.cpp` (from `terrain/napa/config.cpp`) |
+| CE folder | `P:\NapaPilot\ce\` | `P:\Napa\ce\` (from `terrain/napa/ce/`) |
+| Addon Builder source / prefix | `P:\NapaPilot` / `NapaPilot` | `P:\Napa` / `Napa` |
+| Mod folder | `@NapaPilot` | `@Napa` |
+| Mission | `dayzOffline.NapaPilot` | `dayzOffline.Napa` (copy of Chernarus + the 4 files in `terrain/napa/mission/dayzOffline.Napa/`) |
+
+The full-map `config.cpp` adds 2D-map labels (Napa, Oxbow, Yountville, Veterans Home, Carneros, Napa State Hospital, Skyline Park, Napa County Airport) and 10 fresh-spawn areas on dry land across the valley (Carneros, Napa west side, Browns Valley, Coombsville, Imola, Oak Knoll, Silverado Trail, the north valley floor, Yountville).
+
+### Keep the PBO small
+
+`P:\Napa\source` holds about 1.4 GB of source images and `P:\Napa\data\layers` keeps the PNG copies of every tile. Neither is needed in game. In Addon Builder → Options, add to the exclude list: `*.png;*.asc;*.prj;*.tv4p;*.v4d;*.tif` (the game uses the `.paa` tiles, `.rvmat` files and the `.wrp`).

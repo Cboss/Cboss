@@ -16,9 +16,11 @@
 - [x] Download USGS 1 m height data for the full area (46 files)
 - [x] Process to 4096 grid / 20,480 px (`gis/full_process.bat`), heights −3.76 to 725.47 m in-game
 - [x] Download NAIP 2022 photos for the full area (24 tiles)
-- [ ] Set up `P:\Napa` (`gis/prepare_full_tb.bat`)
+- [x] Set up `P:\Napa` (`gis/prepare_full_tb.bat`)
 - [ ] (Optional, skipped for now) World Machine pass: edges, erosion and flow maps. DayZ's outside-terrain synth covers the edges; NIR covers surface painting
-- [ ] Import into Terrain Builder, check in Buldozer
+- [x] Terrain Builder project `P:\Napa\source\Napa.tv4p`, layers generated (13,918 files), checked in Buldozer
+- [x] Full-map `config.cpp`, CE files and mission written (`terrain/napa/`)
+- [ ] Export WRP, pack `@Napa`, Workshop, Architect test server
 
 ## Phase 3: Surfaces
 - [ ] Surface mask: vineyard, grass, dry hillside, oak woodland, asphalt, gravel, marsh

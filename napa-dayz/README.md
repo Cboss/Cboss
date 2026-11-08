@@ -20,7 +20,7 @@ A custom DayZ terrain of Napa, California, the valley I grew up in. It covers Ca
 | [`docs/phase2-full-terrain.md`](docs/phase2-full-terrain.md) | Full-map downloads, processing, Terrain Builder settings |
 | [`gis/full_process.bat`](gis/full_process.bat) | GDAL commands for the full 20.48 km height map and satellite image |
 | [`gis/prepare_full_tb.bat`](gis/prepare_full_tb.bat) | Sets up `P:\Napa` for the full-map Terrain Builder project |
-| [`terrain/napa/`](terrain/napa/) | Full-map files: `layers.cfg` |
+| [`terrain/napa/`](terrain/napa/) | Full-map files: `layers.cfg`, world `config.cpp`, CE files, mission files |
 | [`terrain/pilot/`](terrain/pilot/) | Test patch files: `layers.cfg`, world `config.cpp`, CE files, test mission, launch script |
 | [`gis/pilot_process.bat`](gis/pilot_process.bat) | GDAL commands that cut the test patch height map and satellite image |
 
