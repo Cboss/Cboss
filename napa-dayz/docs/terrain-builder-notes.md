@@ -35,8 +35,15 @@ What worked for the Carneros test patch, in order, plus the problems hit along t
 
 ## Replacing a source image (mask, satellite, height map)
 
-- **"Refresh content from source" did not pick up a new `napa_mask.png`** (Phase 3): Generate layers ran without errors but every `P_*.rvmat` still only used `napa_grass`. Fix: right-click the layer → **Remove this Terrain**, import the file again, check **Terrain coordinates & properties** (200000 / 0, 20480 × 20480), Save, then Generate layers
-- Check after generating: open a `P_###-###.rvmat` from the middle of `data\layers`; it should name more than one `napa_*` material
+- **"Refresh content from source" did not pick up a new `napa_mask.png`** (Phase 3). Fix: right-click the layer → **Remove this Terrain**, import the file again, check **Terrain coordinates & properties** (200000 / 0, 20480 × 20480), Save, then Generate layers
+- **Import the mask through the surface-mask entry under File → Import, never "Terrain".** Row colours in the Layers manager show the layer type: height data green, satellite blue, **mask orange**. A mask imported as terrain shows a green row and red/green shading in the scene view; Generate layers then has no mask and fills every tile with the first layer (grass), with no error. Don't Rebuild terrain while a mask sits in the project as height data
+- Check after generating, by counting tiles per ground texture (the `P_*.rvmat` files list texture files such as `cp_dirt_ca.paa`, not the `napa_*` names):
+  ```bat
+  cd /d P:\Napa\data\layers
+  for %t in (cp_grass cp_broadleaf cp_dirt cp_concrete) do @(<nul set /p=%t: & findstr /m /i "%t" P_*.rvmat | find /c /v "")
+  ```
+  All 2,209 tiles on `cp_grass` and 0 for the rest = the mask was not used. A black `M_*_lco.png` tile also means "first layer everywhere"
+- Full map tiling: 47 × 47 = 2,209 tiles, 440 m segment + 72 px overlap per 512 px tile
 - Importing a 20,480 px image makes Terrain Builder build its grid file ("Generating GRID v4w file"): **20–30 minutes**, looks frozen. Terrain Builder is **32-bit** and does this on one core, so Task Manager shows ~3% CPU (one core of many) and ~1 GB of memory. Leave it alone unless CPU sits at 0 for 10+ minutes
 - "Data cache open failed" lines in the Console right after an import are Terrain Builder's cache for the new layer; they stop after a Save
 
