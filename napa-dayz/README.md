@@ -22,6 +22,7 @@ A custom DayZ terrain of Napa, California, the valley I grew up in. It covers Ca
 | [`gis/prepare_full_tb.bat`](gis/prepare_full_tb.bat) | Sets up `P:\Napa` for the full-map Terrain Builder project |
 | [`terrain/napa/`](terrain/napa/) | Full-map files: `layers.cfg`, world `config.cpp`, CE files, mission files |
 | [`docs/phase3-surfaces.md`](docs/phase3-surfaces.md) | Surface mask: four ground types from the photo + OSM |
+| [`docs/phase4-roads-water.md`](docs/phase4-roads-water.md) | Smart water, object libraries, roads, ponds |
 | [`gis/phase3_surfaces.bat`](gis/phase3_surfaces.bat) + [`gis/napa_surface_mask.py`](gis/napa_surface_mask.py) | Downloads OSM, builds the surface mask, updates `P:\Napa` |
 | [`terrain/pilot/`](terrain/pilot/) | Test patch files: `layers.cfg`, world `config.cpp`, CE files, test mission, launch script |
 | [`gis/pilot_process.bat`](gis/pilot_process.bat) | GDAL commands that cut the test patch height map and satellite image |

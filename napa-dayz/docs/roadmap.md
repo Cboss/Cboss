@@ -29,8 +29,11 @@
 - [ ] Later: Napa-coloured ground textures (golden grass), a 5th/6th surface if Terrain Builder's tile check allows
 
 ## Phase 4: Roads and water
-- [ ] Roads from OpenStreetMap (Hwy 29, Hwy 121/12, Silverado Trail, city streets)
-- [ ] Napa River, creeks, marsh edges
+- [x] Smart water script: river, sloughs and low ponds stay water (≥2 m deep), flooded marsh lifted to dry flats (tested: 32.6 → 11.2 km² under water)
+- [ ] Run `gis/phase4_smart_water.bat`, refresh + rebuild terrain, export WRP, test in game
+- [ ] Import Bohemia's template libraries (roads, water, plants, buildings) into Terrain Builder
+- [ ] Roads: OSM guide layer + Road Tool; Hwy 29 test first, then highways, then town streets
+- [ ] Ponds: pond objects for reservoirs and inland ponds
 - [ ] Wine Train track
 
 ## Phase 5: Places to loot
