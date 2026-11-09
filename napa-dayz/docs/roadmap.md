@@ -24,7 +24,8 @@
 
 ## Phase 3: Surfaces
 - [x] Surface script: photo (NDVI) + OSM + height map → four surfaces (grass, forest, dirt, concrete), tested at 4.5 m
-- [ ] Run `gis/phase3_surfaces.bat` at full size, regenerate the mask layers, repack, test in game
+- [x] Run `gis/phase3_surfaces.bat` at full size: 13,019 roads, 32,483 buildings, 2,611 vineyards, 769 water features; grass 41%, forest 20%, dirt 31%, concrete 8%
+- [ ] Regenerate the mask layers in Terrain Builder, export WRP, repack, test in game
 - [ ] Later: Napa-coloured ground textures (golden grass), a 5th/6th surface if Terrain Builder's tile check allows
 
 ## Phase 4: Roads and water

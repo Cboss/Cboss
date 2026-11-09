@@ -116,7 +116,9 @@ def rasterize(size, items):
     """Burn a list of UTM geometries into a 0/1 array of size x size.
     ALL_TOUCHED only on coarse test runs (pixels over 2 m), so roads keep their true width at 1 m."""
     ds = blank(size)
-    mem = ogr.GetDriverByName("Memory").CreateDataSource("")
+    # GDAL 3.11+ renamed the in-memory vector driver from "Memory" to "MEM"
+    vec = "MEM" if int(gdal.VersionInfo()) >= 3110000 else "Memory"
+    mem = ogr.GetDriverByName(vec).CreateDataSource("")
     lyr = mem.CreateLayer("x", utm(), ogr.wkbUnknown)
     defn = lyr.GetLayerDefn()
     n = 0
