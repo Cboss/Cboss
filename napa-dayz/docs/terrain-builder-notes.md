@@ -33,6 +33,13 @@ What worked for the Carneros test patch, in order, plus the problems hit along t
 - **Renaming project files in Explorer.** The `.tv4p` refers to its `.v4d` and folders by name; use Save As
 - **Create a config / internal MCE** buttons: they fail ("Unable to run MapConfigEditor.bat") and aren't needed
 
+## Replacing a source image (mask, satellite, height map)
+
+- **"Refresh content from source" did not pick up a new `napa_mask.png`** (Phase 3): Generate layers ran without errors but every `P_*.rvmat` still only used `napa_grass`. Fix: right-click the layer → **Remove this Terrain**, import the file again, check **Terrain coordinates & properties** (200000 / 0, 20480 × 20480), Save, then Generate layers
+- Check after generating: open a `P_###-###.rvmat` from the middle of `data\layers`; it should name more than one `napa_*` material
+- Importing a 20,480 px image makes Terrain Builder build its grid file ("Generating GRID v4w file"): **20–30 minutes**, looks frozen. Terrain Builder is **32-bit** and does this on one core, so Task Manager shows ~3% CPU (one core of many) and ~1 GB of memory. Leave it alone unless CPU sits at 0 for 10+ minutes
+- "Data cache open failed" lines in the Console right after an import are Terrain Builder's cache for the new layer; they stop after a Save
+
 ## Known look issues (for later)
 
 - Buildings, cars, tree shadows and solar panels are painted into the NAIP photo. Up close they show as flat smears. When real 3D buildings and trees go in, clean or blur the satellite image under them
