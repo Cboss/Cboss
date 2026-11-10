@@ -4,7 +4,7 @@ A custom DayZ terrain of Napa, California, the valley I grew up in. It covers Ca
 
 ## Status
 
-**Phase 2 done.** The full 20.48 km map (1 m USGS lidar from five surveys, 2022 NAIP photo, river and bay marsh at sea level) runs on the Architect test server from an unlisted Workshop item. Next: Phase 3, surfaces (ground textures and grass).
+**Phase 3 done.** Full 20.48 km map (1 m USGS lidar, 2022 NAIP photo) with four ground types from the photo + OpenStreetMap, running on the Architect test server. Next: Phase 4, smart water and roads.
 
 ## What's here
 

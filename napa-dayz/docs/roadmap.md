@@ -22,10 +22,10 @@
 - [x] Full-map `config.cpp`, CE files and mission written (`terrain/napa/`)
 - [x] Export WRP, pack `@Napa` (1.5 GB, signed BSG_Napa), Workshop (unlisted), running on the Architect test server
 
-## Phase 3: Surfaces
+## Phase 3: Surfaces ✅ done
 - [x] Surface script: photo (NDVI) + OSM + height map → four surfaces (grass, forest, dirt, concrete), tested at 4.5 m
 - [x] Run `gis/phase3_surfaces.bat` at full size: 13,019 roads, 32,483 buildings, 2,611 vineyards, 769 water features; grass 41%, forest 20%, dirt 31%, concrete 8%
-- [ ] Regenerate the mask layers in Terrain Builder, export WRP, repack, test in game
+- [x] Regenerate the mask layers in Terrain Builder, export WRP, repack, test in game: roads and town are pavement, grass only on grass
 - [ ] Later: Napa-coloured ground textures (golden grass), a 5th/6th surface if Terrain Builder's tile check allows
 
 ## Phase 4: Roads and water
