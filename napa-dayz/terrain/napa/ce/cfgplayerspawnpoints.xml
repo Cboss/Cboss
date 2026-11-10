@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Napa full map: fresh-spawn areas (in-game X, Z) -->
+<playerspawnpoints>
+    <fresh>
+        <spawn_params>
+            <min_dist_infected>30.0</min_dist_infected>
+            <max_dist_infected>70.0</max_dist_infected>
+            <min_dist_player>25.0</min_dist_player>
+            <max_dist_player>70.0</max_dist_player>
+            <min_dist_static>0.5</min_dist_static>
+            <max_dist_static>2.0</max_dist_static>
+        </spawn_params>
+
+        <generator_params>
+            <grid_density>8</grid_density>
+            <grid_width>40.0</grid_width>
+            <grid_height>40.0</grid_height>
+            <min_dist_static>0.5</min_dist_static>
+            <max_dist_static>2.0</max_dist_static>
+            <min_steepness>-45</min_steepness>
+            <max_steepness>45</max_steepness>
+        </generator_params>
+
+        <generator_posbubbles>
+            <!-- all on dry land, checked against the height map (in-game X, Z) -->
+            <pos x="8774.0" z="5607.0" />    <!-- Carneros -->
+            <pos x="6500.0" z="6500.0" />    <!-- Carneros, west hills -->
+            <pos x="12300.0" z="9600.0" />   <!-- Napa, west side -->
+            <pos x="11300.0" z="10600.0" />  <!-- Browns Valley -->
+            <pos x="16300.0" z="10200.0" />  <!-- Coombsville -->
+            <pos x="15000.0" z="8300.0" />   <!-- Imola -->
+            <pos x="10600.0" z="14600.0" />  <!-- Oak Knoll -->
+            <pos x="12400.0" z="15200.0" />  <!-- Silverado Trail -->
+            <pos x="9500.0" z="17200.0" />   <!-- valley floor, north -->
+            <pos x="7900.0" z="19300.0" />   <!-- Yountville, south side -->
+        </generator_posbubbles>
+    </fresh>
+</playerspawnpoints>
