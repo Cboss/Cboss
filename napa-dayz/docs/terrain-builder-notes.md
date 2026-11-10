@@ -47,6 +47,13 @@ What worked for the Carneros test patch, in order, plus the problems hit along t
 - Importing a 20,480 px image makes Terrain Builder build its grid file ("Generating GRID v4w file"): **20–30 minutes**, looks frozen. Terrain Builder is **32-bit** and does this on one core, so Task Manager shows ~3% CPU (one core of many) and ~1 GB of memory. Leave it alone unless CPU sits at 0 for 10+ minutes
 - "Data cache open failed" lines in the Console right after an import are Terrain Builder's cache for the new layer; they stop after a Save
 
+## Exporting the WRP (the step that gets missed)
+
+- **Export the WRP after every Generate layers or Rebuild terrain, then pack.** Phase 3 looked like it failed ("grass still everywhere") because `Napa.wrp` was still the Phase 2 file from 11/08: the game kept loading the old all-grass world. Check with `dir P:\Napa\world\Napa.wrp`: its time must be after the last Generate
+- Select the mapframe in the Mapframes panel first, and check the result message: **"Map size: width = 4096, height = 4096"**. "Map size 0" means an empty world (no mapframe selected, or the heightfield is empty) — don't pack it
+- The export dialog defaults to `P:\Napa\source\`. The WRP must go to **`P:\Napa\world\Napa.wrp`** (the `source` folder is excluded from the PBO)
+- **Never force-close Terrain Builder during a long operation.** After several kills the project's cache broke ("Data cache open failed", project size dropped from 1.5 GB to 89 MB, black thumbnails, heightfield empty). Recovery: remove and re-import `napa_dem.asc` (File → Import → Terrain), Rebuild terrain, Save, export the WRP. Generated tiles in `data\layers` were unaffected
+
 ## Known look issues (for later)
 
 - Buildings, cars, tree shadows and solar panels are painted into the NAIP photo. Up close they show as flat smears. When real 3D buildings and trees go in, clean or blur the satellite image under them
