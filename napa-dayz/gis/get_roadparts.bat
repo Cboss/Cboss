@@ -7,8 +7,12 @@
 setlocal
 set OUT=P:\DZ\structures\roads\parts
 set SRC=https://raw.githubusercontent.com/BohemiaInteractive/DayZ-Misc/master/Road%%20Parts/Chernarus
-if not exist "%OUT%" ( echo %OUT% not found - extract the game data first. & exit /b 1 )
-if not exist "%OUT%_backup" ( xcopy /e /i /q "%OUT%" "%OUT%_backup" >nul && echo   backed up to %OUT%_backup )
+if not exist "P:\DZ" ( echo P:\DZ not found - extract the game data first. & exit /b 1 )
+if exist "%OUT%" (
+  if not exist "%OUT%_backup" ( xcopy /e /i /q "%OUT%" "%OUT%_backup" >nul && echo   backed up to %OUT%_backup )
+) else (
+  mkdir "%OUT%" && echo   created %OUT%
+)
 set N=0
 
 curl -sSL --fail -o "%OUT%\asf1_0 2000.p3d" "%SRC%/asf1_0%%202000.p3d" && set /a N+=1 >nul
