@@ -38,6 +38,7 @@ MAX_HEADING = 25.0    # ... or point further than this away from it (degrees)
 ANGLE_WEIGHT = 0.5    # one degree of heading error costs as much as this many metres off line
 PART_COST = 1.0       # small cost per part: prefer fewer, longer parts
 KINK_COST = 4.0       # extra cost for a part that turns 5 degrees or more
+SKIP_SUFFIXES = ("_12",)  # 12.5 m straights show holes in Buldozer (asf1_12: every gap seen sat on one); 2 x 6.25 m instead
 LINK_FAMILY = "asf3"   # on/off ramps (OSM *_link) use this 7 m family whatever road they belong to
 JOIN_MAX_BEND = 30.0   # two OSM lines are one road if they meet within this many degrees of straight
 END_GAP = 0.75        # a road may stop this far short of its end (metres)
@@ -146,6 +147,8 @@ def load_parts(family):
         for r in csv.DictReader(f):
             name = r["part"]
             if "konec" in name or "crosswalk" in name or name.startswith("kr_"):
+                continue
+            if name.endswith(SKIP_SUFFIXES):
                 continue
             ex, ez, turn = float(r["end_x"]), float(r["end_z"]), float(r["turn_deg"])
             bb = (float(r["bbox_cx"]), float(r["bbox_cz"]))
