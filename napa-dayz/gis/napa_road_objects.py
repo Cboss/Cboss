@@ -336,28 +336,34 @@ class Terrain:
     grid point x = col * cell, z = (rows - 1 - row) * cell (x measured from the map's west edge)."""
 
     def __init__(self, path):
+        import array
+        import numpy
         if path.lower().endswith(".npy"):
-            import numpy
-            self.a = numpy.load(path)
+            a = numpy.load(path)
         else:
             from osgeo import gdal
-            self.a = gdal.Open(path).GetRasterBand(1).ReadAsArray()
-        self.n = self.a.shape[0]
+            gdal.UseExceptions()
+            ds = gdal.Open(path)                    # keep the dataset alive while its band is read
+            a = ds.GetRasterBand(1).ReadAsArray()
+            ds = None
+        self.n = a.shape[0]
         self.cell = 20480.0 / self.n
-        self.rows = self.a.tolist()                 # plain lists: much faster for single lookups
+        self.flat = array.array("f")                # compact, and fast for single lookups
+        self.flat.frombytes(numpy.ascontiguousarray(a, dtype=numpy.float32).tobytes())
 
     def h(self, x, y):
+        n = self.n
         c = (x - 200000.0) / self.cell
-        r = (self.n - 1) - y / self.cell
+        r = (n - 1) - y / self.cell
         c0 = int(c) if c > 0 else 0
         r0 = int(r) if r > 0 else 0
-        if c0 > self.n - 2:
-            c0 = self.n - 2
-        if r0 > self.n - 2:
-            r0 = self.n - 2
+        if c0 > n - 2:
+            c0 = n - 2
+        if r0 > n - 2:
+            r0 = n - 2
         tc, tr = min(1.0, max(0.0, c - c0)), min(1.0, max(0.0, r - r0))
-        a, b = self.rows[r0], self.rows[r0 + 1]
-        return (a[c0] * (1 - tc) + a[c0 + 1] * tc) * (1 - tr) + (b[c0] * (1 - tc) + b[c0 + 1] * tc) * tr
+        f, k = self.flat, r0 * n + c0
+        return (f[k] * (1 - tc) + f[k + 1] * tc) * (1 - tr) + (f[k + n] * (1 - tc) + f[k + n + 1] * tc) * tr
 
 
 def pokes_through(terrain, part, yaw, origin):

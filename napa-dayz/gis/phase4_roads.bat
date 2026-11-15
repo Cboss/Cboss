@@ -11,7 +11,10 @@
 
 setlocal
 set GIS=D:\NapaMap\gis
-set RAW=https://raw.githubusercontent.com/Cboss/Cboss/ccr-3b451e26-3japm5/napa-dayz
+:: Optional first argument: a commit id to fetch the files from (default: the branch)
+set REF=ccr-3b451e26-3japm5
+if not "%~1"=="" set REF=%~1
+set RAW=https://raw.githubusercontent.com/Cboss/Cboss/%REF%/napa-dayz
 set P=D:\DayZ Projects\Napa
 if not exist "%P%\source" set P=P:\Napa
 if not exist "%P%\source" ( echo Napa project folder not found. & exit /b 1 )
