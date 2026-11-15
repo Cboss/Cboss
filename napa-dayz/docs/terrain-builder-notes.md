@@ -2,6 +2,14 @@
 
 What worked for the Carneros test patch, in order, plus the problems hit along the way. Use this for the full 20 km map.
 
+## P: drive and game data (fixed 11/14)
+
+- **P: lives at `D:\DayZ Projects`** (DayZ Tools launcher → Settings → Path to the Project Drive). It was inside `Documents`, where Extract Game Data silently unpacked nothing ("Unpack … [OK]" in 1 ms, then "Could not find a part of the path")
+- Settings has two path boxes side by side: **Project Drive** = `D:\DayZ Projects`, **Game Directory** = `D:\Steam\steamapps\common\DayZ`. Putting the project folder in the game box gives "The source is not a valid install of the game"
+- An admin Command Prompt doesn't see drive letters mapped in the normal session: `subst P: "<folder>"` there first if you ever need admin
+- Check after Extract Game Data: `dir /s /b P:\DZ\*.p3d | find /c ".p3d"` → **10,623 models** (11/14). Before the fix it was 0, which is why every object in the template libraries showed ⚠
+- Template libraries: Library manager → right-click each library → **Resolve missing → Build thumbnails → Save**
+
 ## Setup that has to be right first
 
 | Item | Setting |
