@@ -36,7 +36,10 @@
 - [ ] Review subscribed Workshop asset packs (licences in `docs/asset-licenses.md`)
 - [x] Road guide shapefile from OSM in map coordinates (`terrain/napa/roads_guide/`)
 - [x] Roads: import the guide into Terrain Builder (Road Tool blocked: "target layer is locked")
-- [ ] Roads plan B: `gis/napa_road_objects.py` lays road parts along the guide (asf1 generated: 3,501 parts, 68 km); confirm import format, test on Hwy 29, then asf2/asf3/city/grav
+- [x] Roads plan B: `gis/napa_road_objects.py` lays road parts along the guide; import format, pivot and yaw confirmed; highways show in Buldozer with real textures
+- [ ] Road bed: `gis/phase4_roads.bat` grades the ground under all roads (`napa_road_bed.py`) and lays highways + ramps on it; check in Buldozer that the holes are gone
+- [ ] Main roads (asf2), two-lane roads (asf3), streets (city), tracks (grav)
+- [ ] Junction and end pieces; bridge objects in place of causeways
 - [ ] Ponds: pond objects for reservoirs and inland ponds
 - [ ] Wine Train track
 

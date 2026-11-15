@@ -19,7 +19,10 @@ Part geometry comes from roadgen/road_parts_<family>.csv (measured from Bohemia'
 with roadgen/mlod.py): begin centre at (0,0), driving along +Z, curves turn right.
 A curve turns left by being laid backwards, which is how the Road Tool uses them too.
 
-Needs only plain Python. --dem (GDAL) is optional: with it each part is pitched to the slope.
+The game sets a road part on the ground by its corner points, so parts are written flat
+(pitch 0) and need no slope. Needs only plain Python. --dem (GDAL) is optional but
+recommended once the road bed is graded (napa_road_bed.py): straights are then only laid
+where the ground does not rise through them.
 """
 
 import argparse
@@ -38,12 +41,13 @@ MAX_HEADING = 25.0    # ... or point further than this away from it (degrees)
 ANGLE_WEIGHT = 0.5    # one degree of heading error costs as much as this many metres off line
 PART_COST = 1.0       # small cost per part: prefer fewer, longer parts
 KINK_COST = 4.0       # extra cost for a part that turns 5 degrees or more
-SKIP_SUFFIXES = ("_12",)  # 12.5 m straights show holes in Buldozer (asf1_12: every gap seen sat on one); 2 x 6.25 m instead
+SKIP_SUFFIXES = ()        # part name endings to leave out, e.g. ("_12",)
 LINK_FAMILY = "asf3"   # on/off ramps (OSM *_link) use this 7 m family whatever road they belong to
 JOIN_MAX_BEND = 30.0   # two OSM lines are one road if they meet within this many degrees of straight
 END_GAP = 0.75        # a road may stop this far short of its end (metres)
 END_OVER = 7.0        # ... or run this far past it
 END_WEIGHT = 20.0     # how much being off line at the very end costs (keeps junctions tidy)
+SAG_TOL = 0.05        # with --dem: ground may rise this far above a straight part between its ends (metres)
 SNAP = 1.0            # road ends closer than this are the same node (metres)
 
 
@@ -177,7 +181,7 @@ def lay(part, pos, hdg):
     return yaw, origin, origin, (hdg - part["turn"]) % 360
 
 
-def walk(line, parts, short):
+def walk(line, parts, short, terrain=None):
     """Lay parts along one line with a beam search and return (part, yaw, origin) tuples.
 
     Every partial road is scored by how far and how crooked it runs from the OSM line; the
@@ -231,6 +235,8 @@ def walk(line, parts, short):
                 c = cost + part["length"] * (lat * lat + (ang * ANGLE_WEIGHT) ** 2) + PART_COST
                 if abs(part["turn"]) >= 5:
                     c += KINK_COST
+                if terrain is not None and part["turn"] == 0 and pokes_through(terrain, part, yaw, origin):
+                    continue
                 nb = max(b, int(ns / BUCKET))
                 buckets.setdefault(nb, []).append((c, ns, end, nh, st, (part, yaw, origin)))
     if done is None:                                           # could not reach the end: keep the furthest
@@ -326,21 +332,49 @@ def join_lines(lines):
 
 # ---------------------------------------------------------------- terrain (optional)
 class Terrain:
+    """In-game heights the way the game holds them: value [row, col] is the ground at the
+    grid point x = col * cell, z = (rows - 1 - row) * cell (x measured from the map's west edge)."""
+
     def __init__(self, path):
-        from osgeo import gdal
-        ds = gdal.Open(path)
-        self.a = ds.GetRasterBand(1).ReadAsArray()
+        if path.lower().endswith(".npy"):
+            import numpy
+            self.a = numpy.load(path)
+        else:
+            from osgeo import gdal
+            self.a = gdal.Open(path).GetRasterBand(1).ReadAsArray()
         self.n = self.a.shape[0]
         self.cell = 20480.0 / self.n
+        self.rows = self.a.tolist()                 # plain lists: much faster for single lookups
 
     def h(self, x, y):
-        c = (x - 200000) / self.cell - 0.5
-        r = (20480 - y) / self.cell - 0.5
-        c0, r0 = int(max(0, min(self.n - 2, math.floor(c)))), int(max(0, min(self.n - 2, math.floor(r))))
-        tc, tr = min(1, max(0, c - c0)), min(1, max(0, r - r0))
-        a = self.a
-        return float((a[r0, c0] * (1 - tc) + a[r0, c0 + 1] * tc) * (1 - tr) +
-                     (a[r0 + 1, c0] * (1 - tc) + a[r0 + 1, c0 + 1] * tc) * tr)
+        c = (x - 200000.0) / self.cell
+        r = (self.n - 1) - y / self.cell
+        c0 = int(c) if c > 0 else 0
+        r0 = int(r) if r > 0 else 0
+        if c0 > self.n - 2:
+            c0 = self.n - 2
+        if r0 > self.n - 2:
+            r0 = self.n - 2
+        tc, tr = min(1.0, max(0.0, c - c0)), min(1.0, max(0.0, r - r0))
+        a, b = self.rows[r0], self.rows[r0 + 1]
+        return (a[c0] * (1 - tc) + a[c0 + 1] * tc) * (1 - tr) + (b[c0] * (1 - tc) + b[c0 + 1] * tc) * tr
+
+
+def pokes_through(terrain, part, yaw, origin):
+    """True if the ground rises through a straight part between its corners. The game sets a
+    road part on the ground by its corner points only, so a straight is a flat sheet between
+    its two ends; curves have a row of points every couple of metres and follow the ground."""
+    w = part["width"] / 2
+    for lat in (-w, 0.0, w):
+        h0 = terrain.h(*local_to_world(origin[0], origin[1], yaw, lat, 0.0))
+        h1 = terrain.h(*local_to_world(origin[0], origin[1], yaw, lat, part["ez"]))
+        steps = max(2, int(part["ez"] / 3.0))
+        for k in range(1, steps):
+            t = k / steps
+            g = terrain.h(*local_to_world(origin[0], origin[1], yaw, lat, part["ez"] * t))
+            if g - (h0 + (h1 - h0) * t) > SAG_TOL:
+                return True
+    return False
 
 
 def write_line(f, part, origin, yaw, pivot, yaw_dir, pitch=0.0):
@@ -382,11 +416,11 @@ def main():
     ap.add_argument("--ref", help="only roads with this ref, e.g. 29")
     ap.add_argument("--box", nargs=4, type=float, metavar=("X1", "Y1", "X2", "Y2"),
                     help="only roads inside this Terrain Builder box (for a test patch)")
-    ap.add_argument("--dem", help="in-game height GeoTIFF (full_dem_water.tif) to pitch parts")
+    ap.add_argument("--dem", help="in-game height GeoTIFF (full_dem_roads.tif): straights are only laid "
+                                  "where the ground does not rise through them")
     ap.add_argument("--pivot", choices=("bbox", "origin"), default="bbox",
                     help="where Terrain Builder puts an object's position: its bounding box centre "
                          "(default) or the model origin")
-    ap.add_argument("--pitch-sign", type=float, default=1.0)
     ap.add_argument("--yaw", choices=("cw", "ccw"), default="cw",
                     help="Terrain Builder yaw direction: clockwise (default) or counter-clockwise")
     ap.add_argument("--test", nargs=2, type=float, metavar=("X", "Y"),
@@ -425,12 +459,8 @@ def main():
             line = Line(pts)
             if line.length < short["length"]:
                 continue
-            for part, yaw, origin in walk(line, parts, short):
-                pitch = 0.0
-                if terrain:
-                    e = local_to_world(origin[0], origin[1], yaw, part["ex"], part["ez"])
-                    pitch = args.pitch_sign * math.degrees(math.atan2(terrain.h(*e) - terrain.h(*origin), part["length"]))
-                write_line(f, part, origin, yaw, args.pivot, args.yaw, pitch)
+            for part, yaw, origin in walk(line, parts, short, terrain):
+                write_line(f, part, origin, yaw, args.pivot, args.yaw)
                 total_parts += 1
                 total_len += part["length"]
                 counts[part["name"]] = counts.get(part["name"], 0) + 1

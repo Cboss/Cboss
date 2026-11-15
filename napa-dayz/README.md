@@ -25,6 +25,7 @@ A custom DayZ terrain of Napa, California, the valley I grew up in. It covers Ca
 | [`docs/phase4-roads-water.md`](docs/phase4-roads-water.md) | Smart water, object libraries, roads, ponds |
 | [`docs/asset-licenses.md`](docs/asset-licenses.md) | Third-party assets, licences and credits |
 | [`gis/phase3_surfaces.bat`](gis/phase3_surfaces.bat) + [`gis/napa_surface_mask.py`](gis/napa_surface_mask.py) | Downloads OSM, builds the surface mask, updates `P:\Napa` |
+| [`gis/phase4_roads.bat`](gis/phase4_roads.bat) + [`gis/napa_road_bed.py`](gis/napa_road_bed.py) | Grades a smooth bed under every road in the height map, then lays the highway parts on it |
 | [`gis/napa_road_objects.py`](gis/napa_road_objects.py) | Lays DayZ road parts along the OSM road guide, writes a Terrain Builder object list |
 | [`terrain/pilot/`](terrain/pilot/) | Test patch files: `layers.cfg`, world `config.cpp`, CE files, test mission, launch script |
 | [`gis/pilot_process.bat`](gis/pilot_process.bat) | GDAL commands that cut the test patch height map and satellite image |
