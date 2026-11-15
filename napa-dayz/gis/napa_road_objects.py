@@ -246,6 +246,33 @@ class Terrain:
                      (a[r0 + 1, c0] * (1 - tc) + a[r0 + 1, c0 + 1] * tc) * tr)
 
 
+def write_line(f, part, origin, yaw, pivot, yaw_dir, pitch=0.0):
+    if pivot == "bbox":
+        px, py = local_to_world(origin[0], origin[1], yaw, *part["bbox"])
+    else:
+        px, py = origin
+    y = yaw if yaw_dir == "cw" else (360 - yaw) % 360
+    f.write(f'"{part["name"]}";{px:.3f};{py:.3f};{y:.4f};{pitch:.4f};0.0000;1.0000;0.000;\n')
+
+
+def write_test(parts, at, out):
+    """Four rows of the same chain (straight, right curve, straight, left curve, straight),
+    60 m apart, each with one guess of pivot and yaw direction. The row whose pieces join
+    up cleanly in Terrain Builder tells us which settings are right."""
+    pick = {(q["name"], q["dir"]): q for q in parts}
+    chain = [pick[("asf1_25", 1)], pick[("asf1_30 25", 1)], pick[("asf1_25", 1)],
+             pick[("asf1_30 25", -1)], pick[("asf1_25", 1)], pick[("asf1_12", 1)]]
+    rows = [("A", "bbox", "cw"), ("B", "origin", "cw"), ("C", "bbox", "ccw"), ("D", "origin", "ccw")]
+    with open(out, "w", newline="\r\n") as f:
+        for k, (label, pivot, yaw_dir) in enumerate(rows):
+            pos, hdg = (at[0] + 60 * k, at[1]), 0.0
+            for part in chain:
+                yaw, origin, pos, hdg = lay(part, pos, hdg)
+                write_line(f, part, origin, yaw, pivot, yaw_dir)
+            print(f"  row {label} at X {at[0] + 60 * k:.0f}: pivot {pivot}, yaw {yaw_dir}")
+    print(f"Wrote {out}")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     guide = r"D:\NapaMap\gis\full\roads_guide\napa_roads_guide"
@@ -262,10 +289,16 @@ def main():
                     help="where Terrain Builder puts an object's position: its bounding box centre "
                          "(default) or the model origin")
     ap.add_argument("--pitch-sign", type=float, default=1.0)
+    ap.add_argument("--yaw", choices=("cw", "ccw"), default="cw",
+                    help="Terrain Builder yaw direction: clockwise (default) or counter-clockwise")
+    ap.add_argument("--test", nargs=2, type=float, metavar=("X", "Y"),
+                    help="write the 4-row placement test at this map position and stop")
     ap.add_argument("--out")
     args = ap.parse_args()
 
     parts = load_parts(args.family)
+    if args.test:
+        return write_test(parts, args.test, args.out or "road_test.txt")
     short = min(parts, key=lambda q: q["length"] if q["turn"] == 0 else 1e9)
     terrain = Terrain(args.dem) if args.dem else None
 
@@ -293,16 +326,11 @@ def main():
             if line.length < short["length"]:
                 continue
             for part, yaw, origin in walk(line, parts, short):
-                if args.pivot == "bbox":
-                    px, py = local_to_world(origin[0], origin[1], yaw, *part["bbox"])
-                else:
-                    px, py = origin
                 pitch = 0.0
                 if terrain:
-                    b = origin
                     e = local_to_world(origin[0], origin[1], yaw, part["ex"], part["ez"])
-                    pitch = args.pitch_sign * math.degrees(math.atan2(terrain.h(*e) - terrain.h(*b), part["length"]))
-                f.write(f'"{part["name"]}";{px:.3f};{py:.3f};{yaw:.4f};{pitch:.4f};0.0000;1.0000;0.000;\n')
+                    pitch = args.pitch_sign * math.degrees(math.atan2(terrain.h(*e) - terrain.h(*origin), part["length"]))
+                write_line(f, part, origin, yaw, args.pivot, args.yaw, pitch)
                 total_parts += 1
                 total_len += part["length"]
                 counts[part["name"]] = counts.get(part["name"], 0) + 1
