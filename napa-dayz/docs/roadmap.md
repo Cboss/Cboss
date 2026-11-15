@@ -31,7 +31,8 @@
 ## Phase 4: Roads and water
 - [x] Smart water script: river, sloughs and low ponds stay water (≥2 m deep), flooded marsh lifted to dry flats (tested: 32.6 → 11.2 km² under water)
 - [x] Run `gis/phase4_smart_water.bat`, re-import heights, rebuild terrain, export WRP, test in game: river and sloughs are water, marsh is dry land
-- [ ] Import Bohemia's template libraries (roads, water, plants, buildings) into Terrain Builder
+- [ ] Import Bohemia's template libraries into Terrain Builder (`gis/get_templatelibs.bat`)
+- [ ] Review subscribed Workshop asset packs (licences in `docs/asset-licenses.md`)
 - [ ] Roads: OSM guide layer + Road Tool; Hwy 29 test first, then highways, then town streets
 - [ ] Ponds: pond objects for reservoirs and inland ponds
 - [ ] Wine Train track
