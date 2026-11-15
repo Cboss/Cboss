@@ -69,7 +69,9 @@ The Road Tool refused to add roads ("Area tool - Couldn't use 'add Area' the tar
 - Import format confirmed: `"name";X;Y;yaw;pitch;roll;scale;relative height;underground flag;` (9 fields, last one `0`). Without the 9th field Terrain Builder still imports but warns "missing the underground flag". Each import makes its own object layer (`TXT_<file>_001`); importing twice = duplicates, so delete the old layer first
 - Bohemia's `roads.tml` (DayZ-Samples) ships 171 of its 190 templates without bounds (`BoundingMin 999`, `AutoCenter 0`), so Terrain Builder cannot draw those objects in 2D. [`terrain/napa/TemplateLibs/roads.tml`](../terrain/napa/TemplateLibs/roads.tml) fills in the bounds of all 90 road parts measured from the p3d files (same method reproduces the 19 templates Bohemia did resolve). Bridges, sidewalks, runways and decals are left as they were
 - Resolved road templates use `AutoCenter 1`: an object's position is its bounding-box centre, which is `--pivot bbox` (rows A/C of the test)
-- Still to confirm before the big import: whether an object's position is its bounding-box centre (`--pivot bbox`, default) or model origin (`--pivot origin`)
+- Placement test (`terrain/napa/roads/road_test.txt`, 4 rows): row A joins up in Terrain Builder, so position = bounding-box centre (`--pivot bbox`) and yaw is clockwise (`--yaw cw`), the script defaults
+- `terrain/napa/roads/napa_roads_asf1.txt`: all asf1 roads (3,501 parts), flat (pitch 0), ready for File → Import → Objects
+- Still to check in Buldozer / in game: joins at sub-metre level, the backwards-laid left curves, and pitch on slopes (`--dem`, sign to calibrate)
 - Not yet: junction pieces (`kr_*`), end pieces (`_6konec`); the two carriageways of CA 29 are 12 m parts each and may overlap where they run close
 
 ### How the Road Tool works (summary of Bohemia's wiki page "DayZ: Using Road Tool in Terrain Builder")

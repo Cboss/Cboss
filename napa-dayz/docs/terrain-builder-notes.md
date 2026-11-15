@@ -66,3 +66,10 @@ What worked for the Carneros test patch, in order, plus the problems hit along t
 
 - Buildings, cars, tree shadows and solar panels are painted into the NAIP photo. Up close they show as flat smears. When real 3D buildings and trees go in, clean or blur the satellite image under them
 - Surface mask is one material (grass) everywhere. Phase 3 adds vineyard, dry hillside, asphalt and so on
+
+## Objects not showing in the 2D view
+
+- **View → View scene objects** (dark cube on the toolbar) must be ticked, or no object is drawn at all, however correct the import. **View textured objects** is the orange cube next to it
+- A template with no bounds in its `.tml` (`BoundingMin 999`) also draws nothing: see the fixed `terrain/napa/TemplateLibs/roads.tml`
+- Terrain Builder runs as admin and `subst` drives are per session: check P: from an **admin** Command Prompt, a normal one can show a different or empty P:
+- Object text import: 9 fields, `"name";X;Y;yaw;pitch;roll;scale;relative height;0;`. Each import creates a layer `TXT_<file>_001` in Layers manager → Objects; delete that layer to undo an import
