@@ -58,6 +58,16 @@ Fields: `osm_id`, `highway`, `family`, `name`, `ref`, `length_m`. Divided highwa
 
 Load it: download the 5 files into `P:\Napa\source\roads_guide\`, then Terrain Builder **File → Import → Shapes** → `napa_roads_guide.shp`. It sits on the map as a Shapes layer to trace with the Road Tool.
 
+### How the Road Tool works (summary of Bohemia's wiki page "DayZ: Using Road Tool in Terrain Builder")
+
+- Needs extracted game data on P: **plus updated road-part files** linked from that wiki page, copied into `P:\DZ\structures\roads\parts` (overwrite)
+- **Window → Road types** → add a road type and give it all of one family's parts: straights (one number, e.g. `asf1_12`), corners (two numbers, e.g. `asf1_10 50`), terminator (`..._6konec`). Widths: asf1 12 m, asf2 9 m, asf3 7 m, city 10 m, grav 6 m, mud 5 m
+- Select the road type → **Add road** toolbar button → double-click the map → wizard: key part type (usually the terminator), the exact part, position/rotation
+- Double-click the key part → each direction (A, B, …) → **Modify** → double-click parts to chain them (straights, left/right corners). Shows in Buldozer once parts are attached
+- Crossroads (`kr_t_*`, `kr_x_*`) as key parts: **Roads → Define roads and crossroads**
+- **Export / Import** per key part: the chain of parts attached to a key part can be exported to a file and imported onto another key part. That file format is the way to automate: generate the part chains from the OSM lines instead of clicking them
+- Bohemia recommends the tool for long stretches between settlements and placing parts by hand inside towns
+
 Order: Hwy 29 through Napa as a test, then the other `asf1`/`asf2` roads, then town streets. The 1 m lidar already has the real road grades, so little terrain flattening should be needed.
 
 ## 4d. Ponds
