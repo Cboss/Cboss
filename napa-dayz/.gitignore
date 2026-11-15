@@ -20,3 +20,5 @@ gis/raw/
 layers/
 *.tv4l.bak
 *.log
+__pycache__/
+*.pyc

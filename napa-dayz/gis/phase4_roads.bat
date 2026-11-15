@@ -29,7 +29,7 @@ curl -sSL --fail -o "%GIS%\napa_road_objects.py" %RAW%/gis/napa_road_objects.py 
 for %%F in (asf1 asf2 asf3 city grav mud) do (
   curl -sSL --fail -o "%GIS%\roadgen\road_parts_%%F.csv" %RAW%/gis/roadgen/road_parts_%%F.csv || goto :fail
 )
-for %%E in (shp shx dbf prj cpg) do (
+for %%E in (shp shx dbf cpg) do (
   curl -sSL --fail -o "%GIS%\full\roads_guide\napa_roads_guide.%%E" %RAW%/terrain/napa/roads_guide/napa_roads_guide.%%E || goto :fail
 )
 echo   scripts, part tables and road guide OK
