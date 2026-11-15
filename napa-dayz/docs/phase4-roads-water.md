@@ -42,7 +42,23 @@ Road part families in `roads.tml`:
 
 Each family has straights (`_6`, `_12`, `_25`), ends (`_6konec`) and curves named angle + radius (`_10 25` = 10° on a 25 m radius … `_0 2000`).
 
-Plan: export the OSM roads as a guide layer in map coordinates, so the Road Tool can trace the real alignments; start with Hwy 29 through Napa as a test, then the other highways, then town streets. The 1 m lidar already has the real road grades, so little terrain flattening should be needed.
+### Road guide (ready)
+
+`gis/napa_roads_guide.py` turns the OSM roads into a shapefile already in Terrain Builder map coordinates (200000 / 0, 8/9 scale, labelled UTM 31N like the height map), one line per road with its suggested road-part family. The result is in [`terrain/napa/roads_guide/`](../terrain/napa/roads_guide/):
+
+| family | lines | in-game km | Includes |
+|---|---|---|---|
+| asf1 | 172 | 68 | CA 29 Saint Helena Hwy (27 km both directions), CA 12 Jameson Canyon |
+| asf2 | 683 | 121 | CA 121 Monticello Rd, Silverado Trail, CA 221 Napa-Vallejo Hwy, Jefferson St, Carneros Hwy, Soscol Ave, Old Sonoma Rd |
+| asf3 | 475 | 200 | Other two-lane roads |
+| city | 11,388 | 1,654 | Residential streets, service roads, driveways, lots |
+| grav | 316 | 140 | Vineyard and farm tracks |
+
+Fields: `osm_id`, `highway`, `family`, `name`, `ref`, `length_m`. Divided highways (CA 29) have one line per direction.
+
+Load it: download the 5 files into `P:\Napa\source\roads_guide\`, then Terrain Builder **File → Import → Shapes** → `napa_roads_guide.shp`. It sits on the map as a Shapes layer to trace with the Road Tool.
+
+Order: Hwy 29 through Napa as a test, then the other `asf1`/`asf2` roads, then town streets. The 1 m lidar already has the real road grades, so little terrain flattening should be needed.
 
 ## 4d. Ponds
 

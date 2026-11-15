@@ -34,7 +34,8 @@
 - [x] P: moved to `D:\DayZ Projects`, game data re-extracted with models (10,623 `.p3d`)
 - [ ] Import Bohemia's template libraries into Terrain Builder (`gis/get_templatelibs.bat`): loaded; Resolve missing + Build thumbnails + Save each
 - [ ] Review subscribed Workshop asset packs (licences in `docs/asset-licenses.md`)
-- [ ] Roads: OSM guide layer + Road Tool; Hwy 29 test first, then highways, then town streets
+- [x] Road guide shapefile from OSM in map coordinates (`terrain/napa/roads_guide/`)
+- [ ] Roads: import the guide into Terrain Builder, Road Tool test on Hwy 29, then highways, then town streets
 - [ ] Ponds: pond objects for reservoirs and inland ponds
 - [ ] Wine Train track
 
