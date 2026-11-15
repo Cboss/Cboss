@@ -66,7 +66,8 @@ The Road Tool refused to add roads ("Area tool - Couldn't use 'add Area' the tar
 - Joins OSM pieces that continue each other, then walks each road taking the longest part whose end stays within 0.6 m and 3° of the OSM line
 - First run, all `asf1` (CA 29, CA 12): 67 roads, 3,501 parts, 68 km; parts sit a median 0.5 m off the OSM line (95% within 1.9 m)
 - Plain Python, no GDAL needed. `--dem full_dem_water.tif` pitches each part to the slope
-- To confirm before the big import: Terrain Builder's object text format and whether an object's position is its bounding-box centre (`--pivot bbox`, default) or model origin (`--pivot origin`)
+- Import format confirmed: Terrain Builder accepted `"name";X;Y;yaw;pitch;roll;scale;relative height;` and exports the same with a 9th field (`0`). Import twice = duplicates, so delete the old pieces before re-importing
+- Still to confirm before the big import: whether an object's position is its bounding-box centre (`--pivot bbox`, default) or model origin (`--pivot origin`)
 - Not yet: junction pieces (`kr_*`), end pieces (`_6konec`); the two carriageways of CA 29 are 12 m parts each and may overlap where they run close
 
 ### How the Road Tool works (summary of Bohemia's wiki page "DayZ: Using Road Tool in Terrain Builder")
