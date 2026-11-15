@@ -60,7 +60,7 @@ Load it: download the 5 files into `P:\Napa\source\roads_guide\`, then Terrain B
 
 ### How the Road Tool works (summary of Bohemia's wiki page "DayZ: Using Road Tool in Terrain Builder")
 
-- Needs extracted game data on P: **plus updated road-part files** linked from that wiki page, copied into `P:\DZ\structures\roads\parts` (overwrite)
+- Needs extracted game data on P: **plus updated road-part files** linked from that wiki page ([DayZ-Misc/Road Parts/Chernarus](https://github.com/BohemiaInteractive/DayZ-Misc/tree/master/Road%20Parts/Chernarus)), copied into `P:\DZ\structures\roads\parts` (overwrite). `gis/get_roadparts.bat` downloads all 109 (asf1/2/3, city, grav, mud, crossroads) after backing up the folder to `parts_backup`. Runway and path parts are not in that download (the extracted ones stay)
 - **Window → Road types** → add a road type and give it all of one family's parts: straights (one number, e.g. `asf1_12`), corners (two numbers, e.g. `asf1_10 50`), terminator (`..._6konec`). Widths: asf1 12 m, asf2 9 m, asf3 7 m, city 10 m, grav 6 m, mud 5 m
 - Select the road type → **Add road** toolbar button → double-click the map → wizard: key part type (usually the terminator), the exact part, position/rotation
 - Double-click the key part → each direction (A, B, …) → **Modify** → double-click parts to chain them (straights, left/right corners). Shows in Buldozer once parts are attached
