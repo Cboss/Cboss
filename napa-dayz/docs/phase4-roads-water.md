@@ -58,6 +58,17 @@ Fields: `osm_id`, `highway`, `family`, `name`, `ref`, `length_m`. Divided highwa
 
 Load it: download the 5 files into `P:\Napa\source\roads_guide\`, then Terrain Builder **File → Import → Shapes** → `napa_roads_guide.shp`. It sits on the map as a Shapes layer to trace with the Road Tool.
 
+### Plan B: road parts generated from the guide (in progress)
+
+The Road Tool refused to add roads ("Area tool - Couldn't use 'add Area' the target layer is locked", although no layer was locked). In the game roads are just objects, so `gis/napa_road_objects.py` lays the parts itself and writes a Terrain Builder object list for **File → Import → Objects**:
+
+- Part geometry: `gis/roadgen/road_parts_asf1.csv`, measured from Bohemia's p3d files with `gis/roadgen/mlod.py` (memory points `LB`/`PB` begin, `LE`/`PE` end). Origin = begin centre, road along +Z, curves turn right; a curve laid backwards turns left. `asf1_12` is really 12.5 m long, `asf1_25` 25 m, `asf1_6` 6.25 m
+- Joins OSM pieces that continue each other, then walks each road taking the longest part whose end stays within 0.6 m and 3° of the OSM line
+- First run, all `asf1` (CA 29, CA 12): 67 roads, 3,501 parts, 68 km; parts sit a median 0.5 m off the OSM line (95% within 1.9 m)
+- Plain Python, no GDAL needed. `--dem full_dem_water.tif` pitches each part to the slope
+- To confirm before the big import: Terrain Builder's object text format and whether an object's position is its bounding-box centre (`--pivot bbox`, default) or model origin (`--pivot origin`)
+- Not yet: junction pieces (`kr_*`), end pieces (`_6konec`); the two carriageways of CA 29 are 12 m parts each and may overlap where they run close
+
 ### How the Road Tool works (summary of Bohemia's wiki page "DayZ: Using Road Tool in Terrain Builder")
 
 - Needs extracted game data on P: **plus updated road-part files** linked from that wiki page ([DayZ-Misc/Road Parts/Chernarus](https://github.com/BohemiaInteractive/DayZ-Misc/tree/master/Road%20Parts/Chernarus)), copied into `P:\DZ\structures\roads\parts` (overwrite). `gis/get_roadparts.bat` downloads all 109 (asf1/2/3, city, grav, mud, crossroads) after backing up the folder to `parts_backup`. Runway and path parts are not in that download (the extracted ones stay)

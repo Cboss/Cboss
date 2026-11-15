@@ -35,7 +35,8 @@
 - [ ] Import Bohemia's template libraries into Terrain Builder (`gis/get_templatelibs.bat`): loaded; Resolve missing + Build thumbnails + Save each
 - [ ] Review subscribed Workshop asset packs (licences in `docs/asset-licenses.md`)
 - [x] Road guide shapefile from OSM in map coordinates (`terrain/napa/roads_guide/`)
-- [ ] Roads: import the guide into Terrain Builder, Road Tool test on Hwy 29, then highways, then town streets
+- [x] Roads: import the guide into Terrain Builder (Road Tool blocked: "target layer is locked")
+- [ ] Roads plan B: `gis/napa_road_objects.py` lays road parts along the guide (asf1 generated: 3,501 parts, 68 km); confirm import format, test on Hwy 29, then asf2/asf3/city/grav
 - [ ] Ponds: pond objects for reservoirs and inland ponds
 - [ ] Wine Train track
 

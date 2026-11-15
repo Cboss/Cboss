@@ -4,7 +4,7 @@ A custom DayZ terrain of Napa, California, the valley I grew up in. It covers Ca
 
 ## Status
 
-**Phase 3 done.** Full 20.48 km map (1 m USGS lidar, 2022 NAIP photo) with four ground types from the photo + OpenStreetMap, running on the Architect test server. Next: Phase 4, smart water and roads.
+**Phase 4 in progress.** Full 20.48 km map (1 m USGS lidar, 2022 NAIP photo) with four ground types and smart water, running on the Architect test server. Now: roads, laid as road-part objects generated from OpenStreetMap.
 
 ## What's here
 
@@ -25,6 +25,7 @@ A custom DayZ terrain of Napa, California, the valley I grew up in. It covers Ca
 | [`docs/phase4-roads-water.md`](docs/phase4-roads-water.md) | Smart water, object libraries, roads, ponds |
 | [`docs/asset-licenses.md`](docs/asset-licenses.md) | Third-party assets, licences and credits |
 | [`gis/phase3_surfaces.bat`](gis/phase3_surfaces.bat) + [`gis/napa_surface_mask.py`](gis/napa_surface_mask.py) | Downloads OSM, builds the surface mask, updates `P:\Napa` |
+| [`gis/napa_road_objects.py`](gis/napa_road_objects.py) | Lays DayZ road parts along the OSM road guide, writes a Terrain Builder object list |
 | [`terrain/pilot/`](terrain/pilot/) | Test patch files: `layers.cfg`, world `config.cpp`, CE files, test mission, launch script |
 | [`gis/pilot_process.bat`](gis/pilot_process.bat) | GDAL commands that cut the test patch height map and satellite image |
 
