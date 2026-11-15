@@ -12,7 +12,7 @@ end DayZ only sees roads as ordinary objects anyway. So this script does the Roa
   2. walks each road like a turtle, choosing at every step the longest road part (straight
      25 / 12.5 / 6.25 m, or a curve, turned left or right) that stays on the OSM line
   3. writes one line per part in Terrain Builder's object text format:
-         "asf1_12";X;Y;yaw;pitch;roll;scale;relative height;
+         "asf1_12";X;Y;yaw;pitch;roll;scale;relative height;underground flag;
      load it with File > Import > Objects (the Roads template library must be loaded)
 
 Part geometry comes from roadgen/road_parts_<family>.csv (measured from Bohemia's p3d files
@@ -252,7 +252,7 @@ def write_line(f, part, origin, yaw, pivot, yaw_dir, pitch=0.0):
     else:
         px, py = origin
     y = yaw if yaw_dir == "cw" else (360 - yaw) % 360
-    f.write(f'"{part["name"]}";{px:.3f};{py:.3f};{y:.4f};{pitch:.4f};0.0000;1.0000;0.000;\n')
+    f.write(f'"{part["name"]}";{px:.3f};{py:.3f};{y:.4f};{pitch:.4f};0.0000;1.0000;0.000;0;\n')
 
 
 def write_test(parts, at, out):

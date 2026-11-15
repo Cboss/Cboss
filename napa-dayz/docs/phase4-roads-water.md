@@ -66,7 +66,7 @@ The Road Tool refused to add roads ("Area tool - Couldn't use 'add Area' the tar
 - Joins OSM pieces that continue each other, then walks each road taking the longest part whose end stays within 0.6 m and 3° of the OSM line
 - First run, all `asf1` (CA 29, CA 12): 67 roads, 3,501 parts, 68 km; parts sit a median 0.5 m off the OSM line (95% within 1.9 m)
 - Plain Python, no GDAL needed. `--dem full_dem_water.tif` pitches each part to the slope
-- Import format confirmed: Terrain Builder accepted `"name";X;Y;yaw;pitch;roll;scale;relative height;` and exports the same with a 9th field (`0`). Import twice = duplicates, so delete the old pieces before re-importing
+- Import format confirmed: `"name";X;Y;yaw;pitch;roll;scale;relative height;underground flag;` (9 fields, last one `0`). Without the 9th field Terrain Builder still imports but warns "missing the underground flag". Each import makes its own object layer (`TXT_<file>_001`); importing twice = duplicates, so delete the old layer first
 - Bohemia's `roads.tml` (DayZ-Samples) ships 171 of its 190 templates without bounds (`BoundingMin 999`, `AutoCenter 0`), so Terrain Builder cannot draw those objects in 2D. [`terrain/napa/TemplateLibs/roads.tml`](../terrain/napa/TemplateLibs/roads.tml) fills in the bounds of all 90 road parts measured from the p3d files (same method reproduces the 19 templates Bohemia did resolve). Bridges, sidewalks, runways and decals are left as they were
 - Resolved road templates use `AutoCenter 1`: an object's position is its bounding-box centre, which is `--pivot bbox` (rows A/C of the test)
 - Still to confirm before the big import: whether an object's position is its bounding-box centre (`--pivot bbox`, default) or model origin (`--pivot origin`)
