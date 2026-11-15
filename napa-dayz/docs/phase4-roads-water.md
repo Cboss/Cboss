@@ -63,14 +63,19 @@ Load it: download the 5 files into `P:\Napa\source\roads_guide\`, then Terrain B
 The Road Tool refused to add roads ("Area tool - Couldn't use 'add Area' the target layer is locked", although no layer was locked). In the game roads are just objects, so `gis/napa_road_objects.py` lays the parts itself and writes a Terrain Builder object list for **File → Import → Objects**:
 
 - Part geometry: `gis/roadgen/road_parts_asf1.csv`, measured from Bohemia's p3d files with `gis/roadgen/mlod.py` (memory points `LB`/`PB` begin, `LE`/`PE` end). Origin = begin centre, road along +Z, curves turn right; a curve laid backwards turns left. `asf1_12` is really 12.5 m long, `asf1_25` 25 m, `asf1_6` 6.25 m
-- Joins OSM pieces that continue each other, then walks each road taking the longest part whose end stays within 0.6 m and 3° of the OSM line
-- First run, all `asf1` (CA 29, CA 12): 67 roads, 3,501 parts, 68 km; parts sit a median 0.5 m off the OSM line (95% within 1.9 m)
+- Joins OSM lines into whole roads: at each node the ends are paired straightest-first (within 30°), so a highway runs through the points where ramps leave it. All asf1 becomes 4 long roads
+- Chooses parts with a beam search (looks ahead, keeps the 10 best partial roads per 5 m): parts sit a median 0.06 m off the OSM line, 99% within 1.1 m. The first version picked one part at a time and wobbled left-right on gentle curves (the part set has nothing between a 1000 m and a 100 m radius)
+- Each road runs to its very end (may overshoot up to 7 m) so there are no wedge-shaped gaps where one road meets the next
+- On/off ramps (OSM `*_link`) use the 7 m `asf3` parts whatever road they belong to
+- `gis/roadgen/measure_parts.py` writes the part tables for all six families (asf1 12 m, asf2 9 m, asf3 7 m, city 10 m, grav 6 m, mud 5 m)
 - Plain Python, no GDAL needed. `--dem full_dem_water.tif` pitches each part to the slope
 - Import format confirmed: `"name";X;Y;yaw;pitch;roll;scale;relative height;underground flag;` (9 fields, last one `0`). Without the 9th field Terrain Builder still imports but warns "missing the underground flag". Each import makes its own object layer (`TXT_<file>_001`); importing twice = duplicates, so delete the old layer first
 - Bohemia's `roads.tml` (DayZ-Samples) ships 171 of its 190 templates without bounds (`BoundingMin 999`, `AutoCenter 0`), so Terrain Builder cannot draw those objects in 2D. [`terrain/napa/TemplateLibs/roads.tml`](../terrain/napa/TemplateLibs/roads.tml) fills in the bounds of all 90 road parts measured from the p3d files (same method reproduces the 19 templates Bohemia did resolve). Bridges, sidewalks, runways and decals are left as they were
 - Resolved road templates use `AutoCenter 1`: an object's position is its bounding-box centre, which is `--pivot bbox` (rows A/C of the test)
 - Placement test (`terrain/napa/roads/road_test.txt`, 4 rows): row A joins up in Terrain Builder, so position = bounding-box centre (`--pivot bbox`) and yaw is clockwise (`--yaw cw`), the script defaults
-- `terrain/napa/roads/napa_roads_asf1.txt`: all asf1 roads (3,501 parts), flat (pitch 0), ready for File → Import → Objects
+- `terrain/napa/roads/napa_roads_highways.txt`: asf1 highways (2,943 parts, 57.6 km) + ramps (1,104 asf3 parts, 16 km), ready for File → Import → Objects
+- In Buldozer the parts show with their real textures and follow the ground. The first import (one part at a time, 67 separate roads) had visible cracks at the joins between roads
+- At Soscol Junction (CA 29 / 221 / 12) OSM has the rebuilt interchange, the 2022 photo still shows the old one, so roads and photo disagree there
 - Still to check in Buldozer / in game: joins at sub-metre level, the backwards-laid left curves, and pitch on slopes (`--dem`, sign to calibrate)
 - Not yet: junction pieces (`kr_*`), end pieces (`_6konec`); the two carriageways of CA 29 are 12 m parts each and may overlap where they run close
 

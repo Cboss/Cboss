@@ -23,6 +23,7 @@ Needs only plain Python. --dem (GDAL) is optional: with it each part is pitched 
 """
 
 import argparse
+import bisect
 import csv
 import math
 import os
@@ -30,8 +31,18 @@ import struct
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-LATERAL_TOL = 0.6     # metres a part's end may sit off the OSM line
-HEADING_TOL = 3.0     # degrees a part's end may point away from the OSM line
+BEAM = 10             # partial roads kept per stretch
+BUCKET = 5.0          # length of a stretch (metres)
+MAX_LATERAL = 4.0     # a part's end may never sit further than this off the OSM line (metres)
+MAX_HEADING = 25.0    # ... or point further than this away from it (degrees)
+ANGLE_WEIGHT = 0.5    # one degree of heading error costs as much as this many metres off line
+PART_COST = 1.0       # small cost per part: prefer fewer, longer parts
+KINK_COST = 4.0       # extra cost for a part that turns 5 degrees or more
+LINK_FAMILY = "asf3"   # on/off ramps (OSM *_link) use this 7 m family whatever road they belong to
+JOIN_MAX_BEND = 30.0   # two OSM lines are one road if they meet within this many degrees of straight
+END_GAP = 0.75        # a road may stop this far short of its end (metres)
+END_OVER = 7.0        # ... or run this far past it
+END_WEIGHT = 20.0     # how much being off line at the very end costs (keeps junctions tidy)
 SNAP = 1.0            # road ends closer than this are the same node (metres)
 
 
@@ -113,9 +124,9 @@ class Line:
     def project(self, q, s_from, window=80.0):
         """Chainage and distance of the point on the line nearest q, searched near s_from."""
         best = (1e18, s_from)
-        for i in range(1, len(self.p)):
-            if self.s[i] < s_from - 5 or self.s[i - 1] > s_from + window:
-                continue
+        lo = max(1, bisect.bisect_left(self.s, s_from - 5))
+        hi = min(len(self.p), bisect.bisect_right(self.s, s_from + window) + 1)
+        for i in range(lo, hi):
             a, b = self.p[i - 1], self.p[i]
             dx, dy = b[0] - a[0], b[1] - a[1]
             L2 = dx * dx + dy * dy or 1e-9
@@ -164,13 +175,77 @@ def lay(part, pos, hdg):
 
 
 def walk(line, parts, short):
-    """Greedy turtle along one line. Returns placed (part, yaw, origin) tuples."""
+    """Lay parts along one line with a beam search and return (part, yaw, origin) tuples.
+
+    Every partial road is scored by how far and how crooked it runs from the OSM line; the
+    best few per stretch of road are kept and extended. Looking ahead like this avoids the
+    left-right wobble a one-part-at-a-time choice makes on gentle curves, where the part
+    set has nothing between a 1000 m and a 100 m radius.
+    """
+    goal = line.length
+    a, b = line.p[-2], line.p[-1]                            # run-off past the end, so the last
+    k = (END_OVER + 30) / (math.dist(a, b) or 1e-9)          # part may overshoot instead of stopping short
+    line = Line(line.p + [(b[0] + (b[0] - a[0]) * k, b[1] + (b[1] - a[1]) * k)])
+    pos, hdg = line.at(0)
+    start = (0.0, 0.0, pos, hdg, None, None)        # cost, chainage, pos, heading, parent, (part, yaw, origin)
+    buckets = {0: [start]}
+    done = None
+    b = 0
+    last = int((goal + END_OVER) / BUCKET) + 3
+    while b <= last:
+        states = buckets.pop(b, None)
+        b += 1
+        if not states:
+            continue
+        states.sort(key=lambda q: q[0])
+        seen, keep = set(), []
+        for st in states:
+            k = (round(st[2][0] * 2), round(st[2][1] * 2), round(st[3]))
+            if k not in seen:
+                seen.add(k)
+                keep.append(st)
+                if len(keep) >= BEAM:
+                    break
+        for st in keep:
+            cost, s0, pos, hdg = st[0], st[1], st[2], st[3]
+            if s0 >= goal - END_GAP:                           # reached the end
+                lat = line.project(pos, s0)[1]
+                ang = abs(angdiff(hdg, line.at(s0)[1]))
+                cost += END_WEIGHT * (lat * lat + (ang * ANGLE_WEIGHT) ** 2) + (s0 - goal) ** 2
+                if done is None or cost < done[0]:
+                    done = (cost,) + st[1:]
+                continue
+            for part in parts:
+                if s0 + part["length"] > goal + END_OVER:
+                    continue
+                yaw, origin, end, nh = lay(part, pos, hdg)
+                ns, lat = line.project(end, s0)
+                if ns <= s0 + 1 or lat > MAX_LATERAL:
+                    continue
+                ang = abs(angdiff(nh, line.at(ns)[1]))
+                if ang > MAX_HEADING:
+                    continue
+                c = cost + part["length"] * (lat * lat + (ang * ANGLE_WEIGHT) ** 2) + PART_COST
+                if abs(part["turn"]) >= 5:
+                    c += KINK_COST
+                nb = max(b, int(ns / BUCKET))
+                buckets.setdefault(nb, []).append((c, ns, end, nh, st, (part, yaw, origin)))
+    if done is None:                                           # could not reach the end: keep the furthest
+        return walk_greedy(line, parts, short)
+    placed = []
+    st = done
+    while st[5] is not None:
+        placed.append(st[5])
+        st = st[4]
+    return placed[::-1]
+
+
+def walk_greedy(line, parts, short):
+    """Fallback: one part at a time, always the one that ends closest to the line."""
     placed = []
     pos, hdg = line.at(0)
     s = 0.0
-    guard = 0
-    while line.length - s > short["length"] * 0.5 and guard < 100000:
-        guard += 1
+    while line.length - s > short["length"] * 0.5 and len(placed) < 100000:
         best, best_cost = None, 1e18
         for part in parts:
             if s + part["length"] > line.length + 2:
@@ -180,10 +255,7 @@ def walk(line, parts, short):
             if ns <= s:
                 continue
             ang = abs(angdiff(nh, line.at(ns)[1]))
-            if lat <= LATERAL_TOL and ang <= HEADING_TOL:
-                best = (part, yaw, origin, end, nh, ns)
-                break                                      # longest part that fits
-            cost = lat * lat + (ang / 2.0) ** 2 - 0.02 * part["length"]
+            cost = lat * lat + (ang * ANGLE_WEIGHT) ** 2 - 0.02 * part["length"]
             if cost < best_cost:
                 best_cost, best = cost, (part, yaw, origin, end, nh, ns)
         if best is None:
@@ -195,36 +267,58 @@ def walk(line, parts, short):
 
 # ---------------------------------------------------------------- joining OSM pieces
 def join_lines(lines):
-    """Join polylines that continue each other (exactly two ends meet, same family)."""
+    """Join polylines that continue each other.
+
+    At every node the line ends are paired off straightest-first, so a highway carries on
+    through the point where a ramp leaves it, and two ramps that merely touch at a sharp
+    angle stay separate roads.
+    """
     key = lambda q: (round(q[0] / SNAP), round(q[1] / SNAP))
-    ends = {}
+
+    def outward(i, e):
+        """Heading pointing away from the node along line i at its end e (0 start, 1 end)."""
+        pts = lines[i]
+        a, b = (pts[0], pts[1]) if e == 0 else (pts[-1], pts[-2])
+        return heading(b[0] - a[0], b[1] - a[1])
+
+    nodes = {}
     for i, pts in enumerate(lines):
-        ends.setdefault(key(pts[0]), []).append((i, 0))
-        ends.setdefault(key(pts[-1]), []).append((i, 1))
+        nodes.setdefault(key(pts[0]), []).append((i, 0))
+        nodes.setdefault(key(pts[-1]), []).append((i, 1))
+    partner = {}
+    for ends in nodes.values():
+        pairs = []
+        for x in range(len(ends)):
+            for y in range(x + 1, len(ends)):
+                if ends[x][0] == ends[y][0]:
+                    continue
+                bend = abs(angdiff(outward(*ends[x]), outward(*ends[y]) + 180))
+                if bend <= JOIN_MAX_BEND:
+                    pairs.append((bend, ends[x], ends[y]))
+        for bend, p, q in sorted(pairs):
+            if p not in partner and q not in partner:
+                partner[p], partner[q] = q, p
+
     used, chains = set(), []
     for i in range(len(lines)):
         if i in used:
             continue
         used.add(i)
         chain = list(lines[i])
-        for side in (1, 0):                                # grow forward, then backward
-            while True:
-                tip = chain[-1] if side else chain[0]
-                here = ends.get(key(tip), [])
-                cand = [(j, e) for j, e in here if j not in used]
-                if len(here) != 2 or len(cand) != 1:
-                    break
-                j, e = cand[0]
-                used.add(j)
-                if side:                                   # next line must start at tip
-                    nxt = lines[j] if e == 0 else lines[j][::-1]
-                    chain = chain + nxt[1:]
-                else:                                      # previous line must end at tip
-                    prv = lines[j] if e == 1 else lines[j][::-1]
-                    chain = prv[:-1] + chain
+        tip = (i, 1)                                       # grow forward from the end
+        while tip in partner and partner[tip][0] not in used:
+            j, e = partner[tip]
+            used.add(j)
+            chain += (lines[j] if e == 0 else lines[j][::-1])[1:]
+            tip = (j, 1 - e)
+        tip = (i, 0)                                       # then backward from the start
+        while tip in partner and partner[tip][0] not in used:
+            j, e = partner[tip]
+            used.add(j)
+            chain = (lines[j] if e == 1 else lines[j][::-1])[:-1] + chain
+            tip = (j, 1 - e)
         chains.append(chain)
-    degree = {k: len(v) for k, v in ends.items()}
-    return chains, degree, key
+    return chains
 
 
 # ---------------------------------------------------------------- terrain (optional)
@@ -281,6 +375,7 @@ def main():
     ap.add_argument("--guide", default=guide,
                     help="road guide shapefile without .shp")
     ap.add_argument("--family", default="asf1")
+    ap.add_argument("--highway", nargs="+", help="only these OSM highway types, e.g. motorway_link trunk_link")
     ap.add_argument("--ref", help="only roads with this ref, e.g. 29")
     ap.add_argument("--box", nargs=4, type=float, metavar=("X1", "Y1", "X2", "Y2"),
                     help="only roads inside this Terrain Builder box (for a test patch)")
@@ -304,7 +399,9 @@ def main():
 
     lines = []
     for shapes, rec in read_shapefile(args.guide):
-        if rec.get("family") != args.family:
+        hw = rec.get("highway", "")
+        fam = LINK_FAMILY if hw.endswith("_link") else rec.get("family")   # ramps are one lane
+        if fam != args.family or (args.highway and hw not in args.highway):
             continue
         if args.ref and args.ref not in rec.get("ref", "").replace(" ", "").split(";") \
                 and f"CA{args.ref}" not in rec.get("ref", "").replace(" ", "").split(";"):
@@ -316,7 +413,7 @@ def main():
             if len(pts) >= 2:
                 lines.append(pts)
 
-    chains, degree, key = join_lines(lines)
+    chains = join_lines(lines)
     out_path = args.out or os.path.join(os.getcwd(), f"napa_roads_{args.family}.txt")
     total_parts, total_len = 0, 0.0
     counts = {}
