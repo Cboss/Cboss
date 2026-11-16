@@ -114,3 +114,22 @@ Order: Hwy 29 through Napa as a test, then the other `asf1`/`asf2` roads, then t
 ## 4d. Ponds
 
 `water.tml` has pond objects (`dz\water\ponds\pond_50x50.p3d`, `pond_small_*`, `pond_big_*`) for water above sea level: vineyard reservoirs and inland ponds from OSM.
+
+## 4e. Bridges (started)
+
+`napa_road_bed.py` lists every crossing of 15–300 m of sea-level water in `D:\NapaMap\gis\full\napa_bridges.csv` (45 on the real map: 2 highway, 8 main road, 6 two-lane, 5 street, 24 track).
+
+Bridge models on P: (binarized, ODOL v56). `gis/roadgen/odol_bounds.py` reads the bounding box and bounding centre from the file header; results in `gis/roadgen/bridge_models.csv`:
+
+| Template | Model | Size X × Y × Z (m) | Notes |
+|---|---|---|---|
+| `br_concrete1_25` | `structures_bliss\roads\bridges\bridge_concrete1_25` | 10.7 × 9.1 × 24.3 | Livonia, middle piece |
+| `br_concrete1_left` / `_right` | `…bridge_concrete1_left` / `_right` | 15.2 × 9.1 × 31.5 / 14.9 × 9.1 × 31.0 | end pieces |
+| `br_concrete2_25` | `…bridge_concrete2_25` | 17.3 × 9.6 × 40.6 | Livonia, wide |
+| `br_concrete2_left` | `…bridge_concrete2_left` | 21.3 × 8.6 × 23.3 | end piece |
+| `br_stone_25` | `structures\roads\bridges\bridge_stone_25` | 15.0 × 17.8 × 25.0 | Chernarus, tall pillars |
+| `br_wood_25` | `structures\roads\bridges\bridge_wood_25` | 33.4 × 5.2 × 9.1 | long axis is X |
+
+Also on P:, not measured yet: `bridge_concrete2_right`, `bridge_metal_25`, `bridge_wood_50`, Sakhal `bridge_concrete3`, `bridge_wood2`.
+
+The header does not say where the deck surface is or which way the road runs through each model, so: `terrain/napa/TemplateLibs/napa_bridges.tml` (library `NapaBridges`, template `Hash` = sdbm hash of the template name, as in Bohemia's libraries) + `terrain/napa/roads/bridge_test.txt` place each model at yaw 0, relative height 0, with a 25 m road part south of it, on the Carneros test field (X 205260–205680, Y 4470) for a look in Buldozer.
