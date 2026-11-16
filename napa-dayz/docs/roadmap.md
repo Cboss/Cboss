@@ -37,8 +37,10 @@
 - [x] Road guide shapefile from OSM in map coordinates (`terrain/napa/roads_guide/`)
 - [x] Roads: import the guide into Terrain Builder (Road Tool blocked: "target layer is locked")
 - [x] Roads plan B: `gis/napa_road_objects.py` lays road parts along the guide; import format, pivot and yaw confirmed; highways show in Buldozer with real textures
-- [ ] Road bed: `gis/phase4_roads.bat` grades the ground under all roads (`napa_road_bed.py`) and lays highways + ramps on it; check in Buldozer that the holes are gone
-- [ ] Main roads (asf2), two-lane roads (asf3), streets (city), tracks (grav)
+- [x] Road bed: `gis/phase4_roads.bat` ran on the real height map: 13,034 roads graded, average change 0.26-0.61 m by class, biggest fills 8-9.5 m at river bridges (causeways), cuts capped at 4.5 m
+- [ ] Refresh `napa_dem.asc` in Terrain Builder, Rebuild terrain, re-import highways + ramps, check in Buldozer that the holes are gone
+- [ ] Main roads (asf2) and two-lane roads (asf3): `gis/phase4_roads_main.bat` (ready; test terrain: 6,668 + 11,970 parts, 116 + 200 km)
+- [ ] Streets (city), tracks (grav)
 - [ ] Junction and end pieces; bridge objects in place of causeways
 - [ ] Ponds: pond objects for reservoirs and inland ponds
 - [ ] Wine Train track
