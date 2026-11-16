@@ -38,8 +38,9 @@
 - [x] Roads: import the guide into Terrain Builder (Road Tool blocked: "target layer is locked")
 - [x] Roads plan B: `gis/napa_road_objects.py` lays road parts along the guide; import format, pivot and yaw confirmed; highways show in Buldozer with real textures
 - [x] Road bed: `gis/phase4_roads.bat` ran on the real height map: 13,034 roads graded, average change 0.26-0.61 m by class, biggest fills 8-9.5 m at river bridges (causeways), cuts capped at 4.5 m
-- [ ] Refresh `napa_dem.asc` in Terrain Builder, Rebuild terrain, re-import highways + ramps, check in Buldozer that the holes are gone
-- [ ] Main roads (asf2) and two-lane roads (asf3): `gis/phase4_roads_main.bat` (ready; test terrain: 6,668 + 11,970 parts, 116 + 200 km)
+- [x] Graded height map loaded with File → Import → Terrains + Rebuild terrain (check points matched); rivers open, 45 bridge gaps listed in `napa_bridges.csv`
+- [x] Highways + ramps (`phase4_roads.bat`) and main + two-lane roads (`phase4_roads_main.bat`) imported and showing in Buldozer; 12.5 m straights left out
+- [ ] Known leftover: hairline slivers between some parts (about 1 m, ground just showing)
 - [ ] Streets (city), tracks (grav)
 - [ ] Bridges: place bridge objects across the gaps listed in `napa_bridges.csv` (Napa River, sloughs)
 - [ ] Junction and end pieces
