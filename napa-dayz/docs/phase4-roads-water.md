@@ -88,6 +88,7 @@ The Road Tool refused to add roads ("Area tool - Couldn't use 'add Area' the tar
 - Chooses parts with a beam search (looks ahead, keeps the 10 best partial roads per 5 m): parts sit a median 0.06 m off the OSM line, 99% within 1.1 m
 - Each road runs to its very end (may overshoot up to 7 m); on/off ramps (OSM `*_link`) use the 7 m `asf3` parts
 - With `--dem full_dem_roads.tif` the road is cut wherever the ground is sea-level water (a bridge gap: parts stop 1 m back from the last dry point and never overshoot), and a straight is only laid where the ground rises less than 5 cm above it between its ends; otherwise a shorter straight or a curve part is used. On the graded test terrain: 1 of 1,699 highway straights left above 5 cm (0.06 m)
+- The 12.5 m straights (`*_12`) are left out (`SKIP_SUFFIXES`): they do not show in Buldozer. On the graded bed at the Napa River bridge approach (14062 / 4520) both carriageways had a clean 12.5 m gap exactly where each had an `asf1_12`. So there were two causes of holes: this part, and ground poking through long straights
 - Not yet: junction pieces (`kr_*`), end pieces (`_6konec`)
 - At Soscol Junction (CA 29 / 221 / 12) OSM has the rebuilt interchange, the 2022 photo still shows the old one, so roads and photo disagree there
 

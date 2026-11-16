@@ -41,7 +41,8 @@ MAX_HEADING = 25.0    # ... or point further than this away from it (degrees)
 ANGLE_WEIGHT = 0.5    # one degree of heading error costs as much as this many metres off line
 PART_COST = 1.0       # small cost per part: prefer fewer, longer parts
 KINK_COST = 4.0       # extra cost for a part that turns 5 degrees or more
-SKIP_SUFFIXES = ()        # part name endings to leave out, e.g. ("_12",)
+SKIP_SUFFIXES = ("_12",)  # the 12.5 m straights do not show in Buldozer (a clean 12.5 m gap on both
+                          # carriageways, on graded ground): two 6.25 m parts are used instead
 LINK_FAMILY = "asf3"   # on/off ramps (OSM *_link) use this 7 m family whatever road they belong to
 JOIN_MAX_BEND = 30.0   # two OSM lines are one road if they meet within this many degrees of straight
 END_GAP = 0.75        # a road may stop this far short of its end (metres)
