@@ -47,6 +47,9 @@ JOIN_MAX_BEND = 30.0   # two OSM lines are one road if they meet within this man
 END_GAP = 0.75        # a road may stop this far short of its end (metres)
 END_OVER = 7.0        # ... or run this far past it
 END_WEIGHT = 20.0     # how much being off line at the very end costs (keeps junctions tidy)
+WATER_MAX = 0.2       # with --dem: ground below this is sea-level water: no road parts there (a bridge)
+WATER_STEP = 2.5      # ... looked for every this many metres along the road
+WATER_MARGIN = 1.0    # ... and the road stops this far back from the last dry point
 SAG_TOL = 0.05        # with --dem: ground may rise this far above a straight part between its ends (metres)
 SNAP = 1.0            # road ends closer than this are the same node (metres)
 
@@ -126,6 +129,13 @@ class Line:
         a, b = self.p[-2], self.p[-1]
         return b, heading(b[0] - a[0], b[1] - a[1])
 
+    def cut(self, s0, s1):
+        """The part of the line between chainages s0 and s1, as a list of points."""
+        pts = [self.at(s0)[0]]
+        pts += [q for q, s in zip(self.p, self.s) if s0 < s < s1]
+        pts.append(self.at(s1)[0])
+        return pts
+
     def project(self, q, s_from, window=80.0):
         """Chainage and distance of the point on the line nearest q, searched near s_from."""
         best = (1e18, s_from)
@@ -181,7 +191,7 @@ def lay(part, pos, hdg):
     return yaw, origin, origin, (hdg - part["turn"]) % 360
 
 
-def walk(line, parts, short, terrain=None):
+def walk(line, parts, short, terrain=None, end_over=None, end_gap=None):
     """Lay parts along one line with a beam search and return (part, yaw, origin) tuples.
 
     Every partial road is scored by how far and how crooked it runs from the OSM line; the
@@ -191,6 +201,8 @@ def walk(line, parts, short, terrain=None):
     """
     goal = line.length
     a, b = line.p[-2], line.p[-1]                            # run-off past the end, so the last
+    end_over = END_OVER if end_over is None else end_over      # at a bridge: 0, never over the water
+    end_gap = END_GAP if end_gap is None else end_gap
     k = (END_OVER + 30) / (math.dist(a, b) or 1e-9)          # part may overshoot instead of stopping short
     line = Line(line.p + [(b[0] + (b[0] - a[0]) * k, b[1] + (b[1] - a[1]) * k)])
     pos, hdg = line.at(0)
@@ -198,7 +210,7 @@ def walk(line, parts, short, terrain=None):
     buckets = {0: [start]}
     done = None
     b = 0
-    last = int((goal + END_OVER) / BUCKET) + 3
+    last = int((goal + end_over) / BUCKET) + 3
     while b <= last:
         states = buckets.pop(b, None)
         b += 1
@@ -215,7 +227,7 @@ def walk(line, parts, short, terrain=None):
                     break
         for st in keep:
             cost, s0, pos, hdg = st[0], st[1], st[2], st[3]
-            if s0 >= goal - END_GAP:                           # reached the end
+            if s0 >= goal - end_gap:                           # reached the end
                 lat = line.project(pos, s0)[1]
                 ang = abs(angdiff(hdg, line.at(s0)[1]))
                 cost += END_WEIGHT * (lat * lat + (ang * ANGLE_WEIGHT) ** 2) + (s0 - goal) ** 2
@@ -223,7 +235,7 @@ def walk(line, parts, short, terrain=None):
                     done = (cost,) + st[1:]
                 continue
             for part in parts:
-                if s0 + part["length"] > goal + END_OVER:
+                if s0 + part["length"] > goal + end_over:
                     continue
                 yaw, origin, end, nh = lay(part, pos, hdg)
                 ns, lat = line.project(end, s0)
@@ -383,6 +395,32 @@ def pokes_through(terrain, part, yaw, origin):
     return False
 
 
+def dry_stretches(line, terrain):
+    """Split a road at sea-level water (bridges: the road bed script leaves that water open).
+    Yields (start, end, starts at water, ends at water) chainages of each dry stretch."""
+    if terrain is None:
+        yield 0.0, line.length, False, False
+        return
+    n = max(1, int(line.length / WATER_STEP))
+    wet = [terrain.h(*line.at(i * line.length / n)[0]) < WATER_MAX for i in range(n + 1)]
+    i, start, from_water = 0, 0.0, False
+    while i <= n:
+        if wet[i]:
+            j = i
+            while j <= n and wet[j]:
+                j += 1
+            end = (i - 1) * line.length / n - WATER_MARGIN       # last dry point, a little back
+            if i > 0 and end > start:
+                yield start, end, from_water, True
+            if j > n:
+                return
+            start, from_water = j * line.length / n + WATER_MARGIN, True
+            i = j
+        else:
+            i += 1
+    yield start, line.length, from_water, False
+
+
 def write_line(f, part, origin, yaw, pivot, yaw_dir, pitch=0.0):
     if pivot == "bbox":
         px, py = local_to_world(origin[0], origin[1], yaw, *part["bbox"])
@@ -460,18 +498,24 @@ def main():
     out_path = args.out or os.path.join(os.getcwd(), f"napa_roads_{args.family}.txt")
     total_parts, total_len = 0, 0.0
     counts = {}
+    bridges = 0
     with open(out_path, "w", newline="\r\n") as f:
         for pts in chains:
-            line = Line(pts)
-            if line.length < short["length"]:
-                continue
-            for part, yaw, origin in walk(line, parts, short, terrain):
-                write_line(f, part, origin, yaw, args.pivot, args.yaw)
-                total_parts += 1
-                total_len += part["length"]
-                counts[part["name"]] = counts.get(part["name"], 0) + 1
+            whole = Line(pts)
+            for s0, s1, wet0, wet1 in dry_stretches(whole, terrain):
+                if s1 - s0 < short["length"]:
+                    continue
+                bridges += wet1
+                line = whole if (s0 == 0.0 and s1 == whole.length) else Line(whole.cut(s0, s1))
+                over, gap = (0.0, short["length"] + 0.25) if wet1 else (None, None)
+                for part, yaw, origin in walk(line, parts, short, terrain, over, gap):
+                    write_line(f, part, origin, yaw, args.pivot, args.yaw)
+                    total_parts += 1
+                    total_len += part["length"]
+                    counts[part["name"]] = counts.get(part["name"], 0) + 1
     print(f"Wrote {out_path}")
-    print(f"  {len(chains)} roads, {total_parts} parts, {total_len / 1000:.1f} km")
+    print(f"  {len(chains)} roads, {total_parts} parts, {total_len / 1000:.1f} km"
+          + (f", {bridges} gaps left at water for bridges" if terrain else ""))
     for n, c in sorted(counts.items(), key=lambda kv: -kv[1])[:12]:
         print(f"    {c:6d}  {n}")
 

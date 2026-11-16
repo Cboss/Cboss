@@ -41,7 +41,8 @@
 - [ ] Refresh `napa_dem.asc` in Terrain Builder, Rebuild terrain, re-import highways + ramps, check in Buldozer that the holes are gone
 - [ ] Main roads (asf2) and two-lane roads (asf3): `gis/phase4_roads_main.bat` (ready; test terrain: 6,668 + 11,970 parts, 116 + 200 km)
 - [ ] Streets (city), tracks (grav)
-- [ ] Junction and end pieces; bridge objects in place of causeways
+- [ ] Bridges: place bridge objects across the gaps listed in `napa_bridges.csv` (Napa River, sloughs)
+- [ ] Junction and end pieces
 - [ ] Ponds: pond objects for reservoirs and inland ponds
 - [ ] Wine Train track
 

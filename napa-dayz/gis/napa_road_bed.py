@@ -10,8 +10,11 @@ overpass in between, the ground pokes through the asphalt and the road shows a h
 roads sit on a graded bed. This script grades one for every road in the guide:
 
   1. walks each road and reads the ground height along its centre line
-  2. carries the road over water on a low causeway and over narrow dips (creeks, the gap
-     under a removed bridge deck)
+  2. leaves rivers and sloughs open: where a road crosses 15-300 m of sea-level water the
+     ground is not touched and the road stops at each bank (a bridge, listed in
+     napa_bridges.csv for later). Narrower water gets a culvert fill, wider water is a
+     levee or marsh track and is raised. Narrow dry dips (creeks, the gap under a removed
+     bridge deck) are filled
   3. smooths that height profile (a road has no bumps along its length)
   4. flattens the ground across the road to the profile height (a road is level side to
      side), then blends back into the natural ground over the next 10 m
@@ -24,6 +27,7 @@ Reads   D:\\NapaMap\\gis\\full\\full_dem_water.tif        (in-game heights after
         D:\\NapaMap\\gis\\full\\roads_guide\\napa_roads_guide.shp
 Writes  D:\\NapaMap\\gis\\full\\full_dem_roads.tif
         D:\\NapaMap\\gis\\full\\napa_dem_roads.asc + .prj  (import into Terrain Builder)
+        D:\\NapaMap\\gis\\full\\napa_bridges.csv           (where bridges are needed)
 
 The height grid is treated the way the game does: value [row, col] is the ground height at
 the grid point x = col * 5 m, z = (rows - 1 - row) * 5 m.
@@ -48,12 +52,14 @@ NODE_MARGIN = 5.1     # flat bed reaches this far past the road edge: half a gri
                       # (3.6 m) + how far a part may sit off the centre line (1.5 m)
 BLEND = 10.0          # ... then blends into the natural ground over this distance
 WATER_MAX = 0.2       # ground below this is sea-level water (smart water: water <= -0.5, land >= 0.4)
-DECK_MIN = 1.5        # a causeway over water is at least this high
+DECK_MIN = 1.5        # ground raised out of the water (culvert, levee) is at least this high
+BRIDGE_MIN = 15.0     # water narrower than this along the road is crossed on fill (a culvert)
+BRIDGE_MAX = 300.0    # water wider than this is a levee or marsh track, also fill; in between
+                      # it is a bridge: the water stays open and the road stops at each bank
 ROAD_MIN = 0.6        # no road lower than this
 SIDE_EXTRA = 1.5      # a grid point beside the centre line may move this much more than the centre-line limit
 PIN_GRADE = 0.15      # steepest ramp where a road rises or drops to meet a bigger road
 
-# name, guide family, ramps?, road width, widest dip bridged, smoothing length (all metres)
 # name, guide family, ramps?, road width, widest dip bridged, smoothing length (all metres),
 # and how far the bed may be raised above / dug below the natural ground on the centre line
 LEVELS = [
@@ -123,38 +129,48 @@ def smooth(a, half):
     return a
 
 
-def causeways(p):
-    """Carry the profile over sea-level water: a straight deck from bank to bank."""
+def crossings(p):
+    """Sea-level water along a road profile.
+
+    Returns (dry, fill, bridges): `dry` is the profile carried from bank to bank over every
+    stretch of water (used for smoothing); `fill` marks the samples where the ground may be
+    raised out of the water (culverts, levees, a road that ends in the water); `bridges` lists
+    the (first, last+1) wet samples of each bridge, where the ground must be left alone."""
+    n = len(p)
+    fill = np.zeros(n, dtype=bool)
     wet = p < WATER_MAX
     if not wet.any():
-        return p, 0.0
+        return p, fill, []
     p = p.copy()
-    n = len(p)
+    bridges = []
     k = max(1, int(15.0 / DS))                     # reach 15 m onto each bank
     edges = np.flatnonzero(np.diff(np.concatenate(([0], wet.astype(np.int8), [0]))))
-    length = 0.0
     for a, b in zip(edges[0::2], edges[1::2]):     # wet run is samples a .. b-1
         if a == 0 or b == n:                       # the road ends in the water: just keep it dry
             p[a:b] = np.maximum(p[a:b], ROAD_MIN)
+            fill[a:b] = True
             continue
         i0, i1 = max(0, a - k), min(n - 1, b + k - 1)
         left = max(float(p[i0:a].max()), DECK_MIN)
         right = max(float(p[b:i1 + 1].max()), DECK_MIN)
         deck = np.linspace(left, right, i1 - i0 + 1)
         p[i0:i1 + 1] = np.maximum(p[i0:i1 + 1], deck)
-        length += (b - a) * DS
-    return p, length
+        if BRIDGE_MIN <= (b - a) * DS <= BRIDGE_MAX:
+            bridges.append((int(a), int(b)))
+        else:
+            fill[i0:i1 + 1] = True
+    return p, fill, bridges
 
 
 def profile(H, x, z, level, pinned, pin_h):
     """Smoothed road-bed height at each sample of one road. `pinned` marks the samples that
     lie on or right beside a bigger road's bed, `pin_h` is that bed's height there."""
     raw = sample(H, x, z)
-    p, bridged = causeways(raw)
+    p, fill, bridges = crossings(raw)
+    base = np.maximum(p, ROAD_MIN)                                      # natural ground, dry
     half_c = int(round(level["close"] / DS / 2))
     p = sliding(sliding(p, half_c, np.maximum), half_c, np.minimum)     # fill narrow dips
     p = smooth(p, int(round(level["smooth"] / DS / 2)))
-    base = np.maximum(causeways(raw)[0], ROAD_MIN)                     # natural ground, dry
     p = smooth(np.clip(p, base - level["cut"], base + level["fill"]), 3)
     p = np.maximum(p, ROAD_MIN)
 
@@ -173,7 +189,7 @@ def profile(H, x, z, level, pinned, pin_h):
             p = np.where(free, soft, pin_h)
         else:
             p = pin_h.copy()
-    return p, bridged
+    return p, fill, bridges
 
 
 def pins(H, lock, xs, zs, radius):
@@ -197,9 +213,25 @@ def pins(H, lock, xs, zs, radius):
 
 
 # ---------------------------------------------------------------- stamping a level into the grid
-def stamp(H, lock, xs, zs, ps, core, total):
+def near(n, xs, zs, radius):
+    """Mask of the grid points within `radius` of any of the samples."""
+    out = np.zeros(n * n, dtype=bool)
+    i0 = np.rint(xs / CELL).astype(np.int64)
+    j0 = np.rint(zs / CELL).astype(np.int64)
+    rad = int(math.ceil(radius / CELL))
+    for di in range(-rad, rad + 1):
+        for dj in range(-rad, rad + 1):
+            ii, jj = i0 + di, j0 + dj
+            ok = (ii >= 0) & (ii < n) & (jj >= 0) & (jj < n) & \
+                 (np.hypot(ii * CELL - xs, jj * CELL - zs) <= radius)
+            out[(n - 1 - jj[ok]) * n + ii[ok]] = True
+    return out.reshape(n, n)
+
+
+def stamp(H, lock, frozen, xs, zs, ps, core, total):
     """Flatten the grid to the profile heights within `core` of the samples, blending out to
-    `total`. Locked points are left alone. Returns (mask of points changed, mask of bed points)."""
+    `total`. Locked points (a bigger road's bed) and frozen points (open water) are left alone.
+    Returns (mask of points changed, mask of bed points)."""
     n = H.shape[0]
     i0 = np.rint(xs / CELL).astype(np.int64)
     j0 = np.rint(zs / CELL).astype(np.int64)
@@ -226,13 +258,13 @@ def stamp(H, lock, xs, zs, ps, core, total):
     target = (hsum / np.maximum(wsum, 1e-12)).astype(np.float32)
     best = best.reshape(n, n)
     target = target.reshape(n, n)
-    touch = np.isfinite(best) & ~lock
+    touch = np.isfinite(best) & ~lock & ~frozen
     w = np.clip((total - best[touch]) / max(total - core, 1e-6), 0.0, 1.0)
     w = w * w * (3 - 2 * w)                        # smooth step: 1 on the bed, 0 at the outer edge
     w[best[touch] <= core] = 1.0
     old = H[touch]
     H[touch] = (w * target[touch] + (1 - w) * old).astype(H.dtype)
-    return touch, (best <= core)
+    return touch, (best <= core) & ~frozen
 
 
 def level_roads(recs, level):
@@ -254,7 +286,7 @@ def build(H, recs, levels=LEVELS, quiet=False):
     n = H.shape[0]
     lock = np.zeros((n, n), dtype=bool)
     before = H.copy()
-    stats = []
+    stats, spans = [], []
     for level in levels:
         chains = level_roads(recs, level)
         if not chains:
@@ -264,32 +296,44 @@ def build(H, recs, levels=LEVELS, quiet=False):
         xs = np.concatenate([x for x, _ in samples])
         zs = np.concatenate([z for _, z in samples])
         pinned, pin_h = pins(H, lock, xs, zs, core) if lock.any() else (np.zeros(len(xs), bool), np.zeros(len(xs)))
-        ps, km, bridged, k = [], 0.0, 0.0, 0
+        ps, fills, keep, km, k = [], [], [], 0.0, 0
         for x, z in samples:
-            p, b = profile(H, x, z, level, pinned[k:k + len(x)], pin_h[k:k + len(x)])
-            ps.append(p)
+            p, fill, bridges = profile(H, x, z, level, pinned[k:k + len(x)], pin_h[k:k + len(x)])
+            on_bridge = np.zeros(len(x), dtype=bool)
+            for a, b in bridges:
+                on_bridge[a:b] = True
+                spans.append(dict(level=level["name"], x1=float(x[a - 1]), z1=float(z[a - 1]),
+                                  x2=float(x[b]), z2=float(z[b]), length=(b - a + 1) * DS,
+                                  h1=float(p[a - 1]), h2=float(p[b])))
+            ps.append(p), fills.append(fill), keep.append(~on_bridge)
             k += len(x)
             km += (len(x) - 1) * DS / 1000
-            bridged += b
         ps = np.concatenate(ps).astype(np.float32)
-        core = level["width"] / 2 + NODE_MARGIN
-        touch, new_lock = stamp(H, lock, xs, zs, ps, core, core + BLEND)
+        fills, keep = np.concatenate(fills), np.concatenate(keep)
+        total = core + BLEND
+        # Open water keeps its shape: only where a road is carried on fill may it be raised.
+        frozen = (H < WATER_MAX)
+        if fills.any():
+            frozen &= ~near(n, xs[fills], zs[fills], total)
+        touch, new_lock = stamp(H, lock, frozen, xs[keep], zs[keep], ps[keep], core, total)
         lo = before[touch] - (level["cut"] + SIDE_EXTRA)       # never move a grid point further than
         hi = before[touch] + (level["fill"] + SIDE_EXTRA)      # this, even on a cliff or a wrong OSM line
         H[touch] = np.clip(H[touch], lo, hi)
         changed = int(touch.sum())
+        mine = [sp for sp in spans if sp["level"] == level["name"]]
         bed = new_lock & ~lock
         d = (H - before)[bed]
         lock |= new_lock
-        st = dict(name=level["name"], roads=len(chains), km=km, points=changed, bridged=bridged,
+        st = dict(name=level["name"], roads=len(chains), km=km, points=changed,
+                  bridges=len(mine), bridged=sum(sp["length"] for sp in mine),
                   mean=float(np.abs(d).mean()) if d.size else 0.0,
                   fill=float(d.max()) if d.size else 0.0, cut=float(d.min()) if d.size else 0.0)
         stats.append(st)
         if not quiet:
             log(f"  {st['name']:15s} {st['roads']:6d} roads {st['km']:7.1f} km   bed points {int(bed.sum()):8d}   "
                 f"average change {st['mean']:.2f} m, most fill +{st['fill']:.1f} m, most cut {st['cut']:.1f} m, "
-                f"over water {st['bridged']:.0f} m")
-    return stats, lock
+                f"{st['bridges']} bridges ({st['bridged']:.0f} m)")
+    return stats, lock, spans
 
 
 def main():
@@ -310,10 +354,12 @@ def main():
     log(f"{len(recs)} guide lines")
 
     before = H.copy()
-    stats, lock = build(H, recs)
+    stats, lock, spans = build(H, recs)
     diff = H - before
     log(f"Road bed covers {lock.sum() * CELL * CELL / 1e6:.1f} km2; ground changed by more than 10 cm on "
         f"{(np.abs(diff) > 0.1).sum() * CELL * CELL / 1e6:.1f} km2")
+    log(f"Water still open: {((before < WATER_MAX) & (H < WATER_MAX)).sum() * CELL * CELL / 1e6:.2f} km2 of "
+        f"{(before < WATER_MAX).sum() * CELL * CELL / 1e6:.2f} km2 (the rest is culvert and levee fill)")
     for sign, name in ((1, "fill"), (-1, "cut")):  # the biggest changes, to look at in Buldozer
         order = np.argsort((sign * diff).ravel())[::-1][:2000]
         seen = []
@@ -326,6 +372,24 @@ def main():
                 break
         log(f"Biggest {name}: " + ", ".join(f"{v:+.1f} m at {x:.0f} / {z:.0f}" for x, z, v in seen))
 
+    # Check points for Terrain Builder: flat bed spots (same height 10 m around) that moved a lot.
+    flat = np.ones_like(lock)
+    for dr in range(-2, 3):
+        for dc in range(-2, 3):
+            flat &= np.abs(np.roll(np.roll(H, dr, 0), dc, 1) - H) < 0.15
+    score = np.where(lock & flat, np.abs(diff), 0.0)
+    score[:20], score[-20:], score[:, :20], score[:, -20:] = 0, 0, 0, 0
+    checks = []
+    for k in np.argsort(score.ravel())[::-1][:5000]:
+        r, c = divmod(int(k), n)
+        x, z = c * CELL, (n - 1 - r) * CELL
+        if score[r, c] > 1.0 and all(math.hypot(x - a, z - b) > 1000 for a, b in checks):
+            checks.append((x, z))
+            log(f"Check in Terrain Builder: hover X {ORIGIN_E + x:.0f}, Y {z:.0f} -> Elevation should read "
+                f"{H[r, c]:.1f} (was {before[r, c]:.1f})")
+        if len(checks) == 3:
+            break
+
     os.makedirs(args.outdir, exist_ok=True)
     tif = os.path.join(args.outdir, "full_dem_roads.tif")
     out = gdal.GetDriverByName("GTiff").Create(tif, n, n, 1, gdal.GDT_Float32, ["COMPRESS=DEFLATE"])
@@ -337,8 +401,15 @@ def main():
     size = n * CELL
     gdal.Translate(asc, tif, format="AAIGrid", outputSRS="EPSG:32631",
                    outputBounds=[ORIGIN_E, size, ORIGIN_E + size, 0])
+    csv_path = os.path.join(args.outdir, "napa_bridges.csv")
+    with open(csv_path, "w") as f:
+        f.write("level,x1,z1,x2,z2,length_m,bank1_m,bank2_m\n")
+        for sp in spans:
+            f.write(f"{sp['level']},{sp['x1']:.1f},{sp['z1']:.1f},{sp['x2']:.1f},{sp['z2']:.1f},"
+                    f"{sp['length']:.1f},{sp['h1']:.2f},{sp['h2']:.2f}\n")
     log(f"Wrote {tif}")
     log(f"Wrote {asc} (+ .prj)")
+    log(f"Wrote {csv_path}: {len(spans)} bridges to build later")
 
 
 if __name__ == "__main__":
