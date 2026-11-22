@@ -1,0 +1,234 @@
+<?xml version="1.0" ?>
+<Library name="NapaBridges" shape="rectangle" default_fill="-8355712" default_outline="-1" tex="0">
+    <Template>
+        <Name>br_concrete1_25</Name>
+        <File>dz\structures_bliss\roads\bridges\bridge_concrete1_25.p3d</File>
+        <Date>11/16/26 12:00:00</Date>
+        <Archive></Archive>
+        <Fill>-8355712</Fill>
+        <Outline>-1</Outline>
+        <Scale>1.000000</Scale>
+        <Hash>1075828965</Hash>
+        <ScaleRandMin>0.000000</ScaleRandMin>
+        <ScaleRandMax>0.000000</ScaleRandMax>
+        <YawRandMin>0.000000</YawRandMin>
+        <YawRandMax>0.000000</YawRandMax>
+        <PitchRandMin>0.000000</PitchRandMin>
+        <PitchRandMax>0.000000</PitchRandMax>
+        <RollRandMin>0.000000</RollRandMin>
+        <RollRandMax>0.000000</RollRandMax>
+        <TexLLU>0.000000</TexLLU>
+        <TexLLV>0.000000</TexLLV>
+        <TexURU>1.000000</TexURU>
+        <TexURV>1.000000</TexURV>
+        <BBRadius>12.156551</BBRadius>
+        <BBHScale>1.000000</BBHScale>
+        <AutoCenter>1</AutoCenter>
+        <XShift>0.000000</XShift>
+        <YShift>0.000000</YShift>
+        <ZShift>0.000000</ZShift>
+        <Height>9.135847</Height>
+        <BoundingMin X="-5.368553" Y="-1.600004" Z="-12.161625" />
+        <BoundingMax X="5.378553" Y="7.535842" Z="12.151477" />
+        <BoundingCenter X="0.005000" Y="2.967919" Z="-0.005074" />
+        <Placement></Placement>
+    </Template>
+    <Template>
+        <Name>br_concrete1_left</Name>
+        <File>dz\structures_bliss\roads\bridges\bridge_concrete1_left.p3d</File>
+        <Date>11/16/26 12:00:00</Date>
+        <Archive></Archive>
+        <Fill>-8355712</Fill>
+        <Outline>-1</Outline>
+        <Scale>1.000000</Scale>
+        <Hash>-1861483671</Hash>
+        <ScaleRandMin>0.000000</ScaleRandMin>
+        <ScaleRandMax>0.000000</ScaleRandMax>
+        <YawRandMin>0.000000</YawRandMin>
+        <YawRandMax>0.000000</YawRandMax>
+        <PitchRandMin>0.000000</PitchRandMin>
+        <PitchRandMax>0.000000</PitchRandMax>
+        <RollRandMin>0.000000</RollRandMin>
+        <RollRandMax>0.000000</RollRandMax>
+        <TexLLU>0.000000</TexLLU>
+        <TexLLV>0.000000</TexLLV>
+        <TexURU>1.000000</TexURU>
+        <TexURV>1.000000</TexURV>
+        <BBRadius>15.735571</BBRadius>
+        <BBHScale>1.000000</BBHScale>
+        <AutoCenter>1</AutoCenter>
+        <XShift>0.000000</XShift>
+        <YShift>0.000000</YShift>
+        <ZShift>0.000000</ZShift>
+        <Height>9.135848</Height>
+        <BoundingMin X="-7.600625" Y="-1.600008" Z="-17.889805" />
+        <BoundingMax X="7.644467" Y="7.535840" Z="13.581337" />
+        <BoundingCenter X="0.021921" Y="2.967916" Z="-2.154234" />
+        <Placement></Placement>
+    </Template>
+    <Template>
+        <Name>br_concrete1_right</Name>
+        <File>dz\structures_bliss\roads\bridges\bridge_concrete1_right.p3d</File>
+        <Date>11/16/26 12:00:00</Date>
+        <Archive></Archive>
+        <Fill>-8355712</Fill>
+        <Outline>-1</Outline>
+        <Scale>1.000000</Scale>
+        <Hash>125133018</Hash>
+        <ScaleRandMin>0.000000</ScaleRandMin>
+        <ScaleRandMax>0.000000</ScaleRandMax>
+        <YawRandMin>0.000000</YawRandMin>
+        <YawRandMax>0.000000</YawRandMax>
+        <PitchRandMin>0.000000</PitchRandMin>
+        <PitchRandMax>0.000000</PitchRandMax>
+        <RollRandMin>0.000000</RollRandMin>
+        <RollRandMax>0.000000</RollRandMax>
+        <TexLLU>0.000000</TexLLU>
+        <TexLLV>0.000000</TexLLV>
+        <TexURU>1.000000</TexURU>
+        <TexURV>1.000000</TexURV>
+        <BBRadius>15.496336</BBRadius>
+        <BBHScale>1.000000</BBHScale>
+        <AutoCenter>1</AutoCenter>
+        <XShift>0.000000</XShift>
+        <YShift>0.000000</YShift>
+        <ZShift>0.000000</ZShift>
+        <Height>9.135847</Height>
+        <BoundingMin X="-7.449209" Y="-1.600006" Z="-13.126732" />
+        <BoundingMax X="7.412055" Y="7.535841" Z="17.865940" />
+        <BoundingCenter X="-0.018577" Y="2.967917" Z="2.369604" />
+        <Placement></Placement>
+    </Template>
+    <Template>
+        <Name>br_concrete2_25</Name>
+        <File>dz\structures_bliss\roads\bridges\bridge_concrete2_25.p3d</File>
+        <Date>11/16/26 12:00:00</Date>
+        <Archive></Archive>
+        <Fill>-8355712</Fill>
+        <Outline>-1</Outline>
+        <Scale>1.000000</Scale>
+        <Hash>1856416164</Hash>
+        <ScaleRandMin>0.000000</ScaleRandMin>
+        <ScaleRandMax>0.000000</ScaleRandMax>
+        <YawRandMin>0.000000</YawRandMin>
+        <YawRandMax>0.000000</YawRandMax>
+        <PitchRandMin>0.000000</PitchRandMin>
+        <PitchRandMax>0.000000</PitchRandMax>
+        <RollRandMin>0.000000</RollRandMin>
+        <RollRandMax>0.000000</RollRandMax>
+        <TexLLU>0.000000</TexLLU>
+        <TexLLV>0.000000</TexLLV>
+        <TexURU>1.000000</TexURU>
+        <TexURV>1.000000</TexURV>
+        <BBRadius>20.317976</BBRadius>
+        <BBHScale>1.000000</BBHScale>
+        <AutoCenter>1</AutoCenter>
+        <XShift>0.000000</XShift>
+        <YShift>0.000000</YShift>
+        <ZShift>0.000000</ZShift>
+        <Height>9.609595</Height>
+        <BoundingMin X="-8.605045" Y="-2.623867" Z="-20.219717" />
+        <BoundingMax X="8.675095" Y="6.985728" Z="20.416235" />
+        <BoundingCenter X="0.035025" Y="2.180930" Z="0.098259" />
+        <Placement></Placement>
+    </Template>
+    <Template>
+        <Name>br_concrete2_left</Name>
+        <File>dz\structures_bliss\roads\bridges\bridge_concrete2_left.p3d</File>
+        <Date>11/16/26 12:00:00</Date>
+        <Archive></Archive>
+        <Fill>-8355712</Fill>
+        <Outline>-1</Outline>
+        <Scale>1.000000</Scale>
+        <Hash>-1489476440</Hash>
+        <ScaleRandMin>0.000000</ScaleRandMin>
+        <ScaleRandMax>0.000000</ScaleRandMax>
+        <YawRandMin>0.000000</YawRandMin>
+        <YawRandMax>0.000000</YawRandMax>
+        <PitchRandMin>0.000000</PitchRandMin>
+        <PitchRandMax>0.000000</PitchRandMax>
+        <RollRandMin>0.000000</RollRandMin>
+        <RollRandMax>0.000000</RollRandMax>
+        <TexLLU>0.000000</TexLLU>
+        <TexLLV>0.000000</TexLLV>
+        <TexURU>1.000000</TexURU>
+        <TexURV>1.000000</TexURV>
+        <BBRadius>11.647369</BBRadius>
+        <BBHScale>1.000000</BBHScale>
+        <AutoCenter>1</AutoCenter>
+        <XShift>0.000000</XShift>
+        <YShift>0.000000</YShift>
+        <ZShift>0.000000</ZShift>
+        <Height>8.583042</Height>
+        <BoundingMin X="-10.653474" Y="-1.600215" Z="-10.715061" />
+        <BoundingMax X="10.655263" Y="6.982827" Z="12.579678" />
+        <BoundingCenter X="0.000895" Y="2.691306" Z="0.932308" />
+        <Placement></Placement>
+    </Template>
+    <Template>
+        <Name>br_stone_25</Name>
+        <File>dz\structures\roads\bridges\bridge_stone_25.p3d</File>
+        <Date>11/16/26 12:00:00</Date>
+        <Archive></Archive>
+        <Fill>-8355712</Fill>
+        <Outline>-1</Outline>
+        <Scale>1.000000</Scale>
+        <Hash>957267596</Hash>
+        <ScaleRandMin>0.000000</ScaleRandMin>
+        <ScaleRandMax>0.000000</ScaleRandMax>
+        <YawRandMin>0.000000</YawRandMin>
+        <YawRandMax>0.000000</YawRandMax>
+        <PitchRandMin>0.000000</PitchRandMin>
+        <PitchRandMax>0.000000</PitchRandMax>
+        <RollRandMin>0.000000</RollRandMin>
+        <RollRandMax>0.000000</RollRandMax>
+        <TexLLU>0.000000</TexLLU>
+        <TexLLV>0.000000</TexLLV>
+        <TexURU>1.000000</TexURU>
+        <TexURV>1.000000</TexURV>
+        <BBRadius>12.500001</BBRadius>
+        <BBHScale>1.000000</BBHScale>
+        <AutoCenter>1</AutoCenter>
+        <XShift>0.000000</XShift>
+        <YShift>0.000000</YShift>
+        <ZShift>0.000000</ZShift>
+        <Height>17.803680</Height>
+        <BoundingMin X="-7.525620" Y="-7.825970" Z="-12.500001" />
+        <BoundingMax X="7.459460" Y="9.977710" Z="12.500001" />
+        <BoundingCenter X="-0.033080" Y="1.075870" Z="0.000000" />
+        <Placement></Placement>
+    </Template>
+    <Template>
+        <Name>br_wood_25</Name>
+        <File>dz\structures\roads\bridges\bridge_wood_25.p3d</File>
+        <Date>11/16/26 12:00:00</Date>
+        <Archive></Archive>
+        <Fill>-8355712</Fill>
+        <Outline>-1</Outline>
+        <Scale>1.000000</Scale>
+        <Hash>1653702694</Hash>
+        <ScaleRandMin>0.000000</ScaleRandMin>
+        <ScaleRandMax>0.000000</ScaleRandMax>
+        <YawRandMin>0.000000</YawRandMin>
+        <YawRandMax>0.000000</YawRandMax>
+        <PitchRandMin>0.000000</PitchRandMin>
+        <PitchRandMax>0.000000</PitchRandMax>
+        <RollRandMin>0.000000</RollRandMin>
+        <RollRandMax>0.000000</RollRandMax>
+        <TexLLU>0.000000</TexLLU>
+        <TexLLV>0.000000</TexLLV>
+        <TexURU>1.000000</TexURU>
+        <TexURV>1.000000</TexURV>
+        <BBRadius>16.723850</BBRadius>
+        <BBHScale>1.000000</BBHScale>
+        <AutoCenter>1</AutoCenter>
+        <XShift>0.000000</XShift>
+        <YShift>0.000000</YShift>
+        <ZShift>0.000000</ZShift>
+        <Height>5.206620</Height>
+        <BoundingMin X="-16.303501" Y="-2.658730" Z="-4.516420" />
+        <BoundingMax X="17.144199" Y="2.547890" Z="4.587210" />
+        <BoundingCenter X="0.420349" Y="-0.055420" Z="0.035395" />
+        <Placement></Placement>
+    </Template>
+</Library>

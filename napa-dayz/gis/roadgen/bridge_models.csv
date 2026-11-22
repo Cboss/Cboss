@@ -1,0 +1,8 @@
+template,model,pbo,size_x,size_y,size_z,min_x,min_y,min_z,max_x,max_y,max_z,centre_x,centre_y,centre_z
+br_concrete1_25,bridge_concrete1_25,structures_bliss,10.75,9.14,24.31,-5.369,-1.600,-12.162,5.379,7.536,12.151,0.005,2.968,-0.005
+br_concrete1_left,bridge_concrete1_left,structures_bliss,15.25,9.14,31.47,-7.601,-1.600,-17.890,7.644,7.536,13.581,0.022,2.968,-2.154
+br_concrete1_right,bridge_concrete1_right,structures_bliss,14.86,9.14,30.99,-7.449,-1.600,-13.127,7.412,7.536,17.866,-0.019,2.968,2.370
+br_concrete2_25,bridge_concrete2_25,structures_bliss,17.28,9.61,40.64,-8.605,-2.624,-20.220,8.675,6.986,20.416,0.035,2.181,0.098
+br_concrete2_left,bridge_concrete2_left,structures_bliss,21.31,8.58,23.29,-10.653,-1.600,-10.715,10.655,6.983,12.580,0.001,2.691,0.932
+br_stone_25,bridge_stone_25,structures,14.99,17.80,25.00,-7.526,-7.826,-12.500,7.459,9.978,12.500,-0.033,1.076,0.000
+br_wood_25,bridge_wood_25,structures,33.45,5.21,9.10,-16.304,-2.659,-4.516,17.144,2.548,4.587,0.420,-0.055,0.035
