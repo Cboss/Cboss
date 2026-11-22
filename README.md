@@ -5,7 +5,6 @@ I'm a technology enthusiast who loves solving tech problems for people and teach
 ## What I do
 
 - **Technical project management:** software and hardware implementations from kickoff to go-live: requirements, SQL Server and POS installs, data migration, training, and the support that follows.
-- **IT for homes and small businesses:** computer repair, custom PC builds, and networks through [Baysic Tech Solutions](https://baysictech.com), my business in Waco, TX.
 - **Building my own tools:** when the work needs something that doesn't exist, I build it.
 
 ## Featured projects
@@ -14,8 +13,7 @@ I'm a technology enthusiast who loves solving tech problems for people and teach
 
 **Baysic PC Health Check** *(private)*: the PowerShell tool I run on customer PCs. A read-only health check that doubles as the quote, opt-in repairs that make a restore point first and support a dry run, and a before/after report saved as a PDF.
 
-**Websites on Cloudflare** *(private repos)*: [baysicdesigns.com](https://baysicdesigns.com), [baysictech.com](https://baysictech.com), and one-page sites for local small businesses. Plain HTML, CSS and JavaScript with no build step, redeployed by Cloudflare Workers on every push to `main`, on the client's own domain.
-
+**Websites on Cloudflare** *(private repos)*: [baysicdesigns.com](https://baysicdesigns.com)
 **Home lab**: a Netgate 2100 running pfSense+ with separate office, server, storage and IoT/guest networks; a UGREEN NAS running Docker containers under Portainer; and 4+ DayZ PvE servers for Baysic Survival Gaming, a community I founded.
 
 ## Tools I work with
@@ -28,7 +26,6 @@ I'm a technology enthusiast who loves solving tech problems for people and teach
 ## Currently
 
 - Finishing my CAPM certification (expected December 2026)
-- Growing Baysic Tech Solutions
 
 ## Reach me
 
