@@ -34,4 +34,3 @@ I'm a technology enthusiast who loves solving tech problems for people and teach
 
 - Portfolio and resume: [baysicdesigns.com](https://baysicdesigns.com)
 - LinkedIn: [Craig Blackmon](https://www.linkedin.com/in/craig-blackmon-94995b339)
-- Computer or network help in Waco: [baysictech.com](https://baysictech.com)
