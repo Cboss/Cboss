@@ -11,7 +11,7 @@ I'm a technology enthusiast who loves solving tech problems for people and teach
 
 **[Overseer](https://github.com/Cboss/My_Task_Manager)**: a fast, keyboard-first Windows task manager built with Rust and Tauri 2. Live CPU, memory, disk and network graphs, list / tree / grouped process views, end-whole-tree, and signed installers with auto-update.
 
-**Baysic PC Health Check** *(private)*: the PowerShell tool I run on customer PCs. A read-only health check that doubles as the quote, opt-in repairs that make a restore point first and support a dry run, and a before/after report saved as a PDF.
+**PC Health Check** *(private)*: a PowerShell tool for diagnosing and tuning up Windows PCs. A read-only health check first, opt-in repairs that make a restore point and support a dry run, and a before/after report saved as a PDF.
 
 **Websites on Cloudflare** *(private repos)*: [baysicdesigns.com](https://baysicdesigns.com)
 **Home lab**: a Netgate 2100 running pfSense+ with separate office, server, storage and IoT/guest networks; a UGREEN NAS running Docker containers under Portainer; and 4+ DayZ PvE servers for Baysic Survival Gaming, a community I founded.
