@@ -35,27 +35,198 @@
       ],
       "skip_vanilla": [],
       "drop_map": {
-        "event:AnimalAlioromus": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
-        "event:AnimalCeratosaurus": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
-        "event:AnimalCharanosaurus": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
-        "event:AnimalDIL": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
-        "event:AnimalIDREX": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
-        "event:AnimalIndominusRex": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
-        "event:AnimalRaptor": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
-        "event:AnimalRhinoceros": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
-        "event:AnimalScolosaurus": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
-        "event:AnimalScolosaurus2": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
-        "event:AnimalSmallDinos": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
-        "event:AnimalStygivenator": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
-        "event:AnimalTREX": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
-        "event:AnimalTricero1": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
-        "event:AnimalTricero2": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
         "event:AnimalCrocodile": "crocodile mod isn't installed: no Animal_Crocodile in the types files, and the dino setup it came with is gone"
       },
       "decisions": {},
       "prefer": {
         "keep": "map",
         "why": "the map author's tuning for Sahrani (spawn counts, positions, timers); vanilla is Chernarus"
+      },
+      "replace_map": {
+        "event:AnimalTREX": {
+          "name": "AnimalLion",
+          "children": [
+            [
+              "BRDK_Lion_M_nml",
+              1,
+              1
+            ],
+            [
+              "BRDK_Lion_nml",
+              1,
+              3
+            ],
+            [
+              "BRDK_Lion_Kid_nml",
+              0,
+              2
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalIndominusRex": {
+          "name": "AnimalBengalTiger",
+          "children": [
+            [
+              "BRDK_BengalTiger_nml",
+              1,
+              1
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalRaptor": {
+          "name": "AnimalHyena",
+          "children": [
+            [
+              "BRDK_Hyena_nml",
+              2,
+              4
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalSmallDinos": {
+          "name": "AnimalCoyote",
+          "children": [
+            [
+              "BRDK_Coyote_dog",
+              2,
+              4
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalIDREX": {
+          "name": "AnimalJaguar",
+          "children": [
+            [
+              "BRDK_Jaguar_nml",
+              1,
+              1
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalAlioromus": {
+          "name": "AnimalLeopard",
+          "children": [
+            [
+              "BRDK_Leopard_nml",
+              1,
+              1
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalStygivenator": {
+          "name": "AnimalBighornRam",
+          "children": [
+            [
+              "BRDK_BighornRam_nml",
+              2,
+              5
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalCeratosaurus": {
+          "name": "AnimalBlackBear",
+          "children": [
+            [
+              "BRDK_Am_BlackBear_nml",
+              1,
+              1
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalCharanosaurus": {
+          "name": "AnimalTapir",
+          "children": [
+            [
+              "BRDK_Tapir_nml",
+              1,
+              2
+            ],
+            [
+              "BRDK_Tapir_Kid_nml",
+              0,
+              1
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalDIL": {
+          "name": "AnimalOstrich",
+          "children": [
+            [
+              "BRDK_Ostrich_nml",
+              2,
+              5
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalScolosaurus": {
+          "name": "AnimalBuffalo",
+          "children": [
+            [
+              "BRDK_Buffalo_nml",
+              3,
+              6
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalScolosaurus2": {
+          "name": "AnimalLongHornCow",
+          "children": [
+            [
+              "BRDK_TexasLongHornCow_nml",
+              3,
+              6
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalTricero1": {
+          "name": "AnimalHippo",
+          "children": [
+            [
+              "BRDK_Hippo_nml",
+              1,
+              3
+            ],
+            [
+              "BRDK_Hippo_kid_nml",
+              0,
+              1
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalTricero2": {
+          "name": "AnimalAntelope",
+          "children": [
+            [
+              "BRDK_Antelope_nml",
+              2,
+              4
+            ],
+            [
+              "BRDK_Antelope2_nml",
+              0,
+              3
+            ],
+            [
+              "BRDK_Gazelle_nml",
+              0,
+              3
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        }
       }
     },
     {

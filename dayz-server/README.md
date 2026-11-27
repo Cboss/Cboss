@@ -45,7 +45,7 @@ Map and mod files change, so our edits are never made inside them. Three rules k
 
 | Type | Used for | What it does |
 |---|---|---|
-| `merge` | `mapclusterproto.xml`, `db/events.xml` | Entry by entry (`<export>`, `<cluster>`, `<event>`). Keeps every line of the map's file in order. Copies vanilla entries in character for character between `build_masters.py` comments (`add_vanilla`: `"all"` or a list). Removes map entries listed in `drop_map`, leaving a comment with the reason. An entry in both files that differs is a **conflict**: the map's version stays until a decision says otherwise. `prefer` sets a default for a whole file. |
+| `merge` | `mapclusterproto.xml`, `db/events.xml` | Entry by entry (`<export>`, `<cluster>`, `<event>`). Keeps every line of the map's file in order. Copies vanilla entries in character for character between `build_masters.py` comments (`add_vanilla`: `"all"` or a list). Removes map entries listed in `drop_map`, leaving a comment with the reason. Swaps map events listed in `replace_map` for a new name and child list, keeping the event's own settings (used to turn the dino events into real animals). An entry in both files that differs is a **conflict**: the map's version stays until a decision says otherwise. `prefer` sets a default for a whole file. |
 | `patch` | `serverDZ.cfg` | Exact text edits. Each `find` must occur exactly once in the original. If an update changes that text, the build stops and names the edit, so nothing gets silently lost. |
 | `copy` | `cfgenvironment.xml` | An original used unchanged, such as a vanilla file in place of the map's. |
 

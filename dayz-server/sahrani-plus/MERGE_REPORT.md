@@ -114,7 +114,7 @@ Entry merge: `../originals/sahrani-plus/db/events.xml` (Sahrani Plus (map author
 |---|---|---|---|
 | Sahrani Plus (map author) | `9f046db0618d` | 1744 | 80 |
 | Bohemia vanilla Chernarus | `4089710dfa15` | 1230 | 61 |
-| **Master** | `2047c46432e9` | 1647 | 75 |
+| **Master** | `f989772996d5` | 1907 | 90 |
 
 Verification: passed. Line endings: LF, as in the map file.
 
@@ -1501,13 +1501,32 @@ Verification: passed. Line endings: LF, as in the map file.
 
 </details>
 
-**Removed from the map file:** `event:AnimalAlioromus (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalCeratosaurus (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalCharanosaurus (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalDIL (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalIDREX (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalIndominusRex (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalRaptor (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalRhinoceros (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalScolosaurus (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalScolosaurus2 (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalSmallDinos (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalStygivenator (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalTREX (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalTricero1 (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalTricero2 (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalCrocodile (crocodile mod isn't installed: no Animal_Crocodile in the types files, and the dino setup it came with is gone)`
+**Replaced in the map file** (settings kept, children swapped):
+
+| Was | Now | Children | Why |
+|---|---|---|---|
+| `event:AnimalTREX` | `event:AnimalLion` | `BRDK_Lion_M_nml` 1-1, `BRDK_Lion_nml` 1-3, `BRDK_Lion_Kid_nml` 0-2 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+| `event:AnimalIndominusRex` | `event:AnimalBengalTiger` | `BRDK_BengalTiger_nml` 1-1 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+| `event:AnimalRaptor` | `event:AnimalHyena` | `BRDK_Hyena_nml` 2-4 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+| `event:AnimalSmallDinos` | `event:AnimalCoyote` | `BRDK_Coyote_dog` 2-4 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+| `event:AnimalIDREX` | `event:AnimalJaguar` | `BRDK_Jaguar_nml` 1-1 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+| `event:AnimalAlioromus` | `event:AnimalLeopard` | `BRDK_Leopard_nml` 1-1 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+| `event:AnimalStygivenator` | `event:AnimalBighornRam` | `BRDK_BighornRam_nml` 2-5 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+| `event:AnimalCeratosaurus` | `event:AnimalBlackBear` | `BRDK_Am_BlackBear_nml` 1-1 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+| `event:AnimalCharanosaurus` | `event:AnimalTapir` | `BRDK_Tapir_nml` 1-2, `BRDK_Tapir_Kid_nml` 0-1 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+| `event:AnimalDIL` | `event:AnimalOstrich` | `BRDK_Ostrich_nml` 2-5 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+| `event:AnimalScolosaurus` | `event:AnimalBuffalo` | `BRDK_Buffalo_nml` 3-6 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+| `event:AnimalScolosaurus2` | `event:AnimalLongHornCow` | `BRDK_TexasLongHornCow_nml` 3-6 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+| `event:AnimalTricero1` | `event:AnimalHippo` | `BRDK_Hippo_nml` 1-3, `BRDK_Hippo_kid_nml` 0-1 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+| `event:AnimalTricero2` | `event:AnimalAntelope` | `BRDK_Antelope_nml` 2-4, `BRDK_Antelope2_nml` 0-3, `BRDK_Gazelle_nml` 0-3 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+
+**Removed from the map file:** `event:AnimalCrocodile (crocodile mod isn't installed: no Animal_Crocodile in the types files, and the dino setup it came with is gone)`
 
 **Added from Bohemia vanilla Chernarus:** `event:AmbientFox`, `event:AmbientHare`, `event:AmbientHen`, `event:AnimalBear`, `event:AnimalCow`, `event:AnimalDeer`, `event:AnimalGoat`, `event:AnimalPig`, `event:AnimalRoeDeer`, `event:AnimalSheep`, `event:AnimalWolf`
 
 **Only in Bohemia vanilla Chernarus, not added:** `event:InfectedArmy`, `event:InfectedArmyDesert`, `event:InfectedArmyHard`, `event:InfectedFirefighter`, `event:InfectedPolice`, `event:InfectedPoliceHard`, `event:InfectedSpooky`, `event:StaticMilitaryConvoy`, `event:StaticPoliceCar`, `event:StaticPoliceSituation`, `event:VehicleCivilianSedan`, `event:VehicleHatchback02`, `event:VehicleMotorbike`, `event:VehicleOffroadHatchback`, `event:VehicleSedan02`
 
-**Only in the map file, kept:** 29
+**Only in the map file, kept:** 44
 
 ## cfgenvironment.xml
 

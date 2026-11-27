@@ -156,12 +156,15 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
     van_label = step.get("vanilla_label", van_label)
     """step keys: map, vanilla, output, add_vanilla ("all" or list),
     skip_vanilla (list), drop_map ({key: why}), decisions ({key: {keep, why}}),
+    replace_map ({key: {name, children: [[type, min, max], ...], why}}: keep the
+    map entry's settings but rename it and swap its <child> list; events only),
     prefer ({"keep": "map"|"vanilla", "why": ...}: default for conflicts with
     no decision; without it they are reported as waiting on Boss)."""
     mp = load(here / step["map"])
     va = load(here / step["vanilla"])
     decisions: dict = step.get("decisions", {})
     drop: dict = step.get("drop_map", {})
+    swap: dict = step.get("replace_map", {})
     skip = set(step.get("skip_vanilla", []))
     add_spec = step.get("add_vanilla", "all")
     problems: list[str] = []
@@ -180,7 +183,11 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
     added = [k for k in wanted if k not in skip]
     not_added = [k for k in only_van if k not in added]
     dropped = [k for k in drop if k in mp.entries]
-    conflicts = [k for k in mp.entries if k in va.entries and k not in drop
+    swapped = [k for k in swap if k in mp.entries]
+    if set(swapped) & set(dropped):
+        raise SystemExit(f"both dropped and replaced: {sorted(set(swapped) & set(dropped))}")
+    new_key = {k: f"{k.split(':')[0]}:{swap[k].get('name') or k.split(':', 1)[1]}" for k in swapped}
+    conflicts = [k for k in mp.entries if k in va.entries and k not in drop and k not in swap
                  and mp.entries[k].canon != va.entries[k].canon]
     prefer = step.get("prefer")
     if prefer and prefer.get("keep") not in ("map", "vanilla"):
@@ -190,6 +197,7 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
     use_vanilla = [k for k in conflicts if choice[k]["keep"] == "vanilla"]
     stale = [k for k in decisions if k not in conflicts]
     stale = stale + [k for k in drop if k not in mp.entries]
+    stale = stale + [k for k in swap if k not in mp.entries]
     if add_spec != "all":
         stale += [k for k in add_spec if k not in only_van]
     stale += [k for k in skip if k not in only_van]
@@ -198,9 +206,26 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
     replace = {mp.entries[k].first: k for k in use_vanilla}
     removed = {mp.entries[k].first: k for k in dropped}
     skip_lines: set[int] = set()
-    for k in use_vanilla + dropped:
+    swap_at = {mp.entries[k].first: k for k in swapped}
+    for k in use_vanilla + dropped + swapped:
         e = mp.entries[k]
         skip_lines.update(range(e.first + 1, e.last + 1))
+
+    def swapped_block(k: str) -> list[str]:
+        old = mp.block(mp.entries[k])
+        spec = swap[k]
+        first = old[0]
+        if spec.get("name"):
+            first = re.sub(r'name="[^"]*"', f'name="{spec["name"]}"', first, count=1)
+        try:
+            a = next(i for i, l in enumerate(old) if "<children" in l)
+            b = next(i for i, l in enumerate(old) if "</children>" in l)
+        except StopIteration:
+            raise SystemExit(f"{k}: replace_map needs a <children> list")
+        cind = indent_of(old[a]) + (indent_of(old[a])[-1:] or "\t")
+        kids = [f'{cind}<child lootmax="0" lootmin="0" max="{mx}" min="{mn}" type="{t}"/>'
+                for t, mn, mx in spec["children"]]
+        return [first] + old[1:a + 1] + kids + old[b:]
 
     inserts: dict[int, list[str]] = {}
     for tag, _ in KINDS[mp.root]:
@@ -224,6 +249,10 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
             out.append(f"{indent_of(line)}<!-- {MARK}: vanilla version of {k} "
                        f"(decision in the recipe) -->")
             out += va.block(va.entries[k])
+        elif i in swap_at:
+            k = swap_at[i]
+            out.append(f"{indent_of(line)}<!-- {MARK}: replaced {k}: {swap[k].get('why', '')} -->")
+            out += swapped_block(k)
         elif i in removed:
             k = removed[i]
             out.append(f"{indent_of(line)}<!-- {MARK}: removed {k}: {drop[k]} -->")
@@ -239,7 +268,7 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
     except SystemExit as e:
         problems.append(f"master: {e}")
     else:
-        want = (set(mp.entries) - set(dropped)) | set(added)
+        want = (set(mp.entries) - set(dropped) - set(swapped)) | set(added) | set(new_key.values())
         if set(ms.entries) != want:
             problems.append(f"master entries differ from expected: missing "
                             f"{sorted(want - set(ms.entries))}, extra "
@@ -247,13 +276,15 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
         if ms.duplicates:
             problems.append(f"master defines twice: {ms.duplicates}")
         for k, e in ms.entries.items():
+            if k in new_key.values():
+                continue
             src = va if (k in added or k in use_vanilla) else mp
             if k in src.entries and e.canon != src.entries[k].canon:
                 problems.append(f"master {k} does not match its source")
         if ms.newline != mp.newline or ms.bom != mp.bom:
             problems.append("master line endings/BOM differ from the map file")
     kept = [l for i, l in enumerate(mp.lines)
-            if i not in skip_lines and i not in replace and i not in removed]
+            if i not in skip_lines and i not in replace and i not in removed and i not in swap_at]
     it = iter(out)
     if not all(any(l == o for o in it) for l in kept):
         problems.append("some of the map's own lines are missing from the master")
@@ -291,6 +322,13 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
                  ["```", "", "</details>", ""]
     else:
         r += ["none", ""]
+    if swapped:
+        r += ["**Replaced in the map file** (settings kept, children swapped):", "",
+              "| Was | Now | Children | Why |", "|---|---|---|---|"]
+        for k in swapped:
+            kids = ", ".join(f"`{t}` {mn}-{mx}" for t, mn, mx in swap[k]["children"])
+            r.append(f"| `{k}` | `{new_key[k]}` | {kids} | {swap[k].get('why', '')} |")
+        r.append("")
     r += [f"**Removed from the map file:** {lst(f'{k} ({drop[k]})' for k in dropped)}", "",
           f"**Added from {van_label}:** {lst(added)}", "",
           f"**Only in {van_label}, not added:** {lst(not_added)}", "",
