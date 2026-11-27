@@ -158,6 +158,8 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
     skip_vanilla (list), drop_map ({key: why}), decisions ({key: {keep, why}}),
     remove_children ({"prefixes": [...], "why": ...}, or a list of those: comment
     out every <child> whose type starts with one of the prefixes, in all events),
+    rename_children ([{"from", "to", "why"}]: change a <child> type everywhere,
+    keeping its counts; events only),
     add_children ({key: {children: [[type, min, max], ...], why}}: append
     children to any entry in the master, map or vanilla; events only),
     replace_map ({key: {name, children: [[type, min, max], ...], why}}: keep the
@@ -281,6 +283,18 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
         if rm_pref and not n:
             problems.append(f"remove_children: nothing matches {list(rm_pref)}")
         rm_counts.append(n)
+    ren_specs: list = step.get("rename_children", [])
+    for rn in ren_specs:
+        n = 0
+        for i, l in enumerate(out):
+            if f'type="{rn["from"]}"' in l and "<child" in l and "<!--" not in l:
+                rm_lines.add(l)
+                out[i] = (l.replace(f'type="{rn["from"]}"', f'type="{rn["to"]}"')
+                          + f" <!-- {MARK}: was {rn['from']}: {rn.get('why', '')} -->")
+                n += 1
+        if not n:
+            problems.append(f"rename_children: no child of type {rn['from']}")
+        rn["_count"] = n
     extra: dict = step.get("add_children", {})
     for k, spec in extra.items():
         tag, name = k.split(":", 1)
@@ -371,6 +385,9 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
         if n:
             r += [f"**Children removed:** {n} with type starting "
                   f"{', '.join(f'`{x}`' for x in rm_spec.get('prefixes', []))} ({rm_spec.get('why', '')})", ""]
+    for rn in ren_specs:
+        if rn.get("_count"):
+            r += [f"**Children renamed:** {rn['_count']} `{rn['from']}` to `{rn['to']}` ({rn.get('why', '')})", ""]
     if extra:
         r += ["**Children added:**", ""] + [
             f"- `{k}`: " + ", ".join(f"`{t}` {mn}-{mx}" for t, mn, mx in v["children"])

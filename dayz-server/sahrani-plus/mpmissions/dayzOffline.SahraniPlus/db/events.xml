@@ -1157,7 +1157,7 @@
 		<limit>child</limit>
 		<active>1</active>
 		<children>
-			<child lootmax="4" lootmin="3" max="4" min="4" type="Land_wreck_s1023_ambulance"/>
+			<child lootmax="4" lootmin="3" max="4" min="4" type="Land_S_s1203_ambulance"/> <!-- build_masters.py: was Land_wreck_s1023_ambulance: SahraniPlus 2.0 names the ambulance wreck Land_S_s1203_ambulance (types and mapgroupproto); the old name doesn't exist, so the CE dropped the only child of StaticAmbulanceWreck -->
 		</children>
 	</event>
 	<event name="StaticUAZCustom">

@@ -300,6 +300,13 @@
           ],
           "why": "Merlin heli wreck mod isn't on the server; StaticHeliCrash keeps the vanilla Mi8 and UH1Y wrecks (Boss, 2026-11-27)"
         }
+      ],
+      "rename_children": [
+        {
+          "from": "Land_wreck_s1023_ambulance",
+          "to": "Land_S_s1203_ambulance",
+          "why": "SahraniPlus 2.0 names the ambulance wreck Land_S_s1203_ambulance (types and mapgroupproto); the old name doesn't exist, so the CE dropped the only child of StaticAmbulanceWreck"
+        }
       ]
     },
     {
