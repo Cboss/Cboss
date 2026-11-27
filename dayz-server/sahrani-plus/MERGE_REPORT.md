@@ -1462,3 +1462,24 @@ Patched copy of `../originals/sahrani-plus/serverDZ.cfg` (sha256 `8014ba9244b8`)
 | 1 | add the missing `;` after `steamProtocolMaxDataSize = 4096` | Every setting in serverDZ.cfg ends with ';'. Without it the server may misread this line or the next one |
 
 Master sha256 `b05481976bf5`. Verification: passed.
+
+## cfglimitsdefinition.xml
+
+Patched copy of `../originals/sahrani-plus/cfglimitsdefinition.xml` (sha256 `587ef30a137c`) → `mpmissions/dayzOffline.SahraniPlus/cfglimitsdefinition.xml`.
+
+| # | Change | Why |
+|---|---|---|
+| 1 | define usages `Historical` and `Underground` | used by the SahraniPlus mapgroupproto and types; the 2:07 boot logged 18 'Unknown usage' for them |
+| 2 | define category `vehicleparts` | used by the SahraniPlus mapgroupproto; the 2:07 boot logged 51 'Unknown category' |
+
+Master sha256 `20d7248efc23`. Verification: passed.
+
+## food_types.xml
+
+Patched copy of `../originals/sahrani-plus/types/food_types.xml` (sha256 `09e3ff785c61`) → `mpmissions/dayzOffline.SahraniPlus/types/food_types.xml`.
+
+| # | Change | Why |
+|---|---|---|
+| 1 | TacticalBaconCan: Tier3-5 as `value`, not `usage` | tiers are values; the boot logged 'Unknown usage: Tier3/4/5' |
+
+Master sha256 `61f350f920a3`. Verification: passed.

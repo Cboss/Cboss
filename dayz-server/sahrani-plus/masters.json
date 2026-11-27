@@ -323,6 +323,38 @@
           "why": "Every setting in serverDZ.cfg ends with ';'. Without it the server may misread this line or the next one"
         }
       ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/cfglimitsdefinition.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/cfglimitsdefinition.xml",
+      "edits": [
+        {
+          "find": "        <usage name=\"DRS\"/>\n    </usageflags>",
+          "replace": "        <usage name=\"DRS\"/>\n        <usage name=\"Historical\"/>\n        <usage name=\"Underground\"/>\n    </usageflags>",
+          "summary": "define usages `Historical` and `Underground`",
+          "why": "used by the SahraniPlus mapgroupproto and types; the 2:07 boot logged 18 'Unknown usage' for them"
+        },
+        {
+          "find": "    </categories>",
+          "replace": "        <category name=\"vehicleparts\"/>\n    </categories>",
+          "summary": "define category `vehicleparts`",
+          "why": "used by the SahraniPlus mapgroupproto; the 2:07 boot logged 51 'Unknown category'"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/types/food_types.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/types/food_types.xml",
+      "edits": [
+        {
+          "find": "        <usage name=\"Tier3\"/>\n        <usage name=\"Tier4\"/>\n        <usage name=\"Tier5\"/>",
+          "replace": "        <value name=\"Tier3\"/>\n        <value name=\"Tier4\"/>\n        <value name=\"Tier5\"/>",
+          "summary": "TacticalBaconCan: Tier3-5 as `value`, not `usage`",
+          "why": "tiers are values; the boot logged 'Unknown usage: Tier3/4/5'"
+        }
+      ]
     }
   ]
 }
