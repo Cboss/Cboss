@@ -26,7 +26,7 @@ Entry merge: `../originals/sahrani-plus/db/events.xml` (Sahrani Plus (map author
 |---|---|---|---|
 | Sahrani Plus (map author) | `9f046db0618d` | 1744 | 80 |
 | Bohemia vanilla Chernarus | `4089710dfa15` | 1230 | 61 |
-| **Master** | `dcb5c3a8cdf4` | 1887 | 89 |
+| **Master** | `3b105a911971` | 1887 | 89 |
 
 Verification: passed. Line endings: LF, as in the map file.
 
@@ -1442,6 +1442,10 @@ Verification: passed. Line endings: LF, as in the map file.
 **Edited by hand on the server, kept here:**
 
 - `event:StaticAmbulanceWreck`: event min 1 / max 4, child max 3 / min 2 (Boss's own edit on the live server, 2026-11-27)
+- `event:VehicleMix01`: switched on, nominal 16 / min 10 / max 22 (map shipped all car events off; vanilla VehicleSedan02 + VehicleCivilianSedan counts added together (Boss, 2026-11-27))
+- `event:VehicleMix02`: switched on, nominal 16 / min 10 / max 22 (map shipped all car events off; vanilla VehicleHatchback02 + VehicleOffroadHatchback counts added together (Boss, 2026-11-27))
+- `event:VehicleOffroad02`: switched on, nominal 3 / min 2 / max 3 (map shipped all car events off; vanilla VehicleOffroad02 counts (Boss, 2026-11-27))
+- `event:VehicleTruck01`: switched on, nominal 8 / min 5 / max 11 (map shipped all car events off; vanilla VehicleTruck01 counts (Boss, 2026-11-27))
 
 **Removed from the map file:** `event:VehicleLandrover (Expansion mod isn't on the server; all 7 children were Expansion_Landrover (Boss, 2026-11-27))`
 
