@@ -56,6 +56,9 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 	<file name="vehicles_types.xml" type="types" />
 	<file name="zmb_types.xml" type="types" />
 	</ce>
+	<ce folder="CustomTypes/Apokot_Fish">
+			<file name="fishing_apokot_types.xml" type="types" />
+		</ce>
 	<ce folder="CustomTypes/BRDK">
 			<file name="BRDK_Animals_type.xml" type="types" />
 			<file name="BRDK_Animals2_type.xml" type="types" />
@@ -109,5 +112,8 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 	<ce folder="CustomTypes/MaharlikaPH_Boats">
 			<file name="maharlikaph_boats_types.xml" type="types" />
 			<file name="maharlikaph_boats_spawnabletypes.xml" type="spawnabletypes" />
+		</ce>
+	<ce folder="CustomTypes/CookZ">
+			<file name="cookz_types.xml" type="types" />
 		</ce>
 </economycore>
