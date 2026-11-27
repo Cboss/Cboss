@@ -34,9 +34,7 @@
         "event:AnimalWolf"
       ],
       "skip_vanilla": [],
-      "drop_map": {
-        "event:AnimalCrocodile": "crocodile mod isn't installed: no Animal_Crocodile in the types files, and the dino setup it came with is gone"
-      },
+      "drop_map": {},
       "decisions": {},
       "prefer": {
         "keep": "map",
@@ -180,28 +178,28 @@
           "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
         },
         "event:AnimalScolosaurus2": {
-          "name": "AnimalLongHornCow",
+          "name": "AnimalDonkey",
           "children": [
             [
-              "BRDK_TexasLongHornCow_nml",
-              3,
-              6
+              "BRDK_Donkey_nml",
+              2,
+              4
             ]
           ],
-          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later. Longhorn moved into AnimalCow (Boss)"
         },
         "event:AnimalTricero1": {
-          "name": "AnimalHippo",
+          "name": "AnimalHorse",
           "children": [
             [
-              "BRDK_Hippo_nml",
-              1,
-              3
+              "BRDK_Horse_nml",
+              2,
+              4
             ],
             [
-              "BRDK_Hippo_kid_nml",
+              "BRDK_Horse_nml_kid",
               0,
-              1
+              2
             ]
           ],
           "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
@@ -226,6 +224,34 @@
             ]
           ],
           "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalCrocodile": {
+          "name": "AnimalHippo",
+          "children": [
+            [
+              "BRDK_Hippo_nml",
+              1,
+              3
+            ],
+            [
+              "BRDK_Hippo_kid_nml",
+              0,
+              1
+            ]
+          ],
+          "why": "crocodile spot becomes hippos (Boss, 2026-11-27)"
+        }
+      },
+      "add_children": {
+        "event:AnimalCow": {
+          "children": [
+            [
+              "BRDK_TexasLongHornCow_nml",
+              0,
+              3
+            ]
+          ],
+          "why": "longhorns run with the cattle (Boss, 2026-11-27)"
         }
       }
     },

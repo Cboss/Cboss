@@ -156,6 +156,8 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
     van_label = step.get("vanilla_label", van_label)
     """step keys: map, vanilla, output, add_vanilla ("all" or list),
     skip_vanilla (list), drop_map ({key: why}), decisions ({key: {keep, why}}),
+    add_children ({key: {children: [[type, min, max], ...], why}}: append
+    children to any entry in the master, map or vanilla; events only),
     replace_map ({key: {name, children: [[type, min, max], ...], why}}: keep the
     map entry's settings but rename it and swap its <child> list; events only),
     prefer ({"keep": "map"|"vanilla", "why": ...}: default for conflicts with
@@ -260,6 +262,20 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
             out.append(line)
         if i in inserts:
             out += inserts[i]
+    extra: dict = step.get("add_children", {})
+    for k, spec in extra.items():
+        tag, name = k.split(":", 1)
+        try:
+            a = next(i for i, l in enumerate(out) if re.search(rf'<{tag}\s+name="{re.escape(name)}"', l))
+            b = next(i for i in range(a, len(out)) if "</children>" in out[i])
+        except StopIteration:
+            problems.append(f"add_children: {k} has no <children> in the master")
+            continue
+        cind = indent_of(out[b - 1]) if "<child" in out[b - 1] else \
+            indent_of(out[b]) + ("    " if indent_of(out[b]).endswith(" ") else "\t")
+        out[b:b] = [f"{cind}<!-- {MARK}: added children: {spec.get('why', '')} -->"] + [
+            f'{cind}<child lootmax="0" lootmin="0" max="{mx}" min="{mn}" type="{t}"/>'
+            for t, mn, mx in spec["children"]]
     data = (b"\xef\xbb\xbf" if mp.bom else b"") + mp.newline.join(out).encode("utf-8")
 
     # Verify before anything is written.
@@ -276,7 +292,7 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
         if ms.duplicates:
             problems.append(f"master defines twice: {ms.duplicates}")
         for k, e in ms.entries.items():
-            if k in new_key.values():
+            if k in new_key.values() or k in extra:
                 continue
             src = va if (k in added or k in use_vanilla) else mp
             if k in src.entries and e.canon != src.entries[k].canon:
@@ -329,6 +345,10 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
             kids = ", ".join(f"`{t}` {mn}-{mx}" for t, mn, mx in swap[k]["children"])
             r.append(f"| `{k}` | `{new_key[k]}` | {kids} | {swap[k].get('why', '')} |")
         r.append("")
+    if extra:
+        r += ["**Children added:**", ""] + [
+            f"- `{k}`: " + ", ".join(f"`{t}` {mn}-{mx}" for t, mn, mx in v["children"])
+            + f" ({v.get('why', '')})" for k, v in extra.items()] + [""]
     r += [f"**Removed from the map file:** {lst(f'{k} ({drop[k]})' for k in dropped)}", "",
           f"**Added from {van_label}:** {lst(added)}", "",
           f"**Only in {van_label}, not added:** {lst(not_added)}", "",

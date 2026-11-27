@@ -89,7 +89,25 @@
 			<child lootmax="0" lootmin="0" max="4" min="2" type="BRDK_Hyena_nml"/>
 		</children>
 	</event>
-	<!-- build_masters.py: removed event:AnimalCrocodile: crocodile mod isn't installed: no Animal_Crocodile in the types files, and the dino setup it came with is gone -->
+	<!-- build_masters.py: replaced event:AnimalCrocodile: crocodile spot becomes hippos (Boss, 2026-11-27) -->
+	<event name="AnimalHippo">
+		<nominal>10</nominal>
+		<min>5</min>
+		<max>10</max>
+		<lifetime>33</lifetime>
+		<restock>15</restock>
+		<saferadius>40</saferadius>
+		<distanceradius>0</distanceradius>
+		<cleanupradius>0</cleanupradius>
+		<flags deletable="0" init_random="0" remove_damaged="0"/>
+		<position>fixed</position>
+		<limit>mixed</limit>
+		<active>1</active>
+		<children>
+			<child lootmax="0" lootmin="0" max="3" min="1" type="BRDK_Hippo_nml"/>
+			<child lootmax="0" lootmin="0" max="1" min="0" type="BRDK_Hippo_kid_nml"/>
+		</children>
+	</event>
 	<!-- build_masters.py: replaced event:AnimalAlioromus: dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later -->
 	<event name="AnimalLeopard">
 		<nominal>6</nominal>
@@ -144,8 +162,8 @@
 			<child lootmax="0" lootmin="0" max="6" min="3" type="BRDK_Buffalo_nml"/>
 		</children>
 	</event>
-	<!-- build_masters.py: replaced event:AnimalScolosaurus2: dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later -->
-	<event name="AnimalLongHornCow">
+	<!-- build_masters.py: replaced event:AnimalScolosaurus2: dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later. Longhorn moved into AnimalCow (Boss) -->
+	<event name="AnimalDonkey">
 		<nominal>6</nominal>
 		<min>4</min>
 		<max>6</max>
@@ -159,7 +177,7 @@
 		<limit>child</limit>
 		<active>1</active>
 		<children>
-			<child lootmax="0" lootmin="0" max="6" min="3" type="BRDK_TexasLongHornCow_nml"/>
+			<child lootmax="0" lootmin="0" max="4" min="2" type="BRDK_Donkey_nml"/>
 		</children>
 	</event>
 	<!-- build_masters.py: replaced event:AnimalStygivenator: dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later -->
@@ -200,7 +218,7 @@
 		</children>
 	</event>
 	<!-- build_masters.py: replaced event:AnimalTricero1: dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later -->
-	<event name="AnimalHippo">
+	<event name="AnimalHorse">
 		<nominal>6</nominal>
 		<min>4</min>
 		<max>6</max>
@@ -214,8 +232,8 @@
 		<limit>child</limit>
 		<active>1</active>
 		<children>
-			<child lootmax="0" lootmin="0" max="3" min="1" type="BRDK_Hippo_nml"/>
-			<child lootmax="0" lootmin="0" max="1" min="0" type="BRDK_Hippo_kid_nml"/>
+			<child lootmax="0" lootmin="0" max="4" min="2" type="BRDK_Horse_nml"/>
+			<child lootmax="0" lootmin="0" max="2" min="0" type="BRDK_Horse_nml_kid"/>
 		</children>
 	</event>
 	<!-- build_masters.py: replaced event:AnimalTricero2: dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later -->
@@ -1792,6 +1810,8 @@
             <child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurus_Brown"/>
             <child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurus_Spotted"/>
             <child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurus_White"/>
+            <!-- build_masters.py: added children: longhorns run with the cattle (Boss, 2026-11-27) -->
+            <child lootmax="0" lootmin="0" max="3" min="0" type="BRDK_TexasLongHornCow_nml"/>
         </children>
     </event>
     <event name="AnimalDeer">

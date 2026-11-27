@@ -114,7 +114,7 @@ Entry merge: `../originals/sahrani-plus/db/events.xml` (Sahrani Plus (map author
 |---|---|---|---|
 | Sahrani Plus (map author) | `9f046db0618d` | 1744 | 80 |
 | Bohemia vanilla Chernarus | `4089710dfa15` | 1230 | 61 |
-| **Master** | `f989772996d5` | 1907 | 90 |
+| **Master** | `f1f6745b2ad5` | 1927 | 91 |
 
 Verification: passed. Line endings: LF, as in the map file.
 
@@ -1516,17 +1516,22 @@ Verification: passed. Line endings: LF, as in the map file.
 | `event:AnimalCharanosaurus` | `event:AnimalTapir` | `BRDK_Tapir_nml` 1-2, `BRDK_Tapir_Kid_nml` 0-1 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
 | `event:AnimalDIL` | `event:AnimalOstrich` | `BRDK_Ostrich_nml` 2-5 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
 | `event:AnimalScolosaurus` | `event:AnimalBuffalo` | `BRDK_Buffalo_nml` 3-6 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
-| `event:AnimalScolosaurus2` | `event:AnimalLongHornCow` | `BRDK_TexasLongHornCow_nml` 3-6 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
-| `event:AnimalTricero1` | `event:AnimalHippo` | `BRDK_Hippo_nml` 1-3, `BRDK_Hippo_kid_nml` 0-1 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+| `event:AnimalScolosaurus2` | `event:AnimalDonkey` | `BRDK_Donkey_nml` 2-4 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later. Longhorn moved into AnimalCow (Boss) |
+| `event:AnimalTricero1` | `event:AnimalHorse` | `BRDK_Horse_nml` 2-4, `BRDK_Horse_nml_kid` 0-2 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
 | `event:AnimalTricero2` | `event:AnimalAntelope` | `BRDK_Antelope_nml` 2-4, `BRDK_Antelope2_nml` 0-3, `BRDK_Gazelle_nml` 0-3 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+| `event:AnimalCrocodile` | `event:AnimalHippo` | `BRDK_Hippo_nml` 1-3, `BRDK_Hippo_kid_nml` 0-1 | crocodile spot becomes hippos (Boss, 2026-11-27) |
 
-**Removed from the map file:** `event:AnimalCrocodile (crocodile mod isn't installed: no Animal_Crocodile in the types files, and the dino setup it came with is gone)`
+**Children added:**
+
+- `event:AnimalCow`: `BRDK_TexasLongHornCow_nml` 0-3 (longhorns run with the cattle (Boss, 2026-11-27))
+
+**Removed from the map file:** none
 
 **Added from Bohemia vanilla Chernarus:** `event:AmbientFox`, `event:AmbientHare`, `event:AmbientHen`, `event:AnimalBear`, `event:AnimalCow`, `event:AnimalDeer`, `event:AnimalGoat`, `event:AnimalPig`, `event:AnimalRoeDeer`, `event:AnimalSheep`, `event:AnimalWolf`
 
 **Only in Bohemia vanilla Chernarus, not added:** `event:InfectedArmy`, `event:InfectedArmyDesert`, `event:InfectedArmyHard`, `event:InfectedFirefighter`, `event:InfectedPolice`, `event:InfectedPoliceHard`, `event:InfectedSpooky`, `event:StaticMilitaryConvoy`, `event:StaticPoliceCar`, `event:StaticPoliceSituation`, `event:VehicleCivilianSedan`, `event:VehicleHatchback02`, `event:VehicleMotorbike`, `event:VehicleOffroadHatchback`, `event:VehicleSedan02`
 
-**Only in the map file, kept:** 44
+**Only in the map file, kept:** 45
 
 ## cfgenvironment.xml
 
