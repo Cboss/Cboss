@@ -114,7 +114,7 @@ Entry merge: `../originals/sahrani-plus/db/events.xml` (Sahrani Plus (map author
 |---|---|---|---|
 | Sahrani Plus (map author) | `9f046db0618d` | 1744 | 80 |
 | Bohemia vanilla Chernarus | `4089710dfa15` | 1230 | 61 |
-| **Master** | `0ba4e7bfeb4b` | 1931 | 91 |
+| **Master** | `deb5faf877a0` | 1909 | 90 |
 
 Verification: passed. Line endings: LF, as in the map file.
 
@@ -1523,15 +1523,23 @@ Verification: passed. Line endings: LF, as in the map file.
 
 **Removed from the map file:** none
 
-**Added from Bohemia vanilla Chernarus:** `event:AmbientFox`, `event:AmbientHare`, `event:AmbientHen`, `event:AnimalBear`, `event:AnimalCow`, `event:AnimalDeer`, `event:AnimalGoat`, `event:AnimalPig`, `event:AnimalRoeDeer`, `event:AnimalSheep`, `event:AnimalWolf`
+**Added from Bohemia vanilla Chernarus:** `event:AmbientFox`, `event:AmbientHare`, `event:AmbientHen`, `event:AnimalBear`, `event:AnimalDeer`, `event:AnimalGoat`, `event:AnimalPig`, `event:AnimalRoeDeer`, `event:AnimalSheep`, `event:AnimalWolf`
 
-**Only in Bohemia vanilla Chernarus, not added:** `event:InfectedArmy`, `event:InfectedArmyDesert`, `event:InfectedArmyHard`, `event:InfectedFirefighter`, `event:InfectedPolice`, `event:InfectedPoliceHard`, `event:InfectedSpooky`, `event:StaticMilitaryConvoy`, `event:StaticPoliceCar`, `event:StaticPoliceSituation`, `event:VehicleCivilianSedan`, `event:VehicleHatchback02`, `event:VehicleMotorbike`, `event:VehicleOffroadHatchback`, `event:VehicleSedan02`
+**Only in Bohemia vanilla Chernarus, not added:** `event:AnimalCow`, `event:InfectedArmy`, `event:InfectedArmyDesert`, `event:InfectedArmyHard`, `event:InfectedFirefighter`, `event:InfectedPolice`, `event:InfectedPoliceHard`, `event:InfectedSpooky`, `event:StaticMilitaryConvoy`, `event:StaticPoliceCar`, `event:StaticPoliceSituation`, `event:VehicleCivilianSedan`, `event:VehicleHatchback02`, `event:VehicleMotorbike`, `event:VehicleOffroadHatchback`, `event:VehicleSedan02`
 
 **Only in the map file, kept:** 45
 
 ## cfgenvironment.xml
 
-Unchanged copy of `../originals/vanilla-chernarusplus/cfgenvironment.xml` (sha256 `3f73c9f3abe7`). Boss wants realistic animals, no dinosaurs: Bohemia's file wires up bear, wolf, red and roe deer, wild boar, pig, cattle, sheep, goat, fox, hare, hen and infected, using the env/ territory files that ship with Sahrani Plus. Mod animal territories get added here once Boss picks them.
+Patched copy of `../originals/sahrani-plus/cfgenvironment.xml` (sha256 `851b838cdd9c`) → `mpmissions/dayzOffline.SahraniPlus/cfgenvironment.xml`.
+
+| # | Change | Why |
+|---|---|---|
+| 1 | load only territory files that exist in env/ | 13 of the listed files (dinos, Rhinoceros, Scolosaurus) don't exist; the server logged 'Failed to open file' for each |
+| 2 | herd territories for the animal events | Each AnimalX event spawns in the territory named X. Dino territories renamed to the new animals and pointed at existing files; territories added for the vanilla animal events, which had none (Boss OK 2026-11-27) |
+| 3 | AmbientFox uses fox_territories | it pointed at Scolosaurus2_territories, which doesn't exist |
+
+Master sha256 `d8b7d2c70416`. Verification: passed.
 
 ## serverDZ.cfg
 

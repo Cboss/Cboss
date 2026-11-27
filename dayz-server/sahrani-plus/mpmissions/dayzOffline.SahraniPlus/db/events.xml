@@ -1796,28 +1796,6 @@
             <child lootmax="0" lootmin="0" max="1" min="1" type="Animal_UrsusArctos"/>
         </children>
     </event>
-    <event name="AnimalCow">
-        <nominal>7</nominal>
-        <min>2</min>
-        <max>3</max>
-        <lifetime>180</lifetime>
-        <restock>0</restock>
-        <saferadius>200</saferadius>
-        <distanceradius>0</distanceradius>
-        <cleanupradius>0</cleanupradius>
-        <flags deletable="0" init_random="0" remove_damaged="1"/>
-        <position>fixed</position>
-        <limit>child</limit>
-        <active>1</active>
-        <children>
-            <child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurusF_Brown"/>
-            <child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurusF_Spotted"/>
-            <child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurusF_White"/>
-            <child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurus_Brown"/>
-            <child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurus_Spotted"/>
-            <child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurus_White"/>
-        </children>
-    </event>
     <event name="AnimalDeer">
         <nominal>9</nominal>
         <min>2</min>
