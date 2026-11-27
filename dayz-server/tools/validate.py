@@ -136,11 +136,18 @@ def check_types(path: Path, root: ET.Element, seen: dict[str, Path]) -> None:
     for t in root.iter("type"):
         name = t.get("name")
         if not name:
-            err(path, "<type> without a name attribute")
+            problem(path, "<type> without a name attribute")
             continue
         if name in seen:
             where = "this file" if seen[name] == path else str(seen[name])
             warn(path, f"'{name}' is already defined in {where}")
+        else:
+            twin = next((n for n in seen if n.lower() == name.lower()), None)
+            if twin:
+                where = "this file" if seen[twin] == path else str(seen[twin])
+                warn(path, f"'{name}' differs only in letter case from "
+                           f"'{twin}' in {where}; DayZ class names ignore case, "
+                           f"so this is likely a duplicate")
         seen[name] = path
 
         vals: dict[str, int] = {}
@@ -154,14 +161,14 @@ def check_types(path: Path, root: ET.Element, seen: dict[str, Path]) -> None:
             try:
                 vals[field] = int(el.text.strip())
             except ValueError:
-                err(path, f"'{name}' <{field}> is not a whole number: {el.text!r}")
+                problem(path, f"'{name}' <{field}> is not a whole number: {el.text!r}")
         # nominal 0 means "never spawns"; vanilla leaves min > 0 on those
         if ("min" in vals and vals.get("nominal", 0) > 0
                 and vals["min"] > vals["nominal"]):
-            err(path, f"'{name}' min ({vals['min']}) > nominal ({vals['nominal']})")
+            problem(path, f"'{name}' min ({vals['min']}) > nominal ({vals['nominal']})")
         if ("quantmin" in vals and "quantmax" in vals
                 and vals["quantmin"] > vals["quantmax"]):
-            err(path, f"'{name}' quantmin > quantmax")
+            problem(path, f"'{name}' quantmin > quantmax")
 
 
 def check_environment(path: Path) -> None:
@@ -201,8 +208,49 @@ def check_environment(path: Path) -> None:
         warn(path, f"loads {loaded[stem]} but no territory uses it")
 
 
+LIMIT_KINDS = {"category": "categories", "usage": "usageflags",
+               "value": "valueflags", "tag": "tags"}
+
+
+def load_limits(mission: Path) -> dict[str, set[str]] | None:
+    """Names defined in cfglimitsdefinition.xml (+ user groups)."""
+    path = mission / "cfglimitsdefinition.xml"
+    if not path.is_file():
+        return None
+    root = parse_xml(path)
+    if root is None:
+        return None
+    limits = {k: set() for k in LIMIT_KINDS}
+    for kind, section in LIMIT_KINDS.items():
+        for sec in root.iter(section):
+            limits[kind].update(e.get("name", "") for e in sec.iter(kind))
+    user = mission / "cfglimitsdefinitionuser.xml"
+    if user.is_file():
+        uroot = parse_xml(user)
+        if uroot is not None:
+            for kind in ("usage", "value"):
+                for sec in uroot.iter(LIMIT_KINDS[kind]):
+                    limits[kind].update(u.get("name", "") for u in sec.iter("user"))
+    return limits
+
+
+def check_limits(path: Path, root: ET.Element, limits: dict[str, set[str]]) -> None:
+    missing: dict[tuple[str, str], list[str]] = {}
+    for t in root.iter("type"):
+        for kind in LIMIT_KINDS:
+            for el in t.iter(kind):
+                n = el.get("name") or el.get("user")
+                if n and n not in limits[kind]:
+                    missing.setdefault((kind, n), []).append(t.get("name", "?"))
+    for (kind, n), items in sorted(missing.items()):
+        shown = ", ".join(items[:5]) + (f" and {len(items) - 5} more" if len(items) > 5 else "")
+        problem(path, f"{kind} '{n}' is not defined in cfglimitsdefinition.xml "
+                      f"(used by {shown})")
+
+
 def check_mission(mission: Path) -> None:
     seen_types: dict[str, Path] = {}
+    limits = load_limits(mission)
 
     vanilla_types = mission / "db" / "types.xml"
     if vanilla_types.is_file():
@@ -221,12 +269,14 @@ def check_mission(mission: Path) -> None:
         for f in ce.iter("file"):
             target = folder / f.get("name", "")
             if not target.is_file():
-                err(core, f"lists {target.relative_to(mission)} but it doesn't exist")
+                problem(core, f"lists {target.relative_to(mission).as_posix()} but it doesn't exist")
                 continue
             if f.get("type") == "types":
                 troot = parse_xml(target)
                 if troot is not None:
                     check_types(target, troot, seen_types)
+                    if limits is not None:
+                        check_limits(target, troot, limits)
 
 
 def main() -> int:
@@ -251,10 +301,11 @@ def main() -> int:
         if p.name.lower() == "cfgenvironment.xml":
             check_environment(p)
 
-    missions = base / "mpmissions"
-    if missions.is_dir():
-        for mission in sorted(m for m in missions.iterdir() if m.is_dir()):
-            check_mission(mission)
+    # A mission is any folder with a cfgeconomycore.xml (mpmissions/<name>/,
+    # originals/<map>/, or the folder passed on the command line).
+    for mission in sorted({p.parent for p in files
+                           if p.name.lower() == "cfgeconomycore.xml"}):
+        check_mission(mission)
 
     for line in warnings + errors:
         print(line)
