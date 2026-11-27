@@ -472,6 +472,12 @@
           "replace": "\t\t\t<!-- <file name=\"BRDK_LtlCreature_types.xml\" type=\"types\" /> not used (Boss, 2026-11-27) -->",
           "summary": "stop loading `BRDK_LtlCreature_types.xml`",
           "why": "Boss isn't using the BRDK little creatures"
+        },
+        {
+          "find": "\t\t<rootclass name=\"CarScript\" act=\"car\" reportMemoryLOD=\"no\" /> <!-- cars (sedan, hatchback, transitBus, V3S, ...) -->\n",
+          "replace": "\t\t<rootclass name=\"CarScript\" act=\"car\" reportMemoryLOD=\"no\" /> <!-- cars (sedan, hatchback, transitBus, V3S, ...) -->\n\t\t<rootclass name=\"BoatScript\" act=\"car\" reportMemoryLOD=\"no\" /> <!-- boats -->\n\t\t<rootclass name=\"MotorbikeScript\" act=\"car\" reportMemoryLOD=\"no\" /> <!-- Motorbike -->\n\t\t<rootclass name=\"HouseDestructible\" reportMemoryLOD=\"no\" /> <!-- houses, wrecks -->\n",
+          "summary": "add the vanilla 1.30 root classes for boats, motorbikes and destructible houses",
+          "why": "missing from the map's file, so the CE ignored Boat_01_* and Motorbike_* as 'Type does not exist' (03:07 boot). Lines copied from Bohemia's cfgeconomycore (DayZ-Central-Economy 7bfc95c)"
         }
       ]
     },
