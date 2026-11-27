@@ -144,8 +144,8 @@
 			<child lootmax="0" lootmin="0" max="1" min="1" type="BRDK_Am_BlackBear_nml"/>
 		</children>
 	</event>
-	<!-- build_masters.py: replaced event:AnimalScolosaurus: dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later -->
-	<event name="AnimalBuffalo">
+	<!-- build_masters.py: replaced event:AnimalScolosaurus: old cattle spot: vanilla cows back, longhorns with them, dinos out (Boss, 2026-11-27) -->
+	<event name="AnimalCattle">
 		<nominal>6</nominal>
 		<min>4</min>
 		<max>6</max>
@@ -159,7 +159,13 @@
 		<limit>child</limit>
 		<active>1</active>
 		<children>
-			<child lootmax="0" lootmin="0" max="6" min="3" type="BRDK_Buffalo_nml"/>
+			<child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurusF_Brown"/>
+			<child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurusF_Spotted"/>
+			<child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurusF_White"/>
+			<child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurus_Brown"/>
+			<child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurus_Spotted"/>
+			<child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurus_White"/>
+			<child lootmax="0" lootmin="0" max="3" min="0" type="BRDK_TexasLongHornCow_nml"/>
 		</children>
 	</event>
 	<!-- build_masters.py: replaced event:AnimalScolosaurus2: dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later. Longhorn moved into AnimalCow (Boss) -->
@@ -1810,8 +1816,6 @@
             <child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurus_Brown"/>
             <child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurus_Spotted"/>
             <child lootmax="0" lootmin="0" max="1" min="0" type="Animal_BosTaurus_White"/>
-            <!-- build_masters.py: added children: longhorns run with the cattle (Boss, 2026-11-27) -->
-            <child lootmax="0" lootmin="0" max="3" min="0" type="BRDK_TexasLongHornCow_nml"/>
         </children>
     </event>
     <event name="AnimalDeer">

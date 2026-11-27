@@ -114,7 +114,7 @@ Entry merge: `../originals/sahrani-plus/db/events.xml` (Sahrani Plus (map author
 |---|---|---|---|
 | Sahrani Plus (map author) | `9f046db0618d` | 1744 | 80 |
 | Bohemia vanilla Chernarus | `4089710dfa15` | 1230 | 61 |
-| **Master** | `f1f6745b2ad5` | 1927 | 91 |
+| **Master** | `0ba4e7bfeb4b` | 1931 | 91 |
 
 Verification: passed. Line endings: LF, as in the map file.
 
@@ -1515,15 +1515,11 @@ Verification: passed. Line endings: LF, as in the map file.
 | `event:AnimalCeratosaurus` | `event:AnimalBlackBear` | `BRDK_Am_BlackBear_nml` 1-1 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
 | `event:AnimalCharanosaurus` | `event:AnimalTapir` | `BRDK_Tapir_nml` 1-2, `BRDK_Tapir_Kid_nml` 0-1 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
 | `event:AnimalDIL` | `event:AnimalOstrich` | `BRDK_Ostrich_nml` 2-5 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
-| `event:AnimalScolosaurus` | `event:AnimalBuffalo` | `BRDK_Buffalo_nml` 3-6 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
+| `event:AnimalScolosaurus` | `event:AnimalCattle` | `Animal_BosTaurusF_Brown` 0-1, `Animal_BosTaurusF_Spotted` 0-1, `Animal_BosTaurusF_White` 0-1, `Animal_BosTaurus_Brown` 0-1, `Animal_BosTaurus_Spotted` 0-1, `Animal_BosTaurus_White` 0-1, `BRDK_TexasLongHornCow_nml` 0-3 | old cattle spot: vanilla cows back, longhorns with them, dinos out (Boss, 2026-11-27) |
 | `event:AnimalScolosaurus2` | `event:AnimalDonkey` | `BRDK_Donkey_nml` 2-4 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later. Longhorn moved into AnimalCow (Boss) |
 | `event:AnimalTricero1` | `event:AnimalHorse` | `BRDK_Horse_nml` 2-4, `BRDK_Horse_nml_kid` 0-2 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
 | `event:AnimalTricero2` | `event:AnimalAntelope` | `BRDK_Antelope_nml` 2-4, `BRDK_Antelope2_nml` 0-3, `BRDK_Gazelle_nml` 0-3 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
 | `event:AnimalCrocodile` | `event:AnimalHippo` | `BRDK_Hippo_nml` 1-3, `BRDK_Hippo_kid_nml` 0-1 | crocodile spot becomes hippos (Boss, 2026-11-27) |
-
-**Children added:**
-
-- `event:AnimalCow`: `BRDK_TexasLongHornCow_nml` 0-3 (longhorns run with the cattle (Boss, 2026-11-27))
 
 **Removed from the map file:** none
 

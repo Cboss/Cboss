@@ -167,15 +167,45 @@
           "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
         },
         "event:AnimalScolosaurus": {
-          "name": "AnimalBuffalo",
+          "name": "AnimalCattle",
           "children": [
             [
-              "BRDK_Buffalo_nml",
-              3,
-              6
+              "Animal_BosTaurusF_Brown",
+              0,
+              1
+            ],
+            [
+              "Animal_BosTaurusF_Spotted",
+              0,
+              1
+            ],
+            [
+              "Animal_BosTaurusF_White",
+              0,
+              1
+            ],
+            [
+              "Animal_BosTaurus_Brown",
+              0,
+              1
+            ],
+            [
+              "Animal_BosTaurus_Spotted",
+              0,
+              1
+            ],
+            [
+              "Animal_BosTaurus_White",
+              0,
+              1
+            ],
+            [
+              "BRDK_TexasLongHornCow_nml",
+              0,
+              3
             ]
           ],
-          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+          "why": "old cattle spot: vanilla cows back, longhorns with them, dinos out (Boss, 2026-11-27)"
         },
         "event:AnimalScolosaurus2": {
           "name": "AnimalDonkey",
@@ -240,18 +270,6 @@
             ]
           ],
           "why": "crocodile spot becomes hippos (Boss, 2026-11-27)"
-        }
-      },
-      "add_children": {
-        "event:AnimalCow": {
-          "children": [
-            [
-              "BRDK_TexasLongHornCow_nml",
-              0,
-              3
-            ]
-          ],
-          "why": "longhorns run with the cattle (Boss, 2026-11-27)"
         }
       }
     },
