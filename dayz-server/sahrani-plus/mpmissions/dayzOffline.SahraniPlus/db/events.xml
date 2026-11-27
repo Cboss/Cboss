@@ -1144,8 +1144,8 @@
 	</event>
 	<event name="StaticAmbulanceWreck">
 		<nominal>5</nominal>
-		<min>0</min>
-		<max>0</max>
+		<min>1</min>
+		<max>4</max>
 		<lifetime>2500</lifetime>
 		<restock>0</restock>
 		<saferadius>500</saferadius>
@@ -1157,7 +1157,7 @@
 		<limit>child</limit>
 		<active>1</active>
 		<children>
-			<child lootmax="4" lootmin="3" max="4" min="4" type="Land_S_s1203_ambulance"/> <!-- build_masters.py: was Land_wreck_s1023_ambulance: SahraniPlus 2.0 names the ambulance wreck Land_S_s1203_ambulance (types and mapgroupproto); the old name doesn't exist, so the CE dropped the only child of StaticAmbulanceWreck -->
+			<child lootmax="4" lootmin="3" max="3" min="2" type="Land_S_s1203_ambulance"/> <!-- build_masters.py: was Land_wreck_s1023_ambulance: SahraniPlus 2.0 names the ambulance wreck Land_S_s1203_ambulance (class in its s_wrecks.pbo, also in types and mapgroupproto); the old name doesn't exist, so the CE dropped the only child of StaticAmbulanceWreck -->
 		</children>
 	</event>
 	<event name="StaticUAZCustom">

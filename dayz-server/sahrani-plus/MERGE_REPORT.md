@@ -26,7 +26,7 @@ Entry merge: `../originals/sahrani-plus/db/events.xml` (Sahrani Plus (map author
 |---|---|---|---|
 | Sahrani Plus (map author) | `9f046db0618d` | 1744 | 80 |
 | Bohemia vanilla Chernarus | `4089710dfa15` | 1230 | 61 |
-| **Master** | `e2c13d74f368` | 1887 | 89 |
+| **Master** | `dcb5c3a8cdf4` | 1887 | 89 |
 
 Verification: passed. Line endings: LF, as in the map file.
 
@@ -1437,7 +1437,11 @@ Verification: passed. Line endings: LF, as in the map file.
 
 **Children removed:** 9 with type starting `Land_wreck_hc3_merlin` (Merlin heli wreck mod isn't on the server; StaticHeliCrash keeps the vanilla Mi8 and UH1Y wrecks (Boss, 2026-11-27))
 
-**Children renamed:** 1 `Land_wreck_s1023_ambulance` to `Land_S_s1203_ambulance` (SahraniPlus 2.0 names the ambulance wreck Land_S_s1203_ambulance (types and mapgroupproto); the old name doesn't exist, so the CE dropped the only child of StaticAmbulanceWreck)
+**Children renamed:** 1 `Land_wreck_s1023_ambulance` to `Land_S_s1203_ambulance` (SahraniPlus 2.0 names the ambulance wreck Land_S_s1203_ambulance (class in its s_wrecks.pbo, also in types and mapgroupproto); the old name doesn't exist, so the CE dropped the only child of StaticAmbulanceWreck)
+
+**Edited by hand on the server, kept here:**
+
+- `event:StaticAmbulanceWreck`: event min 1 / max 4, child max 3 / min 2 (Boss's own edit on the live server, 2026-11-27)
 
 **Removed from the map file:** `event:VehicleLandrover (Expansion mod isn't on the server; all 7 children were Expansion_Landrover (Boss, 2026-11-27))`
 

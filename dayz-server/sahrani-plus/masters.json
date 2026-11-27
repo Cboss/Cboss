@@ -305,9 +305,25 @@
         {
           "from": "Land_wreck_s1023_ambulance",
           "to": "Land_S_s1203_ambulance",
-          "why": "SahraniPlus 2.0 names the ambulance wreck Land_S_s1203_ambulance (types and mapgroupproto); the old name doesn't exist, so the CE dropped the only child of StaticAmbulanceWreck"
+          "why": "SahraniPlus 2.0 names the ambulance wreck Land_S_s1203_ambulance (class in its s_wrecks.pbo, also in types and mapgroupproto); the old name doesn't exist, so the CE dropped the only child of StaticAmbulanceWreck"
         }
-      ]
+      ],
+      "edit_entries": {
+        "event:StaticAmbulanceWreck": {
+          "edits": [
+            {
+              "find": "\t\t<min>0</min>\n\t\t<max>0</max>",
+              "replace": "\t\t<min>1</min>\n\t\t<max>4</max>"
+            },
+            {
+              "find": "max=\"4\" min=\"4\" type=\"Land_S_s1203_ambulance\"",
+              "replace": "max=\"3\" min=\"2\" type=\"Land_S_s1203_ambulance\""
+            }
+          ],
+          "summary": "event min 1 / max 4, child max 3 / min 2",
+          "why": "Boss's own edit on the live server, 2026-11-27"
+        }
+      }
     },
     {
       "type": "patch",

@@ -160,6 +160,8 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
     out every <child> whose type starts with one of the prefixes, in all events),
     rename_children ([{"from", "to", "why"}]: change a <child> type everywhere,
     keeping its counts; events only),
+    edit_entries ({key: {edits: [{find, replace}], summary, why}}: find/replace
+    inside one entry of the master, same line count; for Boss's own edits),
     add_children ({key: {children: [[type, min, max], ...], why}}: append
     children to any entry in the master, map or vanilla; events only),
     replace_map ({key: {name, children: [[type, min, max], ...], why}}: keep the
@@ -295,6 +297,32 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
         if not n:
             problems.append(f"rename_children: no child of type {rn['from']}")
         rn["_count"] = n
+    # edit_entries: find/replace inside one entry's block (Boss's own edits).
+    edited: dict = step.get("edit_entries", {})
+    edited_map_idx: set[int] = set()
+    for k, spec in edited.items():
+        tag, name = k.split(":", 1)
+        try:
+            a = next(i for i, l in enumerate(out) if re.search(rf'<{tag}\s+name="{re.escape(name)}"', l))
+            b = next(i for i in range(a, len(out)) if re.search(rf'</{tag}>', out[i]))
+        except StopIteration:
+            problems.append(f"edit_entries: {k} is not in the master")
+            continue
+        blk = "\n".join(out[a:b + 1])
+        for ed in spec["edits"]:
+            if blk.count(ed["find"]) != 1:
+                problems.append(f"edit_entries: {k}: {ed['find']!r} must occur exactly once")
+                continue
+            blk = blk.replace(ed["find"], ed["replace"])
+        new = blk.split("\n")
+        if len(new) != b + 1 - a:
+            problems.append(f"edit_entries: {k}: edits must not add or remove lines")
+            continue
+        if k in mp.entries:
+            e = mp.entries[k]
+            edited_map_idx.update(e.first + j for j in range(len(new))
+                                  if e.first + j <= e.last and new[j] != mp.lines[e.first + j])
+        out[a:b + 1] = new
     extra: dict = step.get("add_children", {})
     for k, spec in extra.items():
         tag, name = k.split(":", 1)
@@ -325,7 +353,7 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
         if ms.duplicates:
             problems.append(f"master defines twice: {ms.duplicates}")
         for k, e in ms.entries.items():
-            if k in new_key.values() or k in extra:
+            if k in new_key.values() or k in extra or k in edited:
                 continue
             src = va if (k in added or k in use_vanilla) else mp
             if k in src.entries and any(l in rm_lines for l in src.block(src.entries[k])):
@@ -336,7 +364,7 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
             problems.append("master line endings/BOM differ from the map file")
     kept = [l for i, l in enumerate(mp.lines)
             if i not in skip_lines and i not in replace and i not in removed and i not in swap_at
-            and l not in rm_lines]
+            and l not in rm_lines and i not in edited_map_idx]
     it = iter(out)
     if not all(any(l == o for o in it) for l in kept):
         problems.append("some of the map's own lines are missing from the master")
@@ -388,6 +416,9 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
     for rn in ren_specs:
         if rn.get("_count"):
             r += [f"**Children renamed:** {rn['_count']} `{rn['from']}` to `{rn['to']}` ({rn.get('why', '')})", ""]
+    if edited:
+        r += ["**Edited by hand on the server, kept here:**", ""] + [
+            f"- `{k}`: {v.get('summary', '')} ({v.get('why', '')})" for k, v in edited.items()] + [""]
     if extra:
         r += ["**Children added:**", ""] + [
             f"- `{k}`: " + ", ".join(f"`{t}` {mn}-{mx}" for t, mn, mx in v["children"])
