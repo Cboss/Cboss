@@ -478,6 +478,12 @@
           "replace": "\t\t<rootclass name=\"CarScript\" act=\"car\" reportMemoryLOD=\"no\" /> <!-- cars (sedan, hatchback, transitBus, V3S, ...) -->\n\t\t<rootclass name=\"BoatScript\" act=\"car\" reportMemoryLOD=\"no\" /> <!-- boats -->\n\t\t<rootclass name=\"MotorbikeScript\" act=\"car\" reportMemoryLOD=\"no\" /> <!-- Motorbike -->\n\t\t<rootclass name=\"HouseDestructible\" reportMemoryLOD=\"no\" /> <!-- houses, wrecks -->\n",
           "summary": "add the vanilla 1.30 root classes for boats, motorbikes and destructible houses",
           "why": "missing from the map's file, so the CE ignored Boat_01_* and Motorbike_* as 'Type does not exist' (03:07 boot). Lines copied from Bohemia's cfgeconomycore (DayZ-Central-Economy 7bfc95c)"
+        },
+        {
+          "find": "\t<ce folder=\"CustomTypes/BS_BaseBuilding\">\n\t\t\t<file name=\"types_bs.xml\" type=\"types\" />\n\t\t</ce>\n",
+          "replace": "\t<ce folder=\"CustomTypes/BS_BaseBuilding\">\n\t\t\t<file name=\"types_bs.xml\" type=\"types\" />\n\t\t</ce>\n\t<ce folder=\"CustomTypes/MaharlikaPH_Boats\">\n\t\t\t<file name=\"maharlikaph_boats_types.xml\" type=\"types\" />\n\t\t\t<file name=\"maharlikaph_boats_spawnabletypes.xml\" type=\"spawnabletypes\" />\n\t\t</ce>\n",
+          "summary": "load the MaharlikaPH Boats types and spawnabletypes",
+          "why": "Boss is adding MaharlikaPH Boats (@3354681846); the two files are the mod's own Info\\ files copied unchanged into CustomTypes/MaharlikaPH_Boats (2026-11-27)"
         }
       ]
     },

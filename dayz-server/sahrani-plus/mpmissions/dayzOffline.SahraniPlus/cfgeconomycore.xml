@@ -106,4 +106,8 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 	<ce folder="CustomTypes/BS_BaseBuilding">
 			<file name="types_bs.xml" type="types" />
 		</ce>
+	<ce folder="CustomTypes/MaharlikaPH_Boats">
+			<file name="maharlikaph_boats_types.xml" type="types" />
+			<file name="maharlikaph_boats_spawnabletypes.xml" type="spawnabletypes" />
+		</ce>
 </economycore>
