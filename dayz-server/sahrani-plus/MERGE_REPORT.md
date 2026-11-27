@@ -8,7 +8,13 @@ Unchanged copy of `../originals/sahraniplus-economy/mapgroupcluster.xml` (sha256
 
 ## mapgrouppos.xml
 
-Unchanged copy of `../originals/sahraniplus-economy/mapgrouppos.xml` (sha256 `1cd64f81d8ee`). SahraniPlus economy version: matches the installed SahraniPlus 2.0 terrain (Land_S_* buildings); the older map files use Land_smd_* buildings that aren't in the mod (checked on the server 2026-11-27)
+Patched copy of `../originals/sahraniplus-economy/mapgrouppos.xml` (sha256 `1cd64f81d8ee`) → `mpmissions/dayzOffline.SahraniPlus/mapgrouppos.xml`.
+
+| # | Change | Why |
+|---|---|---|
+| 1 | comment out stray Land_z_helipad_medic | Land_z_helipad_medic is not on the SahraniPlus 2.0 terrain (the 12:50 proxy export did not find it) |
+
+Master sha256 `93c1e2b43f54`. Verification: passed.
 
 ## mapgroupproto.xml
 
@@ -26,7 +32,7 @@ Entry merge: `../originals/sahrani-plus/db/events.xml` (Sahrani Plus (map author
 |---|---|---|---|
 | Sahrani Plus (map author) | `9f046db0618d` | 1744 | 80 |
 | Bohemia vanilla Chernarus | `4089710dfa15` | 1230 | 61 |
-| **Master** | `d6316ed3ed96` | 1909 | 90 |
+| **Master** | `b4d0d939876a` | 1909 | 90 |
 
 Verification: passed. Line endings: LF, as in the map file.
 
@@ -1446,6 +1452,7 @@ Verification: passed. Line endings: LF, as in the map file.
 - `event:VehicleMix02`: switched on, nominal 4 / min 2 / max 5 (map shipped all car events off; Boss wants cars on but minimal (2026-11-27))
 - `event:VehicleOffroad02`: switched on, nominal 2 / min 1 / max 2 (map shipped all car events off; Boss wants cars on but minimal (2026-11-27))
 - `event:VehicleTruck01`: switched on, nominal 2 / min 1 / max 3 (map shipped all car events off; Boss wants cars on but minimal (2026-11-27))
+- `event:StaticUAZCustom`: switched off (fixed-position event with no positions in cfgeventspawns, and StaticObj_Wreck_Uaz_colored_DE is not a class here; off until it gets positions (cleanup pass, 2026-11-27))
 
 **Removed from the map file:** none
 
@@ -1581,8 +1588,9 @@ Patched copy of `../originals/sahrani-plus/cfgeventspawns.xml` (sha256 `ffa2e52d
 | 1 | remove 15 empty spawn entries for the old dino/crocodile events | those events were renamed to real animals; the server logged 'Skipping entry for non-existing event' for each (2:36 boot). Animal events spawn from cfgenvironment territories, not from here |
 | 2 | comment out VehicleLavegaBus spawn positions | server logged 'Skipping entry for non-existing event'; positions kept in a comment so the event can come back with its mod |
 | 3 | rename VehicleBoats spawn positions to VehicleBoat | events.xml calls the event VehicleBoat, so its positions were skipped and the event was disabled ('needs configured positions'). Boss is adding the MaharlikaPH Boats mod (2026-11-27) |
+| 4 | remove stray text 'sa' after a position | typo in the map's file; stray text between XML elements |
 
-Master sha256 `ce9c5b8137a7`. Verification: passed.
+Master sha256 `7af1dfd5a506`. Verification: passed.
 
 ## cfgplayerspawnpoints.xml
 
@@ -1604,3 +1612,37 @@ Patched copy of `../originals/sahrani-plus/env/zombie_territories.xml` (sha256 `
 | 1 | dmin +1, dmax +2 on all 546 <zone> | Boss, 2026-11-27: up the zombie counts a little, by 1 or 2. Each zone's dynamic count goes up 1 (min) and 2 (max) |
 
 Master sha256 `6d6dd6e2a6b3`. Verification: passed.
+
+## NM_TYPES.xml
+
+Patched copy of `../originals/sahrani-plus/CustomTypes/Nemsis/NM_TYPES.xml` (sha256 `7cde83bd7299`) → `mpmissions/dayzOffline.SahraniPlus/CustomTypes/Nemsis/NM_TYPES.xml`.
+
+| # | Change | Why |
+|---|---|---|
+| 1 | comment out duplicate nm_Trashbag_Poncho | second copy of nm_Trashbag_Poncho, identical to the one at line 330; DayZ logs it as already defined |
+| 2 | comment out duplicate nm_GhillieAtt_Camonet | second copy of nm_GhillieAtt_Camonet, identical to the one at line 1195; DayZ logs it as already defined |
+| 3 | comment out duplicate nm_Box_Spinalcord | second copy of nm_Box_Spinalcord, identical to the one at line 4178; DayZ logs it as already defined |
+| 4 | comment out duplicate nm_GliderStage1 | second copy of nm_GliderStage1, identical to the one at line 4542; DayZ logs it as already defined |
+| 5 | nm_Sketch_ammo: usage Police / Military with capitals | cfglimitsdefinition defines Police and Military; the lowercase names don't match |
+
+Master sha256 `0ad3a74bfcc1`. Verification: passed.
+
+## fishing_apokot_types.xml
+
+Patched copy of `../originals/sahrani-plus/CustomTypes/Apokot_Fish/fishing_apokot_types.xml` (sha256 `fe7906ba41d7`) → `mpmissions/dayzOffline.SahraniPlus/CustomTypes/Apokot_Fish/fishing_apokot_types.xml`.
+
+| # | Change | Why |
+|---|---|---|
+| 1 | comment out stale apokot_grasshopper_bait | apokot_grasshopper_bait is not a class in the current Apokot mod, so the boot logs it as an unknown type |
+
+Master sha256 `0e774d91070b`. Verification: passed.
+
+## cfgeventgroups.xml
+
+Patched copy of `../originals/sahrani-plus/cfgeventgroups.xml` (sha256 `87d22bf370f7`) → `mpmissions/dayzOffline.SahraniPlus/cfgeventgroups.xml`.
+
+| # | Change | Why |
+|---|---|---|
+| 1 | comment out barrel_schnell_static in Barel_Schnell | barrel_schnell_static is not a class on this server; the boot logs it as invalid at 0,0 |
+
+Master sha256 `e201be3f0458`. Verification: passed.

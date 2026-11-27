@@ -2930,7 +2930,9 @@
     <group name="Land_Wreck_offroad02_aban1" pos="12072.007813 27.806122 17633.375000" rpy="-0.000000 0.000000 59.709389" a="30.290607" />
     <group name="Land_Wreck_Volha_Blue" pos="12069.821289 26.578320 17639.373047" rpy="-0.000000 0.000000 82.914192" a="7.085800" />
     <group name="Land_S_hospital" pos="12068.143555 26.564236 17644.783203" rpy="-0.000000 0.000000 -179.999985" a="-90.000000" />
+    <!-- build_masters.py: Land_z_helipad_medic is not on the SahraniPlus 2.0 terrain (the 12:50 proxy export did not find it) (2026-11-27)
     <group name="Land_z_helipad_medic" pos="12064.491211 26.785698 17672.177734" rpy="-0.000000 0.000000 -90.756485" a="-179.243515" />
+    -->
     <group name="Land_Mil_Barracks3" pos="12072.102539 28.170433 17749.070313" rpy="-0.000000 0.000000 0.000000" a="90.000000" />
     <group name="Land_Mil_Barracks_Round" pos="12075.324219 27.197882 17733.099609" rpy="-0.000000 0.000000 0.772784" a="89.227211" />
     <group name="Land_Mil_Tower_Small" pos="12046.689453 29.740919 17741.248047" rpy="-0.000000 0.000000 -90.627586" a="-179.372421" />

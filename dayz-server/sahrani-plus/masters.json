@@ -12,9 +12,17 @@
       "why": "SahraniPlus economy version: matches the installed SahraniPlus 2.0 terrain (Land_S_* buildings); the older map files use Land_smd_* buildings that aren't in the mod (checked on the server 2026-11-27)"
     },
     {
-      "type": "copy",
+      "type": "patch",
       "from": "../originals/sahraniplus-economy/mapgrouppos.xml",
       "output": "mpmissions/dayzOffline.SahraniPlus/mapgrouppos.xml",
+      "edits": [
+        {
+          "find": "    <group name=\"Land_z_helipad_medic\" pos=\"12064.491211 26.785698 17672.177734\" rpy=\"-0.000000 0.000000 -90.756485\" a=\"-179.243515\" />\n    <group name=\"Land_Mil_Barracks3\" pos=\"12072.102539 28.170433 17749.070313\" rpy=\"-0.000000 0.000000 0.000000\" a=\"90.000000\" />",
+          "replace": "    <!-- build_masters.py: Land_z_helipad_medic is not on the SahraniPlus 2.0 terrain (the 12:50 proxy export did not find it) (2026-11-27)\n    <group name=\"Land_z_helipad_medic\" pos=\"12064.491211 26.785698 17672.177734\" rpy=\"-0.000000 0.000000 -90.756485\" a=\"-179.243515\" />\n    -->\n    <group name=\"Land_Mil_Barracks3\" pos=\"12072.102539 28.170433 17749.070313\" rpy=\"-0.000000 0.000000 0.000000\" a=\"90.000000\" />",
+          "summary": "comment out stray Land_z_helipad_medic",
+          "why": "Land_z_helipad_medic is not on the SahraniPlus 2.0 terrain (the 12:50 proxy export did not find it)"
+        }
+      ],
       "why": "SahraniPlus economy version: matches the installed SahraniPlus 2.0 terrain (Land_S_* buildings); the older map files use Land_smd_* buildings that aren't in the mod (checked on the server 2026-11-27)"
     },
     {
@@ -376,6 +384,16 @@
           ],
           "summary": "switched on, nominal 2 / min 1 / max 3",
           "why": "map shipped all car events off; Boss wants cars on but minimal (2026-11-27)"
+        },
+        "event:StaticUAZCustom": {
+          "edits": [
+            {
+              "find": "\t\t<active>1</active>",
+              "replace": "\t\t<active>0</active>"
+            }
+          ],
+          "summary": "switched off",
+          "why": "fixed-position event with no positions in cfgeventspawns, and StaticObj_Wreck_Uaz_colored_DE is not a class here; off until it gets positions (cleanup pass, 2026-11-27)"
         }
       }
     },
@@ -598,6 +616,12 @@
           "replace": "\t<event name=\"VehicleBoat\">\n",
           "summary": "rename VehicleBoats spawn positions to VehicleBoat",
           "why": "events.xml calls the event VehicleBoat, so its positions were skipped and the event was disabled ('needs configured positions'). Boss is adding the MaharlikaPH Boats mod (2026-11-27)"
+        },
+        {
+          "find": "\t\t<pos x=\"14666.2\" y=\"376.82\" z=\"15189.2\" a=\"0\"/>sa\n",
+          "replace": "\t\t<pos x=\"14666.2\" y=\"376.82\" z=\"15189.2\" a=\"0\"/>\n",
+          "summary": "remove stray text 'sa' after a position",
+          "why": "typo in the map's file; stray text between XML elements"
         }
       ]
     },
@@ -632,6 +656,69 @@
             "dmax": 2
           },
           "why": "Boss, 2026-11-27: up the zombie counts a little, by 1 or 2. Each zone's dynamic count goes up 1 (min) and 2 (max)"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/CustomTypes/Nemsis/NM_TYPES.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/CustomTypes/Nemsis/NM_TYPES.xml",
+      "edits": [
+        {
+          "find": "\t<type name=\"nm_Trashbag_Poncho\">\n\t\t<lifetime>14400</lifetime>\n\t\t<flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n\t</type>\t\n    <type name=\"nm_umbrella_red_folded\">",
+          "replace": "\t<!-- build_masters.py: second copy of nm_Trashbag_Poncho, identical to the one at line 330; DayZ logs it as already defined (2026-11-27)\n\t<type name=\"nm_Trashbag_Poncho\">\n\t\t<lifetime>14400</lifetime>\n\t\t<flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n\t</type>\t\n\t-->\n    <type name=\"nm_umbrella_red_folded\">",
+          "summary": "comment out duplicate nm_Trashbag_Poncho",
+          "why": "second copy of nm_Trashbag_Poncho, identical to the one at line 330; DayZ logs it as already defined"
+        },
+        {
+          "find": "\t<type name=\"nm_GhillieAtt_Camonet\">\n\t\t<lifetime>5600</lifetime>\n\t\t<flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n\t</type>\n\t<type name=\"nm_GhillieAtt_Fabric\">",
+          "replace": "\t<!-- build_masters.py: second copy of nm_GhillieAtt_Camonet, identical to the one at line 1195; DayZ logs it as already defined (2026-11-27)\n\t<type name=\"nm_GhillieAtt_Camonet\">\n\t\t<lifetime>5600</lifetime>\n\t\t<flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n\t</type>\n\t-->\n\t<type name=\"nm_GhillieAtt_Fabric\">",
+          "summary": "comment out duplicate nm_GhillieAtt_Camonet",
+          "why": "second copy of nm_GhillieAtt_Camonet, identical to the one at line 1195; DayZ logs it as already defined"
+        },
+        {
+          "find": "\t<type name=\"nm_Box_Spinalcord\">\n\t\t<lifetime>5600</lifetime>\n\t\t<flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n\t</type>\n\t<type name=\"nm_Sketch_herbs1\">",
+          "replace": "\t<!-- build_masters.py: second copy of nm_Box_Spinalcord, identical to the one at line 4178; DayZ logs it as already defined (2026-11-27)\n\t<type name=\"nm_Box_Spinalcord\">\n\t\t<lifetime>5600</lifetime>\n\t\t<flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n\t</type>\n\t-->\n\t<type name=\"nm_Sketch_herbs1\">",
+          "summary": "comment out duplicate nm_Box_Spinalcord",
+          "why": "second copy of nm_Box_Spinalcord, identical to the one at line 4178; DayZ logs it as already defined"
+        },
+        {
+          "find": "\t<type name=\"nm_GliderStage1\">\n\t\t<lifetime>3888000</lifetime>\n\t\t<flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n\t</type>\n\t<type name=\"nm_GliderStage3\">",
+          "replace": "\t<!-- build_masters.py: second copy of nm_GliderStage1, identical to the one at line 4542; DayZ logs it as already defined (2026-11-27)\n\t<type name=\"nm_GliderStage1\">\n\t\t<lifetime>3888000</lifetime>\n\t\t<flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n\t</type>\n\t-->\n\t<type name=\"nm_GliderStage3\">",
+          "summary": "comment out duplicate nm_GliderStage1",
+          "why": "second copy of nm_GliderStage1, identical to the one at line 4542; DayZ logs it as already defined"
+        },
+        {
+          "find": "\t\t<usage name=\"police\"/>\n\t\t<usage name=\"military\"/>",
+          "replace": "\t\t<usage name=\"Police\"/>\n\t\t<usage name=\"Military\"/>",
+          "summary": "nm_Sketch_ammo: usage Police / Military with capitals",
+          "why": "cfglimitsdefinition defines Police and Military; the lowercase names don't match"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/CustomTypes/Apokot_Fish/fishing_apokot_types.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/CustomTypes/Apokot_Fish/fishing_apokot_types.xml",
+      "edits": [
+        {
+          "find": "\t<type name=\"apokot_grasshopper_bait\">\n        <nominal>0</nominal>\n        <lifetime>14400</lifetime>\n        <restock>0</restock>\n        <min>0</min>\n        <quantmin>-1</quantmin>\n        <quantmax>-1</quantmax>\n        <cost>100</cost>\n        <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n        <category name=\"tools\"/>\n    </type>\n\t<type name=\"apokot_grasshopper\">",
+          "replace": "\t<!-- build_masters.py: apokot_grasshopper_bait is not a class in the current Apokot mod, so the boot logs it as an unknown type (2026-11-27)\n\t<type name=\"apokot_grasshopper_bait\">\n        <nominal>0</nominal>\n        <lifetime>14400</lifetime>\n        <restock>0</restock>\n        <min>0</min>\n        <quantmin>-1</quantmin>\n        <quantmax>-1</quantmax>\n        <cost>100</cost>\n        <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n        <category name=\"tools\"/>\n    </type>\n\t-->\n\t<type name=\"apokot_grasshopper\">",
+          "summary": "comment out stale apokot_grasshopper_bait",
+          "why": "apokot_grasshopper_bait is not a class in the current Apokot mod, so the boot logs it as an unknown type"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/cfgeventgroups.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/cfgeventgroups.xml",
+      "edits": [
+        {
+          "find": "    <child type=\"barrel_schnell_static\" spawnsecondary=\"false\" x=\"0.0\" z=\"0.0\" a=\"0\" y=\"0\" />\n    <child type=\"ScientificBriefcaseKeys\" spawnsecondary=\"false\" x=\"0.0\" z=\"0.8\" a=\"180\" />",
+          "replace": "    <!-- build_masters.py: barrel_schnell_static is not a class on this server; the boot logs it as invalid at 0,0 (2026-11-27)\n    <child type=\"barrel_schnell_static\" spawnsecondary=\"false\" x=\"0.0\" z=\"0.0\" a=\"0\" y=\"0\" />\n    -->\n    <child type=\"ScientificBriefcaseKeys\" spawnsecondary=\"false\" x=\"0.0\" z=\"0.8\" a=\"180\" />",
+          "summary": "comment out barrel_schnell_static in Barel_Schnell",
+          "why": "barrel_schnell_static is not a class on this server; the boot logs it as invalid at 0,0"
         }
       ]
     }
