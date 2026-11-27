@@ -1094,15 +1094,15 @@
 		<children>
 			<child lootmax="15" lootmin="10" max="3" min="1" type="Wreck_Mi8_Crashed"/>
 			<child lootmax="15" lootmin="10" max="3" min="1" type="Wreck_UH1Y"/>
-			<child lootmax="8" lootmin="6" max="3" min="1" type="Land_wreck_hc3_merlin"/>
-			<child lootmax="8" lootmin="6" max="3" min="1" type="Land_wreck_hc3_merlin_AirTak"/>
-			<child lootmax="8" lootmin="6" max="3" min="1" type="Land_wreck_hc3_merlin_medic"/>
-			<child lootmax="8" lootmin="6" max="3" min="1" type="Land_wreck_hc3_merlin_dahoman"/>
-			<child lootmax="8" lootmin="6" max="3" min="1" type="Land_wreck_hc3_merlin_ion"/>
-			<child lootmax="8" lootmin="6" max="3" min="1" type="Land_wreck_hc3_merlin_lux"/>
-			<child lootmax="8" lootmin="6" max="3" min="1" type="Land_wreck_hc3_merlin_president"/>
-			<child lootmax="8" lootmin="6" max="3" min="1" type="Land_wreck_hc3_merlin_vrana"/>
-			<child lootmax="8" lootmin="6" max="3" min="1" type="Land_wreck_hc3_merlin_wave"/>
+			<!-- build_masters.py: removed child Land_wreck_hc3_merlin: Merlin heli wreck mod isn't on the server; StaticHeliCrash keeps the vanilla Mi8 and UH1Y wrecks (Boss, 2026-11-27) -->
+			<!-- build_masters.py: removed child Land_wreck_hc3_merlin_AirTak: Merlin heli wreck mod isn't on the server; StaticHeliCrash keeps the vanilla Mi8 and UH1Y wrecks (Boss, 2026-11-27) -->
+			<!-- build_masters.py: removed child Land_wreck_hc3_merlin_medic: Merlin heli wreck mod isn't on the server; StaticHeliCrash keeps the vanilla Mi8 and UH1Y wrecks (Boss, 2026-11-27) -->
+			<!-- build_masters.py: removed child Land_wreck_hc3_merlin_dahoman: Merlin heli wreck mod isn't on the server; StaticHeliCrash keeps the vanilla Mi8 and UH1Y wrecks (Boss, 2026-11-27) -->
+			<!-- build_masters.py: removed child Land_wreck_hc3_merlin_ion: Merlin heli wreck mod isn't on the server; StaticHeliCrash keeps the vanilla Mi8 and UH1Y wrecks (Boss, 2026-11-27) -->
+			<!-- build_masters.py: removed child Land_wreck_hc3_merlin_lux: Merlin heli wreck mod isn't on the server; StaticHeliCrash keeps the vanilla Mi8 and UH1Y wrecks (Boss, 2026-11-27) -->
+			<!-- build_masters.py: removed child Land_wreck_hc3_merlin_president: Merlin heli wreck mod isn't on the server; StaticHeliCrash keeps the vanilla Mi8 and UH1Y wrecks (Boss, 2026-11-27) -->
+			<!-- build_masters.py: removed child Land_wreck_hc3_merlin_vrana: Merlin heli wreck mod isn't on the server; StaticHeliCrash keeps the vanilla Mi8 and UH1Y wrecks (Boss, 2026-11-27) -->
+			<!-- build_masters.py: removed child Land_wreck_hc3_merlin_wave: Merlin heli wreck mod isn't on the server; StaticHeliCrash keeps the vanilla Mi8 and UH1Y wrecks (Boss, 2026-11-27) -->
 		</children>
 	</event>
 	<event name="StaticPoliceCarNorth">

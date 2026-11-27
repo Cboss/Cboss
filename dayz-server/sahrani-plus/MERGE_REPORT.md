@@ -26,7 +26,7 @@ Entry merge: `../originals/sahrani-plus/db/events.xml` (Sahrani Plus (map author
 |---|---|---|---|
 | Sahrani Plus (map author) | `9f046db0618d` | 1744 | 80 |
 | Bohemia vanilla Chernarus | `4089710dfa15` | 1230 | 61 |
-| **Master** | `71590eab3586` | 1887 | 89 |
+| **Master** | `a89d09394103` | 1887 | 89 |
 
 Verification: passed. Line endings: LF, as in the map file.
 
@@ -1435,6 +1435,8 @@ Verification: passed. Line endings: LF, as in the map file.
 
 **Children removed:** 21 with type starting `CDAJ_` (CDAJ zombie mod isn't on the server (Boss, 2026-11-27))
 
+**Children removed:** 9 with type starting `Land_wreck_hc3_merlin` (Merlin heli wreck mod isn't on the server; StaticHeliCrash keeps the vanilla Mi8 and UH1Y wrecks (Boss, 2026-11-27))
+
 **Removed from the map file:** `event:VehicleLandrover (Expansion mod isn't on the server; all 7 children were Expansion_Landrover (Boss, 2026-11-27))`
 
 **Added from Bohemia vanilla Chernarus:** `event:AmbientFox`, `event:AmbientHare`, `event:AmbientHen`, `event:AnimalBear`, `event:AnimalDeer`, `event:AnimalGoat`, `event:AnimalPig`, `event:AnimalRoeDeer`, `event:AnimalSheep`, `event:AnimalWolf`
@@ -1555,3 +1557,27 @@ Patched copy of `../originals/sahrani-plus/cfgeconomycore.xml` (sha256 `8b088584
 | 1 | stop loading `BRDK_LtlCreature_types.xml` | Boss isn't using the BRDK little creatures |
 
 Master sha256 `339aab036875`. Verification: passed.
+
+## cfgeventspawns.xml
+
+Patched copy of `../originals/sahrani-plus/cfgeventspawns.xml` (sha256 `ffa2e52d1f64`) → `mpmissions/dayzOffline.SahraniPlus/cfgeventspawns.xml`.
+
+| # | Change | Why |
+|---|---|---|
+| 1 | remove 15 empty spawn entries for the old dino/crocodile events | those events were renamed to real animals; the server logged 'Skipping entry for non-existing event' for each (2:36 boot). Animal events spawn from cfgenvironment territories, not from here |
+| 2 | comment out VehicleLavegaBus spawn positions | server logged 'Skipping entry for non-existing event'; positions kept in a comment so the event can come back with its mod |
+| 3 | comment out VehicleLandrover spawn positions | server logged 'Skipping entry for non-existing event'; positions kept in a comment so the event can come back with its mod |
+| 4 | comment out VehicleBoats spawn positions | server logged 'Skipping entry for non-existing event'; positions kept in a comment so the event can come back with its mod |
+
+Master sha256 `2b1b671ded20`. Verification: passed.
+
+## cfgplayerspawnpoints.xml
+
+Patched copy of `../originals/sahrani-plus/cfgplayerspawnpoints.xml` (sha256 `8e48b2ad5572`) → `mpmissions/dayzOffline.SahraniPlus/cfgplayerspawnpoints.xml`.
+
+| # | Change | Why |
+|---|---|---|
+| 1 | hop spawns use the fresh spawn settings and bubbles | hop was empty; the server logged 'NO VALID SPAWNS, players will spawn at { 0,0,0 }' (Boss OK 2026-11-27) |
+| 2 | travel spawns use the fresh spawn settings and bubbles | travel was empty; same 0,0,0 warning |
+
+Master sha256 `fa74724971c7`. Verification: passed.

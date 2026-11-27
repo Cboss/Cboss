@@ -156,8 +156,8 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
     van_label = step.get("vanilla_label", van_label)
     """step keys: map, vanilla, output, add_vanilla ("all" or list),
     skip_vanilla (list), drop_map ({key: why}), decisions ({key: {keep, why}}),
-    remove_children ({"prefixes": [...], "why": ...}: comment out every <child>
-    whose type starts with one of the prefixes, in all events),
+    remove_children ({"prefixes": [...], "why": ...}, or a list of those: comment
+    out every <child> whose type starts with one of the prefixes, in all events),
     add_children ({key: {children: [[type, min, max], ...], why}}: append
     children to any entry in the master, map or vanilla; events only),
     replace_map ({key: {name, children: [[type, min, max], ...], why}}: keep the
@@ -264,17 +264,23 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
             out.append(line)
         if i in inserts:
             out += inserts[i]
-    rm_spec: dict = step.get("remove_children", {})
-    rm_pref = tuple(rm_spec.get("prefixes", []))
+    rm_specs = step.get("remove_children", [])
+    if isinstance(rm_specs, dict):
+        rm_specs = [rm_specs]
     rm_lines: set[str] = set()
-    rm_count = 0
-    if rm_pref:
+    rm_counts: list[int] = []
+    for rm_spec in rm_specs:
+        rm_pref = tuple(rm_spec.get("prefixes", []))
+        n = 0
         for i, l in enumerate(out):
             m = re.search(r'<child\b[^>]*\btype="([^"]+)"', l)
-            if m and m.group(1).startswith(rm_pref) and "<!--" not in l:
+            if rm_pref and m and m.group(1).startswith(rm_pref) and "<!--" not in l:
                 rm_lines.add(l)
                 out[i] = f"{indent_of(l)}<!-- {MARK}: removed child {m.group(1)}: {rm_spec.get('why', '')} -->"
-                rm_count += 1
+                n += 1
+        if rm_pref and not n:
+            problems.append(f"remove_children: nothing matches {list(rm_pref)}")
+        rm_counts.append(n)
     extra: dict = step.get("add_children", {})
     for k, spec in extra.items():
         tag, name = k.split(":", 1)
@@ -361,9 +367,10 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
             kids = ", ".join(f"`{t}` {mn}-{mx}" for t, mn, mx in swap[k]["children"])
             r.append(f"| `{k}` | `{new_key[k]}` | {kids} | {swap[k].get('why', '')} |")
         r.append("")
-    if rm_count:
-        r += [f"**Children removed:** {rm_count} with type starting {', '.join(f'`{x}`' for x in rm_pref)} "
-              f"({rm_spec.get('why', '')})", ""]
+    for rm_spec, n in zip(rm_specs, rm_counts):
+        if n:
+            r += [f"**Children removed:** {n} with type starting "
+                  f"{', '.join(f'`{x}`' for x in rm_spec.get('prefixes', []))} ({rm_spec.get('why', '')})", ""]
     if extra:
         r += ["**Children added:**", ""] + [
             f"- `{k}`: " + ", ".join(f"`{t}` {mn}-{mx}" for t, mn, mx in v["children"])
