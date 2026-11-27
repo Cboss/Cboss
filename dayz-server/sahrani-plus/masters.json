@@ -6,14 +6,28 @@
   "report": "MERGE_REPORT.md",
   "masters": [
     {
-      "type": "merge",
-      "map": "../originals/sahrani-plus/mapclusterproto.xml",
-      "vanilla": "../originals/vanilla-chernarusplus/mapclusterproto.xml",
+      "type": "copy",
+      "from": "../originals/sahraniplus-economy/mapgroupcluster.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/mapgroupcluster.xml",
+      "why": "SahraniPlus economy version: matches the installed SahraniPlus 2.0 terrain (Land_S_* buildings); the older map files use Land_smd_* buildings that aren't in the mod (checked on the server 2026-11-27)"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahraniplus-economy/mapgrouppos.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/mapgrouppos.xml",
+      "why": "SahraniPlus economy version: matches the installed SahraniPlus 2.0 terrain (Land_S_* buildings); the older map files use Land_smd_* buildings that aren't in the mod (checked on the server 2026-11-27)"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahraniplus-economy/mapgroupproto.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/mapgroupproto.xml",
+      "why": "SahraniPlus economy version: matches the installed SahraniPlus 2.0 terrain (Land_S_* buildings); the older map files use Land_smd_* buildings that aren't in the mod (checked on the server 2026-11-27)"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahraniplus-economy/mapclusterproto.xml",
       "output": "mpmissions/dayzOffline.SahraniPlus/mapclusterproto.xml",
-      "add_vanilla": "all",
-      "skip_vanilla": [],
-      "drop_map": {},
-      "decisions": {}
+      "why": "SahraniPlus economy version: matches the installed SahraniPlus 2.0 terrain (Land_S_* buildings); the older map files use Land_smd_* buildings that aren't in the mod (checked on the server 2026-11-27)"
     },
     {
       "type": "merge",
