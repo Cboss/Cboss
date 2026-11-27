@@ -47,7 +47,9 @@
         "event:AnimalWolf"
       ],
       "skip_vanilla": [],
-      "drop_map": {"event:VehicleLandrover": "Expansion mod isn't on the server; all 7 children were Expansion_Landrover (Boss, 2026-11-27)"},
+      "drop_map": {
+        "event:VehicleLandrover": "Expansion mod isn't on the server; all 7 children were Expansion_Landrover (Boss, 2026-11-27)"
+      },
       "decisions": {},
       "prefer": {
         "keep": "map",
@@ -299,15 +301,15 @@
       "edits": [
         {
           "find": "\t\t<file path=\"env/IDREX_territories.xml\" />\n\t\t<file path=\"env/Stygivenator_territories.xml\" />\n\t\t<file path=\"env/tricero1_territories.xml\" />\n\t\t<file path=\"env/tricero2_territories.xml\" />\n\t\t<file path=\"env/wild_boar_territories.xml\" />\n\t\t<file path=\"env/Charanosaurus_territories.xml\" />\n\t\t<file path=\"env/hen_territories.xml\" />\n\t\t<file path=\"env/trex_territories.xml\" />\n\t\t<file path=\"env/hare_territories.xml\" />\n\t\t<file path=\"env/zombie_territories.xml\" />\n\t\t<file path=\"env/Scolosaurus1_territories.xml\" />\n\t\t<file path=\"env/Scolosaurus2_territories.xml\" />\n\t\t<file path=\"env/crocodile_territories.xml\" />\n\t\t<file path=\"env/smallDinos_territories.xml\" />\n\t\t<file path=\"env/raptor_territories.xml\" />\n\t\t<file path=\"env/Ceratosaurus_territories.xml\" />\n\t\t<file path=\"env/Alioromus_territories.xml\" />\n\t\t<file path=\"env/Rhinoceros_territories.xml\" />\n",
-          "replace": "\t\t<file path=\"env/wild_boar_territories.xml\" />\n\t\t<file path=\"env/hen_territories.xml\" />\n\t\t<file path=\"env/hare_territories.xml\" />\n\t\t<file path=\"env/zombie_territories.xml\" />\n\t\t<file path=\"env/Crocodile_territories.xml\" />\n\t\t<file path=\"env/cattle_territories.xml\" />\n\t\t<file path=\"env/bear_territories.xml\" />\n\t\t<file path=\"env/wolf_territories.xml\" />\n\t\t<file path=\"env/red_deer_territories.xml\" />\n\t\t<file path=\"env/roe_deer_territories.xml\" />\n\t\t<file path=\"env/sheep_goat_territories.xml\" />\n\t\t<file path=\"env/pig_territories.xml\" />\n\t\t<file path=\"env/fox_territories.xml\" />\n\t\t<file path=\"env/domestic_animals_territories.xml\" />\n\t\t<file path=\"env/dog_territories.xml\" />\n",
-          "summary": "load only territory files that exist in env/",
-          "why": "13 of the listed files (dinos, Rhinoceros, Scolosaurus) don't exist; the server logged 'Failed to open file' for each"
+          "replace": "\t\t<file path=\"env/wild_boar_territories.xml\" />\n\t\t<file path=\"env/hen_territories.xml\" />\n\t\t<file path=\"env/hare_territories.xml\" />\n\t\t<file path=\"env/zombie_territories.xml\" />\n\t\t<file path=\"env/cattle_territories.xml\" />\n\t\t<file path=\"env/bear_territories.xml\" />\n\t\t<file path=\"env/wolf_territories.xml\" />\n\t\t<file path=\"env/red_deer_territories.xml\" />\n\t\t<file path=\"env/roe_deer_territories.xml\" />\n\t\t<file path=\"env/sheep_goat_territories.xml\" />\n\t\t<file path=\"env/pig_territories.xml\" />\n\t\t<file path=\"env/fox_territories.xml\" />\n\t\t<file path=\"env/domestic_animals_territories.xml\" />\n\t\t<file path=\"env/dog_territories.xml\" />\n\t\t<file path=\"env/lion_territories.xml\" />\n\t\t<file path=\"env/bengal_tiger_territories.xml\" />\n\t\t<file path=\"env/hyena_territories.xml\" />\n\t\t<file path=\"env/coyote_territories.xml\" />\n\t\t<file path=\"env/jaguar_territories.xml\" />\n\t\t<file path=\"env/leopard_territories.xml\" />\n\t\t<file path=\"env/bighorn_ram_territories.xml\" />\n\t\t<file path=\"env/black_bear_territories.xml\" />\n\t\t<file path=\"env/tapir_territories.xml\" />\n\t\t<file path=\"env/ostrich_territories.xml\" />\n\t\t<file path=\"env/donkey_territories.xml\" />\n\t\t<file path=\"env/horse_territories.xml\" />\n\t\t<file path=\"env/antelope_territories.xml\" />\n\t\t<file path=\"env/hippo_territories.xml\" />\n\t\t<file path=\"env/rhinoceros_territories.xml\" />\n",
+          "summary": "load only territory files that exist in env/, plus one file per new animal",
+          "why": "13 of the listed files (dinos, Rhinoceros, Scolosaurus) don't exist; the server logged 'Failed to open file' for each; each new animal gets its own territory file and Crocodile_territories becomes hippo_territories (Boss, 2026-11-27)"
         },
         {
           "find": "\t\t<territory type=\"Herd\" name=\"IndominusRex\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"trex_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Rhinoceros\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"Brach_territories\"/>\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"SmallDinos\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"smallDinos_territories\"/>\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"DIL\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"DIL_territories\"/>\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Tricero1\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"tricero1_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Tricero2\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"tricero2_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Scolosaurus\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"Scolosaurus1_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Scolosaurus2\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"Scolosaurus2_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Stygivenator\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"Stygivenator_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"IDREX\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"IDREX_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"TREX\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"trex_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"WildBoar\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"wild_boar_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Charanosaurus\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"Charanosaurus_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Alioromus\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"Alioromus_territories\"/>\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Raptor\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"raptor_territories\"/>\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Ceratosaurus\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"Ceratosaurus_territories\"/>\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Crocodile\" behavior=\"DZCrocoGroupBeh\">\n\t\t\t<file usable=\"crocodile_territories\" />\t\t\t\t\t\t\t\t\t\n\t\t</territory>\n",
-          "replace": "\t\t<!-- Stopgap: new animals use the map's existing territory files until their own are drawn (Boss, 2026-11-27) -->\n\t\t<territory type=\"Herd\" name=\"Lion\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"wolf_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"BengalTiger\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"bear_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Hyena\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"wolf_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Coyote\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"dog_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Jaguar\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"bear_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Leopard\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"bear_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"BighornRam\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"sheep_goat_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"BlackBear\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"bear_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Tapir\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"wild_boar_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Ostrich\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"roe_deer_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Cattle\" behavior=\"DZdomesticGroupBeh\">\n\t\t\t<file usable=\"cattle_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Donkey\" behavior=\"DZdomesticGroupBeh\">\n\t\t\t<file usable=\"domestic_animals_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Horse\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"red_deer_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Antelope\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"roe_deer_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Hippo\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"Crocodile_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Rhinoceros\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"cattle_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"WildBoar\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"wild_boar_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Deer\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"red_deer_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"RoeDeer\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"roe_deer_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Goat\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"sheep_goat_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Sheep\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"sheep_goat_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Pig\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"pig_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Wolf\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"wolf_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Bear\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"bear_territories\" />\n\t\t</territory>\n",
+          "replace": "\t\t<!-- Each new animal has its own territory file. Zones start as a copy of the closest existing animal's file until Boss redraws them (Boss, 2026-11-27) -->\n\t\t<territory type=\"Herd\" name=\"Lion\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"lion_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"BengalTiger\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"bengal_tiger_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Hyena\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"hyena_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Coyote\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"coyote_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Jaguar\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"jaguar_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Leopard\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"leopard_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"BighornRam\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"bighorn_ram_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"BlackBear\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"black_bear_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Tapir\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"tapir_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Ostrich\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"ostrich_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Cattle\" behavior=\"DZdomesticGroupBeh\">\n\t\t\t<file usable=\"cattle_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Donkey\" behavior=\"DZdomesticGroupBeh\">\n\t\t\t<file usable=\"donkey_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Horse\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"horse_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Antelope\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"antelope_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Hippo\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"hippo_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Rhinoceros\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"rhinoceros_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"WildBoar\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"wild_boar_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Deer\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"red_deer_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"RoeDeer\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"roe_deer_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Goat\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"sheep_goat_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Sheep\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"sheep_goat_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Pig\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"pig_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Wolf\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"wolf_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Bear\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"bear_territories\" />\n\t\t</territory>\n",
           "summary": "herd territories for the animal events",
-          "why": "Each AnimalX event spawns in the territory named X. Dino territories renamed to the new animals and pointed at existing files; territories added for the vanilla animal events, which had none (Boss OK 2026-11-27)"
+          "why": "Each AnimalX event spawns in the territory named X. Dino territories renamed to the new animals and pointed at existing files; territories added for the vanilla animal events, which had none (Boss OK 2026-11-27); each new animal now points at its own <animal>_territories file (Boss, 2026-11-27)"
         },
         {
           "find": "\t\t\t<file usable=\"Scolosaurus2_territories\" />\n\t\t\t<!-- different agent types - class has to begin with AgentType:w -->\n\t\t\t<agent type=\"Male\" chance=\"1\">\n\t\t\t\t<spawn configName=\"Animal_VulpesVulpes\"",
@@ -316,6 +318,96 @@
           "why": "it pointed at Scolosaurus2_territories, which doesn't exist"
         }
       ]
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/wolf_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/lion_territories.xml",
+      "why": "Lion's own territory file (Boss, 2026-11-27). Zones are a copy of the map's wolf_territories.xml for now, the stopgap it used before; redraw to give Lion its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/bear_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/bengal_tiger_territories.xml",
+      "why": "BengalTiger's own territory file (Boss, 2026-11-27). Zones are a copy of the map's bear_territories.xml for now, the stopgap it used before; redraw to give BengalTiger its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/wolf_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/hyena_territories.xml",
+      "why": "Hyena's own territory file (Boss, 2026-11-27). Zones are a copy of the map's wolf_territories.xml for now, the stopgap it used before; redraw to give Hyena its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/dog_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/coyote_territories.xml",
+      "why": "Coyote's own territory file (Boss, 2026-11-27). Zones are a copy of the map's dog_territories.xml for now, the stopgap it used before; redraw to give Coyote its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/bear_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/jaguar_territories.xml",
+      "why": "Jaguar's own territory file (Boss, 2026-11-27). Zones are a copy of the map's bear_territories.xml for now, the stopgap it used before; redraw to give Jaguar its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/bear_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/leopard_territories.xml",
+      "why": "Leopard's own territory file (Boss, 2026-11-27). Zones are a copy of the map's bear_territories.xml for now, the stopgap it used before; redraw to give Leopard its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/sheep_goat_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/bighorn_ram_territories.xml",
+      "why": "BighornRam's own territory file (Boss, 2026-11-27). Zones are a copy of the map's sheep_goat_territories.xml for now, the stopgap it used before; redraw to give BighornRam its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/bear_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/black_bear_territories.xml",
+      "why": "BlackBear's own territory file (Boss, 2026-11-27). Zones are a copy of the map's bear_territories.xml for now, the stopgap it used before; redraw to give BlackBear its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/wild_boar_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/tapir_territories.xml",
+      "why": "Tapir's own territory file (Boss, 2026-11-27). Zones are a copy of the map's wild_boar_territories.xml for now, the stopgap it used before; redraw to give Tapir its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/roe_deer_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/ostrich_territories.xml",
+      "why": "Ostrich's own territory file (Boss, 2026-11-27). Zones are a copy of the map's roe_deer_territories.xml for now, the stopgap it used before; redraw to give Ostrich its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/domestic_animals_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/donkey_territories.xml",
+      "why": "Donkey's own territory file (Boss, 2026-11-27). Zones are a copy of the map's domestic_animals_territories.xml for now, the stopgap it used before; redraw to give Donkey its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/red_deer_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/horse_territories.xml",
+      "why": "Horse's own territory file (Boss, 2026-11-27). Zones are a copy of the map's red_deer_territories.xml for now, the stopgap it used before; redraw to give Horse its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/roe_deer_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/antelope_territories.xml",
+      "why": "Antelope's own territory file (Boss, 2026-11-27). Zones are a copy of the map's roe_deer_territories.xml for now, the stopgap it used before; redraw to give Antelope its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/Crocodile_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/hippo_territories.xml",
+      "why": "Hippo's own territory file (Boss, 2026-11-27). Zones are a copy of the map's Crocodile_territories.xml for now, the stopgap it used before; redraw to give Hippo its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/cattle_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/rhinoceros_territories.xml",
+      "why": "Rhinoceros's own territory file (Boss, 2026-11-27). Zones are a copy of the map's cattle_territories.xml for now, the stopgap it used before; redraw to give Rhinoceros its own areas"
     },
     {
       "type": "patch",

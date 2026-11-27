@@ -1449,11 +1449,71 @@ Patched copy of `../originals/sahrani-plus/cfgenvironment.xml` (sha256 `851b838c
 
 | # | Change | Why |
 |---|---|---|
-| 1 | load only territory files that exist in env/ | 13 of the listed files (dinos, Rhinoceros, Scolosaurus) don't exist; the server logged 'Failed to open file' for each |
-| 2 | herd territories for the animal events | Each AnimalX event spawns in the territory named X. Dino territories renamed to the new animals and pointed at existing files; territories added for the vanilla animal events, which had none (Boss OK 2026-11-27) |
+| 1 | load only territory files that exist in env/, plus one file per new animal | 13 of the listed files (dinos, Rhinoceros, Scolosaurus) don't exist; the server logged 'Failed to open file' for each; each new animal gets its own territory file and Crocodile_territories becomes hippo_territories (Boss, 2026-11-27) |
+| 2 | herd territories for the animal events | Each AnimalX event spawns in the territory named X. Dino territories renamed to the new animals and pointed at existing files; territories added for the vanilla animal events, which had none (Boss OK 2026-11-27); each new animal now points at its own <animal>_territories file (Boss, 2026-11-27) |
 | 3 | AmbientFox uses fox_territories | it pointed at Scolosaurus2_territories, which doesn't exist |
 
-Master sha256 `d8b7d2c70416`. Verification: passed.
+Master sha256 `17bbc6534e28`. Verification: passed.
+
+## lion_territories.xml
+
+Unchanged copy of `../originals/sahrani-plus/env/wolf_territories.xml` (sha256 `a7c3086b7a80`). Lion's own territory file (Boss, 2026-11-27). Zones are a copy of the map's wolf_territories.xml for now, the stopgap it used before; redraw to give Lion its own areas
+
+## bengal_tiger_territories.xml
+
+Unchanged copy of `../originals/sahrani-plus/env/bear_territories.xml` (sha256 `01a2f27857bc`). BengalTiger's own territory file (Boss, 2026-11-27). Zones are a copy of the map's bear_territories.xml for now, the stopgap it used before; redraw to give BengalTiger its own areas
+
+## hyena_territories.xml
+
+Unchanged copy of `../originals/sahrani-plus/env/wolf_territories.xml` (sha256 `a7c3086b7a80`). Hyena's own territory file (Boss, 2026-11-27). Zones are a copy of the map's wolf_territories.xml for now, the stopgap it used before; redraw to give Hyena its own areas
+
+## coyote_territories.xml
+
+Unchanged copy of `../originals/sahrani-plus/env/dog_territories.xml` (sha256 `bef2f3c60568`). Coyote's own territory file (Boss, 2026-11-27). Zones are a copy of the map's dog_territories.xml for now, the stopgap it used before; redraw to give Coyote its own areas
+
+## jaguar_territories.xml
+
+Unchanged copy of `../originals/sahrani-plus/env/bear_territories.xml` (sha256 `01a2f27857bc`). Jaguar's own territory file (Boss, 2026-11-27). Zones are a copy of the map's bear_territories.xml for now, the stopgap it used before; redraw to give Jaguar its own areas
+
+## leopard_territories.xml
+
+Unchanged copy of `../originals/sahrani-plus/env/bear_territories.xml` (sha256 `01a2f27857bc`). Leopard's own territory file (Boss, 2026-11-27). Zones are a copy of the map's bear_territories.xml for now, the stopgap it used before; redraw to give Leopard its own areas
+
+## bighorn_ram_territories.xml
+
+Unchanged copy of `../originals/sahrani-plus/env/sheep_goat_territories.xml` (sha256 `e845965d8d1e`). BighornRam's own territory file (Boss, 2026-11-27). Zones are a copy of the map's sheep_goat_territories.xml for now, the stopgap it used before; redraw to give BighornRam its own areas
+
+## black_bear_territories.xml
+
+Unchanged copy of `../originals/sahrani-plus/env/bear_territories.xml` (sha256 `01a2f27857bc`). BlackBear's own territory file (Boss, 2026-11-27). Zones are a copy of the map's bear_territories.xml for now, the stopgap it used before; redraw to give BlackBear its own areas
+
+## tapir_territories.xml
+
+Unchanged copy of `../originals/sahrani-plus/env/wild_boar_territories.xml` (sha256 `6371bb58dde9`). Tapir's own territory file (Boss, 2026-11-27). Zones are a copy of the map's wild_boar_territories.xml for now, the stopgap it used before; redraw to give Tapir its own areas
+
+## ostrich_territories.xml
+
+Unchanged copy of `../originals/sahrani-plus/env/roe_deer_territories.xml` (sha256 `5640669fcaef`). Ostrich's own territory file (Boss, 2026-11-27). Zones are a copy of the map's roe_deer_territories.xml for now, the stopgap it used before; redraw to give Ostrich its own areas
+
+## donkey_territories.xml
+
+Unchanged copy of `../originals/sahrani-plus/env/domestic_animals_territories.xml` (sha256 `79866942173d`). Donkey's own territory file (Boss, 2026-11-27). Zones are a copy of the map's domestic_animals_territories.xml for now, the stopgap it used before; redraw to give Donkey its own areas
+
+## horse_territories.xml
+
+Unchanged copy of `../originals/sahrani-plus/env/red_deer_territories.xml` (sha256 `6dae219cdccb`). Horse's own territory file (Boss, 2026-11-27). Zones are a copy of the map's red_deer_territories.xml for now, the stopgap it used before; redraw to give Horse its own areas
+
+## antelope_territories.xml
+
+Unchanged copy of `../originals/sahrani-plus/env/roe_deer_territories.xml` (sha256 `5640669fcaef`). Antelope's own territory file (Boss, 2026-11-27). Zones are a copy of the map's roe_deer_territories.xml for now, the stopgap it used before; redraw to give Antelope its own areas
+
+## hippo_territories.xml
+
+Unchanged copy of `../originals/sahrani-plus/env/Crocodile_territories.xml` (sha256 `be85c9e26865`). Hippo's own territory file (Boss, 2026-11-27). Zones are a copy of the map's Crocodile_territories.xml for now, the stopgap it used before; redraw to give Hippo its own areas
+
+## rhinoceros_territories.xml
+
+Unchanged copy of `../originals/sahrani-plus/env/cattle_territories.xml` (sha256 `62c1e5775e35`). Rhinoceros's own territory file (Boss, 2026-11-27). Zones are a copy of the map's cattle_territories.xml for now, the stopgap it used before; redraw to give Rhinoceros its own areas
 
 ## serverDZ.cfg
 

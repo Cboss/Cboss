@@ -7,7 +7,6 @@
 		<file path="env/hen_territories.xml" />
 		<file path="env/hare_territories.xml" />
 		<file path="env/zombie_territories.xml" />
-		<file path="env/Crocodile_territories.xml" />
 		<file path="env/cattle_territories.xml" />
 		<file path="env/bear_territories.xml" />
 		<file path="env/wolf_territories.xml" />
@@ -18,6 +17,21 @@
 		<file path="env/fox_territories.xml" />
 		<file path="env/domestic_animals_territories.xml" />
 		<file path="env/dog_territories.xml" />
+		<file path="env/lion_territories.xml" />
+		<file path="env/bengal_tiger_territories.xml" />
+		<file path="env/hyena_territories.xml" />
+		<file path="env/coyote_territories.xml" />
+		<file path="env/jaguar_territories.xml" />
+		<file path="env/leopard_territories.xml" />
+		<file path="env/bighorn_ram_territories.xml" />
+		<file path="env/black_bear_territories.xml" />
+		<file path="env/tapir_territories.xml" />
+		<file path="env/ostrich_territories.xml" />
+		<file path="env/donkey_territories.xml" />
+		<file path="env/horse_territories.xml" />
+		<file path="env/antelope_territories.xml" />
+		<file path="env/hippo_territories.xml" />
+		<file path="env/rhinoceros_territories.xml" />
 		
 		<!--
 		<file path="env/reindeer_territories.xml" />
@@ -25,54 +39,54 @@
 			<file usable="reindeer_territories" />
 		</territory>
 		-->
-		<!-- Stopgap: new animals use the map's existing territory files until their own are drawn (Boss, 2026-11-27) -->
+		<!-- Each new animal has its own territory file. Zones start as a copy of the closest existing animal's file until Boss redraws them (Boss, 2026-11-27) -->
 		<territory type="Herd" name="Lion" behavior="DZWolfGroupBeh">
-			<file usable="wolf_territories" />
+			<file usable="lion_territories" />
 		</territory>
 		<territory type="Herd" name="BengalTiger" behavior="BlissBearGroupBeh">
-			<file usable="bear_territories" />
+			<file usable="bengal_tiger_territories" />
 		</territory>
 		<territory type="Herd" name="Hyena" behavior="DZWolfGroupBeh">
-			<file usable="wolf_territories" />
+			<file usable="hyena_territories" />
 		</territory>
 		<territory type="Herd" name="Coyote" behavior="DZWolfGroupBeh">
-			<file usable="dog_territories" />
+			<file usable="coyote_territories" />
 		</territory>
 		<territory type="Herd" name="Jaguar" behavior="BlissBearGroupBeh">
-			<file usable="bear_territories" />
+			<file usable="jaguar_territories" />
 		</territory>
 		<territory type="Herd" name="Leopard" behavior="BlissBearGroupBeh">
-			<file usable="bear_territories" />
+			<file usable="leopard_territories" />
 		</territory>
 		<territory type="Herd" name="BighornRam" behavior="DZSheepGroupBeh">
-			<file usable="sheep_goat_territories" />
+			<file usable="bighorn_ram_territories" />
 		</territory>
 		<territory type="Herd" name="BlackBear" behavior="BlissBearGroupBeh">
-			<file usable="bear_territories" />
+			<file usable="black_bear_territories" />
 		</territory>
 		<territory type="Herd" name="Tapir" behavior="DZDeerGroupBeh">
-			<file usable="wild_boar_territories" />
+			<file usable="tapir_territories" />
 		</territory>
 		<territory type="Herd" name="Ostrich" behavior="DZDeerGroupBeh">
-			<file usable="roe_deer_territories" />
+			<file usable="ostrich_territories" />
 		</territory>
 		<territory type="Herd" name="Cattle" behavior="DZdomesticGroupBeh">
 			<file usable="cattle_territories" />
 		</territory>
 		<territory type="Herd" name="Donkey" behavior="DZdomesticGroupBeh">
-			<file usable="domestic_animals_territories" />
+			<file usable="donkey_territories" />
 		</territory>
 		<territory type="Herd" name="Horse" behavior="DZDeerGroupBeh">
-			<file usable="red_deer_territories" />
+			<file usable="horse_territories" />
 		</territory>
 		<territory type="Herd" name="Antelope" behavior="DZDeerGroupBeh">
-			<file usable="roe_deer_territories" />
+			<file usable="antelope_territories" />
 		</territory>
 		<territory type="Herd" name="Hippo" behavior="BlissBearGroupBeh">
-			<file usable="Crocodile_territories" />
+			<file usable="hippo_territories" />
 		</territory>
 		<territory type="Herd" name="Rhinoceros" behavior="BlissBearGroupBeh">
-			<file usable="cattle_territories" />
+			<file usable="rhinoceros_territories" />
 		</territory>
 		<territory type="Herd" name="WildBoar" behavior="DZDeerGroupBeh">
 			<file usable="wild_boar_territories" />
