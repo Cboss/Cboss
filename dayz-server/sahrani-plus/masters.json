@@ -1,0 +1,99 @@
+{
+  "base": "../originals/sahrani-plus",
+  "mission": "mission",
+  "map_label": "Sahrani Plus (map author)",
+  "vanilla_label": "Bohemia vanilla Chernarus",
+  "report": "MERGE_REPORT.md",
+  "masters": [
+    {
+      "type": "merge",
+      "map": "../originals/sahrani-plus/mapclusterproto.xml",
+      "vanilla": "../originals/vanilla-chernarusplus/mapclusterproto.xml",
+      "output": "mission/mapclusterproto.xml",
+      "add_vanilla": "all",
+      "skip_vanilla": [],
+      "drop_map": {},
+      "decisions": {}
+    },
+    {
+      "type": "merge",
+      "map": "../originals/sahrani-plus/db/events.xml",
+      "vanilla": "../originals/vanilla-chernarusplus/db/events.xml",
+      "output": "mission/db/events.xml",
+      "add_vanilla": [
+        "event:AmbientFox",
+        "event:AmbientHare",
+        "event:AmbientHen",
+        "event:AnimalBear",
+        "event:AnimalCow",
+        "event:AnimalDeer",
+        "event:AnimalGoat",
+        "event:AnimalPig",
+        "event:AnimalRoeDeer",
+        "event:AnimalSheep",
+        "event:AnimalWolf"
+      ],
+      "skip_vanilla": [],
+      "drop_map": {
+        "event:AnimalAlioromus": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
+        "event:AnimalCeratosaurus": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
+        "event:AnimalCharanosaurus": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
+        "event:AnimalDIL": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
+        "event:AnimalIDREX": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
+        "event:AnimalIndominusRex": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
+        "event:AnimalRaptor": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
+        "event:AnimalRhinoceros": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
+        "event:AnimalScolosaurus": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
+        "event:AnimalScolosaurus2": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
+        "event:AnimalSmallDinos": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
+        "event:AnimalStygivenator": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
+        "event:AnimalTREX": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
+        "event:AnimalTricero1": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
+        "event:AnimalTricero2": "dinosaur, from the old Sahrani setup (Boss, 2026-11-27)",
+        "event:AnimalCrocodile": "crocodile mod isn't installed: no Animal_Crocodile in the types files, and the dino setup it came with is gone"
+      },
+      "decisions": {},
+      "prefer": {
+        "keep": "map",
+        "why": "the map author's tuning for Sahrani (spawn counts, positions, timers); vanilla is Chernarus"
+      }
+    },
+    {
+      "type": "copy",
+      "from": "../originals/vanilla-chernarusplus/cfgenvironment.xml",
+      "output": "mission/cfgenvironment.xml",
+      "why": "Boss wants realistic animals, no dinosaurs: Bohemia's file wires up bear, wolf, red and roe deer, wild boar, pig, cattle, sheep, goat, fox, hare, hen and infected, using the env/ territory files that ship with Sahrani Plus. Mod animal territories get added here once Boss picks them."
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/cfgeconomycore.xml",
+      "output": "mission/cfgeconomycore.xml",
+      "edits": [
+        {
+          "find": "\t\t\t<file name=\"BRDK_Mobs-1_type.xml\" type=\"types\" />\n",
+          "replace": "\t\t\t<!-- <file name=\"BRDK_Mobs-1_type.xml\" type=\"types\" /> duplicate of BRDK_ZMB_type.xml -->\n",
+          "summary": "stop loading `BRDK_Mobs-1_type.xml`",
+          "why": "Same zombies as BRDK_ZMB_type.xml, which also has BRDK_Mortimer_head and BRDK_Skull. Boss OK'd one file per pair, 2026-11-27"
+        },
+        {
+          "find": "\t\t\t<file name=\"BRDK_ZMB_PACK_02_type.xml\" type=\"types\" />\n",
+          "replace": "\t\t\t<!-- <file name=\"BRDK_ZMB_PACK_02_type.xml\" type=\"types\" /> duplicate of BRDK_Mobs-2_type.xml -->\n",
+          "summary": "stop loading `BRDK_ZMB_PACK_02_type.xml`",
+          "why": "Same 34 types as BRDK_Mobs-2_type.xml. Mobs-2 kept: its FamPriest lifetimes (3888000 zombie, 3600 head) match every other BRDK zombie; PACK_02 has 3500 and 7900"
+        },
+        {
+          "find": "\t<ce folder=\"CustomTypes/OH_Mods\">\n\t\t\t<file name=\"furniture_types.xml\" type=\"types\" />\n\t\t\t<file name=\"OH_Clothing_types.xml\" type=\"types\" />\n\t\t</ce>\t\n",
+          "replace": "\t<!-- OH mod not on the server yet (next to go on). Uncomment when it is.\n\t<ce folder=\"CustomTypes/OH_Mods\">\n\t\t\t<file name=\"furniture_types.xml\" type=\"types\" />\n\t\t\t<file name=\"OH_Clothing_types.xml\" type=\"types\" />\n\t\t</ce>\n\t-->\n",
+          "summary": "turn off the OH_Mods block",
+          "why": "OH mod isn't installed yet (Boss, 2026-11-27); loading its types now would make CE warn about missing classes"
+        },
+        {
+          "find": "</economycore>",
+          "replace": "\t<ce folder=\"CustomTypes/SimpleLootBox\">\n\t\t\t<file name=\"SimpleLootBox_types.xml\" type=\"types\" />\n\t\t</ce>\n</economycore>",
+          "summary": "load `CustomTypes/SimpleLootBox/SimpleLootBox_types.xml`",
+          "why": "SimpleLootBox types weren't registered anywhere. The folder name is ours: put the file there on the server"
+        }
+      ]
+    }
+  ]
+}

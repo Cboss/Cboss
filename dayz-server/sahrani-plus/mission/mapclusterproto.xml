@@ -128,7 +128,7 @@
 			<export name="SambucusNigraBush1" shape="dz\plants_bliss\bush\b_sambucusnigra_1s_summer.p3d" />
 			
 			<export name="BetulaPendulaE_3f_summer" shape="dz\plants_bliss\tree\t_BetulaPendulaE_3f_summer.p3d" />
-			<!-- added by merge_mapclusterproto.py: from Bohemia vanilla Chernarus -->
+			<!-- build_masters.py: added from Bohemia vanilla Chernarus -->
 			<export name="Rail1" shape="dz\structures\rail\tracks\rail_track_25.p3d" />
 			<export name="Rail2" shape="dz\structures\rail\tracks\rail_tracke_25.p3d" />
 			<export name="Rail3" shape="dz\structures\rail\tracks\rail_tracke_40.p3d" />
@@ -138,7 +138,7 @@
 			<export name="Rail7" shape="dz\structures\rail\tracks\rail_tracke_r30_20.p3d" />
 			<export name="Rail8" shape="dz\structures\rail\tracks\rail_tracke_l25_10.p3d" />
 			<export name="Rail9" shape="dz\structures\rail\tracks\rail_tracke_r25_10.p3d" />
-			<!-- end of added by merge_mapclusterproto.py block -->
+			<!-- build_masters.py: end of added block -->
 		</clusters>
 
 <!-- Groups -->
@@ -920,7 +920,7 @@
 				<point pos="0.0 0.0 0.1" range="0.50" height="1.00" flags="32" />
 			</container>
 		</cluster>
-		<!-- added by merge_mapclusterproto.py: from Bohemia vanilla Chernarus -->
+		<!-- build_masters.py: added from Bohemia vanilla Chernarus -->
 		<cluster name="Rail1" lootmax="2" maxinstances="5">
 			<de name="TrajectoryStones" />
 			<container name="road" lootmax="1">
@@ -1007,7 +1007,7 @@
 			<point pos="6.21 0.95 0.31" range="0.50" height="1.50" />
 			</container>
 		</cluster>
-		<!-- end of added by merge_mapclusterproto.py block -->
+		<!-- build_masters.py: end of added block -->
 <!--
 		<cluster name="Stone1" lootmax="2">
 			<de name="TrajectoryStones" />

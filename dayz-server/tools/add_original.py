@@ -13,8 +13,8 @@ Example:
     python3 tools/add_original.py sahrani-plus D:/upload/mapclusterproto.xml \
         --note "Sahrani Plus workshop update, 2026-12-01"
 
-Then rebuild any merge that uses it and commit both together:
-    python3 tools/merge_mapclusterproto.py build sahrani-plus/merge.json
+Then rebuild the masters that use it and commit everything together:
+    python3 tools/build_masters.py build sahrani-plus/masters.json
 """
 from __future__ import annotations
 
@@ -97,9 +97,9 @@ def main(argv: list[str]) -> int:
     if old is None:
         print("first version of this file")
         return 0
-    if src.name.lower() == "mapclusterproto.xml" and not problem:
+    if src.name.lower() in ("mapclusterproto.xml", "events.xml") and not problem:
         sys.path.insert(0, str(Path(__file__).resolve().parent))
-        import merge_mapclusterproto as m
+        import merge_entries as m
         m.diff(Path("previous version"), dest, old)
     else:
         a = old.decode("utf-8", "replace").splitlines()

@@ -184,7 +184,7 @@ def check_environment(path: Path) -> None:
             continue
         stem = Path(rel).stem
         loaded[stem] = rel
-        target = base / rel
+        target = find(base, rel)
         if target.is_file():
             continue
         folder = target.parent
@@ -198,7 +198,7 @@ def check_environment(path: Path) -> None:
     used = {f.get("usable") for f in root.iter("file") if f.get("usable")}
     for u in sorted(used - set(loaded)):
         problem(path, f"a territory uses '{u}' but no <file path> loads it")
-    env = base / "env"
+    env = find(base, "env")
     if env.is_dir():
         loaded_lower = {Path(r).name.lower() for r in loaded.values()}
         for p in sorted(env.glob("*.xml")):
@@ -208,13 +208,46 @@ def check_environment(path: Path) -> None:
         warn(path, f"loads {loaded[stem]} but no territory uses it")
 
 
+_overlay: dict[Path, Path] = {}
+
+
+def find(folder: Path, rel: str) -> Path:
+    """Resolve a mission file. A built master folder (e.g. sahrani-plus/
+    mission/) holds only the files we change; the rest come from the
+    originals named by "base" in the masters.json next to it."""
+    folder = folder.resolve()
+    p = folder / rel
+    if p.exists():
+        return p
+    for top, base in _overlay.items():
+        try:
+            sub = folder.relative_to(top)
+        except ValueError:
+            continue
+        q = base / sub / rel
+        if q.exists():
+            return q
+    return p
+
+
+def register_overlays(files: list[Path]) -> None:
+    for recipe in (p for p in files if p.name == "masters.json"):
+        try:
+            rec = json.loads(recipe.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        if "base" in rec:
+            _overlay[(recipe.parent / rec.get("mission", "mission")).resolve()] = \
+                (recipe.parent / rec["base"]).resolve()
+
+
 LIMIT_KINDS = {"category": "categories", "usage": "usageflags",
                "value": "valueflags", "tag": "tags"}
 
 
 def load_limits(mission: Path) -> dict[str, set[str]] | None:
     """Names defined in cfglimitsdefinition.xml (+ user groups)."""
-    path = mission / "cfglimitsdefinition.xml"
+    path = find(mission, "cfglimitsdefinition.xml")
     if not path.is_file():
         return None
     root = parse_xml(path)
@@ -224,7 +257,7 @@ def load_limits(mission: Path) -> dict[str, set[str]] | None:
     for kind, section in LIMIT_KINDS.items():
         for sec in root.iter(section):
             limits[kind].update(e.get("name", "") for e in sec.iter(kind))
-    user = mission / "cfglimitsdefinitionuser.xml"
+    user = find(mission, "cfglimitsdefinitionuser.xml")
     if user.is_file():
         uroot = parse_xml(user)
         if uroot is not None:
@@ -252,7 +285,7 @@ def check_mission(mission: Path) -> None:
     seen_types: dict[str, Path] = {}
     limits = load_limits(mission)
 
-    vanilla_types = mission / "db" / "types.xml"
+    vanilla_types = find(mission, "db/types.xml")
     if vanilla_types.is_file():
         root = parse_xml(vanilla_types)
         if root is not None:
@@ -265,11 +298,15 @@ def check_mission(mission: Path) -> None:
     if root is None:
         return
     for ce in root.iter("ce"):
-        folder = mission / ce.get("folder", "")
         for f in ce.iter("file"):
-            target = folder / f.get("name", "")
+            target = find(mission, f"{ce.get('folder', '')}/{f.get('name', '')}")
             if not target.is_file():
-                problem(core, f"lists {target.relative_to(mission).as_posix()} but it doesn't exist")
+                msg = f"lists {ce.get('folder', '')}/{f.get('name', '')} but it doesn't exist"
+                if mission.resolve() in _overlay:
+                    # A built master: the file may only be on the server so far.
+                    warn(core, msg + " in the repo yet (send it, or confirm it's on the server)")
+                else:
+                    problem(core, msg)
                 continue
             if f.get("type") == "types":
                 troot = parse_xml(target)
@@ -288,6 +325,7 @@ def main() -> int:
     skip = {".git", "storage_1", "storage_2", "storage_3", "storage_4"}
     files = [p for p in base.rglob("*")
              if p.is_file() and not skip.intersection(p.parts)]
+    register_overlays(files)
 
     for p in files:
         suffix = p.suffix.lower()
