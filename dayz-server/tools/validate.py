@@ -48,14 +48,36 @@ def warn(path: Path, msg: str) -> None:
 _xml_cache: dict[Path, ET.Element | None] = {}
 
 
+def is_original(path: Path) -> bool:
+    """Files under originals/ are kept exactly as received, so problems in
+    them are reported as warnings: they are the author's to fix, and the
+    merge or our own copy is where they get handled."""
+    return "originals" in path.parts
+
+
+def problem(path: Path, msg: str) -> None:
+    if is_original(path):
+        warn(path, f"(original, kept as received) {msg}")
+    else:
+        err(path, msg)
+
+
 def parse_xml(path: Path) -> ET.Element | None:
     """Parse once per file so a broken file is only reported once."""
     if path not in _xml_cache:
         try:
-            _xml_cache[path] = ET.parse(path).getroot()
+            root = ET.parse(path).getroot()
         except ET.ParseError as e:
-            err(path, f"XML is not well-formed: {e}")
-            _xml_cache[path] = None
+            problem(path, f"XML is not well-formed: {e}")
+            root = None
+        else:
+            # Text after a tag (e.g. '<pos .../>sa') is legal XML but is
+            # never meaningful in DayZ files: it is almost always a typo.
+            for el in root.iter():
+                if el.tail and el.tail.strip():
+                    warn(path, f"stray text {el.tail.strip()[:30]!r} after "
+                               f"<{el.tag} {' '.join(f'{k}={v!r}' for k, v in list(el.attrib.items())[:3])}>")
+        _xml_cache[path] = root
     return _xml_cache[path]
 
 
@@ -63,7 +85,7 @@ def check_json(path: Path) -> None:
     try:
         json.loads(path.read_text(encoding="utf-8-sig"))
     except json.JSONDecodeError as e:
-        err(path, f"invalid JSON at line {e.lineno} col {e.colno}: {e.msg}")
+        problem(path, f"invalid JSON at line {e.lineno} col {e.colno}: {e.msg}")
 
 
 def strip_cfg_comment(line: str) -> str:
@@ -142,6 +164,43 @@ def check_types(path: Path, root: ET.Element, seen: dict[str, Path]) -> None:
             err(path, f"'{name}' quantmin > quantmax")
 
 
+def check_environment(path: Path) -> None:
+    """Cross-check cfgenvironment.xml against the env/ files next to it."""
+    root = parse_xml(path)
+    if root is None:
+        return
+    base = path.parent
+    loaded: dict[str, str] = {}
+    for f in root.iter("file"):
+        rel = f.get("path")
+        if not rel:
+            continue
+        stem = Path(rel).stem
+        loaded[stem] = rel
+        target = base / rel
+        if target.is_file():
+            continue
+        folder = target.parent
+        twin = [p.name for p in folder.glob("*") if p.name.lower() == target.name.lower()] \
+            if folder.is_dir() else []
+        if twin:
+            problem(path, f"loads {rel} but the file is named {twin[0]} "
+                          f"(case matters on Linux servers)")
+        else:
+            problem(path, f"loads {rel} but it doesn't exist")
+    used = {f.get("usable") for f in root.iter("file") if f.get("usable")}
+    for u in sorted(used - set(loaded)):
+        problem(path, f"a territory uses '{u}' but no <file path> loads it")
+    env = base / "env"
+    if env.is_dir():
+        loaded_lower = {Path(r).name.lower() for r in loaded.values()}
+        for p in sorted(env.glob("*.xml")):
+            if p.name.lower() not in loaded_lower:
+                warn(path, f"env/{p.name} is not loaded by cfgenvironment.xml")
+    for stem in sorted(set(loaded) - used):
+        warn(path, f"loads {loaded[stem]} but no territory uses it")
+
+
 def check_mission(mission: Path) -> None:
     seen_types: dict[str, Path] = {}
 
@@ -188,6 +247,9 @@ def main() -> int:
             check_json(p)
         elif p.name.lower() == "serverdz.cfg":
             check_server_cfg(p)
+    for p in files:
+        if p.name.lower() == "cfgenvironment.xml":
+            check_environment(p)
 
     missions = base / "mpmissions"
     if missions.is_dir():

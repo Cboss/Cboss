@@ -17,7 +17,7 @@ dayz-server/
 │   └── custom/types_custom.xml          loot entries for mod items (empty to start)
 ├── originals/                           files exactly as received, never edited (see below)
 │   ├── vanilla-chernarusplus/           Bohemia's vanilla files + VERSIONS.md
-│   └── sahrani-plus/                    the map author's files + VERSIONS.md
+│   └── sahrani-plus/                    the map author's mission files (+ db/, env/), each folder with VERSIONS.md
 ├── sahrani-plus/                        Sahrani Plus PvPvE server
 │   ├── merge.json                       merge recipe + Boss's conflict decisions
 │   ├── mission/mapclusterproto.xml      merged master (built, don't edit by hand)
@@ -155,6 +155,10 @@ It checks for:
 - loot entries with `min` above `nominal` (when `nominal` is above 0) or `quantmin` above `quantmax`
 - the same item defined in two files
 - custom files listed in `cfgeconomycore.xml` that don't exist
+- stray text after a tag (like `<pos .../>sa`), which parses but is always a typo
+- `cfgenvironment.xml` loading `env/` files that don't exist or differ only in letter case (Linux servers care), territories using a file nothing loads, and `env/` files nothing loads
+
+Files under `originals/` are kept exactly as received, so problems in them are reported as warnings, not errors. Fix them in our own copy, never in the original.
 
 Tested against Bohemia's full vanilla Chernarus mission (2,382 loot types): 0 errors, 0 warnings. The same check runs on GitHub for every push that touches `dayz-server/`.
 
