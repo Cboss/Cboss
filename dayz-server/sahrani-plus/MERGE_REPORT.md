@@ -98,9 +98,9 @@ Verification: passed. Line endings: CRLF, as in the map file.
 
 **Removed from the map file:** none
 
-**Added from vanilla:** `export:Rail1`, `export:Rail2`, `export:Rail3`, `export:Rail4`, `export:Rail5`, `export:Rail6`, `export:Rail7`, `export:Rail8`, `export:Rail9`, `cluster:Rail1`, `cluster:Rail2`, `cluster:Rail3`, `cluster:Rail4`, `cluster:Rail5`, `cluster:Rail6`, `cluster:Rail7`, `cluster:Rail8`, `cluster:Rail9`
+**Added from Bohemia vanilla Chernarus:** `export:Rail1`, `export:Rail2`, `export:Rail3`, `export:Rail4`, `export:Rail5`, `export:Rail6`, `export:Rail7`, `export:Rail8`, `export:Rail9`, `cluster:Rail1`, `cluster:Rail2`, `cluster:Rail3`, `cluster:Rail4`, `cluster:Rail5`, `cluster:Rail6`, `cluster:Rail7`, `cluster:Rail8`, `cluster:Rail9`
 
-**Vanilla-only, not added:** none
+**Only in Bohemia vanilla Chernarus, not added:** none
 
 **Only in the map file, kept:** 89
 
@@ -1503,9 +1503,9 @@ Verification: passed. Line endings: LF, as in the map file.
 
 **Removed from the map file:** `event:AnimalAlioromus (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalCeratosaurus (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalCharanosaurus (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalDIL (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalIDREX (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalIndominusRex (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalRaptor (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalRhinoceros (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalScolosaurus (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalScolosaurus2 (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalSmallDinos (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalStygivenator (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalTREX (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalTricero1 (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalTricero2 (dinosaur, from the old Sahrani setup (Boss, 2026-11-27))`, `event:AnimalCrocodile (crocodile mod isn't installed: no Animal_Crocodile in the types files, and the dino setup it came with is gone)`
 
-**Added from vanilla:** `event:AmbientFox`, `event:AmbientHare`, `event:AmbientHen`, `event:AnimalBear`, `event:AnimalCow`, `event:AnimalDeer`, `event:AnimalGoat`, `event:AnimalPig`, `event:AnimalRoeDeer`, `event:AnimalSheep`, `event:AnimalWolf`
+**Added from Bohemia vanilla Chernarus:** `event:AmbientFox`, `event:AmbientHare`, `event:AmbientHen`, `event:AnimalBear`, `event:AnimalCow`, `event:AnimalDeer`, `event:AnimalGoat`, `event:AnimalPig`, `event:AnimalRoeDeer`, `event:AnimalSheep`, `event:AnimalWolf`
 
-**Vanilla-only, not added:** `event:InfectedArmy`, `event:InfectedArmyDesert`, `event:InfectedArmyHard`, `event:InfectedFirefighter`, `event:InfectedPolice`, `event:InfectedPoliceHard`, `event:InfectedSpooky`, `event:StaticMilitaryConvoy`, `event:StaticPoliceCar`, `event:StaticPoliceSituation`, `event:VehicleCivilianSedan`, `event:VehicleHatchback02`, `event:VehicleMotorbike`, `event:VehicleOffroadHatchback`, `event:VehicleSedan02`
+**Only in Bohemia vanilla Chernarus, not added:** `event:InfectedArmy`, `event:InfectedArmyDesert`, `event:InfectedArmyHard`, `event:InfectedFirefighter`, `event:InfectedPolice`, `event:InfectedPoliceHard`, `event:InfectedSpooky`, `event:StaticMilitaryConvoy`, `event:StaticPoliceCar`, `event:StaticPoliceSituation`, `event:VehicleCivilianSedan`, `event:VehicleHatchback02`, `event:VehicleMotorbike`, `event:VehicleOffroadHatchback`, `event:VehicleSedan02`
 
 **Only in the map file, kept:** 29
 
@@ -1513,18 +1513,44 @@ Verification: passed. Line endings: LF, as in the map file.
 
 Unchanged copy of `../originals/vanilla-chernarusplus/cfgenvironment.xml` (sha256 `3f73c9f3abe7`). Boss wants realistic animals, no dinosaurs: Bohemia's file wires up bear, wolf, red and roe deer, wild boar, pig, cattle, sheep, goat, fox, hare, hen and infected, using the env/ territory files that ship with Sahrani Plus. Mod animal territories get added here once Boss picks them.
 
+## cfgspawnabletypes.xml
+
+Entry merge: `../originals/sahrani-plus/cfgspawnabletypes.xml` (Sahrani Plus (map author)) + `../originals/sahrani-plus/CustomTypes/NM/NM_CFGSPAWNABLETYPES.xml` (NM (Nemesis) mod) → `mission/cfgspawnabletypes.xml`.
+
+| | sha256 | Lines | Entries |
+|---|---|---|---|
+| Sahrani Plus (map author) | `21c5afe1dd15` | 4704 | 643 |
+| NM (Nemesis) mod | `6632e1e8c5d9` | 206 | 6 |
+| **Master** | `b2035f912dae` | 4907 | 649 |
+
+Verification: passed. Line endings: LF, as in the map file.
+
+**Conflicts** (same name, different content):
+
+none
+
+**Removed from the map file:** none
+
+**Added from NM (Nemesis) mod:** `type:nm_Notebook`, `type:nm_Airbrushkit`, `type:nm_AngleGrinder`, `type:nm_Railgun_fkd`, `type:nm_Nailgun`, `type:nm_chainsaw`
+
+**Only in NM (Nemesis) mod, not added:** none
+
+**Only in the map file, kept:** 643
+
 ## cfgeconomycore.xml
 
 Patched copy of `../originals/sahrani-plus/cfgeconomycore.xml` (sha256 `dbe0152de20e`) → `mission/cfgeconomycore.xml`.
 
 | # | Change | Why |
 |---|---|---|
-| 1 | stop loading `BRDK_Mobs-1_type.xml` | Same zombies as BRDK_ZMB_type.xml, which also has BRDK_Mortimer_head and BRDK_Skull. Boss OK'd one file per pair, 2026-11-27 |
-| 2 | stop loading `BRDK_ZMB_PACK_02_type.xml` | Same 34 types as BRDK_Mobs-2_type.xml. Mobs-2 kept: its FamPriest lifetimes (3888000 zombie, 3600 head) match every other BRDK zombie; PACK_02 has 3500 and 7900 |
-| 3 | turn off the OH_Mods block | OH mod isn't installed yet (Boss, 2026-11-27); loading its types now would make CE warn about missing classes |
-| 4 | load `CustomTypes/SimpleLootBox/SimpleLootBox_types.xml` | SimpleLootBox types weren't registered anywhere. The folder name is ours: put the file there on the server |
+| 1 | Hunter_Mods: list the files by the names they actually have | The listed names (Food_types.xml, HM_Auto_Storage.xml, HM_BitCoin.xml ...) don't match any Hunter_Mods file Boss sent, so none of them would load. Mapped one to one; HM_BunkerEvent.xml -> Bunker_Stuff.xml is a best match (bunker doors, keys and parts). Not listed: Ambulance_types.xml and Speed_Loaders_types.xml (duplicates of Ambulance_Event_Types.xml and GunMagLoader_types.xml), Bunker_Hideout_types.xml (no entry before; waiting on Boss) |
+| 2 | stop loading `BRDK_Mobs-1_type.xml` | Same zombies as BRDK_ZMB_type.xml, which also has BRDK_Mortimer_head and BRDK_Skull. Boss OK'd one file per pair, 2026-11-27 |
+| 3 | stop loading `BRDK_ZMB_PACK_02_type.xml` | Same 34 types as BRDK_Mobs-2_type.xml. Mobs-2 kept: its FamPriest lifetimes (3888000 zombie, 3600 head) match every other BRDK zombie; PACK_02 has 3500 and 7900 |
+| 4 | turn off the OH_Mods block | OH mod isn't installed yet (Boss, 2026-11-27); loading its types now would make CE warn about missing classes |
+| 5 | load `CustomTypes/SimpleLootBox/SimpleLootBox_types.xml` | SimpleLootBox types weren't registered anywhere. The folder name is ours: put the file there on the server |
+| 6 | load `CustomTypes/NM/NM_TYPES.xml` | NM (Nemesis) mod is live (Boss, 2026-11-27). Its spawnable types are merged into cfgspawnabletypes.xml. The optional railgun, exosuit and ammo-crafting boxes from the admin guides are not added |
 
-Master sha256 `2ef3a0eb00b7`. Verification: passed.
+Master sha256 `8b4c341dc18e`. Verification: passed.
 
 ## Waiting on Boss
 

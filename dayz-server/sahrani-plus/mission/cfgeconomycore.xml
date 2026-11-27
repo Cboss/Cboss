@@ -64,23 +64,24 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 			<file name="BRDK_CreaturePack_01_type.xml" type="types" />
 		</ce>
 	<ce folder="CustomTypes/Hunter_Mods">
-			<file name="Food_types.xml" type="types" />
+			<!-- file names as Boss's Hunter_Mods files are named; build_masters.py -->
+			<file name="Food_Drinks_types.xml" type="types" />
 			<file name="GunMagLoader_types.xml" type="types" />
-			<file name="GunWorkBench_types.xml" type="types" />
-			<file name="HM_Auto_Storage.xml" type="types" />
+			<file name="Gun_Work_Bench_types.xml" type="types" />
+			<file name="AutoStorage_types.xml" type="types" />
 			<file name="Loot_Containers_types.xml" type="types" />
-			<file name="SafeZAssets_types.xml" type="types" />
+			<file name="Safe_Zone_types.xml" type="types" />
 			<file name="Ambulance_Event_Types.xml" type="types" />
-			<file name="HM_Bunker_Tunnels.xml" type="types" />
-			<file name="HM_SecureZone.xml" type="types" />
-			<file name="HM_CraftBench.xml" type="types" />
-			<file name="HM_BunkerEvent.xml" type="types" />
-			<file name="HM_BitCoin.xml" type="types" />
-			<file name="HM_Recycler.xml" type="types" />
-			<file name="HM_AdvancedPrinter.xml" type="types" />
-			<file name="Base_Radio_types.xml" type="types" />
-			<file name="Teleport_types.xml" type="types" />
-			<file name="HM_MysteryBOX_types.xml" type="types" />
+			<file name="Bunker_Tunnels_types.xml" type="types" />
+			<file name="Secure_Zone_types.xml" type="types" />
+			<file name="Craft_Bench_types.xml" type="types" />
+			<file name="Bunker_Stuff.xml" type="types" />
+			<file name="BitCoin_types.xml" type="types" />
+			<file name="Recycler_types.xml" type="types" />
+			<file name="Advanced_Printer_types.xml" type="types" />
+			<file name="BaseRadio_types.xml" type="types" />
+			<file name="Advanced_Teleports_types.xml" type="types" />
+			<file name="Mystery_Box_types.xml" type="types" />
 		</ce>	
 	<!-- OH mod not on the server yet (next to go on). Uncomment when it is.
 	<ce folder="CustomTypes/OH_Mods">
@@ -97,5 +98,8 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 		</ce>
 	<ce folder="CustomTypes/SimpleLootBox">
 			<file name="SimpleLootBox_types.xml" type="types" />
+		</ce>
+	<ce folder="CustomTypes/NM">
+			<file name="NM_TYPES.xml" type="types" />
 		</ce>
 </economycore>

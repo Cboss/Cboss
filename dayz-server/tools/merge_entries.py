@@ -25,7 +25,8 @@ MARK = "build_masters.py"
 
 # Entry tags per root element: (tag, self-closing?)
 KINDS = {"prototype": [("export", True), ("cluster", False)],
-         "events": [("event", False)]}
+         "events": [("event", False)],
+         "spawnabletypes": [("type", False)]}
 
 
 @dataclass
@@ -118,7 +119,7 @@ def load(path: Path, raw: bytes | None = None) -> EntryFile:
 
     for tag, selfclosing in KINDS[ef.root]:
         pattern = (rf"<{tag}\b[^>]*?/>" if selfclosing
-                   else rf"<{tag}\b[^>]*>.*?</{tag}>")
+                   else rf"<{tag}\b[^>]*?(?:/>|>.*?</{tag}>)")
         for m in re.finditer(pattern, masked, flags=re.S):
             n = re.search(r'\bname="([^"]*)"', m.group(0))
             if not n:
@@ -151,6 +152,8 @@ class Result:
 
 
 def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
+    map_label = step.get("map_label", map_label)
+    van_label = step.get("vanilla_label", van_label)
     """step keys: map, vanilla, output, add_vanilla ("all" or list),
     skip_vanilla (list), drop_map ({key: why}), decisions ({key: {keep, why}}),
     prefer ({"keep": "map"|"vanilla", "why": ...}: default for conflicts with
@@ -289,8 +292,8 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
     else:
         r += ["none", ""]
     r += [f"**Removed from the map file:** {lst(f'{k} ({drop[k]})' for k in dropped)}", "",
-          f"**Added from vanilla:** {lst(added)}", "",
-          f"**Vanilla-only, not added:** {lst(not_added)}", "",
+          f"**Added from {van_label}:** {lst(added)}", "",
+          f"**Only in {van_label}, not added:** {lst(not_added)}", "",
           f"**Only in the map file, kept:** {len(only_map) - len(dropped)}", ""]
     if mp.root == "prototype":
         ex = {e.name for e in mp.entries.values() if e.kind == "export"}
