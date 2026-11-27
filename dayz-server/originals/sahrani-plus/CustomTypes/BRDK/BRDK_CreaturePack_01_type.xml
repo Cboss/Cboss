@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--ОГЛАВЛЕНИЕ-->
+<!--mobs-->
+<!--Skinning-->
+
+<types>
+<!--mobs-->
+	<type name="BRDK_BearMutant_crs">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Chupakabra_crs">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Crawler_crs">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Crawler_gren_crs">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_DeadCowZ_nml">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_HellHound_dog">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_HellHunter_crs">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_HellsPorcupine_crs">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_HellsPorcupine_2_crs">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_LizardHound_crs">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_StoneBull_crs">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Swampy_crs">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+
+<!--Skinning-->
+	<type name="BRDK_BearMutant_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_BearMutant_leg">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Chupakabra_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Chupakabra_Leg">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Crawlers_Blood">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_DeadCowZ_Stick">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_DeadCowZ_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_DeadCowZ_Bone">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_HellHound_had">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_HellHound_Leg">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_HellHunter_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_HellHunter_tail">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_HellsPorcupine_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_HellsPorcupine_leg">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_HellsPorcupine_2_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_HellsPorcupine_2_leg">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_LizardHound_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_LizardHound_leg">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_LizardHound_pelt">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_StoneBull_horn">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Swampy_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Swampy_Body">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Swampy_tongue">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Swampy_hand">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Swampy_leg">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Swampy_hand2">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+</types>
