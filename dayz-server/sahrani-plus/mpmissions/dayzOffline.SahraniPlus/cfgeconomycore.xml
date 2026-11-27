@@ -116,4 +116,8 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 	<ce folder="CustomTypes/CookZ">
 			<file name="cookz_types.xml" type="types" />
 		</ce>
+	<ce folder="CustomTypes/AP">
+			<file name="types_AzraelKamikazeMod.xml" type="types" />
+			<file name="types_PatrolDrone.xml" type="types" />
+		</ce>
 </economycore>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<types>
+
+	<!-- AZRAEL PATROL DRONE -->
+	<!-- ADDED 1.1  (Last change in 1.0) -->
+
+	<type name="AP_drone_tool_hider">
+        <nominal>0</nominal>						
+        <lifetime>7200</lifetime>						
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+        <category name="containers"/>
+		<usage name="Military"/>
+    </type>
+	<type name="AP_drone_tool_hider_2">
+        <nominal>0</nominal>						
+        <lifetime>7200</lifetime>						
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+        <category name="containers"/>
+		<usage name="Military"/>
+    </type>
+	<type name="AP_drone_tool_hider_3">
+        <nominal>0</nominal>						
+        <lifetime>7200</lifetime>						
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+        <category name="containers"/>
+		<usage name="Military"/>
+    </type>
+	<type name="AP_drone_item_module_black">
+        <nominal>0</nominal>						
+        <lifetime>7200</lifetime>						
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+        <category name="containers"/>
+		<usage name="Military"/>
+    </type>
+	<type name="AP_drone_item_module_green">
+        <nominal>0</nominal>						
+        <lifetime>7200</lifetime>						
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+        <category name="containers"/>
+		<usage name="Military"/>
+    </type>
+	<type name="AP_drone_item_module_blue">
+        <nominal>0</nominal>						
+        <lifetime>7200</lifetime>						
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+        <category name="containers"/>
+		<usage name="Military"/>
+    </type>
+	<type name="AP_drone_patrol_1">
+        <nominal>0</nominal>						
+        <lifetime>86400</lifetime>						
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+    </type>
+	<type name="AP_drone_patrol_2">
+        <nominal>0</nominal>						
+        <lifetime>86400</lifetime>						
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+    </type>
+</types>
