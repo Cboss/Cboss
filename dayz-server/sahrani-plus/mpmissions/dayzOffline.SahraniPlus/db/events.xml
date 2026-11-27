@@ -1370,9 +1370,9 @@
 		</children>
 	</event>
 	<event name="VehicleMix01">
-		<nominal>16</nominal>
-		<min>10</min>
-		<max>22</max>
+		<nominal>4</nominal>
+		<min>2</min>
+		<max>5</max>
 		<lifetime>300</lifetime>
 		<restock>0</restock>
 		<saferadius>500</saferadius>
@@ -1392,9 +1392,9 @@
 		</children>
 	</event>
 	<event name="VehicleMix02">
-		<nominal>16</nominal>
-		<min>10</min>
-		<max>22</max>
+		<nominal>4</nominal>
+		<min>2</min>
+		<max>5</max>
 		<lifetime>300</lifetime>
 		<restock>0</restock>
 		<saferadius>500</saferadius>
@@ -1414,9 +1414,9 @@
 		</children>
 	</event>
 	<event name="VehicleOffroad02">
-		<nominal>3</nominal>
-		<min>2</min>
-		<max>3</max>
+		<nominal>2</nominal>
+		<min>1</min>
+		<max>2</max>
 		<lifetime>300</lifetime>
 		<restock>0</restock>
 		<saferadius>500</saferadius>
@@ -1432,9 +1432,9 @@
 	</event>
     <!-- build_masters.py: removed event:VehicleLandrover: Expansion mod isn't on the server; all 7 children were Expansion_Landrover (Boss, 2026-11-27) -->
 	<event name="VehicleTruck01">
-		<nominal>8</nominal>
-		<min>5</min>
-		<max>11</max>
+		<nominal>2</nominal>
+		<min>1</min>
+		<max>3</max>
 		<lifetime>300</lifetime>
 		<restock>0</restock>
 		<saferadius>500</saferadius>
