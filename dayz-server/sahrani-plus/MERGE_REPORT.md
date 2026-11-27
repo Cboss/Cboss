@@ -1646,3 +1646,14 @@ Patched copy of `../originals/sahrani-plus/cfgeventgroups.xml` (sha256 `87d22bf3
 | 1 | comment out barrel_schnell_static in Barel_Schnell | barrel_schnell_static is not a class on this server; the boot logs it as invalid at 0,0 |
 
 Master sha256 `e201be3f0458`. Verification: passed.
+
+## expansion_types.xml
+
+Patched copy of `../originals/sahrani-plus/expansion_ce/expansion_types.xml` (sha256 `3ee9cd47d965`) → `mpmissions/dayzOffline.SahraniPlus/expansion_ce/expansion_types.xml`.
+
+| # | Change | Why |
+|---|---|---|
+| 1 | comment out Expansion's duplicate GlowPlug | GlowPlug is also defined in the vanilla types/misc_types.xml; Boss chose to keep the vanilla copy (2026-11-27) |
+| 2 | comment out Expansion's duplicate WoodenLog | WoodenLog is also defined in the vanilla types/misc_types.xml; Boss chose to keep the vanilla copy (2026-11-27) |
+
+Master sha256 `5869c041466d`. Verification: passed.

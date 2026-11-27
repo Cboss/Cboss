@@ -165,7 +165,14 @@ def check_types(path: Path, root: ET.Element, seen: dict[str, Path]) -> None:
         # nominal 0 means "never spawns"; vanilla leaves min > 0 on those
         if ("min" in vals and vals.get("nominal", 0) > 0
                 and vals["min"] > vals["nominal"]):
-            problem(path, f"'{name}' min ({vals['min']}) > nominal ({vals['nominal']})")
+            msg = f"'{name}' min ({vals['min']}) > nominal ({vals['nominal']})"
+            orig = source_original(path)
+            if orig and original_counts(orig).get(name) == (vals["min"], vals["nominal"]):
+                # Same numbers as the file we patched: nominals are tuned by
+                # hand later, so report it without failing our own copy.
+                warn(path, f"(unchanged from {orig.name}) {msg}")
+            else:
+                problem(path, msg)
         if ("quantmin" in vals and "quantmax" in vals
                 and vals["quantmin"] > vals["quantmax"]):
             problem(path, f"'{name}' quantmin > quantmax")
@@ -228,6 +235,41 @@ def find(folder: Path, rel: str) -> Path:
         if q.exists():
             return q
     return p
+
+
+def source_original(path: Path) -> Path | None:
+    """The original a built master was made from, when it sits at the same
+    place under the recipe's base folder."""
+    path = path.resolve()
+    for top, base in _overlay.items():
+        try:
+            q = base / path.relative_to(top)
+        except ValueError:
+            continue
+        if q.exists():
+            return q
+    return None
+
+
+_counts_cache: dict[Path, dict[str, tuple[int, int]]] = {}
+
+
+def original_counts(path: Path) -> dict[str, tuple[int, int]]:
+    """(min, nominal) per type name in an original types file."""
+    if path not in _counts_cache:
+        out: dict[str, tuple[int, int]] = {}
+        try:
+            root = ET.parse(path).getroot()
+        except ET.ParseError:
+            root = None
+        for t in (root.iter("type") if root is not None else []):
+            try:
+                out[t.get("name", "")] = (int(t.findtext("min", "").strip()),
+                                          int(t.findtext("nominal", "").strip()))
+            except ValueError:
+                pass
+        _counts_cache[path] = out
+    return _counts_cache[path]
 
 
 def register_overlays(files: list[Path]) -> None:

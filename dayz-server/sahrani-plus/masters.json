@@ -721,6 +721,25 @@
           "why": "barrel_schnell_static is not a class on this server; the boot logs it as invalid at 0,0"
         }
       ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/expansion_ce/expansion_types.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/expansion_ce/expansion_types.xml",
+      "edits": [
+        {
+          "find": "    <type name=\"GlowPlug\">\n        <nominal>5</nominal>\n        <lifetime>2700</lifetime>\n        <restock>0</restock>\n        <min>0</min>\n        <quantmin>-1</quantmin>\n        <quantmax>-1</quantmax>\n        <cost>100</cost>\n        <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\"/>\n        <category name=\"tools\"/>\n        <tag name=\"shelves\"/>\n        <usage name=\"Industrial\"/>\n    </type>",
+          "replace": "    <!-- build_masters.py: GlowPlug is also defined in the vanilla types/misc_types.xml; Boss chose to keep the vanilla copy (2026-11-27)\n    <type name=\"GlowPlug\">\n        <nominal>5</nominal>\n        <lifetime>2700</lifetime>\n        <restock>0</restock>\n        <min>0</min>\n        <quantmin>-1</quantmin>\n        <quantmax>-1</quantmax>\n        <cost>100</cost>\n        <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\"/>\n        <category name=\"tools\"/>\n        <tag name=\"shelves\"/>\n        <usage name=\"Industrial\"/>\n    </type>\n    -->",
+          "summary": "comment out Expansion's duplicate GlowPlug",
+          "why": "GlowPlug is also defined in the vanilla types/misc_types.xml; Boss chose to keep the vanilla copy (2026-11-27)"
+        },
+        {
+          "find": "\t<type name=\"WoodenLog\">\n        <nominal>0</nominal>\n        <lifetime>7200</lifetime>\n        <restock>0</restock>\n        <min>0</min>\n        <quantmin>-1</quantmin>\n        <quantmax>-1</quantmax>\n        <cost>100</cost>\n        <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n        <category name=\"tools\"/>\n    </type>",
+          "replace": "\t<!-- build_masters.py: WoodenLog is also defined in the vanilla types/misc_types.xml; Boss chose to keep the vanilla copy (2026-11-27)\n\t<type name=\"WoodenLog\">\n        <nominal>0</nominal>\n        <lifetime>7200</lifetime>\n        <restock>0</restock>\n        <min>0</min>\n        <quantmin>-1</quantmin>\n        <quantmax>-1</quantmax>\n        <cost>100</cost>\n        <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n        <category name=\"tools\"/>\n    </type>\n\t-->",
+          "summary": "comment out Expansion's duplicate WoodenLog",
+          "why": "WoodenLog is also defined in the vanilla types/misc_types.xml; Boss chose to keep the vanilla copy (2026-11-27)"
+        }
+      ]
     }
   ]
 }
