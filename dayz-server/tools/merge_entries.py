@@ -156,6 +156,8 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
     van_label = step.get("vanilla_label", van_label)
     """step keys: map, vanilla, output, add_vanilla ("all" or list),
     skip_vanilla (list), drop_map ({key: why}), decisions ({key: {keep, why}}),
+    remove_children ({"prefixes": [...], "why": ...}: comment out every <child>
+    whose type starts with one of the prefixes, in all events),
     add_children ({key: {children: [[type, min, max], ...], why}}: append
     children to any entry in the master, map or vanilla; events only),
     replace_map ({key: {name, children: [[type, min, max], ...], why}}: keep the
@@ -262,6 +264,17 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
             out.append(line)
         if i in inserts:
             out += inserts[i]
+    rm_spec: dict = step.get("remove_children", {})
+    rm_pref = tuple(rm_spec.get("prefixes", []))
+    rm_lines: set[str] = set()
+    rm_count = 0
+    if rm_pref:
+        for i, l in enumerate(out):
+            m = re.search(r'<child\b[^>]*\btype="([^"]+)"', l)
+            if m and m.group(1).startswith(rm_pref) and "<!--" not in l:
+                rm_lines.add(l)
+                out[i] = f"{indent_of(l)}<!-- {MARK}: removed child {m.group(1)}: {rm_spec.get('why', '')} -->"
+                rm_count += 1
     extra: dict = step.get("add_children", {})
     for k, spec in extra.items():
         tag, name = k.split(":", 1)
@@ -295,12 +308,15 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
             if k in new_key.values() or k in extra:
                 continue
             src = va if (k in added or k in use_vanilla) else mp
+            if k in src.entries and any(l in rm_lines for l in src.block(src.entries[k])):
+                continue  # children deliberately removed
             if k in src.entries and e.canon != src.entries[k].canon:
                 problems.append(f"master {k} does not match its source")
         if ms.newline != mp.newline or ms.bom != mp.bom:
             problems.append("master line endings/BOM differ from the map file")
     kept = [l for i, l in enumerate(mp.lines)
-            if i not in skip_lines and i not in replace and i not in removed and i not in swap_at]
+            if i not in skip_lines and i not in replace and i not in removed and i not in swap_at
+            and l not in rm_lines]
     it = iter(out)
     if not all(any(l == o for o in it) for l in kept):
         problems.append("some of the map's own lines are missing from the master")
@@ -345,6 +361,9 @@ def merge(step: dict, here: Path, map_label: str, van_label: str) -> Result:
             kids = ", ".join(f"`{t}` {mn}-{mx}" for t, mn, mx in swap[k]["children"])
             r.append(f"| `{k}` | `{new_key[k]}` | {kids} | {swap[k].get('why', '')} |")
         r.append("")
+    if rm_count:
+        r += [f"**Children removed:** {rm_count} with type starting {', '.join(f'`{x}`' for x in rm_pref)} "
+              f"({rm_spec.get('why', '')})", ""]
     if extra:
         r += ["**Children added:**", ""] + [
             f"- `{k}`: " + ", ".join(f"`{t}` {mn}-{mx}" for t, mn, mx in v["children"])

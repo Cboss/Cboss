@@ -26,7 +26,7 @@ Entry merge: `../originals/sahrani-plus/db/events.xml` (Sahrani Plus (map author
 |---|---|---|---|
 | Sahrani Plus (map author) | `9f046db0618d` | 1744 | 80 |
 | Bohemia vanilla Chernarus | `4089710dfa15` | 1230 | 61 |
-| **Master** | `deb5faf877a0` | 1909 | 90 |
+| **Master** | `365bacfa9e7d` | 1909 | 90 |
 
 Verification: passed. Line endings: LF, as in the map file.
 
@@ -1433,6 +1433,8 @@ Verification: passed. Line endings: LF, as in the map file.
 | `event:AnimalTricero2` | `event:AnimalAntelope` | `BRDK_Antelope_nml` 2-4, `BRDK_Antelope2_nml` 0-3, `BRDK_Gazelle_nml` 0-3 | dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later |
 | `event:AnimalCrocodile` | `event:AnimalHippo` | `BRDK_Hippo_nml` 1-3, `BRDK_Hippo_kid_nml` 0-1 | crocodile spot becomes hippos (Boss, 2026-11-27) |
 
+**Children removed:** 21 with type starting `CDAJ_` (CDAJ zombie mod isn't on the server (Boss, 2026-11-27))
+
 **Removed from the map file:** none
 
 **Added from Bohemia vanilla Chernarus:** `event:AmbientFox`, `event:AmbientHare`, `event:AmbientHen`, `event:AnimalBear`, `event:AnimalDeer`, `event:AnimalGoat`, `event:AnimalPig`, `event:AnimalRoeDeer`, `event:AnimalSheep`, `event:AnimalWolf`
@@ -1483,3 +1485,13 @@ Patched copy of `../originals/sahrani-plus/types/food_types.xml` (sha256 `09e3ff
 | 1 | TacticalBaconCan: Tier3-5 as `value`, not `usage` | tiers are values; the boot logged 'Unknown usage: Tier3/4/5' |
 
 Master sha256 `61f350f920a3`. Verification: passed.
+
+## cfgeconomycore.xml
+
+Patched copy of `../originals/sahrani-plus/cfgeconomycore.xml` (sha256 `8b088584d6b9`) → `mpmissions/dayzOffline.SahraniPlus/cfgeconomycore.xml`.
+
+| # | Change | Why |
+|---|---|---|
+| 1 | stop loading `BRDK_LtlCreature_types.xml` | Boss isn't using the BRDK little creatures |
+
+Master sha256 `339aab036875`. Verification: passed.

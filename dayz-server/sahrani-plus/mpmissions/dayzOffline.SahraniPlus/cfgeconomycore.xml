@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<economycore>
+	<classes>
+<!--
+These are rootclasses to be used by economy.
+Do not forget to add attribute act="character", if root class represents character (player, infected, animal)
+Do not forget to add attribute act="car", if root class represents moveable vehicles
+-->
+		<rootclass name="DefaultWeapon" /> <!-- weapons -->
+		<rootclass name="DefaultMagazine" /> <!-- magazines -->
+		<rootclass name="Inventory_Base" /> <!-- inventory items -->
+		<rootclass name="HouseNoDestruct" reportMemoryLOD="no" /> <!-- houses, wrecks -->
+		<rootclass name="SurvivorBase" act="character" reportMemoryLOD="no" /> <!-- player characters -->
+		<rootclass name="DZ_LightAI" act="character" reportMemoryLOD="no" /> <!-- infected, animals -->
+		<rootclass name="CarScript" act="car" reportMemoryLOD="no" /> <!-- cars (sedan, hatchback, transitBus, V3S, ...) -->
+	</classes>
+	<defaults>
+		<default name="dyn_radius" value="30" />
+		<default name="dyn_smin" value="0" />
+		<default name="dyn_smax" value="0" />
+		<default name="dyn_dmin" value="1" />
+		<default name="dyn_dmax" value="5" />
+		<default name="log_ce_loop" value="false"/>
+		<default name="log_ce_dynamicevent" value="false"/>
+		<default name="log_ce_vehicle" value="false"/>
+		<default name="log_ce_lootspawn" value="false"/>
+		<default name="log_ce_lootcleanup" value="false"/>
+		<default name="log_ce_lootrespawn" value="false"/>
+		<default name="log_ce_statistics" value="false"/>
+		<default name="log_ce_zombie" value="false"/>
+		<default name="log_storageinfo" value="false"/>
+		<default name="log_hivewarning" value="true"/>
+		<default name="log_missionfilewarning" value="true"/>
+		<default name="save_events_startup" value="true"/>
+		<default name="save_types_startup" value="true"/>
+	</defaults>
+	<!-- CENTRAL ECONOMY -->
+    <ce folder="types">
+	<file name="ammo_types.xml" type="types" />
+	<file name="animal_types.xml" type="types" />
+	<file name="attachments_types.xml" type="types" />
+	<file name="clothing_types.xml" type="types" />
+	<file name="explosives_types.xml" type="types" />
+	<file name="firearms_types.xml" type="types" />
+	<file name="firefighter_types.xml" type="types" />
+	<file name="food_types.xml" type="types" />
+	<file name="drinks_types.xml" type="types" />
+	<file name="medic_types.xml" type="types" />
+	<file name="melee_types.xml" type="types" />
+	<file name="misc_types.xml" type="types" />
+	<file name="police_types.xml" type="types" />
+	<file name="tools_types.xml" type="types" />
+	<file name="vehicles_types.xml" type="types" />
+	<file name="zmb_types.xml" type="types" />
+	</ce>
+	<ce folder="CustomTypes/BRDK">
+			<file name="BRDK_Animals_type.xml" type="types" />
+			<file name="BRDK_Animals2_type.xml" type="types" />
+			<file name="BRDK_item_type.xml" type="types" />
+			<file name="BRDK_Kurogane95.xml" type="types" />
+			<!-- <file name="BRDK_Chupakabra_Types.xml" type="types" /> -->
+			<!-- <file name="BRDK_HellHunter_Types.xml" type="types" /> -->
+			<!-- <file name="BRDK_LtlCreature_types.xml" type="types" /> not used (Boss, 2026-11-27) -->
+			<file name="BRDK_CreaturePack_01_type.xml" type="types" />
+			<file name="SimpleLootBox_types.xml" type="types" />
+		</ce>
+	<ce folder="CustomTypes/Hunter_Mods">
+			<file name="Food_Drinks_types.xml" type="types" />
+			<file name="GunMagLoader_types.xml" type="types" />
+			<file name="Gun_Work_Bench_types.xml" type="types" />
+			<file name="AutoStorage_types.xml" type="types" />
+			<file name="Loot_Containers_types.xml" type="types" />
+			<file name="Safe_Zone_types.xml" type="types" />
+			<file name="Ambulance_Event_Types.xml" type="types" />
+			<file name="Bunker_Tunnels_types.xml" type="types" />
+			<file name="Secure_Zone_types.xml" type="types" />
+			<file name="Craft_Bench_types.xml" type="types" />
+			<file name="Bunker_Stuff.xml" type="types" />
+			<file name="BitCoin_types.xml" type="types" />
+			<file name="Recycler_types.xml" type="types" />
+			<file name="Advanced_Printer_types.xml" type="types" />
+			<file name="BaseRadio_types.xml" type="types" />
+			<file name="Advanced_Teleports_types.xml" type="types" />
+			<file name="Mystery_Box_types.xml" type="types" />
+			<file name="Bunker_Hideout_types.xml" type="types" />
+		</ce>	
+	<ce folder="CustomTypes/Nemsis">
+			<file name="NM_TYPES.xml" type="types" />
+			<file name="NM_CFGSPAWNABLETYPES.xml" type="spawnabletypes" />
+		</ce>	
+	<!-- OH not on yet
+	<ce folder="CustomTypes/OH_Mods">
+			<file name="furniture_types.xml" type="types" />
+			<file name="OH_Clothing_types.xml" type="types" />
+		</ce> -->	
+	<ce folder="CustomTypes/Zombies_BRDK">
+			<!-- <file name="BRDK_Mobs-1_type.xml" type="types" /> -->
+			<file name="BRDK_Mobs-2_type.xml" type="types" />
+			<file name="BRDK_Mobs-4_type.xml" type="types" />
+			<!-- <file name="BRDK_ZMB_PACK_02_type.xml" type="types" /> -->
+			<file name="BRDK_ZMB_type.xml" type="types" />
+		</ce>
+	<ce folder="CustomTypes/BS_BaseBuilding">
+			<file name="types_bs.xml" type="types" />
+		</ce>
+</economycore>

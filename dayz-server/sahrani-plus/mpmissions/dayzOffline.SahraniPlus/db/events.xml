@@ -526,7 +526,7 @@
             <child lootmax="5" lootmin="0" max="0" min="2" type="ZmbM_JournalistSkinny"/>
             <child lootmax="5" lootmin="0" max="0" min="2" type="ZmbM_MotobikerFat_Beige"/>
             <child lootmax="5" lootmin="0" max="0" min="2" type="ZmbM_SkaterYoung_Brown"/>
-            <child lootmax="5" lootmin="0" max="0" min="2" type="CDAJ_ZmbM_Clown"/>
+            <!-- build_masters.py: removed child CDAJ_ZmbM_Clown: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
 		</children>
 	</event>
 	<event name="InfectedCityTier1">
@@ -561,7 +561,7 @@
             <child lootmax="5" lootmin="0" max="0" min="6" type="BRDK_DeadBandit_skr"/>
             <child lootmax="5" lootmin="0" max="0" min="6" type="BRDK_Guy_zmb"/>
             <child lootmax="5" lootmin="0" max="0" min="6" type="BRDK_Turist_skr"/>
-            <child lootmax="5" lootmin="0" max="0" min="6" type="CDAJ_ZmbM_LostInfected"/>
+            <!-- build_masters.py: removed child CDAJ_ZmbM_LostInfected: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
             <child lootmax="5" lootmin="0" max="0" min="2" type="BRDK_Chimp_zmb"/>
 		</children>
 	</event>
@@ -580,8 +580,8 @@
 		<active>1</active>
 		<children>
 			<child lootmax="5" lootmin="0" max="0" min="33" type="ZmbM_FirefighterNormal"/>
-            <child lootmax="5" lootmin="0" max="0" min="33" type="CDAJ_ZmbM_Boe_Glowing"/>
-			<child lootmax="5" lootmin="0" max="0" min="33" type="CDAJ_ZmbM_Boe"/>
+            <!-- build_masters.py: removed child CDAJ_ZmbM_Boe_Glowing: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
+			<!-- build_masters.py: removed child CDAJ_ZmbM_Boe: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
 		</children>
 	</event>
 	<event name="InfectedFirefighterSouth">
@@ -599,8 +599,8 @@
 		<active>1</active>
 		<children>
 			<child lootmax="5" lootmin="0" max="0" min="33" type="ZmbM_FirefighterNormal"/>
-            <child lootmax="5" lootmin="0" max="0" min="33" type="CDAJ_ZmbM_Boe_Glowing"/>
-			<child lootmax="5" lootmin="0" max="0" min="33" type="CDAJ_ZmbM_Boe"/>
+            <!-- build_masters.py: removed child CDAJ_ZmbM_Boe_Glowing: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
+			<!-- build_masters.py: removed child CDAJ_ZmbM_Boe: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
 		</children>
 	</event>
 	<event name="InfectedIndustrial">
@@ -694,13 +694,13 @@
 			<child lootmax="5" lootmin="0" max="0" min="10" type="ZmbM_NBC_Grey"/>
             <child lootmax="3" lootmin="0" max="0" min="10" type="ZmbM_NBC_Yellow"/>
 			<child lootmax="3" lootmin="0" max="0" min="10" type="ZmbM_NBC_White"/>
-            <child lootmax="3" lootmin="0" max="0" min="10" type="CDAJ_ZmbM_NBC_ERDL"/>
-            <child lootmax="5" lootmin="0" max="0" min="10" type="CDAJ_ZmbM_NBC_Red"/>
-            <child lootmax="3" lootmin="0" max="0" min="10" type="CDAJ_ZmbM_NBC_BlueDark"/>
-            <child lootmax="5" lootmin="0" max="0" min="10" type="CDAJ_ZmbM_NBC_BlueLight"/>
-            <child lootmax="3" lootmin="0" max="0" min="10" type="CDAJ_ZmbM_NBC_Green"/>
-            <child lootmax="5" lootmin="0" max="0" min="10" type="CDAJ_ZmbM_NBC_Rainbow"/>
-            <child lootmax="3" lootmin="0" max="0" min="10" type="CDAJ_ZmbM_NBC_Space"/>
+            <!-- build_masters.py: removed child CDAJ_ZmbM_NBC_ERDL: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
+            <!-- build_masters.py: removed child CDAJ_ZmbM_NBC_Red: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
+            <!-- build_masters.py: removed child CDAJ_ZmbM_NBC_BlueDark: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
+            <!-- build_masters.py: removed child CDAJ_ZmbM_NBC_BlueLight: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
+            <!-- build_masters.py: removed child CDAJ_ZmbM_NBC_Green: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
+            <!-- build_masters.py: removed child CDAJ_ZmbM_NBC_Rainbow: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
+            <!-- build_masters.py: removed child CDAJ_ZmbM_NBC_Space: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
 		</children>
 	</event>
 	<event name="InfectedNBCYellow">
@@ -720,13 +720,13 @@
 			<child lootmax="5" lootmin="0" max="0" min="10" type="ZmbM_NBC_Grey"/>
             <child lootmax="3" lootmin="0" max="0" min="10" type="ZmbM_NBC_Yellow"/>
 			<child lootmax="3" lootmin="0" max="0" min="10" type="ZmbM_NBC_White"/>
-            <child lootmax="3" lootmin="0" max="0" min="10" type="CDAJ_ZmbM_NBC_ERDL"/>
-            <child lootmax="5" lootmin="0" max="0" min="10" type="CDAJ_ZmbM_NBC_Red"/>
-            <child lootmax="3" lootmin="0" max="0" min="10" type="CDAJ_ZmbM_NBC_BlueDark"/>
-            <child lootmax="5" lootmin="0" max="0" min="10" type="CDAJ_ZmbM_NBC_BlueLight"/>
-            <child lootmax="3" lootmin="0" max="0" min="10" type="CDAJ_ZmbM_NBC_Green"/>
-            <child lootmax="5" lootmin="0" max="0" min="10" type="CDAJ_ZmbM_NBC_Rainbow"/>
-            <child lootmax="3" lootmin="0" max="0" min="10" type="CDAJ_ZmbM_NBC_Space"/>
+            <!-- build_masters.py: removed child CDAJ_ZmbM_NBC_ERDL: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
+            <!-- build_masters.py: removed child CDAJ_ZmbM_NBC_Red: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
+            <!-- build_masters.py: removed child CDAJ_ZmbM_NBC_BlueDark: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
+            <!-- build_masters.py: removed child CDAJ_ZmbM_NBC_BlueLight: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
+            <!-- build_masters.py: removed child CDAJ_ZmbM_NBC_Green: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
+            <!-- build_masters.py: removed child CDAJ_ZmbM_NBC_Rainbow: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
+            <!-- build_masters.py: removed child CDAJ_ZmbM_NBC_Space: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
 		</children>
 	</event>
 	<event name="InfectedPoliceNorth">
@@ -884,7 +884,7 @@
 		<active>1</active>
 		<children>
 			<child lootmax="5" lootmin="0" max="0" min="33" type="BRDK_Chimp_zmb"/>
-			<child lootmax="5" lootmin="0" max="0" min="10" type="CDAJ_ZmbM_Dark_Heavy"/>
+			<!-- build_masters.py: removed child CDAJ_ZmbM_Dark_Heavy: CDAJ zombie mod isn't on the server (Boss, 2026-11-27) -->
 			<child lootmax="5" lootmin="0" max="0" min="3" type="ZmbF_HikerSkinny_Blue"/>
 			<child lootmax="5" lootmin="0" max="0" min="3" type="ZmbF_HikerSkinny_Green"/>
 			<child lootmax="5" lootmin="0" max="0" min="3" type="ZmbF_HikerSkinny_Grey"/>
