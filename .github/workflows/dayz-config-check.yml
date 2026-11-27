@@ -23,3 +23,17 @@ jobs:
           python-version: "3.12"
       - name: Validate XML, JSON and serverDZ.cfg
         run: python3 dayz-server/tools/validate.py
+      - name: Check merged masters are up to date
+        shell: bash
+        run: |
+          status=0
+          for cfg in dayz-server/*/merge.json; do
+            [ -e "$cfg" ] || continue
+            map=$(python3 -c 'import json,sys,pathlib; p=pathlib.Path(sys.argv[1]); print(p.parent / json.load(open(p))["map"])' "$cfg")
+            if [ ! -f "$map" ]; then
+              echo "::notice::$cfg skipped: $map not committed yet"
+              continue
+            fi
+            python3 dayz-server/tools/merge_mapclusterproto.py check "$cfg" || status=1
+          done
+          exit $status
