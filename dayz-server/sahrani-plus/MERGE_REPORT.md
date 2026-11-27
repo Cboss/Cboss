@@ -1513,19 +1513,6 @@ Verification: passed. Line endings: LF, as in the map file.
 
 Unchanged copy of `../originals/vanilla-chernarusplus/cfgenvironment.xml` (sha256 `3f73c9f3abe7`). Boss wants realistic animals, no dinosaurs: Bohemia's file wires up bear, wolf, red and roe deer, wild boar, pig, cattle, sheep, goat, fox, hare, hen and infected, using the env/ territory files that ship with Sahrani Plus. Mod animal territories get added here once Boss picks them.
 
-## cfgeconomycore.xml
-
-Patched copy of `../originals/sahrani-plus/cfgeconomycore.xml` (sha256 `bbb82c09d084`) → `mpmissions/dayzOffline.SahraniPlus/cfgeconomycore.xml`.
-
-| # | Change | Why |
-|---|---|---|
-| 1 | load `CustomTypes/BRDK/SimpleLootBox_types.xml` | The file is on the server in CustomTypes/BRDK but wasn't registered, so the loot boxes never loaded |
-| 2 | stop loading `BRDK_Mobs-1_type.xml` | Same zombies as BRDK_ZMB_type.xml, which also has BRDK_Mortimer_head and BRDK_Skull. Boss OK'd one file per pair, 2026-11-27 |
-| 3 | stop loading `BRDK_ZMB_PACK_02_type.xml` | Same 34 types as BRDK_Mobs-2_type.xml. Mobs-2 kept: its FamPriest lifetimes (3888000 zombie, 3600 head) match every other BRDK zombie; PACK_02 has 3500 and 7900 |
-| 4 | turn off the OH_Mods block | OH mod isn't installed yet (Boss, 2026-11-27); loading its types now would make CE warn about missing classes |
-
-Master sha256 `6be3dd6fdd69`. Verification: passed.
-
 ## serverDZ.cfg
 
 Patched copy of `../originals/sahrani-plus/serverDZ.cfg` (sha256 `8014ba9244b8`) → `serverDZ.cfg`.

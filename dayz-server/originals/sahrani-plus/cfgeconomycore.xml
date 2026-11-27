@@ -58,10 +58,11 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 			<file name="BRDK_Animals2_type.xml" type="types" />
 			<file name="BRDK_item_type.xml" type="types" />
 			<file name="BRDK_Kurogane95.xml" type="types" />
-			<file name="BRDK_Chupakabra_Types.xml" type="types" />
-			<file name="BRDK_HellHunter_Types.xml" type="types" />
+			<!-- <file name="BRDK_Chupakabra_Types.xml" type="types" /> -->
+			<!-- <file name="BRDK_HellHunter_Types.xml" type="types" /> -->
 			<file name="BRDK_LtlCreature_types.xml" type="types" />
 			<file name="BRDK_CreaturePack_01_type.xml" type="types" />
+			<file name="SimpleLootBox_types.xml" type="types" />
 		</ce>
 	<ce folder="CustomTypes/Hunter_Mods">
 			<file name="Food_Drinks_types.xml" type="types" />
@@ -87,15 +88,16 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 			<file name="NM_TYPES.xml" type="types" />
 			<file name="NM_CFGSPAWNABLETYPES.xml" type="spawnabletypes" />
 		</ce>	
+	<!-- OH not on yet
 	<ce folder="CustomTypes/OH_Mods">
 			<file name="furniture_types.xml" type="types" />
 			<file name="OH_Clothing_types.xml" type="types" />
-		</ce>	
+		</ce> -->	
 	<ce folder="CustomTypes/Zombies_BRDK">
-			<file name="BRDK_Mobs-1_type.xml" type="types" />
+			<!-- <file name="BRDK_Mobs-1_type.xml" type="types" /> -->
 			<file name="BRDK_Mobs-2_type.xml" type="types" />
 			<file name="BRDK_Mobs-4_type.xml" type="types" />
-			<file name="BRDK_ZMB_PACK_02_type.xml" type="types" />
+			<!-- <file name="BRDK_ZMB_PACK_02_type.xml" type="types" /> -->
 			<file name="BRDK_ZMB_type.xml" type="types" />
 		</ce>
 	<ce folder="CustomTypes/BS_BaseBuilding">

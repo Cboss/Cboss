@@ -46,7 +46,7 @@ Map and mod files change, so our edits are never made inside them. Three rules k
 | Type | Used for | What it does |
 |---|---|---|
 | `merge` | `mapclusterproto.xml`, `db/events.xml` | Entry by entry (`<export>`, `<cluster>`, `<event>`). Keeps every line of the map's file in order. Copies vanilla entries in character for character between `build_masters.py` comments (`add_vanilla`: `"all"` or a list). Removes map entries listed in `drop_map`, leaving a comment with the reason. An entry in both files that differs is a **conflict**: the map's version stays until a decision says otherwise. `prefer` sets a default for a whole file. |
-| `patch` | `cfgeconomycore.xml` | Exact text edits. Each `find` must occur exactly once in the original. If an update changes that text, the build stops and names the edit, so nothing gets silently lost. |
+| `patch` | `serverDZ.cfg` | Exact text edits. Each `find` must occur exactly once in the original. If an update changes that text, the build stops and names the edit, so nothing gets silently lost. |
 | `copy` | `cfgenvironment.xml` | An original used unchanged, such as a vanilla file in place of the map's. |
 
 Before writing anything, the script checks that every master is well-formed. For merges, it also checks that no map line was lost or reordered, that every entry is present exactly once, and that each copied entry matches its source exactly. If any check fails, nothing is written. `MERGE_REPORT.md` lists the input hashes, every change and why, every conflict with both versions side by side, and recipe lines that no longer apply after an update.
