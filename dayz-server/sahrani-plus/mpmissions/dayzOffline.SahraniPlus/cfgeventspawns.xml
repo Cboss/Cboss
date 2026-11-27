@@ -223,8 +223,7 @@
 		<pos x="17542.8" y="19.7673" z="9552.95" a="-85.1328"/>
 		<pos x="12967.3" y="24.6261" z="11321.4" a="-45.9411"/>
 	</event>
-	<!-- build_masters.py: VehicleBoats spawn positions kept for later, commented out: no event by that name (events.xml has VehicleBoat, whose SIB boats aren't installed)
-	<event name="VehicleBoats">
+	<event name="VehicleBoat">
 		<pos x="13554.6" y="3.15343" z="8662.37" a="0.883824"/>
 		<pos x="13514.8" y="4.19401" z="8662.22" a="128.09"/>
 		<pos x="13502.8" y="4.38494" z="8663.23" a="173.8"/>
@@ -277,7 +276,6 @@
 		<pos x="12973.3" y="4.26635" z="9075.81" a="-39.8019"/>
 		<pos x="12961.4" y="3.7877" z="9074.61" a="-39.5609"/>
 	</event>
-	-->
 	<event name="StaticAmbulanceWreck">
 		<zone smin="1" smax="3" dmin="3" dmax="5" r="45" />
 		<pos x="9530.45" y="46.2107" z="5834.68" a="0"/>

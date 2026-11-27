@@ -1568,9 +1568,9 @@ Patched copy of `../originals/sahrani-plus/cfgeventspawns.xml` (sha256 `ffa2e52d
 | 1 | remove 15 empty spawn entries for the old dino/crocodile events | those events were renamed to real animals; the server logged 'Skipping entry for non-existing event' for each (2:36 boot). Animal events spawn from cfgenvironment territories, not from here |
 | 2 | comment out VehicleLavegaBus spawn positions | server logged 'Skipping entry for non-existing event'; positions kept in a comment so the event can come back with its mod |
 | 3 | comment out VehicleLandrover spawn positions | server logged 'Skipping entry for non-existing event'; positions kept in a comment so the event can come back with its mod |
-| 4 | comment out VehicleBoats spawn positions | server logged 'Skipping entry for non-existing event'; positions kept in a comment so the event can come back with its mod |
+| 4 | rename VehicleBoats spawn positions to VehicleBoat | events.xml calls the event VehicleBoat, so its positions were skipped and the event was disabled ('needs configured positions'). Boss is adding the MaharlikaPH Boats mod (2026-11-27) |
 
-Master sha256 `2b1b671ded20`. Verification: passed.
+Master sha256 `dcd80c9144be`. Verification: passed.
 
 ## cfgplayerspawnpoints.xml
 
