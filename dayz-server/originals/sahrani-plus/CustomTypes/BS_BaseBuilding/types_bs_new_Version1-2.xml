@@ -1,0 +1,247 @@
+<!-- BS_BaseBuilding: only the 22 types that are new in this update. If your mission already has types_bs.xml from the previous version, paste these <type> blocks inside <types> in your mission's types.xml (or add this file to cfgeconomycore.xml). types_bs.xml has all of them. -->
+<types>
+    <type name="BSBB_StepLadderFolded_Wood">
+        <nominal>0</nominal>
+        <lifetime>1209600</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_StepLadderFolded_Steel">
+        <nominal>6</nominal>
+        <lifetime>14400</lifetime>
+        <restock>1800</restock>
+        <min>3</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+        <category name="tools"/>
+        <tag name="floor"/>
+        <usage name="Military"/>
+    </type>
+    <type name="BSBB_StepLadder_Wood">
+        <nominal>0</nominal>
+        <lifetime>1209600</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_StepLadder_Steel">
+        <nominal>0</nominal>
+        <lifetime>1209600</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_StepLadderFolded_Tall">
+        <nominal>0</nominal>
+        <lifetime>1209600</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_StepLadder_Tall">
+        <nominal>0</nominal>
+        <lifetime>1209600</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_STAIRL_FR">
+        <nominal>0</nominal>
+        <lifetime>3888000</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_STAIRL_T1">
+        <nominal>0</nominal>
+        <lifetime>3888000</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_STAIRL_T2">
+        <nominal>0</nominal>
+        <lifetime>3888000</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_STAIRL_T3">
+        <nominal>0</nominal>
+        <lifetime>3888000</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_STAIRSTRAIGHT_FR">
+        <nominal>0</nominal>
+        <lifetime>3888000</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_STAIRSTRAIGHT_T1">
+        <nominal>0</nominal>
+        <lifetime>3888000</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_STAIRSTRAIGHT_T2">
+        <nominal>0</nominal>
+        <lifetime>3888000</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_STAIRSTRAIGHT_T3">
+        <nominal>0</nominal>
+        <lifetime>3888000</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_FLOORSTAIRSIDE_FR">
+        <nominal>0</nominal>
+        <lifetime>3888000</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_FLOORSTAIRSIDE_T1">
+        <nominal>0</nominal>
+        <lifetime>3888000</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_FLOORSTAIRSIDE_T2">
+        <nominal>0</nominal>
+        <lifetime>3888000</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_FLOORSTAIRSIDE_T3">
+        <nominal>0</nominal>
+        <lifetime>3888000</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_STAIRHATCH_T1">
+        <nominal>0</nominal>
+        <lifetime>3888000</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_STAIRHATCH_T2">
+        <nominal>0</nominal>
+        <lifetime>3888000</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_STAIRHATCH_T3">
+        <nominal>0</nominal>
+        <lifetime>3888000</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+    <type name="BSBB_STAIRHATCH_T3B">
+        <nominal>0</nominal>
+        <lifetime>3888000</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+        <category name="tools"/>
+    </type>
+</types>
