@@ -1430,29 +1430,7 @@
 			<child lootmax="0" lootmin="0" max="1" min="1" type="Offroad_02"/>
 		</children>
 	</event>
-    <event name="VehicleLandrover">
-        <nominal>4</nominal>
-        <min>1</min>
-        <max>4</max>
-        <lifetime>300</lifetime>
-        <restock>0</restock>
-        <saferadius>500</saferadius>
-        <distanceradius>500</distanceradius>
-        <cleanupradius>200</cleanupradius>
-        <flags deletable="0" init_random="0" remove_damaged="1"/>
-        <position>fixed</position>
-        <limit>mixed</limit>
-        <active>1</active>
-        <children>
-            <child lootmax="0" lootmin="0" max="1" min="1" type="Expansion_Landrover"/>
-			<child lootmax="0" lootmin="0" max="1" min="1" type="Expansion_Landrover_Yellow"/>
-            <child lootmax="0" lootmin="0" max="1" min="1" type="Expansion_Landrover_Red"/>
-            <child lootmax="0" lootmin="0" max="1" min="1" type="Expansion_Landrover_Green"/>
-			<child lootmax="0" lootmin="0" max="1" min="1" type="Expansion_Landrover_Grey"/>
-            <child lootmax="0" lootmin="0" max="1" min="1" type="Expansion_Landrover_Orange"/>
-            <child lootmax="0" lootmin="0" max="1" min="1" type="Expansion_Landrover_Blue"/>
-        </children>
-    </event>
+    <!-- build_masters.py: removed event:VehicleLandrover: Expansion mod isn't on the server; all 7 children were Expansion_Landrover (Boss, 2026-11-27) -->
 	<event name="VehicleTruck01">
 		<nominal>0</nominal>
 		<min>0</min>

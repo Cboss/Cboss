@@ -26,7 +26,7 @@ Entry merge: `../originals/sahrani-plus/db/events.xml` (Sahrani Plus (map author
 |---|---|---|---|
 | Sahrani Plus (map author) | `9f046db0618d` | 1744 | 80 |
 | Bohemia vanilla Chernarus | `4089710dfa15` | 1230 | 61 |
-| **Master** | `365bacfa9e7d` | 1909 | 90 |
+| **Master** | `71590eab3586` | 1887 | 89 |
 
 Verification: passed. Line endings: LF, as in the map file.
 
@@ -1435,13 +1435,13 @@ Verification: passed. Line endings: LF, as in the map file.
 
 **Children removed:** 21 with type starting `CDAJ_` (CDAJ zombie mod isn't on the server (Boss, 2026-11-27))
 
-**Removed from the map file:** none
+**Removed from the map file:** `event:VehicleLandrover (Expansion mod isn't on the server; all 7 children were Expansion_Landrover (Boss, 2026-11-27))`
 
 **Added from Bohemia vanilla Chernarus:** `event:AmbientFox`, `event:AmbientHare`, `event:AmbientHen`, `event:AnimalBear`, `event:AnimalDeer`, `event:AnimalGoat`, `event:AnimalPig`, `event:AnimalRoeDeer`, `event:AnimalSheep`, `event:AnimalWolf`
 
 **Only in Bohemia vanilla Chernarus, not added:** `event:AnimalCow`, `event:InfectedArmy`, `event:InfectedArmyDesert`, `event:InfectedArmyHard`, `event:InfectedFirefighter`, `event:InfectedPolice`, `event:InfectedPoliceHard`, `event:InfectedSpooky`, `event:StaticMilitaryConvoy`, `event:StaticPoliceCar`, `event:StaticPoliceSituation`, `event:VehicleCivilianSedan`, `event:VehicleHatchback02`, `event:VehicleMotorbike`, `event:VehicleOffroadHatchback`, `event:VehicleSedan02`
 
-**Only in the map file, kept:** 45
+**Only in the map file, kept:** 44
 
 ## cfgenvironment.xml
 

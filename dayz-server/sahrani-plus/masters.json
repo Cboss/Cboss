@@ -47,7 +47,7 @@
         "event:AnimalWolf"
       ],
       "skip_vanilla": [],
-      "drop_map": {},
+      "drop_map": {"event:VehicleLandrover": "Expansion mod isn't on the server; all 7 children were Expansion_Landrover (Boss, 2026-11-27)"},
       "decisions": {},
       "prefer": {
         "keep": "map",
