@@ -62,6 +62,7 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 			<file name="BRDK_HellHunter_Types.xml" type="types" />
 			<file name="BRDK_LtlCreature_types.xml" type="types" />
 			<file name="BRDK_CreaturePack_01_type.xml" type="types" />
+			<file name="SimpleLootBox_types.xml" type="types" />
 		</ce>
 	<ce folder="CustomTypes/Hunter_Mods">
 			<!-- file names as Boss's Hunter_Mods files are named; build_masters.py -->
@@ -96,10 +97,7 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 			<!-- <file name="BRDK_ZMB_PACK_02_type.xml" type="types" /> duplicate of BRDK_Mobs-2_type.xml -->
 			<file name="BRDK_ZMB_type.xml" type="types" />
 		</ce>
-	<ce folder="CustomTypes/SimpleLootBox">
-			<file name="SimpleLootBox_types.xml" type="types" />
-		</ce>
-	<ce folder="CustomTypes/NM">
+	<ce folder="CustomTypes/Nemsis">
 			<file name="NM_TYPES.xml" type="types" />
 		</ce>
 </economycore>

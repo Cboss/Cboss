@@ -115,21 +115,21 @@ def check_server_cfg(path: Path) -> None:
         if not line or line in ("{", "}", "};") or line.startswith("class "):
             continue
         if "=" in line and not line.endswith(";"):
-            err(path, f"line {n}: missing ';' -> {line}")
+            problem(path, f"line {n}: missing ';' -> {line}")
         m = re.match(r'(\w+)\s*=\s*"(.*)"\s*;', line)
         if m and m.group(1) in SECRET_KEYS:
             key, value = m.groups()
             if value not in SECRET_KEYS[key]:
-                err(path, f"line {n}: {key} holds a real value. Keep "
+                problem(path, f"line {n}: {key} holds a real value. Keep "
                           f'it blank in the repo; set it on the server.')
 
     m = re.search(r'template\s*=\s*"([^"]+)"', text)
     if not m:
-        err(path, "no mission template set in class Missions")
+        problem(path, "no mission template set in class Missions")
     else:
         mission = path.parent / "mpmissions" / m.group(1)
         if (path.parent / "mpmissions").is_dir() and not mission.is_dir():
-            err(path, f"template '{m.group(1)}' has no folder at {mission}")
+            problem(path, f"template '{m.group(1)}' has no folder at {mission}")
 
 
 def check_types(path: Path, root: ET.Element, seen: dict[str, Path]) -> None:
