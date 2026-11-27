@@ -615,6 +615,21 @@
           "why": "travel was empty; same 0,0,0 warning"
         }
       ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/env/zombie_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/zombie_territories.xml",
+      "edits": [
+        {
+          "tag": "zone",
+          "add_to_attrs": {
+            "dmin": 1,
+            "dmax": 2
+          },
+          "why": "Boss, 2026-11-27: up the zombie counts a little, by 1 or 2. Each zone's dynamic count goes up 1 (min) and 2 (max)"
+        }
+      ]
     }
   ]
 }

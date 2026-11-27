@@ -1593,3 +1593,13 @@ Patched copy of `../originals/sahrani-plus/cfgplayerspawnpoints.xml` (sha256 `8e
 | 2 | travel spawns use the fresh spawn settings and bubbles | travel was empty; same 0,0,0 warning |
 
 Master sha256 `fa74724971c7`. Verification: passed.
+
+## zombie_territories.xml
+
+Patched copy of `../originals/sahrani-plus/env/zombie_territories.xml` (sha256 `26629b75302f`) → `mpmissions/dayzOffline.SahraniPlus/env/zombie_territories.xml`.
+
+| # | Change | Why |
+|---|---|---|
+| 1 | dmin +1, dmax +2 on all 546 <zone> | Boss, 2026-11-27: up the zombie counts a little, by 1 or 2. Each zone's dynamic count goes up 1 (min) and 2 (max) |
+
+Master sha256 `6d6dd6e2a6b3`. Verification: passed.

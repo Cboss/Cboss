@@ -33,6 +33,9 @@ Recipe (paths are relative to the recipe file):
       ]
     }
 
+    A patch edit can instead be {"tag": "zone", "add_to_attrs": {"dmin": 1},
+    "why": "..."}: add a number to that attribute on every <zone> element.
+
     Patch "find" text must occur exactly once in the original. Write line
     breaks as \\n; they are matched against the file's own line endings. If an
     updated original no longer contains the text, the build stops and says
@@ -45,6 +48,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -76,6 +80,26 @@ def patch(step: dict, here: Path) -> tuple[bytes, list[str], list[str]]:
          f"Patched copy of `{step['from']}` (sha256 `{sha(raw)}`) → `{step['output']}`.", "",
          "| # | Change | Why |", "|---|---|---|"]
     for n, ed in enumerate(step["edits"], 1):
+        if "add_to_attrs" in ed:
+            # Bulk edit: add a number to attributes of every <tag ...> element.
+            tag, add = ed["tag"], ed["add_to_attrs"]
+            hits = 0
+
+            def bump(m: "re.Match[str]") -> str:
+                nonlocal hits
+                el = m.group(0)
+                for attr, delta in add.items():
+                    el = re.sub(rf'(\s{attr}=")(-?\d+)(")',
+                                lambda a: f"{a.group(1)}{int(a.group(2)) + delta}{a.group(3)}", el)
+                hits += 1
+                return el
+            text = re.sub(rf"<{tag}\b[^>]*>", bump, text)
+            if not hits:
+                problems.append(f"edit {n}: no <{tag}> elements in {step['from']}")
+            summary = ed.get("summary") or (
+                f"{', '.join(f'{a} +{d}' for a, d in add.items())} on all {hits} <{tag}>")
+            r.append(f"| {n} | {summary} | {ed.get('why', '')} |")
+            continue
         find = ed["find"].replace("\n", nl)
         repl = ed["replace"].replace("\n", nl)
         count = text.count(find)
