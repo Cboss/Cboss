@@ -150,7 +150,6 @@
 		<pos x="12238.2" y="27.863" z="17595.8" a="-3.76484"/>
 		<pos x="12403.6" y="61.0287" z="17453.1" a="176.715"/>
 	</event>
-	<!-- build_masters.py: VehicleLandrover spawn positions kept for later, commented out: event removed while Expansion isn't installed (Boss, 2026-11-27)
 	<event name="VehicleLandrover">
 		<pos x="9400.91" y="27.2477" z="5212.6" a="-112.712"/>
 		<pos x="10749.8" y="10.9446" z="4845.63" a="0"/>
@@ -177,7 +176,6 @@
 		<pos x="13869.5" y="28.5725" z="9078.6" a="-111.381"/>
 		<pos x="13892.1" y="24.688" z="8711.04" a="-28.0306"/>
 	</event>
-	-->
 	<event name="VehicleTruck01">
 		<pos x="8190.57" y="52.6562" z="17021.2" a="120.089"/>
 		<pos x="11171.6" y="11.4632" z="16907.7" a="14.3321"/>

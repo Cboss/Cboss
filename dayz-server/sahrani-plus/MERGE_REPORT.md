@@ -26,7 +26,7 @@ Entry merge: `../originals/sahrani-plus/db/events.xml` (Sahrani Plus (map author
 |---|---|---|---|
 | Sahrani Plus (map author) | `9f046db0618d` | 1744 | 80 |
 | Bohemia vanilla Chernarus | `4089710dfa15` | 1230 | 61 |
-| **Master** | `200524da1f9b` | 1887 | 89 |
+| **Master** | `d6316ed3ed96` | 1909 | 90 |
 
 Verification: passed. Line endings: LF, as in the map file.
 
@@ -1447,13 +1447,13 @@ Verification: passed. Line endings: LF, as in the map file.
 - `event:VehicleOffroad02`: switched on, nominal 2 / min 1 / max 2 (map shipped all car events off; Boss wants cars on but minimal (2026-11-27))
 - `event:VehicleTruck01`: switched on, nominal 2 / min 1 / max 3 (map shipped all car events off; Boss wants cars on but minimal (2026-11-27))
 
-**Removed from the map file:** `event:VehicleLandrover (Expansion mod isn't on the server; all 7 children were Expansion_Landrover (Boss, 2026-11-27))`
+**Removed from the map file:** none
 
 **Added from Bohemia vanilla Chernarus:** `event:AmbientFox`, `event:AmbientHare`, `event:AmbientHen`, `event:AnimalBear`, `event:AnimalDeer`, `event:AnimalGoat`, `event:AnimalPig`, `event:AnimalRoeDeer`, `event:AnimalSheep`, `event:AnimalWolf`
 
 **Only in Bohemia vanilla Chernarus, not added:** `event:AnimalCow`, `event:InfectedArmy`, `event:InfectedArmyDesert`, `event:InfectedArmyHard`, `event:InfectedFirefighter`, `event:InfectedPolice`, `event:InfectedPoliceHard`, `event:InfectedSpooky`, `event:StaticMilitaryConvoy`, `event:StaticPoliceCar`, `event:StaticPoliceSituation`, `event:VehicleCivilianSedan`, `event:VehicleHatchback02`, `event:VehicleMotorbike`, `event:VehicleOffroadHatchback`, `event:VehicleSedan02`
 
-**Only in the map file, kept:** 44
+**Only in the map file, kept:** 45
 
 ## cfgenvironment.xml
 
@@ -1566,10 +1566,11 @@ Patched copy of `../originals/sahrani-plus/cfgeconomycore.xml` (sha256 `8b088584
 |---|---|---|
 | 1 | stop loading `BRDK_LtlCreature_types.xml` | Boss isn't using the BRDK little creatures |
 | 2 | add the vanilla 1.30 root classes for boats, motorbikes and destructible houses | missing from the map's file, so the CE ignored Boat_01_* and Motorbike_* as 'Type does not exist' (03:07 boot). Lines copied from Bohemia's cfgeconomycore (DayZ-Central-Economy 7bfc95c) |
-| 3 | load the MaharlikaPH Boats types and spawnabletypes | Boss is adding MaharlikaPH Boats (@3354681846); the two files are the mod's own Info\ files copied unchanged into CustomTypes/MaharlikaPH_Boats (2026-11-27); CookZ (@3302732231) types load from CustomTypes/CookZ (Boss, 2026-11-27); AP kamikaze and patrol drone types load from CustomTypes/AP (Boss, 2026-11-27) |
+| 3 | load the MaharlikaPH Boats types and spawnabletypes | Boss is adding MaharlikaPH Boats (@3354681846); the two files are the mod's own Info\ files copied unchanged into CustomTypes/MaharlikaPH_Boats (2026-11-27); CookZ (@3302732231) types load from CustomTypes/CookZ (Boss, 2026-11-27); AP kamikaze and patrol drone types load from CustomTypes/AP (Boss, 2026-11-27); Expansion economy files load from expansion_ce (Boss, 2026-11-27) |
 | 4 | load Apokot fishing types from CustomTypes/Apokot_Fish | Boss added this block on the live server, 2026-11-27 (Apokot_fishing_mod_Fix @3837317482) |
+| 5 | OH mods types switched on | Boss turned the OH mods (BSG Pack 7) on, live edit 2026-11-27 15:16 |
 
-Master sha256 `c2993ff76d80`. Verification: passed.
+Master sha256 `cf3bc8df217a`. Verification: passed.
 
 ## cfgeventspawns.xml
 
@@ -1579,10 +1580,9 @@ Patched copy of `../originals/sahrani-plus/cfgeventspawns.xml` (sha256 `ffa2e52d
 |---|---|---|
 | 1 | remove 15 empty spawn entries for the old dino/crocodile events | those events were renamed to real animals; the server logged 'Skipping entry for non-existing event' for each (2:36 boot). Animal events spawn from cfgenvironment territories, not from here |
 | 2 | comment out VehicleLavegaBus spawn positions | server logged 'Skipping entry for non-existing event'; positions kept in a comment so the event can come back with its mod |
-| 3 | comment out VehicleLandrover spawn positions | server logged 'Skipping entry for non-existing event'; positions kept in a comment so the event can come back with its mod |
-| 4 | rename VehicleBoats spawn positions to VehicleBoat | events.xml calls the event VehicleBoat, so its positions were skipped and the event was disabled ('needs configured positions'). Boss is adding the MaharlikaPH Boats mod (2026-11-27) |
+| 3 | rename VehicleBoats spawn positions to VehicleBoat | events.xml calls the event VehicleBoat, so its positions were skipped and the event was disabled ('needs configured positions'). Boss is adding the MaharlikaPH Boats mod (2026-11-27) |
 
-Master sha256 `dcd80c9144be`. Verification: passed.
+Master sha256 `ce9c5b8137a7`. Verification: passed.
 
 ## cfgplayerspawnpoints.xml
 
