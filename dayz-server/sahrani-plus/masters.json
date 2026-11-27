@@ -65,17 +65,6 @@
       "why": "Boss wants realistic animals, no dinosaurs: Bohemia's file wires up bear, wolf, red and roe deer, wild boar, pig, cattle, sheep, goat, fox, hare, hen and infected, using the env/ territory files that ship with Sahrani Plus. Mod animal territories get added here once Boss picks them."
     },
     {
-      "type": "merge",
-      "map": "../originals/sahrani-plus/cfgspawnabletypes.xml",
-      "vanilla": "../originals/sahrani-plus/CustomTypes/Nemsis/NM_CFGSPAWNABLETYPES.xml",
-      "vanilla_label": "NM (Nemesis) mod",
-      "output": "mpmissions/dayzOffline.SahraniPlus/cfgspawnabletypes.xml",
-      "add_vanilla": "all",
-      "skip_vanilla": [],
-      "drop_map": {},
-      "decisions": {}
-    },
-    {
       "type": "patch",
       "from": "../originals/sahrani-plus/cfgeconomycore.xml",
       "output": "mpmissions/dayzOffline.SahraniPlus/cfgeconomycore.xml",
@@ -85,12 +74,6 @@
           "replace": "\t\t\t<file name=\"BRDK_CreaturePack_01_type.xml\" type=\"types\" />\n\t\t\t<file name=\"SimpleLootBox_types.xml\" type=\"types\" />\n",
           "summary": "load `CustomTypes/BRDK/SimpleLootBox_types.xml`",
           "why": "The file is on the server in CustomTypes/BRDK but wasn't registered, so the loot boxes never loaded"
-        },
-        {
-          "find": "\t\t\t<file name=\"Food_types.xml\" type=\"types\" />\n\t\t\t<file name=\"GunMagLoader_types.xml\" type=\"types\" />\n\t\t\t<file name=\"GunWorkBench_types.xml\" type=\"types\" />\n\t\t\t<file name=\"HM_Auto_Storage.xml\" type=\"types\" />\n\t\t\t<file name=\"Loot_Containers_types.xml\" type=\"types\" />\n\t\t\t<file name=\"SafeZAssets_types.xml\" type=\"types\" />\n\t\t\t<file name=\"Ambulance_Event_Types.xml\" type=\"types\" />\n\t\t\t<file name=\"HM_Bunker_Tunnels.xml\" type=\"types\" />\n\t\t\t<file name=\"HM_SecureZone.xml\" type=\"types\" />\n\t\t\t<file name=\"HM_CraftBench.xml\" type=\"types\" />\n\t\t\t<file name=\"HM_BunkerEvent.xml\" type=\"types\" />\n\t\t\t<file name=\"HM_BitCoin.xml\" type=\"types\" />\n\t\t\t<file name=\"HM_Recycler.xml\" type=\"types\" />\n\t\t\t<file name=\"HM_AdvancedPrinter.xml\" type=\"types\" />\n\t\t\t<file name=\"Base_Radio_types.xml\" type=\"types\" />\n\t\t\t<file name=\"Teleport_types.xml\" type=\"types\" />\n\t\t\t<file name=\"HM_MysteryBOX_types.xml\" type=\"types\" />\n",
-          "replace": "\t\t\t<!-- file names as Boss's Hunter_Mods files are named; build_masters.py -->\n\t\t\t<file name=\"Food_Drinks_types.xml\" type=\"types\" />\n\t\t\t<file name=\"GunMagLoader_types.xml\" type=\"types\" />\n\t\t\t<file name=\"Gun_Work_Bench_types.xml\" type=\"types\" />\n\t\t\t<file name=\"AutoStorage_types.xml\" type=\"types\" />\n\t\t\t<file name=\"Loot_Containers_types.xml\" type=\"types\" />\n\t\t\t<file name=\"Safe_Zone_types.xml\" type=\"types\" />\n\t\t\t<file name=\"Ambulance_Event_Types.xml\" type=\"types\" />\n\t\t\t<file name=\"Bunker_Tunnels_types.xml\" type=\"types\" />\n\t\t\t<file name=\"Secure_Zone_types.xml\" type=\"types\" />\n\t\t\t<file name=\"Craft_Bench_types.xml\" type=\"types\" />\n\t\t\t<file name=\"Bunker_Stuff.xml\" type=\"types\" />\n\t\t\t<file name=\"BitCoin_types.xml\" type=\"types\" />\n\t\t\t<file name=\"Recycler_types.xml\" type=\"types\" />\n\t\t\t<file name=\"Advanced_Printer_types.xml\" type=\"types\" />\n\t\t\t<file name=\"BaseRadio_types.xml\" type=\"types\" />\n\t\t\t<file name=\"Advanced_Teleports_types.xml\" type=\"types\" />\n\t\t\t<file name=\"Mystery_Box_types.xml\" type=\"types\" />\n",
-          "summary": "Hunter_Mods: list the files by the names they actually have",
-          "why": "The listed names (Food_types.xml, HM_Auto_Storage.xml, HM_BitCoin.xml ...) match no file in CustomTypes/Hunter_Mods on the server (checked on disk 2026-11-27), so 14 of 17 never loaded. Mapped one to one; HM_BunkerEvent.xml -> Bunker_Stuff.xml is a best match (bunker doors, keys and parts). Not listed: Ambulance_types.xml and Speed_Loaders_types.xml (duplicates of Ambulance_Event_Types.xml and GunMagLoader_types.xml), Bunker_Hideout_types.xml (no entry before; waiting on Boss)"
         },
         {
           "find": "\t\t\t<file name=\"BRDK_Mobs-1_type.xml\" type=\"types\" />\n",
@@ -109,12 +92,6 @@
           "replace": "\t<!-- OH mod not on the server yet (next to go on). Uncomment when it is.\n\t<ce folder=\"CustomTypes/OH_Mods\">\n\t\t\t<file name=\"furniture_types.xml\" type=\"types\" />\n\t\t\t<file name=\"OH_Clothing_types.xml\" type=\"types\" />\n\t\t</ce>\n\t-->\n",
           "summary": "turn off the OH_Mods block",
           "why": "OH mod isn't installed yet (Boss, 2026-11-27); loading its types now would make CE warn about missing classes"
-        },
-        {
-          "find": "</economycore>",
-          "replace": "\t<ce folder=\"CustomTypes/Nemsis\">\n\t\t\t<file name=\"NM_TYPES.xml\" type=\"types\" />\n\t\t</ce>\n</economycore>",
-          "summary": "load `CustomTypes/Nemsis/NM_TYPES.xml`",
-          "why": "NM (Nemesis) mod is live (Boss, 2026-11-27). Its spawnable types are merged into cfgspawnabletypes.xml. The optional railgun, exosuit and ammo-crafting boxes from the admin guides are not added"
         }
       ]
     },

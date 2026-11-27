@@ -65,7 +65,6 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 			<file name="SimpleLootBox_types.xml" type="types" />
 		</ce>
 	<ce folder="CustomTypes/Hunter_Mods">
-			<!-- file names as Boss's Hunter_Mods files are named; build_masters.py -->
 			<file name="Food_Drinks_types.xml" type="types" />
 			<file name="GunMagLoader_types.xml" type="types" />
 			<file name="Gun_Work_Bench_types.xml" type="types" />
@@ -83,6 +82,11 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 			<file name="BaseRadio_types.xml" type="types" />
 			<file name="Advanced_Teleports_types.xml" type="types" />
 			<file name="Mystery_Box_types.xml" type="types" />
+			<file name="Bunker_Hideout_types.xml" type="types" />
+		</ce>	
+	<ce folder="CustomTypes/Nemsis">
+			<file name="NM_TYPES.xml" type="types" />
+			<file name="NM_CFGSPAWNABLETYPES.xml" type="spawnabletypes" />
 		</ce>	
 	<!-- OH mod not on the server yet (next to go on). Uncomment when it is.
 	<ce folder="CustomTypes/OH_Mods">
@@ -97,7 +101,7 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 			<!-- <file name="BRDK_ZMB_PACK_02_type.xml" type="types" /> duplicate of BRDK_Mobs-2_type.xml -->
 			<file name="BRDK_ZMB_type.xml" type="types" />
 		</ce>
-	<ce folder="CustomTypes/Nemsis">
-			<file name="NM_TYPES.xml" type="types" />
+	<ce folder="CustomTypes/BS_BaseBuilding">
+			<file name="types_bs.xml" type="types" />
 		</ce>
 </economycore>

@@ -1513,44 +1513,18 @@ Verification: passed. Line endings: LF, as in the map file.
 
 Unchanged copy of `../originals/vanilla-chernarusplus/cfgenvironment.xml` (sha256 `3f73c9f3abe7`). Boss wants realistic animals, no dinosaurs: Bohemia's file wires up bear, wolf, red and roe deer, wild boar, pig, cattle, sheep, goat, fox, hare, hen and infected, using the env/ territory files that ship with Sahrani Plus. Mod animal territories get added here once Boss picks them.
 
-## cfgspawnabletypes.xml
-
-Entry merge: `../originals/sahrani-plus/cfgspawnabletypes.xml` (Sahrani Plus (map author)) + `../originals/sahrani-plus/CustomTypes/Nemsis/NM_CFGSPAWNABLETYPES.xml` (NM (Nemesis) mod) → `mpmissions/dayzOffline.SahraniPlus/cfgspawnabletypes.xml`.
-
-| | sha256 | Lines | Entries |
-|---|---|---|---|
-| Sahrani Plus (map author) | `21c5afe1dd15` | 4704 | 643 |
-| NM (Nemesis) mod | `6632e1e8c5d9` | 206 | 6 |
-| **Master** | `b2035f912dae` | 4907 | 649 |
-
-Verification: passed. Line endings: LF, as in the map file.
-
-**Conflicts** (same name, different content):
-
-none
-
-**Removed from the map file:** none
-
-**Added from NM (Nemesis) mod:** `type:nm_Notebook`, `type:nm_Airbrushkit`, `type:nm_AngleGrinder`, `type:nm_Railgun_fkd`, `type:nm_Nailgun`, `type:nm_chainsaw`
-
-**Only in NM (Nemesis) mod, not added:** none
-
-**Only in the map file, kept:** 643
-
 ## cfgeconomycore.xml
 
-Patched copy of `../originals/sahrani-plus/cfgeconomycore.xml` (sha256 `dbe0152de20e`) → `mpmissions/dayzOffline.SahraniPlus/cfgeconomycore.xml`.
+Patched copy of `../originals/sahrani-plus/cfgeconomycore.xml` (sha256 `bbb82c09d084`) → `mpmissions/dayzOffline.SahraniPlus/cfgeconomycore.xml`.
 
 | # | Change | Why |
 |---|---|---|
 | 1 | load `CustomTypes/BRDK/SimpleLootBox_types.xml` | The file is on the server in CustomTypes/BRDK but wasn't registered, so the loot boxes never loaded |
-| 2 | Hunter_Mods: list the files by the names they actually have | The listed names (Food_types.xml, HM_Auto_Storage.xml, HM_BitCoin.xml ...) match no file in CustomTypes/Hunter_Mods on the server (checked on disk 2026-11-27), so 14 of 17 never loaded. Mapped one to one; HM_BunkerEvent.xml -> Bunker_Stuff.xml is a best match (bunker doors, keys and parts). Not listed: Ambulance_types.xml and Speed_Loaders_types.xml (duplicates of Ambulance_Event_Types.xml and GunMagLoader_types.xml), Bunker_Hideout_types.xml (no entry before; waiting on Boss) |
-| 3 | stop loading `BRDK_Mobs-1_type.xml` | Same zombies as BRDK_ZMB_type.xml, which also has BRDK_Mortimer_head and BRDK_Skull. Boss OK'd one file per pair, 2026-11-27 |
-| 4 | stop loading `BRDK_ZMB_PACK_02_type.xml` | Same 34 types as BRDK_Mobs-2_type.xml. Mobs-2 kept: its FamPriest lifetimes (3888000 zombie, 3600 head) match every other BRDK zombie; PACK_02 has 3500 and 7900 |
-| 5 | turn off the OH_Mods block | OH mod isn't installed yet (Boss, 2026-11-27); loading its types now would make CE warn about missing classes |
-| 6 | load `CustomTypes/Nemsis/NM_TYPES.xml` | NM (Nemesis) mod is live (Boss, 2026-11-27). Its spawnable types are merged into cfgspawnabletypes.xml. The optional railgun, exosuit and ammo-crafting boxes from the admin guides are not added |
+| 2 | stop loading `BRDK_Mobs-1_type.xml` | Same zombies as BRDK_ZMB_type.xml, which also has BRDK_Mortimer_head and BRDK_Skull. Boss OK'd one file per pair, 2026-11-27 |
+| 3 | stop loading `BRDK_ZMB_PACK_02_type.xml` | Same 34 types as BRDK_Mobs-2_type.xml. Mobs-2 kept: its FamPriest lifetimes (3888000 zombie, 3600 head) match every other BRDK zombie; PACK_02 has 3500 and 7900 |
+| 4 | turn off the OH_Mods block | OH mod isn't installed yet (Boss, 2026-11-27); loading its types now would make CE warn about missing classes |
 
-Master sha256 `d7588c781dfa`. Verification: passed.
+Master sha256 `6be3dd6fdd69`. Verification: passed.
 
 ## serverDZ.cfg
 

@@ -28,3 +28,4 @@ Every version received, newest last. Files are stored exactly as received; git h
 | 2026-11-27 | `mapgrouppos.xml` | `4b8a4119cff8` | 5663 | LF | Sahrani Plus mission file from Boss, 2026-11-27 (first upload) |
 | 2026-11-27 | `mapgroupproto.xml` | `fa3b09c00ed7` | 25678 | CRLF | Sahrani Plus mission file from Boss, 2026-11-27 (first upload) |
 | 2026-11-27 | `serverDZ.cfg` | `8014ba9244b8` | 40 | LF | Read from the live server (deployments/Baysic_Sahrani_Plus/serverDZ.cfg) on 2026-11-27 and transcribed: password and passwordAdmin blanked, so NOT byte-exact |
+| 2026-11-27 | `cfgeconomycore.xml` | `bbb82c09d084` | 104 | LF | Live server after Boss's edits + HM names + BS_BaseBuilding, 2026-11-27 (sha256 verified) |
