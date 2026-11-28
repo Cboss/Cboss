@@ -1709,3 +1709,17 @@ Patched copy of `../originals/sahrani-plus/CustomTypes/CandyClothes/types_ghost.
 | 1 | Military_Woodbox -> MilitaryNorth + MilitarySouth (6 items) | Military_Woodbox is not a usage in Sahrani's cfglimitsdefinition (252 'Unknown usage' log lines, 01:18 boot); every item also has Military. Boss chose MilitaryNorth + MilitarySouth (2026-11-28 01:23) |
 
 Master sha256 `def085a4a49c`. Verification: passed.
+
+## cfgweather.xml
+
+Patched copy of `../originals/sahrani-plus/cfgweather.xml` (sha256 `75ecbe23571c`) → `mpmissions/dayzOffline.SahraniPlus/cfgweather.xml`.
+
+| # | Change | Why |
+|---|---|---|
+| 1 | overcast 0-0.3 -> 0-1.0 (start 0.45, change every 10-15 min) | Boss chose Nasdara-style weather (2026-11-28 02:03); values from Bohemia's dayzOffline.nasdara/cfgweather.xml; file stays enabled |
+| 2 | fog fixed 0-0.1 -> variable 0.02-0.13 | Boss chose Nasdara-style weather (2026-11-28 02:03); values from Bohemia's dayzOffline.nasdara/cfgweather.xml; file stays enabled |
+| 3 | rain off -> 0-1.0 | Boss chose Nasdara-style weather (2026-11-28 02:03); values from Bohemia's dayzOffline.nasdara/cfgweather.xml; file stays enabled |
+| 4 | rain starts above 0.6 overcast (was 0.8) | Boss chose Nasdara-style weather (2026-11-28 02:03); values from Bohemia's dayzOffline.nasdara/cfgweather.xml; file stays enabled |
+| 5 | lightning from 0.7 overcast, every 20 s | Boss chose Nasdara-style weather (2026-11-28 02:03); values from Bohemia's dayzOffline.nasdara/cfgweather.xml; file stays enabled |
+
+Master sha256 `786045978885`. Verification: passed.

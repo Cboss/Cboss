@@ -914,6 +914,43 @@
           "why": "Military_Woodbox is not a usage in Sahrani's cfglimitsdefinition (252 'Unknown usage' log lines, 01:18 boot); every item also has Military. Boss chose MilitaryNorth + MilitarySouth (2026-11-28 01:23)"
         }
       ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/cfgweather.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/cfgweather.xml",
+      "edits": [
+        {
+          "find": "<current actual=\"0.0\" time=\"120\" duration=\"240\" />\n        <!-- What is the range of the overcast value (0..1) -->\n        <limits min=\"0.0\" max=\"0.3\" />\n        <!-- How long does it take to the overcast to change from one value to other (time in seconds) -->\n        <timelimits min=\"1200\" max=\"2100\" />\n        <!-- How much should the overcast change (0..1) -->\n        <changelimits min=\"0.0\" max=\"0.3\" />",
+          "replace": "<current actual=\"0.45\" time=\"120\" duration=\"240\" />\n        <!-- What is the range of the overcast value (0..1) -->\n        <limits min=\"0.0\" max=\"1.0\" />\n        <!-- How long does it take to the overcast to change from one value to other (time in seconds) -->\n        <timelimits min=\"600\" max=\"900\" />\n        <!-- How much should the overcast change (0..1) -->\n        <changelimits min=\"0.0\" max=\"1.0\" />",
+          "summary": "overcast 0-0.3 -> 0-1.0 (start 0.45, change every 10-15 min)",
+          "why": "Boss chose Nasdara-style weather (2026-11-28 02:03); values from Bohemia's dayzOffline.nasdara/cfgweather.xml; file stays enabled"
+        },
+        {
+          "find": "<current actual=\"0.0\" time=\"120\" duration=\"240\" />\n        <!-- What is the range of the fog value (0..1) -->\n        <limits min=\"0.0\" max=\"0.1\" />\n        <!-- How long does it take to the fog to change from one value to other (time in seconds) -->\n        <timelimits min=\"900\" max=\"1800\" />\n        <!-- How much should the fog change (0..1) -->\n        <changelimits min=\"0.0\" max=\"0.0\" />",
+          "replace": "<current actual=\"0.05\" time=\"120\" duration=\"240\" />\n        <!-- What is the range of the fog value (0..1) -->\n        <limits min=\"0.02\" max=\"0.13\" />\n        <!-- How long does it take to the fog to change from one value to other (time in seconds) -->\n        <timelimits min=\"900\" max=\"900\" />\n        <!-- How much should the fog change (0..1) -->\n        <changelimits min=\"0.0\" max=\"1.0\" />",
+          "summary": "fog fixed 0-0.1 -> variable 0.02-0.13",
+          "why": "Boss chose Nasdara-style weather (2026-11-28 02:03); values from Bohemia's dayzOffline.nasdara/cfgweather.xml; file stays enabled"
+        },
+        {
+          "find": "<current actual=\"0.0\" time=\"120\" duration=\"240\" />\n        <!-- What is the range of the rain value (0..1) -->\n        <limits min=\"0.0\" max=\"0.0\" />\n        <!-- How long does it take to the rain to change from one value to other (time in seconds) -->\n        <timelimits min=\"300\" max=\"600\" />\n        <!-- How much should the rain change (0..1) -->\n        <changelimits min=\"0.0\" max=\"0.0\" />",
+          "replace": "<current actual=\"0.0\" time=\"60\" duration=\"120\" />\n        <!-- What is the range of the rain value (0..1) -->\n        <limits min=\"0.0\" max=\"1.0\" />\n        <!-- How long does it take to the rain to change from one value to other (time in seconds) -->\n        <timelimits min=\"60\" max=\"120\" />\n        <!-- How much should the rain change (0..1) -->\n        <changelimits min=\"0.0\" max=\"1.0\" />",
+          "summary": "rain off -> 0-1.0",
+          "why": "Boss chose Nasdara-style weather (2026-11-28 02:03); values from Bohemia's dayzOffline.nasdara/cfgweather.xml; file stays enabled"
+        },
+        {
+          "find": "<thresholds min=\"0.8\" max=\"1.0\" end=\"60\" />",
+          "replace": "<thresholds min=\"0.6\" max=\"1.0\" end=\"60\" />",
+          "summary": "rain starts above 0.6 overcast (was 0.8)",
+          "why": "Boss chose Nasdara-style weather (2026-11-28 02:03); values from Bohemia's dayzOffline.nasdara/cfgweather.xml; file stays enabled"
+        },
+        {
+          "find": "<storm density=\"1.0\" threshold=\"0.9\" timeout=\"45\"/>",
+          "replace": "<storm density=\"1.0\" threshold=\"0.7\" timeout=\"20\"/>",
+          "summary": "lightning from 0.7 overcast, every 20 s",
+          "why": "Boss chose Nasdara-style weather (2026-11-28 02:03); values from Bohemia's dayzOffline.nasdara/cfgweather.xml; file stays enabled"
+        }
+      ]
     }
   ]
 }
