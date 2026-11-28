@@ -1,6 +1,6 @@
 # DayZ server config: Baysic Survival Gaming
 
-Config files for a Baysic Survival Gaming PvE server on Chernarus, run with CFTools / Architect Manager.
+Config files for Baysic Survival Gaming servers run with CFTools / Architect Manager: a PvE server on Chernarus, and a PvPvE server on Sahrani Plus (see [Originals and masters](#originals-and-masters)).
 
 Everything here comes from one of three sources: Bohemia Interactive's public files, the game's own scripts, or a live Baysic server config. Anything none of them covers is marked **UNVERIFIED**. See [Sources](#sources).
 
@@ -15,10 +15,76 @@ dayz-server/
 │   ├── db/globals.xml                   vanilla + longer dead-player cleanup
 │   ├── db/messages.xml                  welcome + rules messages
 │   └── custom/types_custom.xml          loot entries for mod items (empty to start)
-└── tools/validate.py                    checks everything before it goes on the server
+├── originals/                           files exactly as received, never edited (see below)
+│   ├── vanilla-chernarusplus/           Bohemia's vanilla files + VERSIONS.md
+│   └── sahrani-plus/                    the map's mission files, db/, env/, types/ and CustomTypes/<mod>/, each folder with VERSIONS.md
+├── sahrani-plus/                        Sahrani Plus PvPvE server
+│   ├── masters.json                     recipe: our changes + Boss's conflict decisions
+│   ├── mission/                         built masters, only the files we change (don't edit by hand)
+│   └── MERGE_REPORT.md                  what the last build did (built)
+└── tools/
+    ├── validate.py                      checks everything before it goes on the server
+    ├── add_original.py                  stores a new version of an original file
+    ├── build_masters.py                 builds every master from originals + recipe
+    └── merge_entries.py                 entry-by-entry merge used by build_masters.py
 ```
 
 Only the files that differ from vanilla live here. The rest of the mission folder (`db/types.xml`, `db/events.xml`, `init.c`, map groups and so on) comes from the server install as-is.
+
+## Originals and masters
+
+Map and mod files change, so our edits are never made inside them. Three rules keep updates cheap:
+
+1. **Originals are stored as-is.** Every file from a map author, a mod or Bohemia goes into `originals/<source>/` byte for byte, with its line endings untouched, and gets a row in that folder's `VERSIONS.md` (date, sha256, line count, where it came from). A new version replaces the old file in the same commit, and git keeps every older version.
+2. **Our changes live in the recipe, not in the files.** `sahrani-plus/masters.json` lists every change we make, with the reason, and every conflict decision.
+3. **Masters are built by script.** `tools/build_masters.py` rebuilds each master from the originals and the recipe. Masters are never edited by hand, so the same inputs always give the same output.
+
+`sahrani-plus/mission/` holds only the files we change. Everything else on the server is the original as the author ships it. `validate.py` checks the two together: a master's references are looked up in `mission/` first, then in `originals/sahrani-plus/` (the recipe's `base`). Once the instance's `serverDZ.cfg` gives the mission folder name (its `template=` line), the folder can be renamed to match.
+
+### Three kinds of master
+
+| Type | Used for | What it does |
+|---|---|---|
+| `merge` | `db/events.xml` | Entry by entry (`<export>`, `<cluster>`, `<event>`). Keeps every line of the map's file in order. Copies vanilla entries in character for character between `build_masters.py` comments (`add_vanilla`: `"all"` or a list). Removes map entries listed in `drop_map`, leaving a comment with the reason. Swaps map events listed in `replace_map` for a new name and child list, keeping the event's own settings (used to turn the dino events into real animals). An entry in both files that differs is a **conflict**: the map's version stays until a decision says otherwise. `prefer` sets a default for a whole file. |
+| `patch` | `cfgenvironment.xml`, `serverDZ.cfg` | Exact text edits. Each `find` must occur exactly once in the original. If an update changes that text, the build stops and names the edit, so nothing gets silently lost. |
+| `copy` | `mapgroupproto.xml`, `mapgrouppos.xml`, `mapgroupcluster.xml`, `mapclusterproto.xml` (SahraniPlus economy versions) | An original used unchanged, such as a vanilla file in place of the map's. |
+
+Before writing anything, the script checks that every master is well-formed. For merges, it also checks that no map line was lost or reordered, that every entry is present exactly once, and that each copied entry matches its source exactly. If any check fails, nothing is written. `MERGE_REPORT.md` lists the input hashes, every change and why, every conflict with both versions side by side, and recipe lines that no longer apply after an update.
+
+### When an updated file arrives
+
+```bash
+# 1. Store it exactly as received; prints what changed since the last version
+python3 dayz-server/tools/add_original.py sahrani-plus path/to/mapclusterproto.xml --note "workshop update 2026-12-01"
+#    (sahrani-plus/db, sahrani-plus/env, sahrani-plus/types, sahrani-plus/CustomTypes/BRDK ... for subfolders)
+
+# 2. Rebuild the masters; prints conflicts still waiting on a decision
+python3 dayz-server/tools/build_masters.py build dayz-server/sahrani-plus/masters.json
+
+# 3. Validate, then commit the original, masters and report together
+python3 dayz-server/tools/validate.py
+```
+
+To compare two versions of `mapclusterproto.xml` or `events.xml` entry by entry:
+
+```bash
+python3 dayz-server/tools/merge_entries.py old.xml new.xml
+```
+
+### Deciding a conflict
+
+Read the conflict in `MERGE_REPORT.md`, add a decision to that master's `decisions` in `masters.json`, then rebuild:
+
+```json
+"decisions": {
+  "export:AppleTree2": {"keep": "map", "why": "author switched to the summer tree model"},
+  "cluster:FagusSylvatica_2d": {"keep": "vanilla", "why": "..."}
+}
+```
+
+`keep` is `map` or `vanilla`. `check --strict` fails while any conflict is undecided.
+
+GitHub runs `build_masters.py check` on every push. It fails if a committed master or report doesn't match what the script builds from the committed originals, which catches hand edits and forgotten rebuilds.
 
 ## Changes from vanilla
 
@@ -84,6 +150,10 @@ It checks for:
 - loot entries with `min` above `nominal` (when `nominal` is above 0) or `quantmin` above `quantmax`
 - the same item defined in two files
 - custom files listed in `cfgeconomycore.xml` that don't exist
+- stray text after a tag (like `<pos .../>sa`), which parses but is always a typo
+- `cfgenvironment.xml` loading `env/` files that don't exist or differ only in letter case (Linux servers care), territories using a file nothing loads, and `env/` files nothing loads
+
+Files under `originals/` are kept exactly as received, so problems in them are reported as warnings, not errors. Fix them in our own copy, never in the original.
 
 Tested against Bohemia's full vanilla Chernarus mission (2,382 loot types): 0 errors, 0 warnings. The same check runs on GitHub for every push that touches `dayz-server/`.
 

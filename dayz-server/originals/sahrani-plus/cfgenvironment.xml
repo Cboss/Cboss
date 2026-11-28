@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<env>
+	<!-- GENERAL Territories Section -->
+	<territories>
+
+		<file path="env/IDREX_territories.xml" />
+		<file path="env/Stygivenator_territories.xml" />
+		<file path="env/tricero1_territories.xml" />
+		<file path="env/tricero2_territories.xml" />
+		<file path="env/wild_boar_territories.xml" />
+		<file path="env/Charanosaurus_territories.xml" />
+		<file path="env/hen_territories.xml" />
+		<file path="env/trex_territories.xml" />
+		<file path="env/hare_territories.xml" />
+		<file path="env/zombie_territories.xml" />
+		<file path="env/Scolosaurus1_territories.xml" />
+		<file path="env/Scolosaurus2_territories.xml" />
+		<file path="env/crocodile_territories.xml" />
+		<file path="env/smallDinos_territories.xml" />
+		<file path="env/raptor_territories.xml" />
+		<file path="env/Ceratosaurus_territories.xml" />
+		<file path="env/Alioromus_territories.xml" />
+		<file path="env/Rhinoceros_territories.xml" />
+		
+		<!--
+		<file path="env/reindeer_territories.xml" />
+		<territory type="Herd" name="Reindeer" behavior="DZDeerGroupBeh">
+			<file usable="reindeer_territories" />
+		</territory>
+		-->
+		<territory type="Herd" name="IndominusRex" behavior="DZWolfGroupBeh">
+			<file usable="trex_territories" />
+		</territory>
+		<territory type="Herd" name="Rhinoceros" behavior="BlissBearGroupBeh">
+			<file usable="Brach_territories"/>
+		</territory>
+		<territory type="Herd" name="SmallDinos" behavior="DZWolfGroupBeh">
+			<file usable="smallDinos_territories"/>
+		</territory>
+		<territory type="Herd" name="DIL" behavior="DZWolfGroupBeh">
+			<file usable="DIL_territories"/>
+		</territory>
+		<territory type="Herd" name="Tricero1" behavior="BlissBearGroupBeh">
+			<file usable="tricero1_territories" />
+		</territory>
+		<territory type="Herd" name="Tricero2" behavior="BlissBearGroupBeh">
+			<file usable="tricero2_territories" />
+		</territory>
+		<territory type="Herd" name="Scolosaurus" behavior="DZSheepGroupBeh">
+			<file usable="Scolosaurus1_territories" />
+		</territory>
+		<territory type="Herd" name="Scolosaurus2" behavior="DZSheepGroupBeh">
+			<file usable="Scolosaurus2_territories" />
+		</territory>
+		<territory type="Herd" name="Stygivenator" behavior="DZWolfGroupBeh">
+			<file usable="Stygivenator_territories" />
+		</territory>
+		<territory type="Herd" name="IDREX" behavior="DZWolfGroupBeh">
+			<file usable="IDREX_territories" />
+		</territory>
+		<territory type="Herd" name="TREX" behavior="DZWolfGroupBeh">
+			<file usable="trex_territories" />
+		</territory>
+		<territory type="Herd" name="WildBoar" behavior="DZDeerGroupBeh">
+			<file usable="wild_boar_territories" />
+		</territory>
+		<territory type="Herd" name="Charanosaurus" behavior="DZSheepGroupBeh">
+			<file usable="Charanosaurus_territories" />
+		</territory>
+		<territory type="Herd" name="Alioromus" behavior="DZWolfGroupBeh">
+			<file usable="Alioromus_territories"/>
+		</territory>
+		<territory type="Herd" name="Raptor" behavior="DZWolfGroupBeh">
+			<file usable="raptor_territories"/>
+		</territory>
+		<territory type="Herd" name="Ceratosaurus" behavior="DZWolfGroupBeh">
+			<file usable="Ceratosaurus_territories"/>
+		</territory>
+		<territory type="Herd" name="Crocodile" behavior="DZCrocoGroupBeh">
+			<file usable="crocodile_territories" />									
+		</territory>
+
+		<!-- HEN -->
+		<territory type="Ambient" name="AmbientHen" behavior="DZAmbientLifeGroupBeh">
+			<file usable="hen_territories" />
+			<!-- different agent types - class has to begin with AgentType:w -->
+			<agent type="Male" chance="1">
+				<spawn configName="Animal_GallusGallusDomesticus" chance="1" />
+			</agent>
+			<agent type="Female" chance="3">
+				<spawn configName="Animal_GallusGallusDomesticusF_Brown" chance="1" />
+				<spawn configName="Animal_GallusGallusDomesticusF_Spotted" chance="10" />
+				<spawn configName="Animal_GallusGallusDomesticusF_White" chance="20" />
+			</agent>
+
+			<item name="globalCountMax" val="50" />
+			<item name="zoneCountMin" val="1" />
+			<item name="zoneCountMax" val="1" />
+			<item name="playerSpawnRadiusNear" val="25" />
+			<item name="playerSpawnRadiusFar" val="75" />
+		</territory>
+
+		<!-- FOX -->
+		<territory type="Ambient" name="AmbientFox" behavior="DZAmbientLifeGroupBeh">
+			<file usable="Scolosaurus2_territories" />
+			<!-- different agent types - class has to begin with AgentType:w -->
+			<agent type="Male" chance="1">
+				<spawn configName="Animal_VulpesVulpes" chance="1" />
+			</agent>
+			
+			<agent type="Female" chance="0">
+				<spawn configName="Animal_VulpesVulpes" chance="1" />
+			</agent>
+			<item name="zoneTouchDisableEditPeriodSec" val="450" />
+		</territory>
+
+		<!-- HARE -->
+		<territory type="Ambient" name="AmbientHare" behavior="DZAmbientLifeGroupBeh">
+			<file usable="hare_territories" />
+			<!-- different agent types - class has to begin with AgentType:w -->
+			<agent type="Male" chance="1">
+				<spawn configName="Animal_LepusEuropaeus" chance="1" />
+			</agent>
+			<agent type="Female" chance="1">
+				<spawn configName="Animal_LepusEuropaeus" chance="1" />
+			</agent>
+			<item name="zoneTouchDisableEditPeriodSec" val="300" />
+		</territory>
+		
+		<!-- INFECTED -->
+		<territory type="Herd" name="ZombieTest" behavior="DZdomesticGroupBeh">
+			<file usable="zombie_territories" />
+			<!-- different agent types - class has to begin with AgentType:w -->
+			<agent type="Male">
+				<spawn configName="ZombieMale3_NewAI" />
+				<item name="countMin" val="0" />
+				<item name="countMax" val="0" />
+			</agent>
+			<agent type="Female">
+				<spawn configName="ZombieFemale3_NewAI" />
+				<item name="countMin" val="0" />
+				<item name="countMax" val="0" />
+			</agent>
+			
+			<!-- count of herds of this type in the map -->
+			<item name="herdsCount" val="0" />
+		</territory>
+
+	</territories>
+</env>

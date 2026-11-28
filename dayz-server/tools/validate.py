@@ -48,14 +48,36 @@ def warn(path: Path, msg: str) -> None:
 _xml_cache: dict[Path, ET.Element | None] = {}
 
 
+def is_original(path: Path) -> bool:
+    """Files under originals/ are kept exactly as received, so problems in
+    them are reported as warnings: they are the author's to fix, and the
+    merge or our own copy is where they get handled."""
+    return "originals" in path.parts
+
+
+def problem(path: Path, msg: str) -> None:
+    if is_original(path):
+        warn(path, f"(original, kept as received) {msg}")
+    else:
+        err(path, msg)
+
+
 def parse_xml(path: Path) -> ET.Element | None:
     """Parse once per file so a broken file is only reported once."""
     if path not in _xml_cache:
         try:
-            _xml_cache[path] = ET.parse(path).getroot()
+            root = ET.parse(path).getroot()
         except ET.ParseError as e:
-            err(path, f"XML is not well-formed: {e}")
-            _xml_cache[path] = None
+            problem(path, f"XML is not well-formed: {e}")
+            root = None
+        else:
+            # Text after a tag (e.g. '<pos .../>sa') is legal XML but is
+            # never meaningful in DayZ files: it is almost always a typo.
+            for el in root.iter():
+                if el.tail and el.tail.strip():
+                    warn(path, f"stray text {el.tail.strip()[:30]!r} after "
+                               f"<{el.tag} {' '.join(f'{k}={v!r}' for k, v in list(el.attrib.items())[:3])}>")
+        _xml_cache[path] = root
     return _xml_cache[path]
 
 
@@ -63,7 +85,7 @@ def check_json(path: Path) -> None:
     try:
         json.loads(path.read_text(encoding="utf-8-sig"))
     except json.JSONDecodeError as e:
-        err(path, f"invalid JSON at line {e.lineno} col {e.colno}: {e.msg}")
+        problem(path, f"invalid JSON at line {e.lineno} col {e.colno}: {e.msg}")
 
 
 def strip_cfg_comment(line: str) -> str:
@@ -93,32 +115,39 @@ def check_server_cfg(path: Path) -> None:
         if not line or line in ("{", "}", "};") or line.startswith("class "):
             continue
         if "=" in line and not line.endswith(";"):
-            err(path, f"line {n}: missing ';' -> {line}")
+            problem(path, f"line {n}: missing ';' -> {line}")
         m = re.match(r'(\w+)\s*=\s*"(.*)"\s*;', line)
         if m and m.group(1) in SECRET_KEYS:
             key, value = m.groups()
             if value not in SECRET_KEYS[key]:
-                err(path, f"line {n}: {key} holds a real value. Keep "
+                problem(path, f"line {n}: {key} holds a real value. Keep "
                           f'it blank in the repo; set it on the server.')
 
     m = re.search(r'template\s*=\s*"([^"]+)"', text)
     if not m:
-        err(path, "no mission template set in class Missions")
+        problem(path, "no mission template set in class Missions")
     else:
         mission = path.parent / "mpmissions" / m.group(1)
         if (path.parent / "mpmissions").is_dir() and not mission.is_dir():
-            err(path, f"template '{m.group(1)}' has no folder at {mission}")
+            problem(path, f"template '{m.group(1)}' has no folder at {mission}")
 
 
 def check_types(path: Path, root: ET.Element, seen: dict[str, Path]) -> None:
     for t in root.iter("type"):
         name = t.get("name")
         if not name:
-            err(path, "<type> without a name attribute")
+            problem(path, "<type> without a name attribute")
             continue
         if name in seen:
             where = "this file" if seen[name] == path else str(seen[name])
             warn(path, f"'{name}' is already defined in {where}")
+        else:
+            twin = next((n for n in seen if n.lower() == name.lower()), None)
+            if twin:
+                where = "this file" if seen[twin] == path else str(seen[twin])
+                warn(path, f"'{name}' differs only in letter case from "
+                           f"'{twin}' in {where}; DayZ class names ignore case, "
+                           f"so this is likely a duplicate")
         seen[name] = path
 
         vals: dict[str, int] = {}
@@ -132,20 +161,183 @@ def check_types(path: Path, root: ET.Element, seen: dict[str, Path]) -> None:
             try:
                 vals[field] = int(el.text.strip())
             except ValueError:
-                err(path, f"'{name}' <{field}> is not a whole number: {el.text!r}")
+                problem(path, f"'{name}' <{field}> is not a whole number: {el.text!r}")
         # nominal 0 means "never spawns"; vanilla leaves min > 0 on those
         if ("min" in vals and vals.get("nominal", 0) > 0
                 and vals["min"] > vals["nominal"]):
-            err(path, f"'{name}' min ({vals['min']}) > nominal ({vals['nominal']})")
+            msg = f"'{name}' min ({vals['min']}) > nominal ({vals['nominal']})"
+            orig = source_original(path)
+            if orig and original_counts(orig).get(name) == (vals["min"], vals["nominal"]):
+                # Same numbers as the file we patched: nominals are tuned by
+                # hand later, so report it without failing our own copy.
+                warn(path, f"(unchanged from {orig.name}) {msg}")
+            else:
+                problem(path, msg)
         if ("quantmin" in vals and "quantmax" in vals
                 and vals["quantmin"] > vals["quantmax"]):
-            err(path, f"'{name}' quantmin > quantmax")
+            problem(path, f"'{name}' quantmin > quantmax")
+
+
+def check_environment(path: Path) -> None:
+    """Cross-check cfgenvironment.xml against the env/ files next to it."""
+    root = parse_xml(path)
+    if root is None:
+        return
+    base = path.parent
+    loaded: dict[str, str] = {}
+    for f in root.iter("file"):
+        rel = f.get("path")
+        if not rel:
+            continue
+        stem = Path(rel).stem
+        loaded[stem] = rel
+        target = find(base, rel)
+        if target.is_file():
+            continue
+        folder = target.parent
+        twin = [p.name for p in folder.glob("*") if p.name.lower() == target.name.lower()] \
+            if folder.is_dir() else []
+        if twin:
+            problem(path, f"loads {rel} but the file is named {twin[0]} "
+                          f"(case matters on Linux servers)")
+        else:
+            problem(path, f"loads {rel} but it doesn't exist")
+    used = {f.get("usable") for f in root.iter("file") if f.get("usable")}
+    for u in sorted(used - set(loaded)):
+        problem(path, f"a territory uses '{u}' but no <file path> loads it")
+    env = find(base, "env")
+    if env.is_dir():
+        loaded_lower = {Path(r).name.lower() for r in loaded.values()}
+        for p in sorted(env.glob("*.xml")):
+            if p.name.lower() not in loaded_lower:
+                warn(path, f"env/{p.name} is not loaded by cfgenvironment.xml")
+    for stem in sorted(set(loaded) - used):
+        warn(path, f"loads {loaded[stem]} but no territory uses it")
+
+
+_overlay: dict[Path, Path] = {}
+
+
+def find(folder: Path, rel: str) -> Path:
+    """Resolve a mission file. A built master folder (e.g. sahrani-plus/
+    mission/) holds only the files we change; the rest come from the
+    originals named by "base" in the masters.json next to it."""
+    folder = folder.resolve()
+    p = folder / rel
+    if p.exists():
+        return p
+    for top, base in _overlay.items():
+        try:
+            sub = folder.relative_to(top)
+        except ValueError:
+            continue
+        q = base / sub / rel
+        if q.exists():
+            return q
+    return p
+
+
+def source_original(path: Path) -> Path | None:
+    """The original a built master was made from, when it sits at the same
+    place under the recipe's base folder."""
+    path = path.resolve()
+    for top, base in _overlay.items():
+        try:
+            q = base / path.relative_to(top)
+        except ValueError:
+            continue
+        if q.exists():
+            return q
+    return None
+
+
+_counts_cache: dict[Path, dict[str, tuple[int, int]]] = {}
+
+
+def original_counts(path: Path) -> dict[str, tuple[int, int]]:
+    """(min, nominal) per type name in an original types file."""
+    if path not in _counts_cache:
+        out: dict[str, tuple[int, int]] = {}
+        try:
+            root = ET.parse(path).getroot()
+        except ET.ParseError:
+            root = None
+        for t in (root.iter("type") if root is not None else []):
+            try:
+                out[t.get("name", "")] = (int(t.findtext("min", "").strip()),
+                                          int(t.findtext("nominal", "").strip()))
+            except ValueError:
+                pass
+        _counts_cache[path] = out
+    return _counts_cache[path]
+
+
+def register_overlays(files: list[Path]) -> None:
+    for recipe in (p for p in files if p.name == "masters.json"):
+        try:
+            rec = json.loads(recipe.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        if "base" in rec:
+            _overlay[(recipe.parent / rec.get("mission", "mission")).resolve()] = \
+                (recipe.parent / rec["base"]).resolve()
+
+
+LIMIT_KINDS = {"category": "categories", "usage": "usageflags",
+               "value": "valueflags", "tag": "tags"}
+
+
+def load_limits(mission: Path) -> dict[str, set[str]] | None:
+    """Names defined in cfglimitsdefinition.xml (+ user groups)."""
+    path = find(mission, "cfglimitsdefinition.xml")
+    if not path.is_file():
+        return None
+    root = parse_xml(path)
+    if root is None:
+        return None
+    limits = {k: set() for k in LIMIT_KINDS}
+    for kind, section in LIMIT_KINDS.items():
+        for sec in root.iter(section):
+            limits[kind].update(e.get("name", "") for e in sec.iter(kind))
+    user = find(mission, "cfglimitsdefinitionuser.xml")
+    if user.is_file():
+        uroot = parse_xml(user)
+        if uroot is not None:
+            for kind in ("usage", "value"):
+                for sec in uroot.iter(LIMIT_KINDS[kind]):
+                    limits[kind].update(u.get("name", "") for u in sec.iter("user"))
+    return limits
+
+
+def check_limits(path: Path, root: ET.Element, limits: dict[str, set[str]]) -> None:
+    missing: dict[tuple[str, str], list[str]] = {}
+    for t in root.iter("type"):
+        for kind in LIMIT_KINDS:
+            for el in t.iter(kind):
+                n = el.get("name") or el.get("user")
+                if n and n not in limits[kind]:
+                    missing.setdefault((kind, n), []).append(t.get("name", "?"))
+    orig = source_original(path)
+    orig_root = parse_xml(orig) if orig else None
+    orig_used = {(kind, el.get("name") or el.get("user"))
+                 for t in (orig_root.iter("type") if orig_root is not None else [])
+                 for kind in LIMIT_KINDS for el in t.iter(kind)}
+    for (kind, n), items in sorted(missing.items()):
+        shown = ", ".join(items[:5]) + (f" and {len(items) - 5} more" if len(items) > 5 else "")
+        msg = (f"{kind} '{n}' is not defined in cfglimitsdefinition.xml "
+               f"(used by {shown})")
+        if (kind, n) in orig_used:
+            # Inherited from the file we patched: the author's to fix.
+            warn(path, f"(unchanged from {orig.name}) {msg}")
+        else:
+            problem(path, msg)
 
 
 def check_mission(mission: Path) -> None:
     seen_types: dict[str, Path] = {}
+    limits = load_limits(mission)
 
-    vanilla_types = mission / "db" / "types.xml"
+    vanilla_types = find(mission, "db/types.xml")
     if vanilla_types.is_file():
         root = parse_xml(vanilla_types)
         if root is not None:
@@ -158,16 +350,22 @@ def check_mission(mission: Path) -> None:
     if root is None:
         return
     for ce in root.iter("ce"):
-        folder = mission / ce.get("folder", "")
         for f in ce.iter("file"):
-            target = folder / f.get("name", "")
+            target = find(mission, f"{ce.get('folder', '')}/{f.get('name', '')}")
             if not target.is_file():
-                err(core, f"lists {target.relative_to(mission)} but it doesn't exist")
+                msg = f"lists {ce.get('folder', '')}/{f.get('name', '')} but it doesn't exist"
+                if mission.resolve() in _overlay:
+                    # A built master: the file may only be on the server so far.
+                    warn(core, msg + " in the repo yet (send it, or confirm it's on the server)")
+                else:
+                    problem(core, msg)
                 continue
             if f.get("type") == "types":
                 troot = parse_xml(target)
                 if troot is not None:
                     check_types(target, troot, seen_types)
+                    if limits is not None:
+                        check_limits(target, troot, limits)
 
 
 def main() -> int:
@@ -179,6 +377,7 @@ def main() -> int:
     skip = {".git", "storage_1", "storage_2", "storage_3", "storage_4"}
     files = [p for p in base.rglob("*")
              if p.is_file() and not skip.intersection(p.parts)]
+    register_overlays(files)
 
     for p in files:
         suffix = p.suffix.lower()
@@ -188,11 +387,15 @@ def main() -> int:
             check_json(p)
         elif p.name.lower() == "serverdz.cfg":
             check_server_cfg(p)
+    for p in files:
+        if p.name.lower() == "cfgenvironment.xml":
+            check_environment(p)
 
-    missions = base / "mpmissions"
-    if missions.is_dir():
-        for mission in sorted(m for m in missions.iterdir() if m.is_dir()):
-            check_mission(mission)
+    # A mission is any folder with a cfgeconomycore.xml (mpmissions/<name>/,
+    # originals/<map>/, or the folder passed on the command line).
+    for mission in sorted({p.parent for p in files
+                           if p.name.lower() == "cfgeconomycore.xml"}):
+        check_mission(mission)
 
     for line in warnings + errors:
         print(line)

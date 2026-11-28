@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<spawnabletypes>
+  <type name="Candy_AK12">
+    <attachments chance="1">
+      <item name="Candy_AK12_Buttstock" chance="1" />
+      <item name="Candy_AK12_mag_35Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_AK47Ghoul">
+    <attachments chance="1">
+      <item name="Candy_AK47Ghoul_Buttstoc" chance="1" />
+      <item name="Candy_AK47Ghoul_mag_40Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_AK105">
+    <attachments chance="1">
+      <item name="Candy_AK105_Buttstock" chance="1" />
+      <item name="Candy_AK105_mag_40Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_AKMB47">
+    <attachments chance="1">
+      <item name="Candy_AKMB47_Buttstock" chance="1" />
+      <item name="Candy_AKMB47_mag_40Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_AKML">
+    <attachments chance="1">
+      <item name="Candy_AKML_Buttstock" chance="1" />
+      <item name="Candy_AKML_Handguard" chance="1" />
+      <item name="Candy_AKML_mag_40Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_AKMS">
+    <attachments chance="1">
+      <item name="Candy_AKMS_Buttstock" chance="1" />
+      <item name="Candy_AKMS_mag_45Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_AKS74UN">
+    <attachments chance="1">
+      <item name="Candy_AKS74UN_Buttstock" chance="1" />
+      <item name="Candy_AKS74UN_mag_30Rnd" chance="0.2" />
+      <item name="Candy_AKS74UN_Optic" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_AKV">
+    <attachments chance="1">
+      <item name="Candy_AKV_Buttstock" chance="1" />
+      <item name="Candy_AKV_mag_30Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_AMELI">
+    <attachments chance="1">
+      <item name="Candy_AMELI_mag_200Rnd" chance="0.01" />
+    </attachments>
+  </type>
+  <type name="Candy_Apc9k">
+    <attachments chance="1">
+      <item name="Candy_Apc9k_Buttstock" chance="1" />
+      <item name="Candy_Apc9k_mag_35Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_AR15M4">
+    <attachments chance="1">
+      <item name="Candy_AR15M4_Buttstock" chance="1" />
+      <item name="Candy_AR15M4_mag_40Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_AUGA3">
+    <attachments chance="1">
+      <item name="Candy_AUGA3_mag_60Rnd" chance="0.1" />
+      <item name="Candy_AUGA3_Optic" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_BRN180">
+    <attachments chance="1">
+      <item name="Candy_BRN180_Buttstock" chance="1" />
+      <item name="Candy_BRN180_Handguard" chance="1" />
+      <item name="Candy_BRN180_mag_40Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_BTAPCRifle">
+    <attachments chance="1">
+      <item name="Candy_BTAPCRifle_Buttstock" chance="1" />
+      <item name="Candy_BTAPCRifle_Handguard" chance="1" />
+      <item name="Candy_BTAPCRifle_mag_40Rnd" chance="0.02" />
+    </attachments>
+  </type>
+  <type name="Candy_BTAPCRSmg">
+    <attachments chance="1">
+      <item name="Candy_BTAPCRSmg_Buttstock" chance="1" />
+      <item name="Candy_BTAPCRSmg_mag_60Rnd" chance="0.2" />
+      <item name="Candy_BTAPCRSmg_Suppressor" chance="0.01" />
+    </attachments>
+  </type>
+  <type name="Candy_CZ805">
+    <attachments chance="1">
+      <item name="Candy_CZ805_Buttstock" chance="1" />
+      <item name="Candy_CZ805_mag_40Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_CZScorpEVO">
+    <attachments chance="1">
+      <item name="Candy_CZScorpEVO_Buttstock" chance="1" />
+      <item name="Candy_CZScorpEVO_mag_30Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_EF88">
+    <attachments chance="1">
+      <item name="Candy_AK105_Buttstock" chance="1" />
+      <item name="Candy_EF88_mag_60Rnd" chance="0.2" />
+      <item name="Candy_EF88_Optic" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_FNE">
+    <attachments chance="1">
+      <item name="Candy_FNE_Buttstock" chance="1" />
+      <item name="Candy_FNE_mag_200Rnd" chance="0.05" />
+    </attachments>
+  </type>
+  <type name="Candy_G36C">
+    <attachments chance="1">
+      <item name="Candy_G36C_Buttstock" chance="1" />
+      <item name="Candy_G36C_mag_40Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_Hk433">
+    <attachments chance="1">
+      <item name="Candy_Hk433_Buttstock" chance="1" />
+      <item name="Candy_Hk433_mag_40Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_HowaType20">
+    <attachments chance="1">
+      <item name="Candy_HowaType20_Buttstock" chance="1" />
+      <item name="Candy_HowaType20_mag_40Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_M2Stinger">
+    <attachments chance="1">
+      <item name="Candy_M2Stinger_Buttstock" chance="1" />
+      <item name="Candy_M2Stinger_mag_250Rnd" chance="0.05" />
+    </attachments>
+  </type>
+  <type name="Candy_M2Stingerv2">
+    <attachments chance="1">
+      <item name="Candy_M2Stinger_Buttstock" chance="1" />
+      <item name="Candy_M2Stinger_mag_250Rnd" chance="0.05" />
+    </attachments>
+  </type>
+  <type name="Candy_M4A1C02">
+    <attachments chance="1">
+      <item name="Candy_M4A1C02_Handguard" chance="1" />
+      <item name="Candy_M4A1C02_mag_40Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_MPX">
+    <attachments chance="1">
+      <item name="Candy_MPX_Buttstock" chance="1" />
+      <item name="Candy_MPX_mag_35Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_PKPZ">
+    <attachments chance="1">
+      <item name="Candy_PKPZ_Buttstock" chance="1" />
+      <item name="Candy_PKPZ_mag_200Rnd" chance="0.05" />
+    </attachments>
+  </type>
+  <type name="Candy_RS556">
+    <attachments chance="1">
+      <item name="Candy_RS556_Buttstock" chance="1" />
+      <item name="Candy_RS556_mag_40Rnd" chance="0.2" />
+      <item name="Candy_RS556_Optic" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_Sig516">
+    <attachments chance="1">
+      <item name="Candy_Sig516_Buttstock" chance="1" />
+      <item name="Candy_Sig516_mag_40Rnd" chance="0.2" />
+       <item name="Candy_Sig516_Optic" chance="0.2" />
+   </attachments>
+  </type>
+  <type name="Candy_SigSauer">
+    <attachments chance="1">
+      <item name="Candy_SigSauer_Buttstock" chance="1" />
+      <item name="Candy_SigSauer_mag_40Rnd" chance="0.2" />
+       <item name="Candy_SigSauer_Suppressor" chance="0.01" />
+   </attachments>
+  </type>
+  <type name="Candy_36M">
+    <attachments chance="1">
+      <item name="Candy_36M_mag_10Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_ANZIO"/>
+  <type name="Candy_AS50">
+    <attachments chance="1">
+      <item name="Candy_AS50_Optic" chance="0.2" />
+      <item name="Candy_AS50_mag_10Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_ASVALM">
+    <attachments chance="1">
+      <item name="Candy_ASVALM_Buttstock" chance="1" />
+      <item name="Candy_ASVALM_Handguard" chance="1" />
+      <item name="Candy_ASVALM_mag_10Rnd" chance="0.2" />
+      <item name="Candy_ASVALM_Optic" chance="0.2" />
+      <item name="Candy_ASVALM_Suppressor" chance="0.01" />
+    </attachments>
+  </type>
+  <type name="Candy_AWM">
+    <attachments chance="1">
+      <item name="Candy_AWM_Buttstock" chance="1" />
+      <item name="Candy_AWM_mag_5Rnd" chance="0.2" />
+      <item name="Candy_AWM_Optic" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_AX50">
+    <attachments chance="1">
+      <item name="Candy_AX50_Buttstock" chance="1" />
+      <item name="Candy_AX50_mag_5Rnd" chance="0.2" />
+      <item name="Candy_AX50_Optic" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_BarrettM200">
+    <attachments chance="1">
+      <item name="Candy_BarrettM200_Buttstock" chance="1" />
+      <item name="Candy_BarrettM200_mag_5Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_BFG" />
+  <type name="Candy_BROCom">
+    <attachments chance="1">
+      <item name="Candy_BROCom_Handguard" chance="1" />
+      <item name="Candy_BROCom_mag_10Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_CobaltK27">
+    <attachments chance="1">
+      <item name="Candy_CobaltK27_Buttstock" chance="1" />
+      <item name="Candy_CobaltK27_Handguard" chance="1" />
+      <item name="Candy_CobaltK27_mag_5Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_DVL10">
+    <attachments chance="1">
+      <item name="Candy_DVL10_Buttstock" chance="1" />
+      <item name="Candy_DVL10_mag_5Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_GM6Lynx">
+    <attachments chance="1">
+      <item name="Candy_GM6Lynx_mag_5Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_Karabiner98k" />
+  <type name="Candy_M82A2">
+    <attachments chance="1">
+      <item name="Candy_M82A2_mag_5Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_MCXRaptor">
+    <attachments chance="1">
+      <item name="Candy_MCXRaptor_Buttstock" chance="1" />
+      <item name="Candy_MCXRaptor_mag_10Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_MDRX">
+    <attachments chance="1">
+      <item name="Candy_MDRX_Handguard" chance="1" />
+      <item name="Candy_MDRX_mag_20Rnd" chance="0.2" />
+      <item name="Candy_MDRX_Optic" chance="0.2" />
+      <item name="Candy_MDRX_Suppressor" chance="0.01" />
+    </attachments>
+  </type>
+  <type name="Candy_OMEN">
+    <attachments chance="1">
+      <item name="Candy_OMEN_Buttstock" chance="1" />
+      <item name="Candy_OMEN_Handguard" chance="1" />
+      <item name="Candy_OMEN_mag_10Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_SPR300">
+    <attachments chance="1">
+      <item name="Candy_SPR300_Buttstoc" chance="1" />
+      <item name="Candy_SPR300_Handguard" chance="1" />
+      <item name="Candy_SPR300_mag_5Rnd" chance="0.2" />
+      <item name="Candy_SPR300_Suppressor" chance="0.01" />
+    </attachments>
+  </type>
+  <type name="Candy_SRRif">
+    <attachments chance="1">
+      <item name="Candy_SRRif_mag_10Rnd" chance="0.2" />
+      <item name="Candy_SRRif_Optic" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_SRSA2">
+    <attachments chance="1">
+      <item name="Candy_SRSA2_mag_5Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_TAC21">
+    <attachments chance="1">
+      <item name="Candy_TAC21_Buttstock" chance="1" />
+      <item name="Candy_TAC21_mag_5Rn" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_VSK">
+    <attachments chance="1">
+      <item name="Candy_VSK_mag_5Rnd" chance="0.2" />
+      <item name="Candy_VSK_Suppressor" chance="0.01" />
+    </attachments>
+  </type>
+  <type name="Candy_ASH">
+    <attachments chance="1">
+      <item name="Candy_ASH_mag_30Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_Defender">
+    <attachments chance="1">
+      <item name="Candy_Defender_Buttstock" chance="1" />
+    </attachments>
+  </type>
+  <type name="Candy_DesertFox">
+    <attachments chance="1">
+      <item name="Candy_DesertFox_Buttstock" chance="1" />
+      <item name="Candy_DesertFox_mag_30Rnd" chance="0.2" />
+    </attachments>
+  </type>>
+  <type name="Candy_JJNVSQW32">
+    <attachments chance="1">
+      <item name="Candy_JJNVSQW32_Handguard" chance="1" />
+      <item name="Candy_JJNVSQW32_mag_7Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_Marlin">
+    <attachments chance="1">
+      <item name="Candy_Marlin_Handguard" chance="1" />
+    </attachments>
+  </type>
+  <type name="Candy_Remington870"/>
+  <type name="Candy_Remington870M">
+    <attachments chance="1">
+      <item name="Candy_Remington870M_Buttstoc" chance="1" />
+    </attachments>
+  </type>
+  <type name="Candy_Saiga">
+    <attachments chance="1">
+      <item name="Candy_Saiga_Buttstock" chance="1" />
+      <item name="Candy_Saiga_mag_10Rnd" chance="0.2" />
+    </attachments>
+  </type>
+  <type name="Candy_Spas12">
+    <attachments chance="1">
+      <item name="Candy_Spas12_Buttstock" chance="1" />
+    </attachments>
+  </type>
+  <type name="Candy_Grenadier">
+    <attachments chance="1">
+      <item name="Candy_Grenadier_Buttstock" chance="1" />
+    </attachments>
+  </type>
+</spawnabletypes>

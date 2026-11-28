@@ -1,0 +1,2989 @@
+{
+  "ConfigVersion": 3,
+  "MaxPlaneCountAtMoment": 1,
+  "MaxPlaneCountAtRestart": 2,
+  "MinPlayersForEvent": 1,
+  "MinCheckPeriod": 60.0,
+  "MaxCheckPeriod": 70.0,
+  "NotifyPlaneStart": "Attention! An aircraft has been spotted over the territory of Sahrani. Air defense systems have been placed on combat alert..|Logo",
+  "NotifyPlaneFall": "Attention! | Target downed. Location: |Logo",
+  "NotifyPlaneCanBeLooted": "Attention!| Crate codes have been decrypted. Opening is authorized. Location: |Logo",
+  "NotifyPlaneFirstPlayer": "Attention!| The first player, %1, has arrived at the crash site.  Location: |Logo",
+  "NotifyPlaneLootFinish": "Attention! | Area cleared. Location: |Logo",
+  "URLPlane": "",
+  "BotNamePlane": "Fallen aircraft",
+  "LBMarkersPlane": {
+    "EnableMarkers": 1,
+    "MakerName": "Airplane",
+    "MrkerPict": "LBmaster_Groups/gui/icons/heli.paa",
+    "ColorA": 255,
+    "ColorR": 255,
+    "ColorG": 150,
+    "ColorB": 150,
+    "Display3D": 1,
+    "DisplayMap": 1,
+    "DisplayGPS": 1
+  },
+  "FallPlaneList": [
+    {
+      "LocationName": "Northwest Ridge",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "4705.810 354.146 10074.900",
+      "StartCord": "5785.810 354.146 10074.900",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Parato Outskirts",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "11000.000 30.000 5450.000",
+      "StartCord": "12080.000 30.000 5450.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Cayo Outskirts",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "9500.000 20.000 6400.000",
+      "StartCord": "9500.000 20.000 7480.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Arcadia Outskirts",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "8100.000 22.000 6800.000",
+      "StartCord": "8864.000 22.000 7564.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Ortego Farmland",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "11900.000 30.000 6800.000",
+      "StartCord": "12664.000 30.000 7564.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Somato Outskirts",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "9600.000 25.000 8500.000",
+      "StartCord": "10600.000 25.000 8834.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Paraiso Outskirts",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "11200.000 30.000 9200.000",
+      "StartCord": "10200.000 30.000 8866.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Corazol Outskirts",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "13600.000 50.000 9200.000",
+      "StartCord": "13600.000 50.000 8120.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Bagango Outskirts",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "14800.000 50.000 12100.000",
+      "StartCord": "15564.000 50.000 11336.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Pacamac Outskirts",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "9400.000 110.000 14800.000",
+      "StartCord": "8640.000 110.000 15568.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Paraiso Airport West",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "9300.000 30.000 9500.000",
+      "StartCord": "10380.000 30.000 9500.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Paraiso Airport East",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "10000.000 30.000 9500.000",
+      "StartCord": "8920.000 30.000 9500.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Rahmadi Airfield South",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "2100.000 15.000 2300.000",
+      "StartCord": "2100.000 15.000 3380.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Rahmadi Airfield North",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "2100.000 15.000 3000.000",
+      "StartCord": "2100.000 15.000 1920.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Pita Airfield Northwest",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "18800.000 50.000 14100.000",
+      "StartCord": "18036.000 50.000 14864.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Pita Airfield Southeast",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "19150.000 50.000 13750.000",
+      "StartCord": "19914.000 50.000 12986.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Antigua Airstrip South",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "19300.000 15.000 18900.000",
+      "StartCord": "19300.000 15.000 19980.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    },
+    {
+      "LocationName": "Antigua Airstrip North",
+      "PlaneClassName": "BRDK_FallPlane",
+      "FinishCord": "19300.000 15.000 19600.000",
+      "StartCord": "19300.000 15.000 18520.000",
+      "FlySpeed": 35.0,
+      "FlyHeight": 200.0,
+      "BrakingDistance": 50.0,
+      "RandomPresets": [
+        "Preset1",
+        "Preset2",
+        "Preset3",
+        "Preset4",
+        "Preset5",
+        "Preset6",
+        "Preset7",
+        "Preset8",
+        "Preset9",
+        "Preset10",
+        "Preset11",
+        "Preset12",
+        "Preset13",
+        "Preset14",
+        "Preset15",
+        "Preset16",
+        "Preset17",
+        "Preset18",
+        "Preset19",
+        "Preset20",
+        "Preset21"
+      ],
+      "LootBoxNameList": [
+        "BRDK_FallPlaneBox"
+      ],
+      "LootBoxSpawnRadiusMin": 10.0,
+      "LootBoxSpawnRadiusMax": 20.0,
+      "LootBoxMinCount": 3,
+      "LootBoxMaxCount": 5,
+      "ZmbSpawnRadiusMin": 10.0,
+      "ZmbSpawnRadiusMax": 30.0,
+      "ZmbMinCount": 4,
+      "ZmbMaxCount": 7,
+      "ZmbList": [
+        "ZmbM_PatrolNormal_Autumn",
+        "ZmbM_PatrolNormal_Flat",
+        "ZmbM_PatrolNormal_PautRev",
+        "ZmbM_PatrolNormal_Summer",
+        "ZmbM_PatrolNormal_Winter",
+        "ZmbM_SoldierNormal",
+        "ZmbM_usSoldier_normal_Woodland",
+        "ZmbM_usSoldier_normal_Desert",
+        "ZmbM_usSoldier_Officer_Desert",
+        "ZmbM_usSoldier_Officer_Convoy",
+        "ZmbM_usSoldier_Heavy_Woodland",
+        "ZmbM_eastSoldier_normal_Navy",
+        "ZmbM_eastSoldier_Heavy_Navy",
+        "ZmbF_SoldierNormal",
+        "ZmbF_usSoldier_normal_Woodland",
+        "ZmbF_usSoldier_normal_Desert",
+        "ZmbF_usSoldier_Heavy_Woodland",
+        "ZmbF_usSoldier_Heavy_Desert",
+        "ZmbF_eastSoldier_Normal_Navy",
+        "ZmbF_eastSoldier_Heavy_Navy",
+        "ZmbM_SP_north_soldier",
+        "ZmbM_SP_north_soldier_Heavy",
+        "ZmbM_SP_north_armyofficer",
+        "ZmbM_SP_north_pilot",
+        "ZmbM_SP_south_armyofficer",
+        "ZmbM_SP_south_pilot",
+        "ZmbM_SP_ussoldier_desert",
+        "ZmbM_SP_ussoldier_woodland",
+        "ZmbM_SP_ussoldier_woodland_Heavy",
+        "ZmbM_SP_Guerilla_01",
+        "ZmbM_SP_Guerilla_02",
+        "ZmbM_SP_Guerilla_03",
+        "ZmbM_SP_Guerilla_04",
+        "BRDK_Am_Soldier_01_zmb",
+        "BRDK_Am_Soldier_02_zmb",
+        "BRDK_Am_Soldier_03_zmb",
+        "BRDK_Am_Soldier_04_zmb",
+        "BRDK_Armyman_skr",
+        "BRDK_MilitaryMan_skr",
+        "BRDK_R_Soldier_skr",
+        "BRDK_IT_Soldier_01_zmb",
+        "BRDK_IT_Soldier_02_zmb",
+        "BRDK_JetPilot_Ru",
+        "BRDK_JetPilot_Ch",
+        "BRDK_JetPilot_Us"
+      ],
+      "TimeBeforeCanOpen": 60.0,
+      "OpenBoxTime": 10.0,
+      "TriggerRadius": 100.0,
+      "DeleteTimer": 20.0,
+      "DeleteTimerAnyCase": 300.0
+    }
+  ],
+  "SearchingPresetBoxList": [
+    {
+      "PresetName": "Preset1",
+      "UseCount": 0,
+      "MinCount": 2,
+      "MaxCount": 3,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "AKM"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": -1.0,
+          "FallPlaneAttachesItemList": [
+            {
+              "ItemList": [
+                "Mag_AKM_30Rnd"
+              ],
+              "SpawnChance": 100.0,
+              "ItemQuantity": -1.0,
+              "ItemHealth": -1.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset2",
+      "UseCount": 0,
+      "MinCount": 2,
+      "MaxCount": 3,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "BandageDressing"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.25,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Heatpack"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.25,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "BakedBeansCan"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.25,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "SodaCan_Cola"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.25,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "CanOpener"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.25,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset3",
+      "UseCount": 0,
+      "MinCount": 2,
+      "MaxCount": 3,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "Matchbox"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.3,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "SewingKit"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.3,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "WaterBottle"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.3,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Chips"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.3,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Whetstone"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.3,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset4",
+      "UseCount": 0,
+      "MinCount": 2,
+      "MaxCount": 3,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "BandageDressing"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.3,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "CharcoalTablets"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.3,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "PurificationTablets"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.3,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "PowderedMilk"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.3,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Heatpack"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.3,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset5",
+      "UseCount": 0,
+      "MinCount": 2,
+      "MaxCount": 3,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "MKII"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.35,
+          "FallPlaneAttachesItemList": [
+            {
+              "ItemList": [
+                "Mag_MKII_10Rnd"
+              ],
+              "SpawnChance": 100.0,
+              "ItemQuantity": -1.0,
+              "ItemHealth": 0.35
+            }
+          ]
+        },
+        {
+          "ItemName": [
+            "Ammo_22"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.35,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "WaterBottle"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.35,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "TacticalBaconCan"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.35,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "SewingKit"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.35,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset6",
+      "UseCount": 0,
+      "MinCount": 2,
+      "MaxCount": 3,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "MakarovIJ70"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.4,
+          "FallPlaneAttachesItemList": [
+            {
+              "ItemList": [
+                "Mag_IJ70_8Rnd"
+              ],
+              "SpawnChance": 100.0,
+              "ItemQuantity": -1.0,
+              "ItemHealth": 0.4
+            }
+          ]
+        },
+        {
+          "ItemName": [
+            "BandageDressing"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.4,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "PainkillerTablets"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.4,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "SodaCan_Pipsi"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.4,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "CanOpener"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.4,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset7",
+      "UseCount": 0,
+      "MinCount": 2,
+      "MaxCount": 3,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "FirstAidKit"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.45,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "BandageDressing"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.45,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "TetracyclineAntibiotics"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.45,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "VitaminBottle"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.45,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "DisinfectantSpray"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.45,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset8",
+      "UseCount": 0,
+      "MinCount": 2,
+      "MaxCount": 3,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "P1"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.45,
+          "FallPlaneAttachesItemList": [
+            {
+              "ItemList": [
+                "Mag_P1_8Rnd"
+              ],
+              "SpawnChance": 100.0,
+              "ItemQuantity": -1.0,
+              "ItemHealth": 0.45
+            }
+          ]
+        },
+        {
+          "ItemName": [
+            "Ammo_9x19"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.45,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "BandageDressing"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.45,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Crackers"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.45,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "WaterBottle"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.45,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset9",
+      "UseCount": 0,
+      "MinCount": 2,
+      "MaxCount": 3,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "CZ75"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.5,
+          "FallPlaneAttachesItemList": [
+            {
+              "ItemList": [
+                "Mag_CZ75_15Rnd"
+              ],
+              "SpawnChance": 100.0,
+              "ItemQuantity": -1.0,
+              "ItemHealth": 0.5
+            }
+          ]
+        },
+        {
+          "ItemName": [
+            "Epinephrine"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.5,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "CharcoalTablets"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.5,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "SodaCan_Kvass"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.5,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "DuctTape"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.5,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset10",
+      "UseCount": 0,
+      "MinCount": 2,
+      "MaxCount": 3,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "Colt1911"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.5,
+          "FallPlaneAttachesItemList": [
+            {
+              "ItemList": [
+                "Mag_1911_7Rnd"
+              ],
+              "SpawnChance": 100.0,
+              "ItemQuantity": -1.0,
+              "ItemHealth": 0.5
+            }
+          ]
+        },
+        {
+          "ItemName": [
+            "Ammo_45ACP"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.5,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "FirstAidKit"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.5,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "PeachesCan"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.5,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "SewingKit"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.5,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset11",
+      "UseCount": 0,
+      "MinCount": 3,
+      "MaxCount": 4,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "Mp133Shotgun"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.55,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Ammo_12gaPellets"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.55,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Ammo_12gaSlug"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.55,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "BandageDressing"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.55,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "WaterBottle"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.55,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset12",
+      "UseCount": 0,
+      "MinCount": 3,
+      "MaxCount": 4,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "CZ527"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.55,
+          "FallPlaneAttachesItemList": [
+            {
+              "ItemList": [
+                "Mag_CZ527_5rnd"
+              ],
+              "SpawnChance": 100.0,
+              "ItemQuantity": -1.0,
+              "ItemHealth": 0.55
+            }
+          ]
+        },
+        {
+          "ItemName": [
+            "Ammo_762x39"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.55,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "HuntingKnife"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.55,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "VitaminBottle"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.55,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "BakedBeansCan"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.55,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset13",
+      "UseCount": 0,
+      "MinCount": 3,
+      "MaxCount": 4,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "MP5K"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.6,
+          "FallPlaneAttachesItemList": [
+            {
+              "ItemList": [
+                "Mag_MP5_15Rnd"
+              ],
+              "SpawnChance": 100.0,
+              "ItemQuantity": -1.0,
+              "ItemHealth": 0.6
+            }
+          ]
+        },
+        {
+          "ItemName": [
+            "Mag_MP5_30Rnd"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.6,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Ammo_9x19"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.6,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Epinephrine"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.6,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "WorkingGloves_Beige"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.6,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset14",
+      "UseCount": 0,
+      "MinCount": 3,
+      "MaxCount": 4,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "AKS74U"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.6,
+          "FallPlaneAttachesItemList": [
+            {
+              "ItemList": [
+                "Mag_AK74_30Rnd"
+              ],
+              "SpawnChance": 100.0,
+              "ItemQuantity": -1.0,
+              "ItemHealth": 0.6
+            }
+          ]
+        },
+        {
+          "ItemName": [
+            "Ammo_545x39"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.6,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "FirstAidKit"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.6,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "KobraOptic"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.6,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "SodaCan_Cola"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.6,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset15",
+      "UseCount": 0,
+      "MinCount": 3,
+      "MaxCount": 4,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "AK74"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.65,
+          "FallPlaneAttachesItemList": [
+            {
+              "ItemList": [
+                "Mag_AK74_30Rnd"
+              ],
+              "SpawnChance": 100.0,
+              "ItemQuantity": -1.0,
+              "ItemHealth": 0.65
+            }
+          ]
+        },
+        {
+          "ItemName": [
+            "Ammo_545x39"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.65,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Mag_AK74_45Rnd"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.65,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Morphine"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.65,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "TacticalGoggles"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.65,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset16",
+      "UseCount": 0,
+      "MinCount": 3,
+      "MaxCount": 4,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "AKM"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.65,
+          "FallPlaneAttachesItemList": [
+            {
+              "ItemList": [
+                "Mag_AKM_30Rnd"
+              ],
+              "SpawnChance": 100.0,
+              "ItemQuantity": -1.0,
+              "ItemHealth": 0.65
+            }
+          ]
+        },
+        {
+          "ItemName": [
+            "Ammo_762x39"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.65,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Mag_AKM_Palm30Rnd"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.65,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "PSO1Optic"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.65,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "SalineBag"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.65,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset17",
+      "UseCount": 0,
+      "MinCount": 3,
+      "MaxCount": 4,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "SKS"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.7,
+          "FallPlaneAttachesItemList": [
+            {
+              "ItemList": [
+                "Mag_CLIP762x39_10Rnd"
+              ],
+              "SpawnChance": 100.0,
+              "ItemQuantity": -1.0,
+              "ItemHealth": 0.7
+            }
+          ]
+        },
+        {
+          "ItemName": [
+            "Ammo_762x39"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.7,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "PUScopeOptic"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.7,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "FirstAidKit"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.7,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "DuctTape"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.7,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset18",
+      "UseCount": 0,
+      "MinCount": 3,
+      "MaxCount": 4,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "M4A1"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.75,
+          "FallPlaneAttachesItemList": [
+            {
+              "ItemList": [
+                "Mag_STANAG_30Rnd"
+              ],
+              "SpawnChance": 100.0,
+              "ItemQuantity": -1.0,
+              "ItemHealth": 0.75
+            }
+          ]
+        },
+        {
+          "ItemName": [
+            "Ammo_556x45"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.75,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "ACOGOptic"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.75,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "M4_Suppressor"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.75,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Epinephrine"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.75,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset19",
+      "UseCount": 0,
+      "MinCount": 3,
+      "MaxCount": 4,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "FAL"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.8,
+          "FallPlaneAttachesItemList": [
+            {
+              "ItemList": [
+                "Mag_FAL_20Rnd"
+              ],
+              "SpawnChance": 100.0,
+              "ItemQuantity": -1.0,
+              "ItemHealth": 0.8
+            }
+          ]
+        },
+        {
+          "ItemName": [
+            "Ammo_308Win"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.8,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Ammo_308WinTracer"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.8,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "HuntingOptic"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.8,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Morphine"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.8,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset20",
+      "UseCount": 0,
+      "MinCount": 4,
+      "MaxCount": 5,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "M14"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.85,
+          "FallPlaneAttachesItemList": [
+            {
+              "ItemList": [
+                "Mag_M14_10Rnd"
+              ],
+              "SpawnChance": 100.0,
+              "ItemQuantity": -1.0,
+              "ItemHealth": 0.85
+            }
+          ]
+        },
+        {
+          "ItemName": [
+            "Ammo_308Win"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.85,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Mag_M14_20Rnd"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.85,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "ACOGOptic"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.85,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "SalineBag"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.85,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "TetracyclineAntibiotics"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.85,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    },
+    {
+      "PresetName": "Preset21",
+      "UseCount": 0,
+      "MinCount": 4,
+      "MaxCount": 5,
+      "FallPlanePresetCfgList": [
+        {
+          "ItemName": [
+            "CZ550"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.9,
+          "FallPlaneAttachesItemList": [
+            {
+              "ItemList": [
+                "Mag_CZ550_10rnd"
+              ],
+              "SpawnChance": 100.0,
+              "ItemQuantity": -1.0,
+              "ItemHealth": 0.9
+            }
+          ]
+        },
+        {
+          "ItemName": [
+            "Winchester70"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.9,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Ammo_308Win"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.9,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "HuntingOptic"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.9,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "M4_Suppressor"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.9,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "FirstAidKit"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.9,
+          "FallPlaneAttachesItemList": []
+        },
+        {
+          "ItemName": [
+            "Morphine"
+          ],
+          "SpawnChance": 100.0,
+          "ItemQuantity": -1.0,
+          "ItemHealth": 0.9,
+          "FallPlaneAttachesItemList": []
+        }
+      ]
+    }
+  ]
+}

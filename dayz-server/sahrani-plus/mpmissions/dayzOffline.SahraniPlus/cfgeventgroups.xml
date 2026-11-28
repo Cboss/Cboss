@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<eventgroupdef>
+	<group name="Scientist">
+		<child type="ScientificBriefcase" spawnsecondary="false" x="0.7" z="-0.7" a="180" />
+	</group>
+  <group name="Barel_Schnell">
+    <!-- build_masters.py: barrel_schnell_static is not a class on this server; the boot logs it as invalid at 0,0 (2026-11-27)
+    <child type="barrel_schnell_static" spawnsecondary="false" x="0.0" z="0.0" a="0" y="0" />
+    -->
+    <child type="ScientificBriefcaseKeys" spawnsecondary="false" x="0.0" z="0.8" a="180" />
+  </group>	
+</eventgroupdef>

@@ -1,0 +1,3 @@
+# DayZ originals and built masters must stay byte-for-byte (keep CRLF, no conversion)
+dayz-server/originals/** -text
+dayz-server/*/mpmissions/** -text

@@ -23,3 +23,11 @@ jobs:
           python-version: "3.12"
       - name: Validate XML, JSON and serverDZ.cfg
         run: python3 dayz-server/tools/validate.py
+      - name: Check built masters are up to date
+        run: |
+          status=0
+          for recipe in dayz-server/*/masters.json; do
+            [ -e "$recipe" ] || continue
+            python3 dayz-server/tools/build_masters.py check "$recipe" || status=1
+          done
+          exit $status

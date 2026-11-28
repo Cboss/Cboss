@@ -1,0 +1,956 @@
+{
+  "base": "../originals/sahrani-plus",
+  "mission": "mpmissions/dayzOffline.SahraniPlus",
+  "map_label": "Sahrani Plus (map author)",
+  "vanilla_label": "Bohemia vanilla Chernarus",
+  "report": "MERGE_REPORT.md",
+  "masters": [
+    {
+      "type": "copy",
+      "from": "../originals/sahraniplus-economy/mapgroupcluster.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/mapgroupcluster.xml",
+      "why": "SahraniPlus economy version: matches the installed SahraniPlus 2.0 terrain (Land_S_* buildings); the older map files use Land_smd_* buildings that aren't in the mod (checked on the server 2026-11-27)"
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahraniplus-economy/mapgrouppos.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/mapgrouppos.xml",
+      "edits": [
+        {
+          "find": "    <group name=\"Land_z_helipad_medic\" pos=\"12064.491211 26.785698 17672.177734\" rpy=\"-0.000000 0.000000 -90.756485\" a=\"-179.243515\" />\n    <group name=\"Land_Mil_Barracks3\" pos=\"12072.102539 28.170433 17749.070313\" rpy=\"-0.000000 0.000000 0.000000\" a=\"90.000000\" />",
+          "replace": "    <!-- build_masters.py: Land_z_helipad_medic is not on the SahraniPlus 2.0 terrain (the 12:50 proxy export did not find it) (2026-11-27)\n    <group name=\"Land_z_helipad_medic\" pos=\"12064.491211 26.785698 17672.177734\" rpy=\"-0.000000 0.000000 -90.756485\" a=\"-179.243515\" />\n    -->\n    <group name=\"Land_Mil_Barracks3\" pos=\"12072.102539 28.170433 17749.070313\" rpy=\"-0.000000 0.000000 0.000000\" a=\"90.000000\" />",
+          "summary": "comment out stray Land_z_helipad_medic",
+          "why": "Land_z_helipad_medic is not on the SahraniPlus 2.0 terrain (the 12:50 proxy export did not find it)"
+        }
+      ],
+      "why": "SahraniPlus economy version: matches the installed SahraniPlus 2.0 terrain (Land_S_* buildings); the older map files use Land_smd_* buildings that aren't in the mod (checked on the server 2026-11-27)"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahraniplus-economy/mapgroupproto.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/mapgroupproto.xml",
+      "why": "SahraniPlus economy version: matches the installed SahraniPlus 2.0 terrain (Land_S_* buildings); the older map files use Land_smd_* buildings that aren't in the mod (checked on the server 2026-11-27)"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahraniplus-economy/mapclusterproto.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/mapclusterproto.xml",
+      "why": "SahraniPlus economy version: matches the installed SahraniPlus 2.0 terrain (Land_S_* buildings); the older map files use Land_smd_* buildings that aren't in the mod (checked on the server 2026-11-27)"
+    },
+    {
+      "type": "merge",
+      "map": "../originals/sahrani-plus/db/events.xml",
+      "vanilla": "../originals/vanilla-chernarusplus/db/events.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/db/events.xml",
+      "add_vanilla": [
+        "event:AmbientFox",
+        "event:AmbientHare",
+        "event:AmbientHen",
+        "event:AnimalBear",
+        "event:AnimalDeer",
+        "event:AnimalGoat",
+        "event:AnimalPig",
+        "event:AnimalRoeDeer",
+        "event:AnimalSheep",
+        "event:AnimalWolf"
+      ],
+      "skip_vanilla": [],
+      "drop_map": {},
+      "decisions": {},
+      "prefer": {
+        "keep": "map",
+        "why": "the map author's tuning for Sahrani (spawn counts, positions, timers); vanilla is Chernarus"
+      },
+      "replace_map": {
+        "event:AnimalTREX": {
+          "name": "AnimalLion",
+          "children": [
+            [
+              "BRDK_Lion_M_nml",
+              1,
+              1
+            ],
+            [
+              "BRDK_Lion_nml",
+              1,
+              3
+            ],
+            [
+              "BRDK_Lion_Kid_nml",
+              0,
+              2
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalIndominusRex": {
+          "name": "AnimalBengalTiger",
+          "children": [
+            [
+              "BRDK_BengalTiger_nml",
+              1,
+              1
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalRaptor": {
+          "name": "AnimalHyena",
+          "children": [
+            [
+              "BRDK_Hyena_nml",
+              2,
+              4
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalSmallDinos": {
+          "name": "AnimalCoyote",
+          "children": [
+            [
+              "BRDK_Coyote_dog",
+              2,
+              4
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalIDREX": {
+          "name": "AnimalJaguar",
+          "children": [
+            [
+              "BRDK_Jaguar_nml",
+              1,
+              1
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalAlioromus": {
+          "name": "AnimalLeopard",
+          "children": [
+            [
+              "BRDK_Leopard_nml",
+              1,
+              1
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalStygivenator": {
+          "name": "AnimalBighornRam",
+          "children": [
+            [
+              "BRDK_BighornRam_nml",
+              2,
+              5
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalCeratosaurus": {
+          "name": "AnimalBlackBear",
+          "children": [
+            [
+              "BRDK_Am_BlackBear_nml",
+              1,
+              1
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalCharanosaurus": {
+          "name": "AnimalTapir",
+          "children": [
+            [
+              "BRDK_Tapir_nml",
+              1,
+              2
+            ],
+            [
+              "BRDK_Tapir_Kid_nml",
+              0,
+              1
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalDIL": {
+          "name": "AnimalOstrich",
+          "children": [
+            [
+              "BRDK_Ostrich_nml",
+              2,
+              5
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalScolosaurus": {
+          "name": "AnimalCattle",
+          "children": [
+            [
+              "Animal_BosTaurusF_Brown",
+              0,
+              1
+            ],
+            [
+              "Animal_BosTaurusF_Spotted",
+              0,
+              1
+            ],
+            [
+              "Animal_BosTaurusF_White",
+              0,
+              1
+            ],
+            [
+              "Animal_BosTaurus_Brown",
+              0,
+              1
+            ],
+            [
+              "Animal_BosTaurus_Spotted",
+              0,
+              1
+            ],
+            [
+              "Animal_BosTaurus_White",
+              0,
+              1
+            ],
+            [
+              "BRDK_TexasLongHornCow_nml",
+              0,
+              3
+            ]
+          ],
+          "why": "old cattle spot: vanilla cows back, longhorns with them, dinos out (Boss, 2026-11-27)"
+        },
+        "event:AnimalScolosaurus2": {
+          "name": "AnimalDonkey",
+          "children": [
+            [
+              "BRDK_Donkey_nml",
+              2,
+              4
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later. Longhorn moved into AnimalCow (Boss)"
+        },
+        "event:AnimalTricero1": {
+          "name": "AnimalHorse",
+          "children": [
+            [
+              "BRDK_Horse_nml",
+              2,
+              4
+            ],
+            [
+              "BRDK_Horse_nml_kid",
+              0,
+              2
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalTricero2": {
+          "name": "AnimalAntelope",
+          "children": [
+            [
+              "BRDK_Antelope_nml",
+              2,
+              4
+            ],
+            [
+              "BRDK_Antelope2_nml",
+              0,
+              3
+            ],
+            [
+              "BRDK_Gazelle_nml",
+              0,
+              3
+            ]
+          ],
+          "why": "dinosaur swapped for a real animal (Boss, 2026-11-27: replace dino names with animal names). Event settings kept as the map had them; territory comes later"
+        },
+        "event:AnimalCrocodile": {
+          "name": "AnimalHippo",
+          "children": [
+            [
+              "BRDK_Hippo_nml",
+              1,
+              3
+            ],
+            [
+              "BRDK_Hippo_kid_nml",
+              0,
+              1
+            ]
+          ],
+          "why": "crocodile spot becomes hippos (Boss, 2026-11-27)"
+        }
+      },
+      "remove_children": [
+        {
+          "prefixes": [
+            "CDAJ_"
+          ],
+          "why": "CDAJ zombie mod isn't on the server (Boss, 2026-11-27)"
+        },
+        {
+          "prefixes": [
+            "Land_wreck_hc3_merlin"
+          ],
+          "why": "Merlin heli wreck mod isn't on the server; StaticHeliCrash keeps the vanilla Mi8 and UH1Y wrecks (Boss, 2026-11-27)"
+        }
+      ],
+      "rename_children": [
+        {
+          "from": "Land_wreck_s1023_ambulance",
+          "to": "Land_S_s1203_ambulance",
+          "why": "SahraniPlus 2.0 names the ambulance wreck Land_S_s1203_ambulance (class in its s_wrecks.pbo, also in types and mapgroupproto); the old name doesn't exist, so the CE dropped the only child of StaticAmbulanceWreck"
+        }
+      ],
+      "edit_entries": {
+        "event:StaticAmbulanceWreck": {
+          "edits": [
+            {
+              "find": "\t\t<min>0</min>\n\t\t<max>0</max>",
+              "replace": "\t\t<min>1</min>\n\t\t<max>4</max>"
+            },
+            {
+              "find": "max=\"4\" min=\"4\" type=\"Land_S_s1203_ambulance\"",
+              "replace": "max=\"3\" min=\"2\" type=\"Land_S_s1203_ambulance\""
+            }
+          ],
+          "summary": "event min 1 / max 4, child max 3 / min 2",
+          "why": "Boss's own edit on the live server, 2026-11-27"
+        },
+        "event:VehicleMix01": {
+          "edits": [
+            {
+              "find": "\t\t<nominal>0</nominal>\n\t\t<min>0</min>\n\t\t<max>0</max>",
+              "replace": "\t\t<nominal>4</nominal>\n\t\t<min>2</min>\n\t\t<max>5</max>"
+            },
+            {
+              "find": "\t\t<active>0</active>",
+              "replace": "\t\t<active>1</active>"
+            }
+          ],
+          "summary": "switched on, nominal 4 / min 2 / max 5",
+          "why": "map shipped all car events off; Boss wants cars on but minimal (2026-11-27)"
+        },
+        "event:VehicleMix02": {
+          "edits": [
+            {
+              "find": "\t\t<nominal>0</nominal>\n\t\t<min>0</min>\n\t\t<max>0</max>",
+              "replace": "\t\t<nominal>4</nominal>\n\t\t<min>2</min>\n\t\t<max>5</max>"
+            },
+            {
+              "find": "\t\t<active>0</active>",
+              "replace": "\t\t<active>1</active>"
+            }
+          ],
+          "summary": "switched on, nominal 4 / min 2 / max 5",
+          "why": "map shipped all car events off; Boss wants cars on but minimal (2026-11-27)"
+        },
+        "event:VehicleOffroad02": {
+          "edits": [
+            {
+              "find": "\t\t<nominal>0</nominal>\n\t\t<min>0</min>\n\t\t<max>0</max>",
+              "replace": "\t\t<nominal>2</nominal>\n\t\t<min>1</min>\n\t\t<max>2</max>"
+            },
+            {
+              "find": "\t\t<active>0</active>",
+              "replace": "\t\t<active>1</active>"
+            }
+          ],
+          "summary": "switched on, nominal 2 / min 1 / max 2",
+          "why": "map shipped all car events off; Boss wants cars on but minimal (2026-11-27)"
+        },
+        "event:VehicleTruck01": {
+          "edits": [
+            {
+              "find": "\t\t<nominal>0</nominal>\n\t\t<min>0</min>\n\t\t<max>0</max>",
+              "replace": "\t\t<nominal>2</nominal>\n\t\t<min>1</min>\n\t\t<max>3</max>"
+            },
+            {
+              "find": "\t\t<active>0</active>",
+              "replace": "\t\t<active>1</active>"
+            }
+          ],
+          "summary": "switched on, nominal 2 / min 1 / max 3",
+          "why": "map shipped all car events off; Boss wants cars on but minimal (2026-11-27)"
+        },
+        "event:StaticUAZCustom": {
+          "edits": [
+            {
+              "find": "\t\t<active>1</active>",
+              "replace": "\t\t<active>0</active>"
+            }
+          ],
+          "summary": "switched off",
+          "why": "fixed-position event with no positions in cfgeventspawns, and StaticObj_Wreck_Uaz_colored_DE is not a class here; off until it gets positions (cleanup pass, 2026-11-27)"
+        }
+      }
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/cfgenvironment.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/cfgenvironment.xml",
+      "edits": [
+        {
+          "find": "\t\t<file path=\"env/IDREX_territories.xml\" />\n\t\t<file path=\"env/Stygivenator_territories.xml\" />\n\t\t<file path=\"env/tricero1_territories.xml\" />\n\t\t<file path=\"env/tricero2_territories.xml\" />\n\t\t<file path=\"env/wild_boar_territories.xml\" />\n\t\t<file path=\"env/Charanosaurus_territories.xml\" />\n\t\t<file path=\"env/hen_territories.xml\" />\n\t\t<file path=\"env/trex_territories.xml\" />\n\t\t<file path=\"env/hare_territories.xml\" />\n\t\t<file path=\"env/zombie_territories.xml\" />\n\t\t<file path=\"env/Scolosaurus1_territories.xml\" />\n\t\t<file path=\"env/Scolosaurus2_territories.xml\" />\n\t\t<file path=\"env/crocodile_territories.xml\" />\n\t\t<file path=\"env/smallDinos_territories.xml\" />\n\t\t<file path=\"env/raptor_territories.xml\" />\n\t\t<file path=\"env/Ceratosaurus_territories.xml\" />\n\t\t<file path=\"env/Alioromus_territories.xml\" />\n\t\t<file path=\"env/Rhinoceros_territories.xml\" />\n",
+          "replace": "\t\t<file path=\"env/wild_boar_territories.xml\" />\n\t\t<file path=\"env/hen_territories.xml\" />\n\t\t<file path=\"env/hare_territories.xml\" />\n\t\t<file path=\"env/zombie_territories.xml\" />\n\t\t<file path=\"env/cattle_territories.xml\" />\n\t\t<file path=\"env/bear_territories.xml\" />\n\t\t<file path=\"env/wolf_territories.xml\" />\n\t\t<file path=\"env/red_deer_territories.xml\" />\n\t\t<file path=\"env/roe_deer_territories.xml\" />\n\t\t<file path=\"env/sheep_goat_territories.xml\" />\n\t\t<file path=\"env/pig_territories.xml\" />\n\t\t<file path=\"env/fox_territories.xml\" />\n\t\t<file path=\"env/domestic_animals_territories.xml\" />\n\t\t<file path=\"env/dog_territories.xml\" />\n\t\t<file path=\"env/lion_territories.xml\" />\n\t\t<file path=\"env/bengal_tiger_territories.xml\" />\n\t\t<file path=\"env/hyena_territories.xml\" />\n\t\t<file path=\"env/coyote_territories.xml\" />\n\t\t<file path=\"env/jaguar_territories.xml\" />\n\t\t<file path=\"env/leopard_territories.xml\" />\n\t\t<file path=\"env/bighorn_ram_territories.xml\" />\n\t\t<file path=\"env/black_bear_territories.xml\" />\n\t\t<file path=\"env/tapir_territories.xml\" />\n\t\t<file path=\"env/ostrich_territories.xml\" />\n\t\t<file path=\"env/donkey_territories.xml\" />\n\t\t<file path=\"env/horse_territories.xml\" />\n\t\t<file path=\"env/antelope_territories.xml\" />\n\t\t<file path=\"env/hippo_territories.xml\" />\n\t\t<file path=\"env/rhinoceros_territories.xml\" />\n",
+          "summary": "load only territory files that exist in env/, plus one file per new animal",
+          "why": "13 of the listed files (dinos, Rhinoceros, Scolosaurus) don't exist; the server logged 'Failed to open file' for each; each new animal gets its own territory file and Crocodile_territories becomes hippo_territories (Boss, 2026-11-27)"
+        },
+        {
+          "find": "\t\t<territory type=\"Herd\" name=\"IndominusRex\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"trex_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Rhinoceros\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"Brach_territories\"/>\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"SmallDinos\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"smallDinos_territories\"/>\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"DIL\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"DIL_territories\"/>\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Tricero1\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"tricero1_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Tricero2\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"tricero2_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Scolosaurus\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"Scolosaurus1_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Scolosaurus2\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"Scolosaurus2_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Stygivenator\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"Stygivenator_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"IDREX\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"IDREX_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"TREX\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"trex_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"WildBoar\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"wild_boar_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Charanosaurus\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"Charanosaurus_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Alioromus\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"Alioromus_territories\"/>\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Raptor\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"raptor_territories\"/>\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Ceratosaurus\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"Ceratosaurus_territories\"/>\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Crocodile\" behavior=\"DZCrocoGroupBeh\">\n\t\t\t<file usable=\"crocodile_territories\" />\t\t\t\t\t\t\t\t\t\n\t\t</territory>\n",
+          "replace": "\t\t<!-- Each new animal has its own territory file. Zones start as a copy of the closest existing animal's file until Boss redraws them (Boss, 2026-11-27) -->\n\t\t<territory type=\"Herd\" name=\"Lion\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"lion_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"BengalTiger\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"bengal_tiger_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Hyena\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"hyena_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Coyote\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"coyote_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Jaguar\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"jaguar_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Leopard\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"leopard_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"BighornRam\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"bighorn_ram_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"BlackBear\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"black_bear_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Tapir\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"tapir_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Ostrich\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"ostrich_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Cattle\" behavior=\"DZdomesticGroupBeh\">\n\t\t\t<file usable=\"cattle_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Donkey\" behavior=\"DZdomesticGroupBeh\">\n\t\t\t<file usable=\"donkey_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Horse\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"horse_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Antelope\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"antelope_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Hippo\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"hippo_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Rhinoceros\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"rhinoceros_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"WildBoar\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"wild_boar_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Deer\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"red_deer_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"RoeDeer\" behavior=\"DZDeerGroupBeh\">\n\t\t\t<file usable=\"roe_deer_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Goat\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"sheep_goat_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Sheep\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"sheep_goat_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Pig\" behavior=\"DZSheepGroupBeh\">\n\t\t\t<file usable=\"pig_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Wolf\" behavior=\"DZWolfGroupBeh\">\n\t\t\t<file usable=\"wolf_territories\" />\n\t\t</territory>\n\t\t<territory type=\"Herd\" name=\"Bear\" behavior=\"BlissBearGroupBeh\">\n\t\t\t<file usable=\"bear_territories\" />\n\t\t</territory>\n",
+          "summary": "herd territories for the animal events",
+          "why": "Each AnimalX event spawns in the territory named X. Dino territories renamed to the new animals and pointed at existing files; territories added for the vanilla animal events, which had none (Boss OK 2026-11-27); each new animal now points at its own <animal>_territories file (Boss, 2026-11-27)"
+        },
+        {
+          "find": "\t\t\t<file usable=\"Scolosaurus2_territories\" />\n\t\t\t<!-- different agent types - class has to begin with AgentType:w -->\n\t\t\t<agent type=\"Male\" chance=\"1\">\n\t\t\t\t<spawn configName=\"Animal_VulpesVulpes\"",
+          "replace": "\t\t\t<file usable=\"fox_territories\" />\n\t\t\t<!-- different agent types - class has to begin with AgentType:w -->\n\t\t\t<agent type=\"Male\" chance=\"1\">\n\t\t\t\t<spawn configName=\"Animal_VulpesVulpes\"",
+          "summary": "AmbientFox uses fox_territories",
+          "why": "it pointed at Scolosaurus2_territories, which doesn't exist"
+        }
+      ]
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/wolf_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/lion_territories.xml",
+      "why": "Lion's own territory file (Boss, 2026-11-27). Zones are a copy of the map's wolf_territories.xml for now, the stopgap it used before; redraw to give Lion its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/bear_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/bengal_tiger_territories.xml",
+      "why": "BengalTiger's own territory file (Boss, 2026-11-27). Zones are a copy of the map's bear_territories.xml for now, the stopgap it used before; redraw to give BengalTiger its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/wolf_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/hyena_territories.xml",
+      "why": "Hyena's own territory file (Boss, 2026-11-27). Zones are a copy of the map's wolf_territories.xml for now, the stopgap it used before; redraw to give Hyena its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/dog_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/coyote_territories.xml",
+      "why": "Coyote's own territory file (Boss, 2026-11-27). Zones are a copy of the map's dog_territories.xml for now, the stopgap it used before; redraw to give Coyote its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/bear_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/jaguar_territories.xml",
+      "why": "Jaguar's own territory file (Boss, 2026-11-27). Zones are a copy of the map's bear_territories.xml for now, the stopgap it used before; redraw to give Jaguar its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/bear_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/leopard_territories.xml",
+      "why": "Leopard's own territory file (Boss, 2026-11-27). Zones are a copy of the map's bear_territories.xml for now, the stopgap it used before; redraw to give Leopard its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/sheep_goat_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/bighorn_ram_territories.xml",
+      "why": "BighornRam's own territory file (Boss, 2026-11-27). Zones are a copy of the map's sheep_goat_territories.xml for now, the stopgap it used before; redraw to give BighornRam its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/bear_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/black_bear_territories.xml",
+      "why": "BlackBear's own territory file (Boss, 2026-11-27). Zones are a copy of the map's bear_territories.xml for now, the stopgap it used before; redraw to give BlackBear its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/wild_boar_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/tapir_territories.xml",
+      "why": "Tapir's own territory file (Boss, 2026-11-27). Zones are a copy of the map's wild_boar_territories.xml for now, the stopgap it used before; redraw to give Tapir its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/roe_deer_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/ostrich_territories.xml",
+      "why": "Ostrich's own territory file (Boss, 2026-11-27). Zones are a copy of the map's roe_deer_territories.xml for now, the stopgap it used before; redraw to give Ostrich its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/domestic_animals_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/donkey_territories.xml",
+      "why": "Donkey's own territory file (Boss, 2026-11-27). Zones are a copy of the map's domestic_animals_territories.xml for now, the stopgap it used before; redraw to give Donkey its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/red_deer_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/horse_territories.xml",
+      "why": "Horse's own territory file (Boss, 2026-11-27). Zones are a copy of the map's red_deer_territories.xml for now, the stopgap it used before; redraw to give Horse its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/roe_deer_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/antelope_territories.xml",
+      "why": "Antelope's own territory file (Boss, 2026-11-27). Zones are a copy of the map's roe_deer_territories.xml for now, the stopgap it used before; redraw to give Antelope its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/Crocodile_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/hippo_territories.xml",
+      "why": "Hippo's own territory file (Boss, 2026-11-27). Zones are a copy of the map's Crocodile_territories.xml for now, the stopgap it used before; redraw to give Hippo its own areas"
+    },
+    {
+      "type": "copy",
+      "from": "../originals/sahrani-plus/env/cattle_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/rhinoceros_territories.xml",
+      "why": "Rhinoceros's own territory file (Boss, 2026-11-27). Zones are a copy of the map's cattle_territories.xml for now, the stopgap it used before; redraw to give Rhinoceros its own areas"
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/serverDZ.cfg",
+      "output": "serverDZ.cfg",
+      "edits": [
+        {
+          "find": "steamProtocolMaxDataSize = 4096\n",
+          "replace": "steamProtocolMaxDataSize = 4096;\n",
+          "summary": "add the missing `;` after `steamProtocolMaxDataSize = 4096`",
+          "why": "Every setting in serverDZ.cfg ends with ';'. Without it the server may misread this line or the next one"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/cfglimitsdefinition.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/cfglimitsdefinition.xml",
+      "edits": [
+        {
+          "find": "        <usage name=\"DRS\"/>\n    </usageflags>",
+          "replace": "        <usage name=\"DRS\"/>\n        <usage name=\"Historical\"/>\n        <usage name=\"Underground\"/>\n    </usageflags>",
+          "summary": "define usages `Historical` and `Underground`",
+          "why": "used by the SahraniPlus mapgroupproto and types; the 2:07 boot logged 18 'Unknown usage' for them"
+        },
+        {
+          "find": "    </categories>",
+          "replace": "        <category name=\"vehicleparts\"/>\n    </categories>",
+          "summary": "define category `vehicleparts`",
+          "why": "used by the SahraniPlus mapgroupproto; the 2:07 boot logged 51 'Unknown category'"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/types/food_types.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/types/food_types.xml",
+      "edits": [
+        {
+          "find": "        <usage name=\"Tier3\"/>\n        <usage name=\"Tier4\"/>\n        <usage name=\"Tier5\"/>",
+          "replace": "        <value name=\"Tier3\"/>\n        <value name=\"Tier4\"/>\n        <value name=\"Tier5\"/>",
+          "summary": "TacticalBaconCan: Tier3-5 as `value`, not `usage`",
+          "why": "tiers are values; the boot logged 'Unknown usage: Tier3/4/5'"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/cfgeconomycore.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/cfgeconomycore.xml",
+      "edits": [
+        {
+          "find": "\t\t\t<file name=\"BRDK_LtlCreature_types.xml\" type=\"types\" />",
+          "replace": "\t\t\t<!-- <file name=\"BRDK_LtlCreature_types.xml\" type=\"types\" /> not used (Boss, 2026-11-27) -->",
+          "summary": "stop loading `BRDK_LtlCreature_types.xml`",
+          "why": "Boss isn't using the BRDK little creatures"
+        },
+        {
+          "find": "\t\t<rootclass name=\"CarScript\" act=\"car\" reportMemoryLOD=\"no\" /> <!-- cars (sedan, hatchback, transitBus, V3S, ...) -->\n",
+          "replace": "\t\t<rootclass name=\"CarScript\" act=\"car\" reportMemoryLOD=\"no\" /> <!-- cars (sedan, hatchback, transitBus, V3S, ...) -->\n\t\t<rootclass name=\"BoatScript\" act=\"car\" reportMemoryLOD=\"no\" /> <!-- boats -->\n\t\t<rootclass name=\"MotorbikeScript\" act=\"car\" reportMemoryLOD=\"no\" /> <!-- Motorbike -->\n\t\t<rootclass name=\"HouseDestructible\" reportMemoryLOD=\"no\" /> <!-- houses, wrecks -->\n",
+          "summary": "add the vanilla 1.30 root classes for boats, motorbikes and destructible houses",
+          "why": "missing from the map's file, so the CE ignored Boat_01_* and Motorbike_* as 'Type does not exist' (03:07 boot). Lines copied from Bohemia's cfgeconomycore (DayZ-Central-Economy 7bfc95c)"
+        },
+        {
+          "find": "\t<ce folder=\"CustomTypes/BS_BaseBuilding\">\n\t\t\t<file name=\"types_bs.xml\" type=\"types\" />\n\t\t</ce>\n",
+          "replace": "\t<ce folder=\"CustomTypes/BS_BaseBuilding\">\n\t\t\t<file name=\"types_bs.xml\" type=\"types\" />\n\t\t</ce>\n\t<ce folder=\"CustomTypes/MaharlikaPH_Boats\">\n\t\t\t<file name=\"maharlikaph_boats_types.xml\" type=\"types\" />\n\t\t\t<file name=\"maharlikaph_boats_spawnabletypes.xml\" type=\"spawnabletypes\" />\n\t\t</ce>\n\t<ce folder=\"CustomTypes/CookZ\">\n\t\t\t<file name=\"cookz_types.xml\" type=\"types\" />\n\t\t</ce>\n\t<ce folder=\"CustomTypes/AP\">\n\t\t\t<file name=\"types_AzraelKamikazeMod.xml\" type=\"types\" />\n\t\t\t<file name=\"types_PatrolDrone.xml\" type=\"types\" />\n\t\t</ce>\n",
+          "summary": "load the MaharlikaPH Boats types and spawnabletypes",
+          "why": "Boss is adding MaharlikaPH Boats (@3354681846); the two files are the mod's own Info\\ files copied unchanged into CustomTypes/MaharlikaPH_Boats (2026-11-27); CookZ (@3302732231) types load from CustomTypes/CookZ (Boss, 2026-11-27); AP kamikaze and patrol drone types load from CustomTypes/AP (Boss, 2026-11-27); Expansion economy files load from expansion_ce (Boss, 2026-11-27)"
+        },
+        {
+          "find": "\t<ce folder=\"CustomTypes/BRDK\">\n",
+          "replace": "\t<ce folder=\"expansion_ce\">\n\t\t\t<file name=\"expansion_types.xml\" type=\"types\" />\n\t\t\t<file name=\"expansion_spawnabletypes.xml\" type=\"spawnabletypes\" />\n\t\t</ce>\n\t<ce folder=\"CustomTypes/CandyWeapons\">\n\t\t\t<file name=\"Candy_VHQ_Weapons_Types.xml\" type=\"types\" />\n\t\t\t<file name=\"Candy_VHQ_Weapons_Spawnabletypes.xml\" type=\"spawnabletypes\" />\n\t\t</ce>\n\t<ce folder=\"CustomTypes/CandyClothes\">\n\t\t\t<file name=\"types_ghost.xml\" type=\"types\" />\n\t\t\t<file name=\"types_Set_Soldier.xml\" type=\"types\" />\n\t\t</ce>\n\t<ce folder=\"CustomTypes/Munghards\">\n\t\t\t<file name=\"types_Clothes.xml\" type=\"types\" />\n\t\t\t<file name=\"types_Containers.xml\" type=\"types\" />\n\t\t\t<file name=\"types_Food.xml\" type=\"types\" />\n\t\t\t<file name=\"types_Other.xml\" type=\"types\" />\n\t\t\t<file name=\"types_Tools.xml\" type=\"types\" />\n\t\t\t<file name=\"types_Weapons.xml\" type=\"types\" />\n\t\t</ce>\n\t<ce folder=\"CustomTypes/Apokot_Fish\">\n\t\t\t<file name=\"fishing_apokot_types.xml\" type=\"types\" />\n\t\t</ce>\n\t<ce folder=\"CustomTypes/BRDK\">\n",
+          "summary": "load Apokot fishing types from CustomTypes/Apokot_Fish",
+          "why": "Boss added this block on the live server, 2026-11-27 (Apokot_fishing_mod_Fix @3837317482); expansion_ce block (types + spawnabletypes, no events) placed here to mirror Boss's live edit (19:27, 2026-11-27); BSG Pack 2 (CandyWeapons, CandyClothes) registered (Boss, 2026-11-27 23:17); MunghardsItempack @1734713776 registered, the six category files (Boss edits these; types.xml is their combined copy, left out) (Boss, 2026-11-28 00:30)"
+        },
+        {
+          "find": "\t<!-- OH not on yet\n\t<ce folder=\"CustomTypes/OH_Mods\">\n\t\t\t<file name=\"furniture_types.xml\" type=\"types\" />\n\t\t\t<file name=\"OH_Clothing_types.xml\" type=\"types\" />\n\t\t</ce> -->\t\n",
+          "replace": "\t<ce folder=\"CustomTypes/OH_Mods\">\n\t\t\t<file name=\"furniture_types.xml\" type=\"types\" />\n\t\t\t<file name=\"OH_Clothing_types.xml\" type=\"types\" />\n\t\t</ce>\n",
+          "summary": "OH mods types switched on",
+          "why": "Boss turned the OH mods (BSG Pack 7) on, live edit 2026-11-27 15:16"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/cfgeventspawns.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/cfgeventspawns.xml",
+      "edits": [
+        {
+          "find": "    <event name=\"AnimalTricero1\" />\n\t<event name=\"AnimalTricero2\" />\n    <event name=\"AnimalScolosaurus\" />\n    <event name=\"AnimalStygivenator\" />\n\t<event name=\"AnimalIDREX\" />\n    <event name=\"AnimalTREX\" />\n    <event name=\"AnimalWildBoar\" />\n\t<event name=\"AnimalCharanosaurus\" />\n\t<event name=\"AnimalRaptor\" />\n\t<event name=\"AnimalAlioromus\" />\n\t<event name=\"AnimalCeratosaurus\" />\n\t<event name=\"AnimalScolosaurus2\" />\n\t<event name=\"AnimalCrocodile\" />\n\t<event name=\"AnimalDIL\" />\n\t<event name=\"AnimalSmallDinos\" />\n\t<event name=\"AnimalRhinoceros\" />\n\t<event name=\"AnimalIndominusRex\" />\n",
+          "replace": "    <event name=\"AnimalWildBoar\" />\n\t<event name=\"AnimalRhinoceros\" />\n",
+          "summary": "remove 15 empty spawn entries for the old dino/crocodile events",
+          "why": "those events were renamed to real animals; the server logged 'Skipping entry for non-existing event' for each (2:36 boot). Animal events spawn from cfgenvironment territories, not from here"
+        },
+        {
+          "find": "\t<event name=\"VehicleLavegaBus\">\n\t\t<pos x=\"17195.2\" y=\"16.4549\" z=\"14321.4\" a=\"82.7321\"/>\n\t\t<pos x=\"18863.1\" y=\"40.8805\" z=\"13695\" a=\"-7.31161\"/>\n\t\t<pos x=\"12554.4\" y=\"182.223\" z=\"13447.3\" a=\"-27.9421\"/>\n\t\t<pos x=\"10634.2\" y=\"36.2841\" z=\"16201.7\" a=\"-175.33\"/>\n\t\t<pos x=\"7798.08\" y=\"28.9896\" z=\"15807.2\" a=\"89.1601\"/>\n\t\t<pos x=\"9774.78\" y=\"48.8087\" z=\"14392.4\" a=\"-18.9747\"/>\n\t\t<pos x=\"10984.5\" y=\"28.1249\" z=\"12607.3\" a=\"146.256\"/>\n\t\t<pos x=\"12174.2\" y=\"32.288\" z=\"7113.79\" a=\"-158.791\"/>\n\t\t<pos x=\"12859.6\" y=\"22.5573\" z=\"8816.78\" a=\"72.138\"/>\n\t\t<pos x=\"13559.2\" y=\"22.7211\" z=\"9124.42\" a=\"144.077\"/>\n\t\t<pos x=\"13173.9\" y=\"28.9346\" z=\"11314.5\" a=\"-104.603\"/>\n\t\t<pos x=\"10273.6\" y=\"54.7208\" z=\"7335.64\" a=\"-165.484\"/>\n\t\t<pos x=\"11251\" y=\"28.601\" z=\"6111.88\" a=\"-12.4738\"/>\n\t\t<pos x=\"11238.5\" y=\"28.828\" z=\"5886.74\" a=\"-166.73\"/>\n\t\t<pos x=\"12290.3\" y=\"28.2641\" z=\"6795.33\" a=\"-4.71583\"/>\n\t\t<pos x=\"12330.5\" y=\"11.3386\" z=\"7128.03\" a=\"179.069\"/>\n\t\t<pos x=\"12375.7\" y=\"22.2404\" z=\"7292.35\" a=\"-55.2558\"/>\n\t\t<pos x=\"13046.9\" y=\"10.9346\" z=\"8905.6\" a=\"178.316\"/>\n\t\t<pos x=\"13221.9\" y=\"22.0587\" z=\"8850.76\" a=\"-97.234\"/>\n\t\t<pos x=\"13430.1\" y=\"22.4758\" z=\"8987.37\" a=\"139.102\"/>\n\t\t<pos x=\"13583.4\" y=\"22.3308\" z=\"9038.88\" a=\"144.123\"/>\n\t\t<pos x=\"13303.2\" y=\"28.9346\" z=\"11366.8\" a=\"68.408\"/>\n\t\t<pos x=\"14092.4\" y=\"42.0685\" z=\"12507.1\" a=\"95.5374\"/>\n\t\t<pos x=\"14309.8\" y=\"42.9246\" z=\"12500.9\" a=\"173.741\"/>\n\t\t<pos x=\"14283.7\" y=\"42.6842\" z=\"12646.4\" a=\"-80.9722\"/>\n\t\t<pos x=\"15377.9\" y=\"25.7617\" z=\"13710.5\" a=\"29.286\"/>\n\t\t<pos x=\"17139.8\" y=\"16.4186\" z=\"14325.1\" a=\"-92.1228\"/>\n\t\t<pos x=\"10817.8\" y=\"336.864\" z=\"14069.7\" a=\"13.2965\"/>\n\t</event>\n",
+          "replace": "\t<!-- build_masters.py: VehicleLavegaBus spawn positions kept for later, commented out: no VehicleLavegaBus event in events.xml\n\t<event name=\"VehicleLavegaBus\">\n\t\t<pos x=\"17195.2\" y=\"16.4549\" z=\"14321.4\" a=\"82.7321\"/>\n\t\t<pos x=\"18863.1\" y=\"40.8805\" z=\"13695\" a=\"-7.31161\"/>\n\t\t<pos x=\"12554.4\" y=\"182.223\" z=\"13447.3\" a=\"-27.9421\"/>\n\t\t<pos x=\"10634.2\" y=\"36.2841\" z=\"16201.7\" a=\"-175.33\"/>\n\t\t<pos x=\"7798.08\" y=\"28.9896\" z=\"15807.2\" a=\"89.1601\"/>\n\t\t<pos x=\"9774.78\" y=\"48.8087\" z=\"14392.4\" a=\"-18.9747\"/>\n\t\t<pos x=\"10984.5\" y=\"28.1249\" z=\"12607.3\" a=\"146.256\"/>\n\t\t<pos x=\"12174.2\" y=\"32.288\" z=\"7113.79\" a=\"-158.791\"/>\n\t\t<pos x=\"12859.6\" y=\"22.5573\" z=\"8816.78\" a=\"72.138\"/>\n\t\t<pos x=\"13559.2\" y=\"22.7211\" z=\"9124.42\" a=\"144.077\"/>\n\t\t<pos x=\"13173.9\" y=\"28.9346\" z=\"11314.5\" a=\"-104.603\"/>\n\t\t<pos x=\"10273.6\" y=\"54.7208\" z=\"7335.64\" a=\"-165.484\"/>\n\t\t<pos x=\"11251\" y=\"28.601\" z=\"6111.88\" a=\"-12.4738\"/>\n\t\t<pos x=\"11238.5\" y=\"28.828\" z=\"5886.74\" a=\"-166.73\"/>\n\t\t<pos x=\"12290.3\" y=\"28.2641\" z=\"6795.33\" a=\"-4.71583\"/>\n\t\t<pos x=\"12330.5\" y=\"11.3386\" z=\"7128.03\" a=\"179.069\"/>\n\t\t<pos x=\"12375.7\" y=\"22.2404\" z=\"7292.35\" a=\"-55.2558\"/>\n\t\t<pos x=\"13046.9\" y=\"10.9346\" z=\"8905.6\" a=\"178.316\"/>\n\t\t<pos x=\"13221.9\" y=\"22.0587\" z=\"8850.76\" a=\"-97.234\"/>\n\t\t<pos x=\"13430.1\" y=\"22.4758\" z=\"8987.37\" a=\"139.102\"/>\n\t\t<pos x=\"13583.4\" y=\"22.3308\" z=\"9038.88\" a=\"144.123\"/>\n\t\t<pos x=\"13303.2\" y=\"28.9346\" z=\"11366.8\" a=\"68.408\"/>\n\t\t<pos x=\"14092.4\" y=\"42.0685\" z=\"12507.1\" a=\"95.5374\"/>\n\t\t<pos x=\"14309.8\" y=\"42.9246\" z=\"12500.9\" a=\"173.741\"/>\n\t\t<pos x=\"14283.7\" y=\"42.6842\" z=\"12646.4\" a=\"-80.9722\"/>\n\t\t<pos x=\"15377.9\" y=\"25.7617\" z=\"13710.5\" a=\"29.286\"/>\n\t\t<pos x=\"17139.8\" y=\"16.4186\" z=\"14325.1\" a=\"-92.1228\"/>\n\t\t<pos x=\"10817.8\" y=\"336.864\" z=\"14069.7\" a=\"13.2965\"/>\n\t</event>\n\t-->\n",
+          "summary": "comment out VehicleLavegaBus spawn positions",
+          "why": "server logged 'Skipping entry for non-existing event'; positions kept in a comment so the event can come back with its mod"
+        },
+        {
+          "find": "\t<event name=\"VehicleBoats\">\n",
+          "replace": "\t<event name=\"VehicleBoat\">\n",
+          "summary": "rename VehicleBoats spawn positions to VehicleBoat",
+          "why": "events.xml calls the event VehicleBoat, so its positions were skipped and the event was disabled ('needs configured positions'). Boss is adding the MaharlikaPH Boats mod (2026-11-27)"
+        },
+        {
+          "find": "\t\t<pos x=\"14666.2\" y=\"376.82\" z=\"15189.2\" a=\"0\"/>sa\n",
+          "replace": "\t\t<pos x=\"14666.2\" y=\"376.82\" z=\"15189.2\" a=\"0\"/>\n",
+          "summary": "remove stray text 'sa' after a position",
+          "why": "typo in the map's file; stray text between XML elements"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/cfgplayerspawnpoints.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/cfgplayerspawnpoints.xml",
+      "edits": [
+        {
+          "find": "    <hop>\n        <generator_posbubbles>\n        </generator_posbubbles>\n    </hop>",
+          "replace": "    <hop>\n        <!-- build_masters.py: same settings and spawn bubbles as <fresh> (was empty) -->\n        <spawn_params>\n            <min_dist_infected>30.0</min_dist_infected>\n            <max_dist_infected>70.0</max_dist_infected>\n            <min_dist_player>25.0</min_dist_player>\n            <max_dist_player>70.0</max_dist_player>\n            <min_dist_static>0.5</min_dist_static>\n            <max_dist_static>2.0</max_dist_static>\n        </spawn_params>\n        <generator_params>\n            <grid_density>8</grid_density>\n            <grid_width>40.0</grid_width>\n            <grid_height>40.0</grid_height>\n            <min_dist_static>0.5</min_dist_static>\n            <max_dist_static>2.0</max_dist_static>\n            <min_steepness>-45</min_steepness>\n            <max_steepness>45</max_steepness>\n        </generator_params>\n        <generator_posbubbles>\n            <pos x=\"8812.380859\" z=\"4704.745605\" />\n            <pos x=\"11895.299805\" z=\"5858.290039\" />\n            <pos x=\"11553.099609\" z=\"5242.279785\" />\n            <pos x=\"11175.000000\" z=\"4753.520020\" />\n            <pos x=\"10822.786133\" z=\"4683.772461\" />\n            <pos x=\"9964.055664\" z=\"4696.536133\" />\n            <pos x=\"9805.977539\" z=\"4559.679688\" />\n            <pos x=\"9332.000000\" z=\"4713.720215\" />\n            <pos x=\"8872.429688\" z=\"4840.020020\" />\n            <pos x=\"8538.257813\" z=\"5270.586426\" />\n            <pos x=\"7854.379883\" z=\"5931.569824\" />\n            <pos x=\"7502.986328\" z=\"6261.414551\" />\n            <pos x=\"6527.461426\" z=\"6682.360840\" />\n            <pos x=\"11383.611328\" z=\"5146.931641\" />\n            <pos x=\"9805.272461\" z=\"5201.343262\" />\n            <pos x=\"6725.11\" z=\"8144.2\" />\n            <pos x=\"6905.59\" z=\"8345.81\" />\n            <pos x=\"7135.24\" z=\"8645.01\" />\n            <pos x=\"7367.61\" z=\"8973.18\" />\n            <pos x=\"7764.48\" z=\"9282\" />\n            <pos x=\"7964.29\" z=\"9517.6\" />\n            <pos x=\"5984.54\" z=\"7343.13\" />\n        </generator_posbubbles>\n    </hop>",
+          "summary": "hop spawns use the fresh spawn settings and bubbles",
+          "why": "hop was empty; the server logged 'NO VALID SPAWNS, players will spawn at { 0,0,0 }' (Boss OK 2026-11-27)"
+        },
+        {
+          "find": "    <travel>\n        <generator_posbubbles>\n\t\t\n        </generator_posbubbles>\n    </travel>",
+          "replace": "    <travel>\n        <!-- build_masters.py: same settings and spawn bubbles as <fresh> (was empty) -->\n        <spawn_params>\n            <min_dist_infected>30.0</min_dist_infected>\n            <max_dist_infected>70.0</max_dist_infected>\n            <min_dist_player>25.0</min_dist_player>\n            <max_dist_player>70.0</max_dist_player>\n            <min_dist_static>0.5</min_dist_static>\n            <max_dist_static>2.0</max_dist_static>\n        </spawn_params>\n        <generator_params>\n            <grid_density>8</grid_density>\n            <grid_width>40.0</grid_width>\n            <grid_height>40.0</grid_height>\n            <min_dist_static>0.5</min_dist_static>\n            <max_dist_static>2.0</max_dist_static>\n            <min_steepness>-45</min_steepness>\n            <max_steepness>45</max_steepness>\n        </generator_params>\n        <generator_posbubbles>\n            <pos x=\"8812.380859\" z=\"4704.745605\" />\n            <pos x=\"11895.299805\" z=\"5858.290039\" />\n            <pos x=\"11553.099609\" z=\"5242.279785\" />\n            <pos x=\"11175.000000\" z=\"4753.520020\" />\n            <pos x=\"10822.786133\" z=\"4683.772461\" />\n            <pos x=\"9964.055664\" z=\"4696.536133\" />\n            <pos x=\"9805.977539\" z=\"4559.679688\" />\n            <pos x=\"9332.000000\" z=\"4713.720215\" />\n            <pos x=\"8872.429688\" z=\"4840.020020\" />\n            <pos x=\"8538.257813\" z=\"5270.586426\" />\n            <pos x=\"7854.379883\" z=\"5931.569824\" />\n            <pos x=\"7502.986328\" z=\"6261.414551\" />\n            <pos x=\"6527.461426\" z=\"6682.360840\" />\n            <pos x=\"11383.611328\" z=\"5146.931641\" />\n            <pos x=\"9805.272461\" z=\"5201.343262\" />\n            <pos x=\"6725.11\" z=\"8144.2\" />\n            <pos x=\"6905.59\" z=\"8345.81\" />\n            <pos x=\"7135.24\" z=\"8645.01\" />\n            <pos x=\"7367.61\" z=\"8973.18\" />\n            <pos x=\"7764.48\" z=\"9282\" />\n            <pos x=\"7964.29\" z=\"9517.6\" />\n            <pos x=\"5984.54\" z=\"7343.13\" />\n        </generator_posbubbles>\n    </travel>",
+          "summary": "travel spawns use the fresh spawn settings and bubbles",
+          "why": "travel was empty; same 0,0,0 warning"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/env/zombie_territories.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/env/zombie_territories.xml",
+      "edits": [
+        {
+          "tag": "zone",
+          "add_to_attrs": {
+            "dmin": 1,
+            "dmax": 2
+          },
+          "why": "Boss, 2026-11-27: up the zombie counts a little, by 1 or 2. Each zone's dynamic count goes up 1 (min) and 2 (max)"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/CustomTypes/Nemsis/NM_TYPES.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/CustomTypes/Nemsis/NM_TYPES.xml",
+      "edits": [
+        {
+          "find": "\t<type name=\"nm_Trashbag_Poncho\">\n\t\t<lifetime>14400</lifetime>\n\t\t<flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n\t</type>\t\n    <type name=\"nm_umbrella_red_folded\">",
+          "replace": "\t<!-- build_masters.py: second copy of nm_Trashbag_Poncho, identical to the one at line 330; DayZ logs it as already defined (2026-11-27)\n\t<type name=\"nm_Trashbag_Poncho\">\n\t\t<lifetime>14400</lifetime>\n\t\t<flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n\t</type>\t\n\t-->\n    <type name=\"nm_umbrella_red_folded\">",
+          "summary": "comment out duplicate nm_Trashbag_Poncho",
+          "why": "second copy of nm_Trashbag_Poncho, identical to the one at line 330; DayZ logs it as already defined"
+        },
+        {
+          "find": "\t<type name=\"nm_GhillieAtt_Camonet\">\n\t\t<lifetime>5600</lifetime>\n\t\t<flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n\t</type>\n\t<type name=\"nm_GhillieAtt_Fabric\">",
+          "replace": "\t<!-- build_masters.py: second copy of nm_GhillieAtt_Camonet, identical to the one at line 1195; DayZ logs it as already defined (2026-11-27)\n\t<type name=\"nm_GhillieAtt_Camonet\">\n\t\t<lifetime>5600</lifetime>\n\t\t<flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n\t</type>\n\t-->\n\t<type name=\"nm_GhillieAtt_Fabric\">",
+          "summary": "comment out duplicate nm_GhillieAtt_Camonet",
+          "why": "second copy of nm_GhillieAtt_Camonet, identical to the one at line 1195; DayZ logs it as already defined"
+        },
+        {
+          "find": "\t<type name=\"nm_Box_Spinalcord\">\n\t\t<lifetime>5600</lifetime>\n\t\t<flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n\t</type>\n\t<type name=\"nm_Sketch_herbs1\">",
+          "replace": "\t<!-- build_masters.py: second copy of nm_Box_Spinalcord, identical to the one at line 4178; DayZ logs it as already defined (2026-11-27)\n\t<type name=\"nm_Box_Spinalcord\">\n\t\t<lifetime>5600</lifetime>\n\t\t<flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n\t</type>\n\t-->\n\t<type name=\"nm_Sketch_herbs1\">",
+          "summary": "comment out duplicate nm_Box_Spinalcord",
+          "why": "second copy of nm_Box_Spinalcord, identical to the one at line 4178; DayZ logs it as already defined"
+        },
+        {
+          "find": "\t<type name=\"nm_GliderStage1\">\n\t\t<lifetime>3888000</lifetime>\n\t\t<flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n\t</type>\n\t<type name=\"nm_GliderStage3\">",
+          "replace": "\t<!-- build_masters.py: second copy of nm_GliderStage1, identical to the one at line 4542; DayZ logs it as already defined (2026-11-27)\n\t<type name=\"nm_GliderStage1\">\n\t\t<lifetime>3888000</lifetime>\n\t\t<flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n\t</type>\n\t-->\n\t<type name=\"nm_GliderStage3\">",
+          "summary": "comment out duplicate nm_GliderStage1",
+          "why": "second copy of nm_GliderStage1, identical to the one at line 4542; DayZ logs it as already defined"
+        },
+        {
+          "find": "\t\t<usage name=\"police\"/>\n\t\t<usage name=\"military\"/>",
+          "replace": "\t\t<usage name=\"Police\"/>\n\t\t<usage name=\"Military\"/>",
+          "summary": "nm_Sketch_ammo: usage Police / Military with capitals",
+          "why": "cfglimitsdefinition defines Police and Military; the lowercase names don't match"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/CustomTypes/Apokot_Fish/fishing_apokot_types.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/CustomTypes/Apokot_Fish/fishing_apokot_types.xml",
+      "edits": [
+        {
+          "find": "\t<type name=\"apokot_grasshopper_bait\">\n        <nominal>0</nominal>\n        <lifetime>14400</lifetime>\n        <restock>0</restock>\n        <min>0</min>\n        <quantmin>-1</quantmin>\n        <quantmax>-1</quantmax>\n        <cost>100</cost>\n        <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n        <category name=\"tools\"/>\n    </type>\n\t<type name=\"apokot_grasshopper\">",
+          "replace": "\t<!-- build_masters.py: apokot_grasshopper_bait is not a class in the current Apokot mod, so the boot logs it as an unknown type (2026-11-27)\n\t<type name=\"apokot_grasshopper_bait\">\n        <nominal>0</nominal>\n        <lifetime>14400</lifetime>\n        <restock>0</restock>\n        <min>0</min>\n        <quantmin>-1</quantmin>\n        <quantmax>-1</quantmax>\n        <cost>100</cost>\n        <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n        <category name=\"tools\"/>\n    </type>\n\t-->\n\t<type name=\"apokot_grasshopper\">",
+          "summary": "comment out stale apokot_grasshopper_bait",
+          "why": "apokot_grasshopper_bait is not a class in the current Apokot mod, so the boot logs it as an unknown type"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/cfgeventgroups.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/cfgeventgroups.xml",
+      "edits": [
+        {
+          "find": "    <child type=\"barrel_schnell_static\" spawnsecondary=\"false\" x=\"0.0\" z=\"0.0\" a=\"0\" y=\"0\" />\n    <child type=\"ScientificBriefcaseKeys\" spawnsecondary=\"false\" x=\"0.0\" z=\"0.8\" a=\"180\" />",
+          "replace": "    <!-- build_masters.py: barrel_schnell_static is not a class on this server; the boot logs it as invalid at 0,0 (2026-11-27)\n    <child type=\"barrel_schnell_static\" spawnsecondary=\"false\" x=\"0.0\" z=\"0.0\" a=\"0\" y=\"0\" />\n    -->\n    <child type=\"ScientificBriefcaseKeys\" spawnsecondary=\"false\" x=\"0.0\" z=\"0.8\" a=\"180\" />",
+          "summary": "comment out barrel_schnell_static in Barel_Schnell",
+          "why": "barrel_schnell_static is not a class on this server; the boot logs it as invalid at 0,0"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/expansion_ce/expansion_types.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/expansion_ce/expansion_types.xml",
+      "edits": [
+        {
+          "find": "    <type name=\"GlowPlug\">\n        <nominal>5</nominal>\n        <lifetime>2700</lifetime>\n        <restock>0</restock>\n        <min>0</min>\n        <quantmin>-1</quantmin>\n        <quantmax>-1</quantmax>\n        <cost>100</cost>\n        <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\"/>\n        <category name=\"tools\"/>\n        <tag name=\"shelves\"/>\n        <usage name=\"Industrial\"/>\n    </type>",
+          "replace": "    <!-- build_masters.py: GlowPlug is also defined in the vanilla types/misc_types.xml; Boss chose to keep the vanilla copy (2026-11-27)\n    <type name=\"GlowPlug\">\n        <nominal>5</nominal>\n        <lifetime>2700</lifetime>\n        <restock>0</restock>\n        <min>0</min>\n        <quantmin>-1</quantmin>\n        <quantmax>-1</quantmax>\n        <cost>100</cost>\n        <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\"/>\n        <category name=\"tools\"/>\n        <tag name=\"shelves\"/>\n        <usage name=\"Industrial\"/>\n    </type>\n    -->",
+          "summary": "comment out Expansion's duplicate GlowPlug",
+          "why": "GlowPlug is also defined in the vanilla types/misc_types.xml; Boss chose to keep the vanilla copy (2026-11-27)"
+        },
+        {
+          "find": "\t<type name=\"WoodenLog\">\n        <nominal>0</nominal>\n        <lifetime>7200</lifetime>\n        <restock>0</restock>\n        <min>0</min>\n        <quantmin>-1</quantmin>\n        <quantmax>-1</quantmax>\n        <cost>100</cost>\n        <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n        <category name=\"tools\"/>\n    </type>",
+          "replace": "\t<!-- build_masters.py: WoodenLog is also defined in the vanilla types/misc_types.xml; Boss chose to keep the vanilla copy (2026-11-27)\n\t<type name=\"WoodenLog\">\n        <nominal>0</nominal>\n        <lifetime>7200</lifetime>\n        <restock>0</restock>\n        <min>0</min>\n        <quantmin>-1</quantmin>\n        <quantmax>-1</quantmax>\n        <cost>100</cost>\n        <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"1\" deloot=\"0\"/>\n        <category name=\"tools\"/>\n    </type>\n\t-->",
+          "summary": "comment out Expansion's duplicate WoodenLog",
+          "why": "WoodenLog is also defined in the vanilla types/misc_types.xml; Boss chose to keep the vanilla copy (2026-11-27)"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/CustomTypes/CandyWeapons/Candy_VHQ_Weapons_Types.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/CustomTypes/CandyWeapons/Candy_VHQ_Weapons_Types.xml",
+      "edits": [
+        {
+          "find": "<type name=\"Candy_DesertFox\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier1\" />\n    <value name=\"Tier2\" />\n    <value name=\"Tier3\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "replace": "<type name=\"Candy_DesertFox\">\n    <nominal>0</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier1\" />\n    <value name=\"Tier2\" />\n    <value name=\"Tier3\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_DesertFox: nominal 2→0, min 0→0",
+          "why": "12.7 mm, above .338 (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27)"
+        },
+        {
+          "find": "<type name=\"Candy_DesertFox_mag_30Rnd\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier1\" />\n    <value name=\"Tier2\" />\n    <value name=\"Tier3\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "replace": "<type name=\"Candy_DesertFox_mag_30Rnd\">\n    <nominal>0</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier1\" />\n    <value name=\"Tier2\" />\n    <value name=\"Tier3\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_DesertFox_mag_30Rnd: nominal 2→0, min 0→0",
+          "why": "12.7 mm, above .338 (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27)"
+        },
+        {
+          "find": "<type name=\"Candy_M82A2_mag_5Rnd\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
+          "replace": "<type name=\"Candy_M82A2_mag_5Rnd\">\n    <nominal>0</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_M82A2_mag_5Rnd: nominal 2→0, min 0→0",
+          "why": ".50 BMG, above .338 (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27)"
+        },
+        {
+          "find": "<type name=\"Candy_DVL10_mag_5Rnd\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier3\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "replace": "<type name=\"Candy_DVL10_mag_5Rnd\">\n    <nominal>0</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier3\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_DVL10_mag_5Rnd: nominal 2→0, min 0→0",
+          "why": ".40LW, above .338 (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27)"
+        },
+        {
+          "find": "<type name=\"Candy_Ammo_458SOCOM\">\n    <nominal>5</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <tag name=\"shelves\"/>\n    <usage name=\"Farm\"/>\n    <usage name=\"Village\"/>\n    <usage name=\"Hunting\"/>\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier3\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "replace": "<type name=\"Candy_Ammo_458SOCOM\">\n    <nominal>0</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <tag name=\"shelves\"/>\n    <usage name=\"Farm\"/>\n    <usage name=\"Village\"/>\n    <usage name=\"Hunting\"/>\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier3\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_Ammo_458SOCOM: nominal 5→0, min 0→0",
+          "why": ".458 SOCOM, above .338 (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27)"
+        },
+        {
+          "find": "<type name=\"Candy_Ammo_40LW\">\n    <nominal>7</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <tag name=\"shelves\"/>\n    <usage name=\"Farm\"/>\n    <usage name=\"Village\"/>\n    <usage name=\"Hunting\"/>\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier2\" />\n    <value name=\"Tier3\" />\n  </type>",
+          "replace": "<type name=\"Candy_Ammo_40LW\">\n    <nominal>0</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <tag name=\"shelves\"/>\n    <usage name=\"Farm\"/>\n    <usage name=\"Village\"/>\n    <usage name=\"Hunting\"/>\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier2\" />\n    <value name=\"Tier3\" />\n  </type>",
+          "summary": "Candy_Ammo_40LW: nominal 7→0, min 0→0",
+          "why": ".40LW, above .338 (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27)"
+        },
+        {
+          "find": "<type name=\"Candy_AWM\">\n    <nominal>0</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n    <value name=\"Tier2\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "replace": "<type name=\"Candy_AWM\">\n    <nominal>1</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n    <value name=\"Tier2\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_AWM: nominal 0→1, min 0→0",
+          "why": ".338 Lapua, super rare: the one .338 rifle that spawns (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27)"
+        },
+        {
+          "find": "<type name=\"Candy_AWM_mag_5Rnd\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n    <value name=\"Tier2\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "replace": "<type name=\"Candy_AWM_mag_5Rnd\">\n    <nominal>1</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n    <value name=\"Tier2\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_AWM_mag_5Rnd: nominal 2→1, min 0→0",
+          "why": ".338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27)"
+        },
+        {
+          "find": "<type name=\"Candy_Ammo_338Lupa\">\n    <nominal>6</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <tag name=\"shelves\"/>\n    <usage name=\"Farm\"/>\n    <usage name=\"Village\"/>\n    <usage name=\"Hunting\"/>\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
+          "replace": "<type name=\"Candy_Ammo_338Lupa\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <tag name=\"shelves\"/>\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_Ammo_338Lupa: nominal 6→2, min 0→0; usage Military (+Military_Woodbox) only, Farm/Village/Hunting removed",
+          "why": ".338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27); Boss: .338 ammo only in military areas"
+        },
+        {
+          "find": "  <type name=\"Candy_AWM\">\n    <nominal>1</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n    <value name=\"Tier2\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "replace": "  <type name=\"Candy_AWM\">\n    <nominal>1</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_AWM: Military + Military_Woodbox, Tier4 (was ContaminatedArea only)",
+          "why": "Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too"
+        },
+        {
+          "find": "  <type name=\"Candy_AWM_Buttstock\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n    <value name=\"Tier2\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "replace": "  <type name=\"Candy_AWM_Buttstock\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_AWM_Buttstock: Military + Military_Woodbox, Tier4 (was ContaminatedArea only)",
+          "why": "Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too"
+        },
+        {
+          "find": "  <type name=\"Candy_AWM_mag_5Rnd\">\n    <nominal>1</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n    <value name=\"Tier2\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "replace": "  <type name=\"Candy_AWM_mag_5Rnd\">\n    <nominal>1</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_AWM_mag_5Rnd: Military + Military_Woodbox, Tier4 (was ContaminatedArea only)",
+          "why": "Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too"
+        },
+        {
+          "find": "  <type name=\"Candy_AMELI\">\n    <nominal>1</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n  </type>",
+          "replace": "  <type name=\"Candy_AMELI\">\n    <nominal>1</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_AMELI: Military + Military_Woodbox, Tier4 (was ContaminatedArea only)",
+          "why": "Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too"
+        },
+        {
+          "find": "  <type name=\"Candy_AMELI_mag_200Rnd\">\n    <nominal>1</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n  </type>",
+          "replace": "  <type name=\"Candy_AMELI_mag_200Rnd\">\n    <nominal>1</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_AMELI_mag_200Rnd: Military + Military_Woodbox, Tier4 (was ContaminatedArea only)",
+          "why": "Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too"
+        },
+        {
+          "find": "  <type name=\"Candy_FNE\">\n    <nominal>1</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n  </type>",
+          "replace": "  <type name=\"Candy_FNE\">\n    <nominal>1</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_FNE: Military + Military_Woodbox, Tier4 (was ContaminatedArea only)",
+          "why": "Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too"
+        },
+        {
+          "find": "  <type name=\"Candy_FNE_Buttstock\">\n    <nominal>1</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n  </type>",
+          "replace": "  <type name=\"Candy_FNE_Buttstock\">\n    <nominal>1</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_FNE_Buttstock: Military + Military_Woodbox, Tier4 (was ContaminatedArea only)",
+          "why": "Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too"
+        },
+        {
+          "find": "  <type name=\"Candy_FNE_mag_200Rnd\">\n    <nominal>1</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n  </type>",
+          "replace": "  <type name=\"Candy_FNE_mag_200Rnd\">\n    <nominal>1</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_FNE_mag_200Rnd: Military + Military_Woodbox, Tier4 (was ContaminatedArea only)",
+          "why": "Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too"
+        },
+        {
+          "find": "  <type name=\"Candy_PKPZ_Buttstock\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n  </type>",
+          "replace": "  <type name=\"Candy_PKPZ_Buttstock\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_PKPZ_Buttstock: Military + Military_Woodbox, Tier4 (was ContaminatedArea only)",
+          "why": "Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too"
+        },
+        {
+          "find": "  <type name=\"Candy_Grenadier_Buttstock\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n  </type>",
+          "replace": "  <type name=\"Candy_Grenadier_Buttstock\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_Grenadier_Buttstock: Military + Military_Woodbox, Tier4 (was ContaminatedArea only)",
+          "why": "Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too"
+        },
+        {
+          "find": "  <type name=\"Candy_TAC21_Buttstock\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n    <value name=\"Tier2\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "replace": "  <type name=\"Candy_TAC21_Buttstock\">\n    <nominal>0</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n  </type>",
+          "summary": "Candy_TAC21_Buttstock: 0/0 (its rifle is capped at 0/0)",
+          "why": "Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too"
+        },
+        {
+          "find": "  <type name=\"Candy_TAC21_mag_5Rnd\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n    <value name=\"Tier2\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "replace": "  <type name=\"Candy_TAC21_mag_5Rnd\">\n    <nominal>0</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n  </type>",
+          "summary": "Candy_TAC21_mag_5Rnd: nominal 2→0, min 0 (its rifle is capped at 0/0)",
+          "why": "Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too"
+        },
+        {
+          "find": "  <type name=\"Candy_SRSA2_mag_5Rnd\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n    <value name=\"Tier2\" />\n    <value name=\"Tier4\" />\n  </type>",
+          "replace": "  <type name=\"Candy_SRSA2_mag_5Rnd\">\n    <nominal>0</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n  </type>",
+          "summary": "Candy_SRSA2_mag_5Rnd: nominal 2→0, min 0 (its rifle is capped at 0/0)",
+          "why": "Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too"
+        },
+        {
+          "find": "<usage name=\"Military_Woodbox\"/>",
+          "replace": "<usage name=\"MilitaryNorth\"/>\n    <usage name=\"MilitarySouth\"/>",
+          "replace_all": 249,
+          "summary": "Military_Woodbox -> MilitaryNorth + MilitarySouth (249 items)",
+          "why": "Military_Woodbox is not a usage in Sahrani's cfglimitsdefinition (252 'Unknown usage' log lines, 01:18 boot); every item also has Military. Boss chose MilitaryNorth + MilitarySouth (2026-11-28 01:23)"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/CustomTypes/CandyClothes/types_Set_Soldier.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/CustomTypes/CandyClothes/types_Set_Soldier.xml",
+      "edits": [
+        {
+          "find": "<usage name=\"Military_Woodbox\"/>",
+          "replace": "<usage name=\"MilitaryNorth\"/>\n        <usage name=\"MilitarySouth\"/>",
+          "replace_all": 13,
+          "summary": "Military_Woodbox -> MilitaryNorth + MilitarySouth (13 items)",
+          "why": "Military_Woodbox is not a usage in Sahrani's cfglimitsdefinition (252 'Unknown usage' log lines, 01:18 boot); every item also has Military. Boss chose MilitaryNorth + MilitarySouth (2026-11-28 01:23)"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/CustomTypes/CandyClothes/types_ghost.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/CustomTypes/CandyClothes/types_ghost.xml",
+      "edits": [
+        {
+          "find": "<usage name=\"Military_Woodbox\"/>",
+          "replace": "<usage name=\"MilitaryNorth\"/>\n        <usage name=\"MilitarySouth\"/>",
+          "replace_all": 6,
+          "summary": "Military_Woodbox -> MilitaryNorth + MilitarySouth (6 items)",
+          "why": "Military_Woodbox is not a usage in Sahrani's cfglimitsdefinition (252 'Unknown usage' log lines, 01:18 boot); every item also has Military. Boss chose MilitaryNorth + MilitarySouth (2026-11-28 01:23)"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/cfgweather.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/cfgweather.xml",
+      "edits": [
+        {
+          "find": "<current actual=\"0.0\" time=\"120\" duration=\"240\" />\n        <!-- What is the range of the overcast value (0..1) -->\n        <limits min=\"0.0\" max=\"0.3\" />\n        <!-- How long does it take to the overcast to change from one value to other (time in seconds) -->\n        <timelimits min=\"1200\" max=\"2100\" />\n        <!-- How much should the overcast change (0..1) -->\n        <changelimits min=\"0.0\" max=\"0.3\" />",
+          "replace": "<current actual=\"0.45\" time=\"120\" duration=\"240\" />\n        <!-- What is the range of the overcast value (0..1) -->\n        <limits min=\"0.0\" max=\"1.0\" />\n        <!-- How long does it take to the overcast to change from one value to other (time in seconds) -->\n        <timelimits min=\"600\" max=\"900\" />\n        <!-- How much should the overcast change (0..1) -->\n        <changelimits min=\"0.0\" max=\"1.0\" />",
+          "summary": "overcast 0-0.3 -> 0-1.0 (start 0.45, change every 10-15 min)",
+          "why": "Boss chose Nasdara-style weather (2026-11-28 02:03); values from Bohemia's dayzOffline.nasdara/cfgweather.xml; file stays enabled"
+        },
+        {
+          "find": "<current actual=\"0.0\" time=\"120\" duration=\"240\" />\n        <!-- What is the range of the fog value (0..1) -->\n        <limits min=\"0.0\" max=\"0.1\" />\n        <!-- How long does it take to the fog to change from one value to other (time in seconds) -->\n        <timelimits min=\"900\" max=\"1800\" />\n        <!-- How much should the fog change (0..1) -->\n        <changelimits min=\"0.0\" max=\"0.0\" />",
+          "replace": "<current actual=\"0.05\" time=\"120\" duration=\"240\" />\n        <!-- What is the range of the fog value (0..1) -->\n        <limits min=\"0.02\" max=\"0.13\" />\n        <!-- How long does it take to the fog to change from one value to other (time in seconds) -->\n        <timelimits min=\"900\" max=\"900\" />\n        <!-- How much should the fog change (0..1) -->\n        <changelimits min=\"0.0\" max=\"1.0\" />",
+          "summary": "fog fixed 0-0.1 -> variable 0.02-0.13",
+          "why": "Boss chose Nasdara-style weather (2026-11-28 02:03); values from Bohemia's dayzOffline.nasdara/cfgweather.xml; file stays enabled"
+        },
+        {
+          "find": "<current actual=\"0.0\" time=\"120\" duration=\"240\" />\n        <!-- What is the range of the rain value (0..1) -->\n        <limits min=\"0.0\" max=\"0.0\" />\n        <!-- How long does it take to the rain to change from one value to other (time in seconds) -->\n        <timelimits min=\"300\" max=\"600\" />\n        <!-- How much should the rain change (0..1) -->\n        <changelimits min=\"0.0\" max=\"0.0\" />",
+          "replace": "<current actual=\"0.0\" time=\"60\" duration=\"120\" />\n        <!-- What is the range of the rain value (0..1) -->\n        <limits min=\"0.0\" max=\"1.0\" />\n        <!-- How long does it take to the rain to change from one value to other (time in seconds) -->\n        <timelimits min=\"60\" max=\"120\" />\n        <!-- How much should the rain change (0..1) -->\n        <changelimits min=\"0.0\" max=\"1.0\" />",
+          "summary": "rain off -> 0-1.0",
+          "why": "Boss chose Nasdara-style weather (2026-11-28 02:03); values from Bohemia's dayzOffline.nasdara/cfgweather.xml; file stays enabled"
+        },
+        {
+          "find": "<thresholds min=\"0.8\" max=\"1.0\" end=\"60\" />",
+          "replace": "<thresholds min=\"0.6\" max=\"1.0\" end=\"60\" />",
+          "summary": "rain starts above 0.6 overcast (was 0.8)",
+          "why": "Boss chose Nasdara-style weather (2026-11-28 02:03); values from Bohemia's dayzOffline.nasdara/cfgweather.xml; file stays enabled"
+        },
+        {
+          "find": "<storm density=\"1.0\" threshold=\"0.9\" timeout=\"45\"/>",
+          "replace": "<storm density=\"1.0\" threshold=\"0.7\" timeout=\"20\"/>",
+          "summary": "lightning from 0.7 overcast, every 20 s",
+          "why": "Boss chose Nasdara-style weather (2026-11-28 02:03); values from Bohemia's dayzOffline.nasdara/cfgweather.xml; file stays enabled"
+        }
+      ]
+    }
+  ]
+}

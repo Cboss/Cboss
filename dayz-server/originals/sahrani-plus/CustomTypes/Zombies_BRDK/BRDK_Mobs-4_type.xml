@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--ОГЛАВЛЕНИЕ-->
+<!--mobs-->
+<!--Skinning-->
+
+<types>
+<!--mobs-->
+	<type name="BRDK_Am_Soldier_01_zmb">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Am_Soldier_02_zmb">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Am_Soldier_03_zmb">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Am_Soldier_04_zmb">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_FamDoctor_zmb">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Hurlock_zmb">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_IT_Soldier_01_zmb">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_IT_Soldier_02_zmb">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_JetPilot_Ch">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_JetPilot_Ch_nm">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_JetPilot_Ru">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_JetPilot_Ru_nm">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_JetPilot_Us">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_JetPilot_Us_nm">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Knight_zmb">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_MedievalMan2_zmb">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_MedievalMan_zmb">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Pilot_zmb">
+		<nominal>0</nominal>
+		<lifetime>3500</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+
+<!--Skinning-->
+	<type name="BRDK_Am_Soldier_01_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Am_Soldier_02_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Am_Soldier_03_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Am_Soldier_04_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Broken_Sword">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Ch_JetPilot_Head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_FamDoctor_Leg">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_FamDoctor_hand">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_FamDoctor_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Hurlock_hand">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Hurlock_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_IT_Soldier_01_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_IT_Soldier_02_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_MedievalMan2_Leg">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_MedievalMan2_hand">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_MedievalMan2_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_MedievalMan_Leg">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_MedievalMan_hand">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_MedievalMan_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Pilot_head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Ru_JetPilot_Head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+	<type name="BRDK_Us_JetPilot_Head">
+		<nominal>0</nominal>
+		<lifetime>7900</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
+	</type>
+</types>
