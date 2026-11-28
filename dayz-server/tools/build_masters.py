@@ -36,6 +36,9 @@ Recipe (paths are relative to the recipe file):
     A patch edit can instead be {"tag": "zone", "add_to_attrs": {"dmin": 1},
     "why": "..."}: add a number to that attribute on every <zone> element.
 
+    A patch edit with "replace_all": N replaces every occurrence of "find"
+    and stops the build unless there are exactly N.
+
     Patch "find" text must occur exactly once in the original. Write line
     breaks as \\n; they are matched against the file's own line endings. If an
     updated original no longer contains the text, the build stops and says
@@ -103,6 +106,18 @@ def patch(step: dict, here: Path) -> tuple[bytes, list[str], list[str]]:
         find = ed["find"].replace("\n", nl)
         repl = ed["replace"].replace("\n", nl)
         count = text.count(find)
+        if "replace_all" in ed:
+            # Bulk edit: replace every occurrence; the count must match.
+            if count != ed["replace_all"]:
+                problems.append(f"edit {n} ({ed.get('why', '')}): text found {count} "
+                                f"times in {step['from']}, expected {ed['replace_all']}. "
+                                f"The original probably changed: update the recipe.")
+                continue
+            text = text.replace(find, repl)
+            summary = ed.get("summary") or (
+                f"replaced all {count} `" + ed["find"].strip().splitlines()[0][:60] + "`")
+            r.append(f"| {n} | {summary} | {ed.get('why', '')} |")
+            continue
         if count != 1:
             problems.append(f"edit {n} ({ed.get('why', '')}): text found {count} "
                             f"times in {step['from']}, expected once. The original "

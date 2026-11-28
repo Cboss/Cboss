@@ -1686,5 +1686,26 @@ Patched copy of `../originals/sahrani-plus/CustomTypes/CandyWeapons/Candy_VHQ_We
 | 20 | Candy_TAC21_Buttstock: 0/0 (its rifle is capped at 0/0) | Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too |
 | 21 | Candy_TAC21_mag_5Rnd: nominal 2→0, min 0 (its rifle is capped at 0/0) | Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too |
 | 22 | Candy_SRSA2_mag_5Rnd: nominal 2→0, min 0 (its rifle is capped at 0/0) | Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too |
+| 23 | Military_Woodbox -> MilitaryNorth + MilitarySouth (249 items) | Military_Woodbox is not a usage in Sahrani's cfglimitsdefinition (252 'Unknown usage' log lines, 01:18 boot); every item also has Military. Boss chose MilitaryNorth + MilitarySouth (2026-11-28 01:23) |
 
-Master sha256 `1046338b22e0`. Verification: passed.
+Master sha256 `ef239ff2f7ba`. Verification: passed.
+
+## types_Set_Soldier.xml
+
+Patched copy of `../originals/sahrani-plus/CustomTypes/CandyClothes/types_Set_Soldier.xml` (sha256 `b6a8d7dbe2dc`) → `mpmissions/dayzOffline.SahraniPlus/CustomTypes/CandyClothes/types_Set_Soldier.xml`.
+
+| # | Change | Why |
+|---|---|---|
+| 1 | Military_Woodbox -> MilitaryNorth + MilitarySouth (13 items) | Military_Woodbox is not a usage in Sahrani's cfglimitsdefinition (252 'Unknown usage' log lines, 01:18 boot); every item also has Military. Boss chose MilitaryNorth + MilitarySouth (2026-11-28 01:23) |
+
+Master sha256 `ffc16156e78b`. Verification: passed.
+
+## types_ghost.xml
+
+Patched copy of `../originals/sahrani-plus/CustomTypes/CandyClothes/types_ghost.xml` (sha256 `6703a3dfce24`) → `mpmissions/dayzOffline.SahraniPlus/CustomTypes/CandyClothes/types_ghost.xml`.
+
+| # | Change | Why |
+|---|---|---|
+| 1 | Military_Woodbox -> MilitaryNorth + MilitarySouth (6 items) | Military_Woodbox is not a usage in Sahrani's cfglimitsdefinition (252 'Unknown usage' log lines, 01:18 boot); every item also has Military. Boss chose MilitaryNorth + MilitarySouth (2026-11-28 01:23) |
+
+Master sha256 `def085a4a49c`. Verification: passed.

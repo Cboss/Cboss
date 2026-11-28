@@ -877,6 +877,41 @@
           "replace": "  <type name=\"Candy_SRSA2_mag_5Rnd\">\n    <nominal>0</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <usage name=\"ContaminatedArea\"/>\n  </type>",
           "summary": "Candy_SRSA2_mag_5Rnd: nominal 2→0, min 0 (its rifle is capped at 0/0)",
           "why": "Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too"
+        },
+        {
+          "find": "<usage name=\"Military_Woodbox\"/>",
+          "replace": "<usage name=\"MilitaryNorth\"/>\n    <usage name=\"MilitarySouth\"/>",
+          "replace_all": 249,
+          "summary": "Military_Woodbox -> MilitaryNorth + MilitarySouth (249 items)",
+          "why": "Military_Woodbox is not a usage in Sahrani's cfglimitsdefinition (252 'Unknown usage' log lines, 01:18 boot); every item also has Military. Boss chose MilitaryNorth + MilitarySouth (2026-11-28 01:23)"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/CustomTypes/CandyClothes/types_Set_Soldier.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/CustomTypes/CandyClothes/types_Set_Soldier.xml",
+      "edits": [
+        {
+          "find": "<usage name=\"Military_Woodbox\"/>",
+          "replace": "<usage name=\"MilitaryNorth\"/>\n        <usage name=\"MilitarySouth\"/>",
+          "replace_all": 13,
+          "summary": "Military_Woodbox -> MilitaryNorth + MilitarySouth (13 items)",
+          "why": "Military_Woodbox is not a usage in Sahrani's cfglimitsdefinition (252 'Unknown usage' log lines, 01:18 boot); every item also has Military. Boss chose MilitaryNorth + MilitarySouth (2026-11-28 01:23)"
+        }
+      ]
+    },
+    {
+      "type": "patch",
+      "from": "../originals/sahrani-plus/CustomTypes/CandyClothes/types_ghost.xml",
+      "output": "mpmissions/dayzOffline.SahraniPlus/CustomTypes/CandyClothes/types_ghost.xml",
+      "edits": [
+        {
+          "find": "<usage name=\"Military_Woodbox\"/>",
+          "replace": "<usage name=\"MilitaryNorth\"/>\n        <usage name=\"MilitarySouth\"/>",
+          "replace_all": 6,
+          "summary": "Military_Woodbox -> MilitaryNorth + MilitarySouth (6 items)",
+          "why": "Military_Woodbox is not a usage in Sahrani's cfglimitsdefinition (252 'Unknown usage' log lines, 01:18 boot); every item also has Military. Boss chose MilitaryNorth + MilitarySouth (2026-11-28 01:23)"
         }
       ]
     }
