@@ -1574,10 +1574,10 @@ Patched copy of `../originals/sahrani-plus/cfgeconomycore.xml` (sha256 `8b088584
 | 1 | stop loading `BRDK_LtlCreature_types.xml` | Boss isn't using the BRDK little creatures |
 | 2 | add the vanilla 1.30 root classes for boats, motorbikes and destructible houses | missing from the map's file, so the CE ignored Boat_01_* and Motorbike_* as 'Type does not exist' (03:07 boot). Lines copied from Bohemia's cfgeconomycore (DayZ-Central-Economy 7bfc95c) |
 | 3 | load the MaharlikaPH Boats types and spawnabletypes | Boss is adding MaharlikaPH Boats (@3354681846); the two files are the mod's own Info\ files copied unchanged into CustomTypes/MaharlikaPH_Boats (2026-11-27); CookZ (@3302732231) types load from CustomTypes/CookZ (Boss, 2026-11-27); AP kamikaze and patrol drone types load from CustomTypes/AP (Boss, 2026-11-27); Expansion economy files load from expansion_ce (Boss, 2026-11-27) |
-| 4 | load Apokot fishing types from CustomTypes/Apokot_Fish | Boss added this block on the live server, 2026-11-27 (Apokot_fishing_mod_Fix @3837317482); expansion_ce block (types + spawnabletypes, no events) placed here to mirror Boss's live edit (19:27, 2026-11-27); BSG Pack 2 (CandyWeapons, CandyClothes) registered (Boss, 2026-11-27 23:17); MunghardsItempack @1734713776 registered, types.xml only (the split files hold the same 149 types) (Boss, 2026-11-28 00:30) |
+| 4 | load Apokot fishing types from CustomTypes/Apokot_Fish | Boss added this block on the live server, 2026-11-27 (Apokot_fishing_mod_Fix @3837317482); expansion_ce block (types + spawnabletypes, no events) placed here to mirror Boss's live edit (19:27, 2026-11-27); BSG Pack 2 (CandyWeapons, CandyClothes) registered (Boss, 2026-11-27 23:17); MunghardsItempack @1734713776 registered, the six category files (Boss edits these; types.xml is their combined copy, left out) (Boss, 2026-11-28 00:30) |
 | 5 | OH mods types switched on | Boss turned the OH mods (BSG Pack 7) on, live edit 2026-11-27 15:16 |
 
-Master sha256 `0d18c39b7316`. Verification: passed.
+Master sha256 `2a30071fece9`. Verification: passed.
 
 ## cfgeventspawns.xml
 

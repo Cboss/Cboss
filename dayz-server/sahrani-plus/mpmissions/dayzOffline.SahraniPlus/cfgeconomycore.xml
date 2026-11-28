@@ -69,7 +69,12 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 			<file name="types_Set_Soldier.xml" type="types" />
 		</ce>
 	<ce folder="CustomTypes/Munghards">
-			<file name="types.xml" type="types" />
+			<file name="types_Clothes.xml" type="types" />
+			<file name="types_Containers.xml" type="types" />
+			<file name="types_Food.xml" type="types" />
+			<file name="types_Other.xml" type="types" />
+			<file name="types_Tools.xml" type="types" />
+			<file name="types_Weapons.xml" type="types" />
 		</ce>
 	<ce folder="CustomTypes/Apokot_Fish">
 			<file name="fishing_apokot_types.xml" type="types" />
