@@ -1672,8 +1672,19 @@ Patched copy of `../originals/sahrani-plus/CustomTypes/CandyWeapons/Candy_VHQ_We
 | 6 | Candy_Ammo_40LW: nominal 7→0, min 0→0 | .40LW, above .338 (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
 | 7 | Candy_AWM: nominal 0→1, min 0→0 | .338 Lapua, super rare: the one .338 rifle that spawns (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
 | 8 | Candy_AWM_mag_5Rnd: nominal 2→1, min 0→0 | .338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
-| 9 | Candy_TAC21_mag_5Rnd: nominal 2→1, min 0→0 | .338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
-| 10 | Candy_SRSA2_mag_5Rnd: nominal 2→1, min 0→0 | .338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
-| 11 | Candy_Ammo_338Lupa: nominal 6→2, min 0→0; usage Military (+Military_Woodbox) only, Farm/Village/Hunting removed | .338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27); Boss: .338 ammo only in military areas |
+| 9 | Candy_Ammo_338Lupa: nominal 6→2, min 0→0; usage Military (+Military_Woodbox) only, Farm/Village/Hunting removed | .338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27); Boss: .338 ammo only in military areas |
+| 10 | Candy_AWM: Military + Military_Woodbox, Tier4 (was ContaminatedArea only) | Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too |
+| 11 | Candy_AWM_Buttstock: Military + Military_Woodbox, Tier4 (was ContaminatedArea only) | Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too |
+| 12 | Candy_AWM_mag_5Rnd: Military + Military_Woodbox, Tier4 (was ContaminatedArea only) | Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too |
+| 13 | Candy_AMELI: Military + Military_Woodbox, Tier4 (was ContaminatedArea only) | Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too |
+| 14 | Candy_AMELI_mag_200Rnd: Military + Military_Woodbox, Tier4 (was ContaminatedArea only) | Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too |
+| 15 | Candy_FNE: Military + Military_Woodbox, Tier4 (was ContaminatedArea only) | Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too |
+| 16 | Candy_FNE_Buttstock: Military + Military_Woodbox, Tier4 (was ContaminatedArea only) | Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too |
+| 17 | Candy_FNE_mag_200Rnd: Military + Military_Woodbox, Tier4 (was ContaminatedArea only) | Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too |
+| 18 | Candy_PKPZ_Buttstock: Military + Military_Woodbox, Tier4 (was ContaminatedArea only) | Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too |
+| 19 | Candy_Grenadier_Buttstock: Military + Military_Woodbox, Tier4 (was ContaminatedArea only) | Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too |
+| 20 | Candy_TAC21_Buttstock: 0/0 (its rifle is capped at 0/0) | Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too |
+| 21 | Candy_TAC21_mag_5Rnd: nominal 2→0, min 0 (its rifle is capped at 0/0) | Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too |
+| 22 | Candy_SRSA2_mag_5Rnd: nominal 2→0, min 0 (its rifle is capped at 0/0) | Boss, 2026-11-27 23:52: 'AWM Military or any other gucci Candy Gun'; gear for 0/0 rifles goes to 0/0 too |
 
-Master sha256 `37dc9cf23d0a`. Verification: passed.
+Master sha256 `1046338b22e0`. Verification: passed.

@@ -134,7 +134,9 @@
     <cost>100</cost>
     <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
     <category name="weapons" />
-    <usage name="ContaminatedArea"/>
+    <usage name="Military"/>
+    <usage name="Military_Woodbox"/>
+    <value name="Tier4" />
   </type>
   <type name="Candy_Apc9k">
     <nominal>2</nominal>
@@ -290,7 +292,9 @@
     <cost>100</cost>
     <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
     <category name="weapons" />
-    <usage name="ContaminatedArea"/>
+    <usage name="Military"/>
+    <usage name="Military_Woodbox"/>
+    <value name="Tier4" />
   </type>
   <type name="Candy_G36C">
     <nominal>2</nominal>
@@ -533,8 +537,8 @@
     <cost>100</cost>
     <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
     <category name="weapons" />
-    <usage name="ContaminatedArea"/>
-    <value name="Tier2" />
+    <usage name="Military"/>
+    <usage name="Military_Woodbox"/>
     <value name="Tier4" />
   </type>
   <type name="Candy_AX50">
@@ -1207,7 +1211,9 @@
     <cost>100</cost>
     <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
     <category name="weapons" />
-    <usage name="ContaminatedArea"/>
+    <usage name="Military"/>
+    <usage name="Military_Woodbox"/>
+    <value name="Tier4" />
   </type>
   <type name="Candy_FNE_Buttstock">
     <nominal>1</nominal>
@@ -1219,7 +1225,9 @@
     <cost>100</cost>
     <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
     <category name="weapons" />
-    <usage name="ContaminatedArea"/>
+    <usage name="Military"/>
+    <usage name="Military_Woodbox"/>
+    <value name="Tier4" />
   </type>
   <type name="Candy_AKMS_Buttstock">
     <nominal>2</nominal>
@@ -1416,8 +1424,8 @@
     <cost>100</cost>
     <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
     <category name="weapons" />
-    <usage name="ContaminatedArea"/>
-    <value name="Tier2" />
+    <usage name="Military"/>
+    <usage name="Military_Woodbox"/>
     <value name="Tier4" />
   </type>
   <type name="Candy_CobaltK27_Buttstock">
@@ -1509,7 +1517,7 @@
     <value name="Tier4" />
   </type>
   <type name="Candy_TAC21_Buttstock">
-    <nominal>2</nominal>
+    <nominal>0</nominal>
     <lifetime>7200</lifetime>
     <restock>3600</restock>
     <min>0</min>
@@ -1519,8 +1527,6 @@
     <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
     <category name="weapons" />
     <usage name="ContaminatedArea"/>
-    <value name="Tier2" />
-    <value name="Tier4" />
   </type>
   <type name="Candy_BROCom_Handguard">
     <nominal>2</nominal>
@@ -1756,7 +1762,9 @@
     <cost>100</cost>
     <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
     <category name="weapons" />
-    <usage name="ContaminatedArea"/>
+    <usage name="Military"/>
+    <usage name="Military_Woodbox"/>
+    <value name="Tier4" />
   </type>
   <type name="Candy_SigSauer_mag_40Rnd">
     <nominal>2</nominal>
@@ -2052,7 +2060,9 @@
     <cost>100</cost>
     <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
     <category name="weapons" />
-    <usage name="ContaminatedArea"/>
+    <usage name="Military"/>
+    <usage name="Military_Woodbox"/>
+    <value name="Tier4" />
   </type>
   <type name="Candy_PKPZ_mag_200Rnd">
     <nominal>0</nominal>
@@ -2076,7 +2086,9 @@
     <cost>100</cost>
     <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
     <category name="weapons" />
-    <usage name="ContaminatedArea"/>
+    <usage name="Military"/>
+    <usage name="Military_Woodbox"/>
+    <value name="Tier4" />
   </type>
   <type name="Candy_AKMS_mag_45Rnd">
     <nominal>2</nominal>
@@ -2271,8 +2283,8 @@
     <cost>100</cost>
     <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
     <category name="weapons" />
-    <usage name="ContaminatedArea"/>
-    <value name="Tier2" />
+    <usage name="Military"/>
+    <usage name="Military_Woodbox"/>
     <value name="Tier4" />
   </type>
   <type name="Candy_AS50_mag_10Rnd">
@@ -2334,7 +2346,7 @@
     <value name="Tier4" />
   </type>
   <type name="Candy_TAC21_mag_5Rnd">
-    <nominal>1</nominal>
+    <nominal>0</nominal>
     <lifetime>7200</lifetime>
     <restock>3600</restock>
     <min>0</min>
@@ -2344,11 +2356,9 @@
     <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
     <category name="weapons" />
     <usage name="ContaminatedArea"/>
-    <value name="Tier2" />
-    <value name="Tier4" />
   </type>
   <type name="Candy_SRSA2_mag_5Rnd">
-    <nominal>1</nominal>
+    <nominal>0</nominal>
     <lifetime>7200</lifetime>
     <restock>3600</restock>
     <min>0</min>
@@ -2358,8 +2368,6 @@
     <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0" />
     <category name="weapons" />
     <usage name="ContaminatedArea"/>
-    <value name="Tier2" />
-    <value name="Tier4" />
   </type>
   <type name="Candy_36M_mag_10Rnd">
     <nominal>0</nominal>
