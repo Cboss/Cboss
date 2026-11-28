@@ -56,6 +56,18 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 	<file name="vehicles_types.xml" type="types" />
 	<file name="zmb_types.xml" type="types" />
 	</ce>
+	<ce folder="expansion_ce">
+			<file name="expansion_types.xml" type="types" />
+			<file name="expansion_spawnabletypes.xml" type="spawnabletypes" />
+		</ce>
+	<ce folder="CustomTypes/CandyWeapons">
+			<file name="Candy_VHQ_Weapons_Types.xml" type="types" />
+			<file name="Candy_VHQ_Weapons_Spawnabletypes.xml" type="spawnabletypes" />
+		</ce>
+	<ce folder="CustomTypes/CandyClothes">
+			<file name="types_ghost.xml" type="types" />
+			<file name="types_Set_Soldier.xml" type="types" />
+		</ce>
 	<ce folder="CustomTypes/Apokot_Fish">
 			<file name="fishing_apokot_types.xml" type="types" />
 		</ce>
@@ -118,10 +130,5 @@ Do not forget to add attribute act="car", if root class represents moveable vehi
 	<ce folder="CustomTypes/AP">
 			<file name="types_AzraelKamikazeMod.xml" type="types" />
 			<file name="types_PatrolDrone.xml" type="types" />
-		</ce>
-	<ce folder="expansion_ce">
-			<file name="expansion_types.xml" type="types" />
-			<file name="expansion_spawnabletypes.xml" type="spawnabletypes" />
-			<file name="expansion_events.xml" type="events" />
 		</ce>
 </economycore>

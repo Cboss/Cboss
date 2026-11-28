@@ -1574,10 +1574,10 @@ Patched copy of `../originals/sahrani-plus/cfgeconomycore.xml` (sha256 `8b088584
 | 1 | stop loading `BRDK_LtlCreature_types.xml` | Boss isn't using the BRDK little creatures |
 | 2 | add the vanilla 1.30 root classes for boats, motorbikes and destructible houses | missing from the map's file, so the CE ignored Boat_01_* and Motorbike_* as 'Type does not exist' (03:07 boot). Lines copied from Bohemia's cfgeconomycore (DayZ-Central-Economy 7bfc95c) |
 | 3 | load the MaharlikaPH Boats types and spawnabletypes | Boss is adding MaharlikaPH Boats (@3354681846); the two files are the mod's own Info\ files copied unchanged into CustomTypes/MaharlikaPH_Boats (2026-11-27); CookZ (@3302732231) types load from CustomTypes/CookZ (Boss, 2026-11-27); AP kamikaze and patrol drone types load from CustomTypes/AP (Boss, 2026-11-27); Expansion economy files load from expansion_ce (Boss, 2026-11-27) |
-| 4 | load Apokot fishing types from CustomTypes/Apokot_Fish | Boss added this block on the live server, 2026-11-27 (Apokot_fishing_mod_Fix @3837317482) |
+| 4 | load Apokot fishing types from CustomTypes/Apokot_Fish | Boss added this block on the live server, 2026-11-27 (Apokot_fishing_mod_Fix @3837317482); expansion_ce block (types + spawnabletypes, no events) placed here to mirror Boss's live edit (19:27, 2026-11-27); BSG Pack 2 (CandyWeapons, CandyClothes) registered (Boss, 2026-11-27 23:17) |
 | 5 | OH mods types switched on | Boss turned the OH mods (BSG Pack 7) on, live edit 2026-11-27 15:16 |
 
-Master sha256 `cf3bc8df217a`. Verification: passed.
+Master sha256 `af6518fee93f`. Verification: passed.
 
 ## cfgeventspawns.xml
 
@@ -1657,3 +1657,23 @@ Patched copy of `../originals/sahrani-plus/expansion_ce/expansion_types.xml` (sh
 | 2 | comment out Expansion's duplicate WoodenLog | WoodenLog is also defined in the vanilla types/misc_types.xml; Boss chose to keep the vanilla copy (2026-11-27) |
 
 Master sha256 `5869c041466d`. Verification: passed.
+
+## Candy_VHQ_Weapons_Types.xml
+
+Patched copy of `../originals/sahrani-plus/CustomTypes/CandyWeapons/Candy_VHQ_Weapons_Types.xml` (sha256 `34d74728e024`) → `mpmissions/dayzOffline.SahraniPlus/CustomTypes/CandyWeapons/Candy_VHQ_Weapons_Types.xml`.
+
+| # | Change | Why |
+|---|---|---|
+| 1 | Candy_DesertFox: nominal 2→0, min 0→0 | 12.7 mm, above .338 (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
+| 2 | Candy_DesertFox_mag_30Rnd: nominal 2→0, min 0→0 | 12.7 mm, above .338 (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
+| 3 | Candy_M82A2_mag_5Rnd: nominal 2→0, min 0→0 | .50 BMG, above .338 (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
+| 4 | Candy_DVL10_mag_5Rnd: nominal 2→0, min 0→0 | .40LW, above .338 (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
+| 5 | Candy_Ammo_458SOCOM: nominal 5→0, min 0→0 | .458 SOCOM, above .338 (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
+| 6 | Candy_Ammo_40LW: nominal 7→0, min 0→0 | .40LW, above .338 (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
+| 7 | Candy_AWM: nominal 0→1, min 0→0 | .338 Lapua, super rare: the one .338 rifle that spawns (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
+| 8 | Candy_AWM_mag_5Rnd: nominal 2→1, min 0→0 | .338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
+| 9 | Candy_TAC21_mag_5Rnd: nominal 2→1, min 0→0 | .338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
+| 10 | Candy_SRSA2_mag_5Rnd: nominal 2→1, min 0→0 | .338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
+| 11 | Candy_Ammo_338Lupa: nominal 6→2, min 0→0 | .338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
+
+Master sha256 `2d49959e3169`. Verification: passed.

@@ -317,10 +317,20 @@ def check_limits(path: Path, root: ET.Element, limits: dict[str, set[str]]) -> N
                 n = el.get("name") or el.get("user")
                 if n and n not in limits[kind]:
                     missing.setdefault((kind, n), []).append(t.get("name", "?"))
+    orig = source_original(path)
+    orig_root = parse_xml(orig) if orig else None
+    orig_used = {(kind, el.get("name") or el.get("user"))
+                 for t in (orig_root.iter("type") if orig_root is not None else [])
+                 for kind in LIMIT_KINDS for el in t.iter(kind)}
     for (kind, n), items in sorted(missing.items()):
         shown = ", ".join(items[:5]) + (f" and {len(items) - 5} more" if len(items) > 5 else "")
-        problem(path, f"{kind} '{n}' is not defined in cfglimitsdefinition.xml "
-                      f"(used by {shown})")
+        msg = (f"{kind} '{n}' is not defined in cfglimitsdefinition.xml "
+               f"(used by {shown})")
+        if (kind, n) in orig_used:
+            # Inherited from the file we patched: the author's to fix.
+            warn(path, f"(unchanged from {orig.name}) {msg}")
+        else:
+            problem(path, msg)
 
 
 def check_mission(mission: Path) -> None:
