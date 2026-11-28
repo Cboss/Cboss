@@ -1674,6 +1674,6 @@ Patched copy of `../originals/sahrani-plus/CustomTypes/CandyWeapons/Candy_VHQ_We
 | 8 | Candy_AWM_mag_5Rnd: nominal 2→1, min 0→0 | .338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
 | 9 | Candy_TAC21_mag_5Rnd: nominal 2→1, min 0→0 | .338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
 | 10 | Candy_SRSA2_mag_5Rnd: nominal 2→1, min 0→0 | .338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
-| 11 | Candy_Ammo_338Lupa: nominal 6→2, min 0→0 | .338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27) |
+| 11 | Candy_Ammo_338Lupa: nominal 6→2, min 0→0; usage Military (+Military_Woodbox) only, Farm/Village/Hunting removed | .338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27); Boss: .338 ammo only in military areas |
 
-Master sha256 `2d49959e3169`. Verification: passed.
+Master sha256 `37dc9cf23d0a`. Verification: passed.

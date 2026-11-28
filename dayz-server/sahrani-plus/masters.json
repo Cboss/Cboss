@@ -808,9 +808,9 @@
         },
         {
           "find": "<type name=\"Candy_Ammo_338Lupa\">\n    <nominal>6</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <tag name=\"shelves\"/>\n    <usage name=\"Farm\"/>\n    <usage name=\"Village\"/>\n    <usage name=\"Hunting\"/>\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
-          "replace": "<type name=\"Candy_Ammo_338Lupa\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <tag name=\"shelves\"/>\n    <usage name=\"Farm\"/>\n    <usage name=\"Village\"/>\n    <usage name=\"Hunting\"/>\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
-          "summary": "Candy_Ammo_338Lupa: nominal 6→2, min 0→0",
-          "why": ".338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27)"
+          "replace": "<type name=\"Candy_Ammo_338Lupa\">\n    <nominal>2</nominal>\n    <lifetime>7200</lifetime>\n    <restock>3600</restock>\n    <min>0</min>\n    <quantmin>-1</quantmin>\n    <quantmax>-1</quantmax>\n    <cost>100</cost>\n    <flags count_in_cargo=\"0\" count_in_hoarder=\"0\" count_in_map=\"1\" count_in_player=\"0\" crafted=\"0\" deloot=\"0\" />\n    <category name=\"weapons\" />\n    <tag name=\"shelves\"/>\n    <usage name=\"Military\"/>\n    <usage name=\"Military_Woodbox\"/>\n    <value name=\"Tier4\" />\n  </type>",
+          "summary": "Candy_Ammo_338Lupa: nominal 6→2, min 0→0; usage Military (+Military_Woodbox) only, Farm/Village/Hunting removed",
+          "why": ".338 Lapua, super rare (Boss: nothing above .338 spawns, .338 super rare, 2026-11-27); Boss: .338 ammo only in military areas"
         }
       ]
     }
