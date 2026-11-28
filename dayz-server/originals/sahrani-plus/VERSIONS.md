@@ -30,3 +30,4 @@ Every version received, newest last. Files are stored exactly as received; git h
 | 2026-11-27 | `serverDZ.cfg` | `8014ba9244b8` | 40 | LF | Read from the live server (deployments/Baysic_Sahrani_Plus/serverDZ.cfg) on 2026-11-27 and transcribed: password and passwordAdmin blanked, so NOT byte-exact |
 | 2026-11-27 | `cfgeconomycore.xml` | `bbb82c09d084` | 104 | LF | Live server after Boss's edits + HM names + BS_BaseBuilding, 2026-11-27 (sha256 verified) |
 | 2026-11-27 | `cfgeconomycore.xml` | `8b088584d6b9` | 106 | LF | Live server: one file per BRDK duplicate, OH off, SimpleLootBox on (Boss OK 2026-11-27, sha256 verified) |
+| 2026-11-28 | `cfggameplay.json` | `b583d858cf28` | 119 | LF | Boss's cfggameplay.json, live 11/28 02:06 (Boss-edited; needs enableCfgGameplayFile=1 in serverDZ.cfg) |
